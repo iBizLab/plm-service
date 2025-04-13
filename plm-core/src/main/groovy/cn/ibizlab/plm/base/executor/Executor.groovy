@@ -1,0 +1,137 @@
+package cn.ibizlab.plm.base.executor
+
+import java.util.List
+import org.springframework.data.domain.Page
+
+import cn.ibizlab.plm.base.executor.dto.*
+
+import net.ibizsys.central.util.annotation.DEDataSet
+import net.ibizsys.central.util.annotation.DEAction
+import cn.ibizlab.central.plugin.groovy.dataentity.*
+
+/**
+ * 实体[EXECUTOR]运行时对象
+ * 此代码用户功能扩展代码
+ *
+ */
+class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilterDTO> {
+
+    public static final String ACTION_CREATE = "Create"
+    public static final String ACTION_UPDATE = "Update"
+    public static final String ACTION_REMOVE = "Remove"
+    public static final String ACTION_GET = "Get"
+    public static final String ACTION_GETDRAFT = "GetDraft"
+    public static final String ACTION_CHECKKEY = "CheckKey"
+    public static final String ACTION_SAVE = "Save"
+    public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_COMMENT_WORK_ITEM_EXECUTOR = "comment_work_item_executor"
+    public static final String DATASET_EXECUTOR_BY_OWNERID = "executor_by_ownerid"
+    private static Executor _instance;
+    void setInstance(Executor instance) {
+        _instance = instance
+    }
+    static Executor getInstance() {
+        return _instance
+    }
+
+    /**
+     * 行为：Create 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CREATE)
+    def create(ExecutorDTO dto) throws Throwable {
+        this.execute(ACTION_CREATE, dto)
+    }
+
+    /**
+     * 行为：Update 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_UPDATE)
+    def update(ExecutorDTO dto) throws Throwable {
+        this.execute(ACTION_UPDATE, dto)
+    }
+
+    /**
+     * 行为：Remove 实际功能
+     * @param keys
+     * @throws Throwable
+     */
+    @DEAction(ACTION_REMOVE)
+    def remove(List<String> keys) throws Throwable {
+        this.execute(ACTION_REMOVE, keys)
+    }
+
+    /**
+     * 行为：Get 实际功能
+     * @param key
+     * @throws Throwable
+     */
+    @DEAction(ACTION_GET)
+    def get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key)
+    }
+
+    /**
+     * 行为：GetDraft 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_GETDRAFT)
+    def getDraft(ExecutorDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto)
+    }
+
+    /**
+     * 行为：CheckKey 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CHECKKEY)
+    def checkKey(ExecutorDTO dto) throws Throwable {
+        return this.execute(ACTION_CHECKKEY, dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SAVE)
+    def save(ExecutorDTO dto) throws Throwable {
+        this.execute(ACTION_SAVE, dto)
+    }
+
+    /**
+     * 数据集：数据集 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_DEFAULT)
+    def fetchDefault(ExecutorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context)
+    }
+
+    /**
+     * 数据集：评论通知工作项执行人 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_COMMENT_WORK_ITEM_EXECUTOR)
+    def fetchCommentWorkItemExecutor(ExecutorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_WORK_ITEM_EXECUTOR, context)
+    }
+
+    /**
+     * 数据集：通过主数据标识查询通知对象 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_EXECUTOR_BY_OWNERID)
+    def fetchExecutorByOwnerid(ExecutorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EXECUTOR_BY_OWNERID, context)
+    }
+
+}

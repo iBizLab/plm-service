@@ -1,0 +1,117 @@
+package cn.ibizlab.plm.wiki.spacemember.logic
+
+import net.ibizsys.central.cloud.core.dataentity.logic.DELogicRuntime
+import net.ibizsys.central.dataentity.logic.IDELogicSession
+import net.ibizsys.model.dataentity.logic.IPSDELogicNode
+
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
+
+/**
+ * 实体[SPACE_MEMBER]处理逻辑[移除空间成员发送通知]运行时对象
+ * 此代码用户功能扩展代码
+ *
+ * 移除空间成员时向对应用户发送通知消息
+ */
+class RemoveSpaceMemberNotify extends DELogicRuntime {
+
+    private static final Log log = LogFactory.getLog(RemoveSpaceMemberNotify.class)
+
+    @Override
+	protected void onInit() throws Exception {
+		super.onInit()
+	}
+
+    @Override
+    protected void onExecutePSDELogicNode(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        switch (iPSDELogicNode.getCodeName()) {
+            case "Begin":
+                //执行逻辑节点[开始]
+                executeBegin(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEACTION1":
+                //执行逻辑节点[获取空间成员数据]
+                executeDEACTION1(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM1":
+                //执行逻辑节点[绑定当前操作人]
+                executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
+                break
+            case "RAWSFCODE1":
+                //执行逻辑节点[获取当前操作时间]
+                executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
+                break
+            case "DENOTIFY1":
+                //执行逻辑节点[移除空间成员通知]
+                executeDENOTIFY1(iDELogicSession, iPSDELogicNode)
+                break
+            case "END1":
+                //执行逻辑节点[结束]
+                executeEND1(iDELogicSession, iPSDELogicNode)
+                break
+            default:
+                super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
+        }
+    }
+
+    /**
+     * 执行逻辑节点[开始]，逻辑类型[BEGIN]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeBegin(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取空间成员数据]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[绑定当前操作人]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取当前操作时间]，逻辑类型[RAWSFCODE]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRAWSFCODE1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[移除空间成员通知]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[结束]，逻辑类型[END]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeEND1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+}
+

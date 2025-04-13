@@ -1,0 +1,117 @@
+package cn.ibizlab.plm.base.member.logic
+
+import net.ibizsys.central.cloud.core.dataentity.logic.DELogicRuntime
+import net.ibizsys.central.dataentity.logic.IDELogicSession
+import net.ibizsys.model.dataentity.logic.IPSDELogicNode
+
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
+
+/**
+ * 实体[MEMBER]处理逻辑[获取当前项目集下资源成员]运行时对象
+ * 此代码用户功能扩展代码
+ *
+ * 获取当前项目集下资源成员
+ */
+class CurPortfolioResource extends DELogicRuntime {
+
+    private static final Log log = LogFactory.getLog(CurPortfolioResource.class)
+
+    @Override
+	protected void onInit() throws Exception {
+		super.onInit()
+	}
+
+    @Override
+    protected void onExecutePSDELogicNode(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        switch (iPSDELogicNode.getCodeName()) {
+            case "Begin":
+                //执行逻辑节点[开始]
+                executeBegin(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM1":
+                //执行逻辑节点[设置资源组件查询过滤器参数]
+                executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEDATASET1":
+                //执行逻辑节点[获取当前项目集下的资源组件]
+                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
+                break
+            case "BINDPARAM2":
+                //执行逻辑节点[绑定资源组件]
+                executeBINDPARAM2(iDELogicSession, iPSDELogicNode)
+                break
+            case "BINDPARAM1":
+                //执行逻辑节点[绑定参数]
+                executeBINDPARAM1(iDELogicSession, iPSDELogicNode)
+                break
+            case "END1":
+                //执行逻辑节点[结束]
+                executeEND1(iDELogicSession, iPSDELogicNode)
+                break
+            default:
+                super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
+        }
+    }
+
+    /**
+     * 执行逻辑节点[开始]，逻辑类型[BEGIN]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeBegin(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[设置资源组件查询过滤器参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取当前项目集下的资源组件]，逻辑类型[DEDATASET]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[绑定资源组件]，逻辑类型[BINDPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeBINDPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[绑定参数]，逻辑类型[BINDPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeBINDPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[结束]，逻辑类型[END]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeEND1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+}
+
