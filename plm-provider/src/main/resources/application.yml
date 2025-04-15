@@ -23,6 +23,7 @@
       #publish-config: false
       #启用调试代码
       enableRTCodeMode: true
+      enableProdMode: true
     tenant: true
   
   #生产环境需要关闭
