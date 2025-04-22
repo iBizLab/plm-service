@@ -4,6 +4,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.dto.GroovyDTO
 import net.ibizsys.central.dataentity.action.DEActionPluginRuntimeBase
 import net.ibizsys.central.util.IEntity
 import net.ibizsys.central.util.IEntityDTO
+import net.ibizsys.model.PSModelEnums
 import net.ibizsys.model.dataentity.action.IPSDEAction
 import net.ibizsys.runtime.dataentity.IDataEntityRuntimeContext
 
@@ -18,6 +19,8 @@ class GroovyActionPlugin extends DEActionPluginRuntimeBase{
             if (arg instanceof GroovyDTO || (arg instanceof Collection && (arg.isEmpty() || arg[0] instanceof GroovyDTO)))
                 return this.onExecute(arg);
             else if (arg instanceof IEntity || (arg instanceof Collection && arg.size()>0 && arg[0] instanceof IEntity))
+                return onExecute(iDataEntityRuntimeContext, iPSDEAction, args, actionData)
+            else if(iPSDEAction.getPSDEActionInput() &&  iPSDEAction.getPSDEActionInput().getType() in [ PSModelEnums.DEMethodInputType.KEYFIELDS.toString()] && !(arg instanceof Collection))
                 return onExecute(iDataEntityRuntimeContext, iPSDEAction, args, actionData)
             else
                 return this.onExecute(arg);
