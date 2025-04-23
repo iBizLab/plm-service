@@ -29,7 +29,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.deploy.skip>false</maven.deploy.skip>
-        <ibiz.cloud.version>8.1.0.567.27</ibiz.cloud.version>
+        <ibiz.cloud.version>8.1.0.569.25</ibiz.cloud.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
@@ -217,19 +217,31 @@
     </dependencies>
 
     <repositories>
-		<repository>
-			<id>aliyunmaven</id>
-			<name>阿里云公共仓库</name>
-			<url>https://maven.aliyun.com/repository/public/</url>
-			<layout>default</layout>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/repository/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
 	</repositories>
 
     <build>
