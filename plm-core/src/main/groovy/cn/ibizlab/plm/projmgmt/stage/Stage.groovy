@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_ADD_PREDEFINED = "add_add_predefined"
     public static final String ACTION_DEL = "del"
     public static final String ACTION_MOVE_ORDER = "move_order"
@@ -32,7 +25,7 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
     public static final String DATASET_CUR_STAGE = "cur_stage"
     public static final String DATASET_OWNER = "owner"
     public static final String DATASET_SYSTEM = "system"
-    private static Stage _instance;
+    private static Stage _instance
     void setInstance(Stage instance) {
         _instance = instance
     }
@@ -46,8 +39,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(StageDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    StageDTO create(StageDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, StageDTO.class)
     }
 
     /**
@@ -56,8 +49,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(StageDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    StageDTO update(StageDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, StageDTO.class)
     }
 
     /**
@@ -66,8 +59,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -76,8 +69,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    StageDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, StageDTO.class)
     }
 
     /**
@@ -86,8 +79,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(StageDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    StageDTO getDraft(StageDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, StageDTO.class)
     }
 
     /**
@@ -96,8 +89,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(StageDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(StageDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -106,8 +99,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(StageDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    StageDTO save(StageDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, StageDTO.class)
     }
 
     /**
@@ -117,7 +110,7 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      */
     @DEAction(ACTION_ADD_ADD_PREDEFINED)
     def addPredefined(StageDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_ADD_PREDEFINED, dto)
+        this.execute(ACTION_ADD_ADD_PREDEFINED, dto, StageDTO.class)
     }
 
     /**
@@ -127,7 +120,7 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      */
     @DEAction(ACTION_DEL)
     def del(StageDTO dto) throws Throwable {
-        this.execute(ACTION_DEL, dto)
+        this.execute(ACTION_DEL, dto, StageDTO.class)
     }
 
     /**
@@ -137,7 +130,7 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(StageDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, StageDTO.class)
     }
 
     /**
@@ -146,8 +139,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(StageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<StageDTO> fetchDefault(StageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, StageDTO.class)
     }
 
     /**
@@ -156,8 +149,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_OWNER_SYS)
-    def fetchCurOwnerSys(StageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_OWNER_SYS, context)
+    Page<StageDTO> fetchCurOwnerSys(StageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_OWNER_SYS, context, StageDTO.class)
     }
 
     /**
@@ -166,8 +159,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT)
-    def fetchCurProject(StageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT, context)
+    Page<StageDTO> fetchCurProject(StageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT, context, StageDTO.class)
     }
 
     /**
@@ -176,8 +169,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_STAGE)
-    def fetchCurStage(StageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_STAGE, context)
+    Page<StageDTO> fetchCurStage(StageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_STAGE, context, StageDTO.class)
     }
 
     /**
@@ -186,8 +179,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_OWNER)
-    def fetchOwner(StageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_OWNER, context)
+    Page<StageDTO> fetchOwner(StageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_OWNER, context, StageDTO.class)
     }
 
     /**
@@ -196,8 +189,8 @@ class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_SYSTEM)
-    def fetchSystem(StageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SYSTEM, context)
+    Page<StageDTO> fetchSystem(StageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SYSTEM, context, StageDTO.class)
     }
 
 }

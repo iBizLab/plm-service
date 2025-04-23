@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADDON_AUTHORITY = "addon_authority"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_OWNER_SYS = "cur_owner_sys"
     public static final String DATASET_PSMODEL_SYNC = "PSMODEL_SYNC"
-    private static Addon _instance;
+    private static Addon _instance
     void setInstance(Addon instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(AddonDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    AddonDTO create(AddonDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AddonDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(AddonDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    AddonDTO update(AddonDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AddonDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    AddonDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AddonDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(AddonDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    AddonDTO getDraft(AddonDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AddonDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(AddonDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(AddonDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(AddonDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    AddonDTO save(AddonDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AddonDTO.class)
     }
 
     /**
@@ -112,7 +105,7 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      */
     @DEAction(ACTION_ADDON_AUTHORITY)
     def addonAuthority(AddonDTO dto) throws Throwable {
-        this.execute(ACTION_ADDON_AUTHORITY, dto)
+        this.execute(ACTION_ADDON_AUTHORITY, dto, AddonDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(AddonFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<AddonDTO> fetchDefault(AddonFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AddonDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_OWNER_SYS)
-    def fetchCurOwnerSys(AddonFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_OWNER_SYS, context)
+    Page<AddonDTO> fetchCurOwnerSys(AddonFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_OWNER_SYS, context, AddonDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_PSMODEL_SYNC)
-    def fetchPsmodelSync(AddonFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PSMODEL_SYNC, context)
+    Page<AddonDTO> fetchPsmodelSync(AddonFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PSMODEL_SYNC, context, AddonDTO.class)
     }
 
 }

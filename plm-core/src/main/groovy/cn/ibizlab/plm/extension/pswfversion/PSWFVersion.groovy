@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWFVersionFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSWFVersion _instance;
+    private static PSWFVersion _instance
     void setInstance(PSWFVersion instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSWFVersionDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSWFVersionDTO create(PSWFVersionDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSWFVersionDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSWFVersionDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSWFVersionDTO update(PSWFVersionDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSWFVersionDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSWFVersionDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSWFVersionDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSWFVersionDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSWFVersionDTO getDraft(PSWFVersionDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSWFVersionDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSWFVersionDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSWFVersionDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSWFVersionDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSWFVersionDTO save(PSWFVersionDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSWFVersionDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSWFVersion extends GroovyPSModelDERuntime<PSWFVersion,PSWFVersionDTO,PSWF
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSWFVersionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSWFVersionDTO> fetchDefault(PSWFVersionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSWFVersionDTO.class)
     }
 
 }

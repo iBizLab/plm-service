@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_COMMIT = "COMMIT"
     public static final String ACTION_RESTORE = "RESTORE"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_FIXCOMMIT = "FixCommit"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NAME_VERSION = "name_version"
     public static final String DATASET_OWNER = "owner"
-    private static Version _instance;
+    private static Version _instance
     void setInstance(Version instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(VersionDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    VersionDTO create(VersionDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, VersionDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(VersionDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    VersionDTO update(VersionDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, VersionDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    VersionDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, VersionDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(VersionDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    VersionDTO getDraft(VersionDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, VersionDTO.class)
     }
 
     /**
@@ -93,8 +86,18 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(VersionDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(VersionDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SAVE)
+    VersionDTO save(VersionDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, VersionDTO.class)
     }
 
     /**
@@ -104,7 +107,7 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      */
     @DEAction(ACTION_COMMIT)
     def commit(VersionDTO dto) throws Throwable {
-        this.execute(ACTION_COMMIT, dto)
+        this.execute(ACTION_COMMIT, dto, VersionDTO.class)
     }
 
     /**
@@ -114,17 +117,7 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      */
     @DEAction(ACTION_RESTORE)
     def restore(VersionDTO dto) throws Throwable {
-        this.execute(ACTION_RESTORE, dto)
-    }
-
-    /**
-     * 行为：Save 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_SAVE)
-    def save(VersionDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+        this.execute(ACTION_RESTORE, dto, VersionDTO.class)
     }
 
     /**
@@ -134,7 +127,7 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      */
     @DEAction(ACTION_FIXCOMMIT)
     def fixCommit(VersionDTO dto) throws Throwable {
-        this.execute(ACTION_FIXCOMMIT, dto)
+        this.execute(ACTION_FIXCOMMIT, dto, VersionDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(VersionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<VersionDTO> fetchDefault(VersionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, VersionDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NAME_VERSION)
-    def fetchNameVersion(VersionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NAME_VERSION, context)
+    Page<VersionDTO> fetchNameVersion(VersionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NAME_VERSION, context, VersionDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_OWNER)
-    def fetchOwner(VersionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_OWNER, context)
+    Page<VersionDTO> fetchOwner(VersionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_OWNER, context, VersionDTO.class)
     }
 
 }

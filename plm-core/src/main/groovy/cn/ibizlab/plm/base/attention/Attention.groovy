@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,AttentionFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_UN_ATTENTION = "un_attention"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ATTENTION_BY_OWNERID = "attention_by_ownerid"
     public static final String DATASET_COMMENT_ATTENTION = "comment_attention"
     public static final String DATASET_NOTIFY = "notify"
-    private static Attention _instance;
+    private static Attention _instance
     void setInstance(Attention instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(AttentionDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    AttentionDTO create(AttentionDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AttentionDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(AttentionDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    AttentionDTO update(AttentionDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AttentionDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    AttentionDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AttentionDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(AttentionDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    AttentionDTO getDraft(AttentionDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AttentionDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(AttentionDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(AttentionDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(AttentionDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    AttentionDTO save(AttentionDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AttentionDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      */
     @DEAction(ACTION_UN_ATTENTION)
     def unAttention(AttentionDTO dto) throws Throwable {
-        return this.execute(ACTION_UN_ATTENTION, dto)
+        return this.execute(ACTION_UN_ATTENTION, dto, AttentionDTO.class)
     }
 
     /**
@@ -122,8 +115,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(AttentionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<AttentionDTO> fetchDefault(AttentionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AttentionDTO.class)
     }
 
     /**
@@ -132,8 +125,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEDataSet(DATASET_ATTENTION_BY_OWNERID)
-    def fetchAttentionByOwnerid(AttentionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ATTENTION_BY_OWNERID, context)
+    Page<AttentionUserIdDTO> fetchAttentionByOwnerid(AttentionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ATTENTION_BY_OWNERID, context, AttentionUserIdDTO.class)
     }
 
     /**
@@ -142,8 +135,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_ATTENTION)
-    def fetchCommentAttention(AttentionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_ATTENTION, context)
+    Page<AttentionUserIdDTO> fetchCommentAttention(AttentionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_ATTENTION, context, AttentionUserIdDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOTIFY)
-    def fetchNotify(AttentionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOTIFY, context)
+    Page<AttentionDTO> fetchNotify(AttentionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOTIFY, context, AttentionDTO.class)
     }
 
 }

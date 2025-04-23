@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,TransitionHistoryDTO,TransitionHistoryFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static TransitionHistory _instance;
+    private static TransitionHistory _instance
     void setInstance(TransitionHistory instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TransitionHistoryDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TransitionHistoryDTO create(TransitionHistoryDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TransitionHistoryDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TransitionHistoryDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TransitionHistoryDTO update(TransitionHistoryDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TransitionHistoryDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TransitionHistoryDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TransitionHistoryDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TransitionHistoryDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TransitionHistoryDTO getDraft(TransitionHistoryDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TransitionHistoryDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TransitionHistoryDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TransitionHistoryDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TransitionHistoryDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TransitionHistoryDTO save(TransitionHistoryDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TransitionHistoryDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,Transi
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TransitionHistoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TransitionHistoryDTO> fetchDefault(TransitionHistoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TransitionHistoryDTO.class)
     }
 
 }

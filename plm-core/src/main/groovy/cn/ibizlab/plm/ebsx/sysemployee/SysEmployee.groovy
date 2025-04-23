@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,SysEmployeeFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
     public static final String ACTION_CHANGEPWD = "ChangePwd"
-    public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_INITPWD = "InitPwd"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_USER = "user"
-    private static SysEmployee _instance;
+    private static SysEmployee _instance
     void setInstance(SysEmployee instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SysEmployeeDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SysEmployeeDTO create(SysEmployeeDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SysEmployeeDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SysEmployeeDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SysEmployeeDTO update(SysEmployeeDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SysEmployeeDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SysEmployeeDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SysEmployeeDTO.class)
     }
 
     /**
@@ -81,8 +74,28 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SysEmployeeDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SysEmployeeDTO getDraft(SysEmployeeDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SysEmployeeDTO.class)
+    }
+
+    /**
+     * 行为：CheckKey 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CHECKKEY)
+    int checkKey(SysEmployeeDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SAVE)
+    SysEmployeeDTO save(SysEmployeeDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SysEmployeeDTO.class)
     }
 
     /**
@@ -92,17 +105,7 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      */
     @DEAction(ACTION_CHANGEPWD)
     def changePwd(SysEmployeeDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGEPWD, dto)
-    }
-
-    /**
-     * 行为：CheckKey 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_CHECKKEY)
-    def checkKey(SysEmployeeDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+        this.execute(ACTION_CHANGEPWD, dto, SysEmployeeDTO.class)
     }
 
     /**
@@ -112,17 +115,7 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      */
     @DEAction(ACTION_INITPWD)
     def initPwd(SysEmployeeDTO dto) throws Throwable {
-        this.execute(ACTION_INITPWD, dto)
-    }
-
-    /**
-     * 行为：Save 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_SAVE)
-    def save(SysEmployeeDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+        this.execute(ACTION_INITPWD, dto, SysEmployeeDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SysEmployeeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SysEmployeeDTO> fetchDefault(SysEmployeeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SysEmployeeDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,Sys
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(SysEmployeeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<SysEmployeeDTO> fetchUser(SysEmployeeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, SysEmployeeDTO.class)
     }
 
 }

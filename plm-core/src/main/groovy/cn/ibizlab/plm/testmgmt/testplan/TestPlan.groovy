@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
     public static final String ACTION_END_TEST_PLAN = "end_test_plan"
     public static final String ACTION_START_TEST_PLAN = "start_test_plan"
@@ -37,7 +30,7 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
     public static final String DATASET_PENDING_AND_IN_PROGRESS = "pending_and_in_progress"
     public static final String DATASET_QUERY_NO_SHIFT_IN = "query_no_shift_in"
     public static final String DATASET_UN_JOIN_PLAN = "un_join_plan"
-    private static TestPlan _instance;
+    private static TestPlan _instance
     void setInstance(TestPlan instance) {
         _instance = instance
     }
@@ -51,8 +44,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TestPlanDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TestPlanDTO create(TestPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TestPlanDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TestPlanDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TestPlanDTO update(TestPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TestPlanDTO.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TestPlanDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TestPlanDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TestPlanDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TestPlanDTO getDraft(TestPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TestPlanDTO.class)
     }
 
     /**
@@ -101,8 +94,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TestPlanDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TestPlanDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -111,8 +104,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TestPlanDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TestPlanDTO save(TestPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TestPlanDTO.class)
     }
 
     /**
@@ -122,7 +115,7 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(TestPlanDTO dto) throws Throwable {
-        return this.execute(ACTION_DELETE_CATEGORIES, dto)
+        return this.execute(ACTION_DELETE_CATEGORIES, dto, TestPlanDTO.class)
     }
 
     /**
@@ -132,7 +125,7 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      */
     @DEAction(ACTION_END_TEST_PLAN)
     def endTestPlan(TestPlanDTO dto) throws Throwable {
-        this.execute(ACTION_END_TEST_PLAN, dto)
+        this.execute(ACTION_END_TEST_PLAN, dto, TestPlanDTO.class)
     }
 
     /**
@@ -142,7 +135,7 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      */
     @DEAction(ACTION_START_TEST_PLAN)
     def startTestPlan(TestPlanDTO dto) throws Throwable {
-        this.execute(ACTION_START_TEST_PLAN, dto)
+        this.execute(ACTION_START_TEST_PLAN, dto, TestPlanDTO.class)
     }
 
     /**
@@ -152,7 +145,7 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      */
     @DEAction(ACTION_TEST_PLAN_REPORT_SURVEY)
     def testPlanReportSurvey(String key) throws Throwable {
-        return this.execute(ACTION_TEST_PLAN_REPORT_SURVEY, key)
+        return this.execute(ACTION_TEST_PLAN_REPORT_SURVEY, key, TestPlanDTO.class)
     }
 
     /**
@@ -161,8 +154,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TestPlanDTO> fetchDefault(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TestPlanDTO.class)
     }
 
     /**
@@ -171,8 +164,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<TestPlanDTO> fetchBiDetail(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, TestPlanDTO.class)
     }
 
     /**
@@ -181,8 +174,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<TestPlanBiSearchGroupDTO> fetchBiSearch(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, TestPlanBiSearchGroupDTO.class)
     }
 
     /**
@@ -191,8 +184,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT)
-    def fetchCurProject(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT, context)
+    Page<TestPlanDTO> fetchCurProject(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT, context, TestPlanDTO.class)
     }
 
     /**
@@ -201,8 +194,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGNEE)
-    def fetchMyAssignee(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGNEE, context)
+    Page<TestPlanDTO> fetchMyAssignee(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGNEE, context, TestPlanDTO.class)
     }
 
     /**
@@ -211,8 +204,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_IN_PROGRESS)
-    def fetchMyInProgress(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_IN_PROGRESS, context)
+    Page<TestPlanDTO> fetchMyInProgress(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_IN_PROGRESS, context, TestPlanDTO.class)
     }
 
     /**
@@ -221,8 +214,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_PARTICIPATE)
-    def fetchMyParticipate(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_PARTICIPATE, context)
+    Page<TestPlanDTO> fetchMyParticipate(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_PARTICIPATE, context, TestPlanDTO.class)
     }
 
     /**
@@ -231,8 +224,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PENDING_AND_IN_PROGRESS)
-    def fetchPendingAndInProgress(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PENDING_AND_IN_PROGRESS, context)
+    Page<TestPlanDTO> fetchPendingAndInProgress(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PENDING_AND_IN_PROGRESS, context, TestPlanDTO.class)
     }
 
     /**
@@ -241,8 +234,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUERY_NO_SHIFT_IN)
-    def fetchQueryNoShiftIn(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUERY_NO_SHIFT_IN, context)
+    Page<TestPlanDTO> fetchQueryNoShiftIn(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUERY_NO_SHIFT_IN, context, TestPlanDTO.class)
     }
 
     /**
@@ -251,8 +244,8 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_UN_JOIN_PLAN)
-    def fetchUnJoinPlan(TestPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_UN_JOIN_PLAN, context)
+    Page<TestPlanDTO> fetchUnJoinPlan(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_UN_JOIN_PLAN, context, TestPlanDTO.class)
     }
 
 }

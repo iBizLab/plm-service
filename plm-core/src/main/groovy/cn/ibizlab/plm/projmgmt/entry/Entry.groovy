@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Entry _instance;
+    private static Entry _instance
     void setInstance(Entry instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(EntryDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    EntryDTO create(EntryDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, EntryDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(EntryDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    EntryDTO update(EntryDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, EntryDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    EntryDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, EntryDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(EntryDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    EntryDTO getDraft(EntryDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, EntryDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(EntryDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(EntryDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(EntryDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    EntryDTO save(EntryDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, EntryDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class Entry extends GroovyDataEntityRuntime<Entry,EntryDTO,EntryFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(EntryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<EntryDTO> fetchDefault(EntryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, EntryDTO.class)
     }
 
 }

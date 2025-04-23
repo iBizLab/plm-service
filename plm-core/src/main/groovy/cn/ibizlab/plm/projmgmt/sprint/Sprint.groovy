@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CAL_SPRINT_WORK_ITEM_NUM = "cal_sprint_work_item_num"
     public static final String ACTION_DEL_RELATION = "del_relation"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
@@ -42,7 +35,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
     public static final String DATASET_NOT_FINISH = "not_finish"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_RELEASE_RELATION = "release_relation"
-    private static Sprint _instance;
+    private static Sprint _instance
     void setInstance(Sprint instance) {
         _instance = instance
     }
@@ -56,8 +49,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SprintDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SprintDTO create(SprintDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SprintDTO.class)
     }
 
     /**
@@ -66,8 +59,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SprintDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SprintDTO update(SprintDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SprintDTO.class)
     }
 
     /**
@@ -76,8 +69,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -86,8 +79,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SprintDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SprintDTO.class)
     }
 
     /**
@@ -96,8 +89,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SprintDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SprintDTO getDraft(SprintDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SprintDTO.class)
     }
 
     /**
@@ -106,8 +99,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SprintDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SprintDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -116,8 +109,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SprintDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SprintDTO save(SprintDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SprintDTO.class)
     }
 
     /**
@@ -127,7 +120,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_CAL_SPRINT_WORK_ITEM_NUM)
     def calSprintWorkItemNum(String key) throws Throwable {
-        return this.execute(ACTION_CAL_SPRINT_WORK_ITEM_NUM, key)
+        return this.execute(ACTION_CAL_SPRINT_WORK_ITEM_NUM, key, SprintDTO.class)
     }
 
     /**
@@ -137,7 +130,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_DEL_RELATION)
     def delRelation(SprintDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_RELATION, dto)
+        this.execute(ACTION_DEL_RELATION, dto, SprintDTO.class)
     }
 
     /**
@@ -147,7 +140,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(SprintDTO dto) throws Throwable {
-        return this.execute(ACTION_DELETE_CATEGORIES, dto)
+        return this.execute(ACTION_DELETE_CATEGORIES, dto, SprintDTO.class)
     }
 
     /**
@@ -157,7 +150,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_END_SPRINT)
     def endSprint(SprintDTO dto) throws Throwable {
-        this.execute(ACTION_END_SPRINT, dto)
+        this.execute(ACTION_END_SPRINT, dto, SprintDTO.class)
     }
 
     /**
@@ -167,7 +160,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_GET_NOT_FINISH)
     def getNotFinish(String key) throws Throwable {
-        return this.execute(ACTION_GET_NOT_FINISH, key)
+        return this.execute(ACTION_GET_NOT_FINISH, key, SprintDTO.class)
     }
 
     /**
@@ -177,7 +170,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_OVERVIEW)
     def overview(String key) throws Throwable {
-        return this.execute(ACTION_OVERVIEW, key)
+        return this.execute(ACTION_OVERVIEW, key, SprintDTO.class)
     }
 
     /**
@@ -187,7 +180,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_SPRINT_RELATION_RELEASE)
     def sprintRelationRelease(SprintDTO dto) throws Throwable {
-        return this.execute(ACTION_SPRINT_RELATION_RELEASE, dto)
+        return this.execute(ACTION_SPRINT_RELATION_RELEASE, dto, SprintDTO.class)
     }
 
     /**
@@ -197,7 +190,7 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      */
     @DEAction(ACTION_START_SPRINT)
     def startSprint(SprintDTO dto) throws Throwable {
-        this.execute(ACTION_START_SPRINT, dto)
+        this.execute(ACTION_START_SPRINT, dto, SprintDTO.class)
     }
 
     /**
@@ -206,8 +199,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SprintDTO> fetchDefault(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SprintDTO.class)
     }
 
     /**
@@ -216,8 +209,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ALL)
-    def fetchAll(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ALL, context)
+    Page<SprintDTO> fetchAll(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL, context, SprintDTO.class)
     }
 
     /**
@@ -226,8 +219,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<SprintDTO> fetchBiDetail(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, SprintDTO.class)
     }
 
     /**
@@ -236,8 +229,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<SprintBiSearchGroupDTO> fetchBiSearch(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, SprintBiSearchGroupDTO.class)
     }
 
     /**
@@ -246,8 +239,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_MOVE)
-    def fetchChooseMove(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_MOVE, context)
+    Page<SprintDTO> fetchChooseMove(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_MOVE, context, SprintDTO.class)
     }
 
     /**
@@ -256,8 +249,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_SPRINT_RELATION)
-    def fetchChooseSprintRelation(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_SPRINT_RELATION, context)
+    Page<SprintDTO> fetchChooseSprintRelation(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_SPRINT_RELATION, context, SprintDTO.class)
     }
 
     /**
@@ -266,8 +259,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_SPRINT_NOT_FINISH)
-    def fetchCurSprintNotFinish(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_SPRINT_NOT_FINISH, context)
+    Page<SprintDTO> fetchCurSprintNotFinish(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_SPRINT_NOT_FINISH, context, SprintDTO.class)
     }
 
     /**
@@ -276,8 +269,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_PROJECT_SPRINT)
-    def fetchMobProjectSprint(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_PROJECT_SPRINT, context)
+    Page<SprintDTO> fetchMobProjectSprint(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_PROJECT_SPRINT, context, SprintDTO.class)
     }
 
     /**
@@ -286,8 +279,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_FINISH)
-    def fetchNotFinish(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_FINISH, context)
+    Page<SprintDTO> fetchNotFinish(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_FINISH, context, SprintDTO.class)
     }
 
     /**
@@ -296,8 +289,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<SprintDTO> fetchReader(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, SprintDTO.class)
     }
 
     /**
@@ -306,8 +299,8 @@ class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELEASE_RELATION)
-    def fetchReleaseRelation(SprintFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELEASE_RELATION, context)
+    Page<SprintDTO> fetchReleaseRelation(SprintFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELEASE_RELATION, context, SprintDTO.class)
     }
 
 }

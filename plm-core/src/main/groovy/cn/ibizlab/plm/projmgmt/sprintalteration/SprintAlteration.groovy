@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAlterationDTO,SprintAlterationFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_REP_CHANGE = "rep_change"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CHANGE = "change"
-    private static SprintAlteration _instance;
+    private static SprintAlteration _instance
     void setInstance(SprintAlteration instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SprintAlterationDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SprintAlterationDTO create(SprintAlterationDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SprintAlterationDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SprintAlterationDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SprintAlterationDTO update(SprintAlterationDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SprintAlterationDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SprintAlterationDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SprintAlterationDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SprintAlterationDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SprintAlterationDTO getDraft(SprintAlterationDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SprintAlterationDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SprintAlterationDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SprintAlterationDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SprintAlterationDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SprintAlterationDTO save(SprintAlterationDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SprintAlterationDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      */
     @DEAction(ACTION_REP_CHANGE)
     def repChange(SprintAlterationDTO dto) throws Throwable {
-        return this.execute(ACTION_REP_CHANGE, dto)
+        return this.execute(ACTION_REP_CHANGE, dto, SprintAlterationDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SprintAlterationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SprintAlterationDTO> fetchDefault(SprintAlterationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SprintAlterationDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAl
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHANGE)
-    def fetchChange(SprintAlterationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHANGE, context)
+    Page<SprintAlterationDTO> fetchChange(SprintAlterationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHANGE, context, SprintAlterationDTO.class)
     }
 
 }

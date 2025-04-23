@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotifyTargetDTO,PSDENotifyTargetFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSDENotifyTarget _instance;
+    private static PSDENotifyTarget _instance
     void setInstance(PSDENotifyTarget instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSDENotifyTargetDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSDENotifyTargetDTO create(PSDENotifyTargetDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSDENotifyTargetDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSDENotifyTargetDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSDENotifyTargetDTO update(PSDENotifyTargetDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSDENotifyTargetDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSDENotifyTargetDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSDENotifyTargetDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSDENotifyTargetDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSDENotifyTargetDTO getDraft(PSDENotifyTargetDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSDENotifyTargetDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSDENotifyTargetDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSDENotifyTargetDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSDENotifyTargetDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSDENotifyTargetDTO save(PSDENotifyTargetDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSDENotifyTargetDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSDENotifyTarget extends GroovyPSModelDERuntime<PSDENotifyTarget,PSDENotif
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSDENotifyTargetFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSDENotifyTargetDTO> fetchDefault(PSDENotifyTargetFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSDENotifyTargetDTO.class)
     }
 
 }

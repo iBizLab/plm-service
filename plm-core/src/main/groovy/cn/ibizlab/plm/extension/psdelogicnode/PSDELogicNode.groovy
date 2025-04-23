@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDTO,PSDELogicNodeFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSDELogicNode _instance;
+    private static PSDELogicNode _instance
     void setInstance(PSDELogicNode instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSDELogicNodeDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSDELogicNodeDTO create(PSDELogicNodeDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSDELogicNodeDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSDELogicNodeDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSDELogicNodeDTO update(PSDELogicNodeDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSDELogicNodeDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSDELogicNodeDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSDELogicNodeDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSDELogicNodeDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSDELogicNodeDTO getDraft(PSDELogicNodeDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSDELogicNodeDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSDELogicNodeDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSDELogicNodeDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSDELogicNodeDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSDELogicNodeDTO save(PSDELogicNodeDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSDELogicNodeDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSDELogicNode extends GroovyPSModelDERuntime<PSDELogicNode,PSDELogicNodeDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSDELogicNodeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSDELogicNodeDTO> fetchDefault(PSDELogicNodeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSDELogicNodeDTO.class)
     }
 
 }

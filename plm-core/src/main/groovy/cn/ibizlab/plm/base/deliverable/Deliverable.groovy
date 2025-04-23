@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,DeliverableFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_GET_DELIVERY = "get_delivery"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_MY_DELIVERABLE = "my_deliverable"
     public static final String DATASET_PROJECT_DELIVERABLE = "project_deliverable"
-    private static Deliverable _instance;
+    private static Deliverable _instance
     void setInstance(Deliverable instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DeliverableDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DeliverableDTO create(DeliverableDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DeliverableDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DeliverableDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DeliverableDTO update(DeliverableDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DeliverableDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DeliverableDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DeliverableDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DeliverableDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DeliverableDTO getDraft(DeliverableDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DeliverableDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DeliverableDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DeliverableDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DeliverableDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DeliverableDTO save(DeliverableDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DeliverableDTO.class)
     }
 
     /**
@@ -112,7 +105,7 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      */
     @DEAction(ACTION_GET_DELIVERY)
     def getDelivery(String key) throws Throwable {
-        return this.execute(ACTION_GET_DELIVERY, key)
+        return this.execute(ACTION_GET_DELIVERY, key, DeliverableDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DeliverableFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DeliverableDTO> fetchDefault(DeliverableFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DeliverableDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_DELIVERABLE)
-    def fetchMyDeliverable(DeliverableFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_DELIVERABLE, context)
+    Page<DeliverableDTO> fetchMyDeliverable(DeliverableFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_DELIVERABLE, context, DeliverableDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,Del
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_DELIVERABLE)
-    def fetchProjectDeliverable(DeliverableFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_DELIVERABLE, context)
+    Page<DeliverableDTO> fetchProjectDeliverable(DeliverableFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_DELIVERABLE, context, DeliverableDTO.class)
     }
 
 }

@@ -17,20 +17,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThemeSettingDTO,ViewThemeSettingFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_FILL_SEARCH_CONDS = "fill_search_conds"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_USER_ALL = "CUR_USER_ALL"
     public static final String DATASET_CUR_USER_ALL2 = "CUR_USER_ALL2"
     public static final String DATASET_MY_VIEW_THEME_SETTING = "my_view_theme_setting"
     public static final String DATASET_PSMODEL_SYNC = "PSMODEL_SYNC"
-    private static ViewThemeSetting _instance;
+    private static ViewThemeSetting _instance
     void setInstance(ViewThemeSetting instance) {
         _instance = instance
     }
@@ -44,8 +37,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_CREATE)
-    def create(ViewThemeSettingDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ViewThemeSettingDTO create(ViewThemeSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -54,8 +47,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_UPDATE)
-    def update(ViewThemeSettingDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ViewThemeSettingDTO update(ViewThemeSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -64,8 +57,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -74,8 +67,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ViewThemeSettingDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_GETDRAFT)
-    def getDraft(ViewThemeSettingDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ViewThemeSettingDTO getDraft(ViewThemeSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_CHECKKEY)
-    def checkKey(ViewThemeSettingDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ViewThemeSettingDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -104,8 +97,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEAction(ACTION_SAVE)
-    def save(ViewThemeSettingDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ViewThemeSettingDTO save(ViewThemeSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -115,7 +108,7 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      */
     //@DEAction(ACTION_FILL_SEARCH_CONDS)
     def fillSearchConds(ViewThemeSettingDTO dto) throws Throwable {
-        this.execute(ACTION_FILL_SEARCH_CONDS, dto)
+        this.execute(ACTION_FILL_SEARCH_CONDS, dto, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -124,8 +117,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ViewThemeSettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ViewThemeSettingDTO> fetchDefault(ViewThemeSettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -134,8 +127,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEDataSet(DATASET_CUR_USER_ALL)
-    def fetchCurUserAll(ViewThemeSettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_USER_ALL, context)
+    Page<ViewThemeSettingDTO> fetchCurUserAll(ViewThemeSettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_USER_ALL, context, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -144,8 +137,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEDataSet(DATASET_CUR_USER_ALL2)
-    def fetchCurUserAll2(ViewThemeSettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_USER_ALL2, context)
+    Page<ViewThemeSettingDTO> fetchCurUserAll2(ViewThemeSettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_USER_ALL2, context, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -154,8 +147,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEDataSet(DATASET_MY_VIEW_THEME_SETTING)
-    def fetchMyViewThemeSetting(ViewThemeSettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_VIEW_THEME_SETTING, context)
+    Page<ViewThemeSettingDTO> fetchMyViewThemeSetting(ViewThemeSettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_VIEW_THEME_SETTING, context, ViewThemeSettingDTO.class)
     }
 
     /**
@@ -164,8 +157,8 @@ class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThem
      * @throws Throwable
      */
     //@DEDataSet(DATASET_PSMODEL_SYNC)
-    def fetchPsmodelSync(ViewThemeSettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PSMODEL_SYNC, context)
+    Page<ViewThemeSettingDTO> fetchPsmodelSync(ViewThemeSettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PSMODEL_SYNC, context, ViewThemeSettingDTO.class)
     }
 
 }

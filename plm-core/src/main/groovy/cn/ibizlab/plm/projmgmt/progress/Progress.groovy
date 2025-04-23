@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Progress _instance;
+    private static Progress _instance
     void setInstance(Progress instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProgressDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProgressDTO create(ProgressDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProgressDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProgressDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProgressDTO update(ProgressDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProgressDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProgressDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProgressDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProgressDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProgressDTO getDraft(ProgressDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProgressDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProgressDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProgressDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProgressDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProgressDTO save(ProgressDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProgressDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProgressFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProgressDTO> fetchDefault(ProgressFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProgressDTO.class)
     }
 
 }

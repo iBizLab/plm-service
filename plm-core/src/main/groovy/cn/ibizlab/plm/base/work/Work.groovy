@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_PROJECT = "add_project"
     public static final String ACTION_ADD_PROJECT_PORTFOLIO = "add_project_portfolio"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ITEM_SET_OWNER = "item_set_owner"
-    private static Work _instance;
+    private static Work _instance
     void setInstance(Work instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(WorkDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    WorkDTO create(WorkDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, WorkDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(WorkDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    WorkDTO update(WorkDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, WorkDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    WorkDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, WorkDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(WorkDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    WorkDTO getDraft(WorkDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, WorkDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(WorkDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(WorkDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(WorkDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    WorkDTO save(WorkDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, WorkDTO.class)
     }
 
     /**
@@ -112,7 +105,7 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      */
     @DEAction(ACTION_ADD_PROJECT)
     def addProject(WorkDTO dto) throws Throwable {
-        return this.execute(ACTION_ADD_PROJECT, dto)
+        return this.execute(ACTION_ADD_PROJECT, dto, WorkDTO.class)
     }
 
     /**
@@ -122,7 +115,7 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      */
     @DEAction(ACTION_ADD_PROJECT_PORTFOLIO)
     def addProjectPortfolio(WorkDTO dto) throws Throwable {
-        return this.execute(ACTION_ADD_PROJECT_PORTFOLIO, dto)
+        return this.execute(ACTION_ADD_PROJECT_PORTFOLIO, dto, WorkDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(WorkFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<WorkDTO> fetchDefault(WorkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, WorkDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ITEM_SET_OWNER)
-    def fetchItemSetOwner(WorkFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ITEM_SET_OWNER, context)
+    Page<WorkDTO> fetchItemSetOwner(WorkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ITEM_SET_OWNER, context, WorkDTO.class)
     }
 
 }

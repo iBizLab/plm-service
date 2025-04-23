@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuiteFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_TEST_SUITE = "cur_test_suite"
     public static final String DATASET_NO_PARENT = "no_parent"
     public static final String DATASET_NORMAL = "normal"
     public static final String DATASET_ROOT = "root"
-    private static TestSuite _instance;
+    private static TestSuite _instance
     void setInstance(TestSuite instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TestSuiteDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TestSuiteDTO create(TestSuiteDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TestSuiteDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TestSuiteDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TestSuiteDTO update(TestSuiteDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TestSuiteDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TestSuiteDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TestSuiteDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TestSuiteDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TestSuiteDTO getDraft(TestSuiteDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TestSuiteDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TestSuiteDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TestSuiteDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -103,8 +96,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TestSuiteDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TestSuiteDTO save(TestSuiteDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TestSuiteDTO.class)
     }
 
     /**
@@ -114,7 +107,7 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(TestSuiteDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, TestSuiteDTO.class)
     }
 
     /**
@@ -123,8 +116,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TestSuiteFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TestSuiteDTO> fetchDefault(TestSuiteFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TestSuiteDTO.class)
     }
 
     /**
@@ -133,8 +126,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_TEST_SUITE)
-    def fetchCurTestSuite(TestSuiteFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_TEST_SUITE, context)
+    Page<TestSuiteDTO> fetchCurTestSuite(TestSuiteFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_TEST_SUITE, context, TestSuiteDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_PARENT)
-    def fetchNoParent(TestSuiteFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_PARENT, context)
+    Page<TestSuiteDTO> fetchNoParent(TestSuiteFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_PARENT, context, TestSuiteDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(TestSuiteFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<TestSuiteDTO> fetchNormal(TestSuiteFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, TestSuiteDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class TestSuite extends GroovyDataEntityRuntime<TestSuite,TestSuiteDTO,TestSuite
      * @throws Throwable
      */
     @DEDataSet(DATASET_ROOT)
-    def fetchRoot(TestSuiteFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ROOT, context)
+    Page<TestSuiteDTO> fetchRoot(TestSuiteFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ROOT, context, TestSuiteDTO.class)
     }
 
 }

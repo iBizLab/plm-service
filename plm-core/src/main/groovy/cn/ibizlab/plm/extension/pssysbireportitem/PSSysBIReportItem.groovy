@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBIReportItemDTO,PSSysBIReportItemFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSSysBIReportItem _instance;
+    private static PSSysBIReportItem _instance
     void setInstance(PSSysBIReportItem instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSSysBIReportItemDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSSysBIReportItemDTO create(PSSysBIReportItemDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSSysBIReportItemDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSSysBIReportItemDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSSysBIReportItemDTO update(PSSysBIReportItemDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSSysBIReportItemDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSSysBIReportItemDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSSysBIReportItemDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSSysBIReportItemDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSSysBIReportItemDTO getDraft(PSSysBIReportItemDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSSysBIReportItemDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSSysBIReportItemDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSSysBIReportItemDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSSysBIReportItemDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSSysBIReportItemDTO save(PSSysBIReportItemDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSSysBIReportItemDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSSysBIReportItem extends GroovyPSModelDERuntime<PSSysBIReportItem,PSSysBI
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSSysBIReportItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSSysBIReportItemDTO> fetchDefault(PSSysBIReportItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSSysBIReportItemDTO.class)
     }
 
 }

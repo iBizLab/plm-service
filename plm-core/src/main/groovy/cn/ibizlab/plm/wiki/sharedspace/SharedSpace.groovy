@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,SharedSpaceFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHECK_ACCESS_PASSWORD = "check_access_password"
     public static final String ACTION_CHECK_SHARED = "check_shared"
     public static final String ACTION_CLOSED_SHARED = "closed_shared"
@@ -31,7 +24,7 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADMIN = "admin"
     public static final String DATASET_SHARED = "shared"
-    private static SharedSpace _instance;
+    private static SharedSpace _instance
     void setInstance(SharedSpace instance) {
         _instance = instance
     }
@@ -45,8 +38,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SharedSpaceDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SharedSpaceDTO create(SharedSpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -55,8 +48,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SharedSpaceDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SharedSpaceDTO update(SharedSpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -65,8 +58,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -75,8 +68,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SharedSpaceDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SharedSpaceDTO.class)
     }
 
     /**
@@ -85,8 +78,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SharedSpaceDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SharedSpaceDTO getDraft(SharedSpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -95,8 +88,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SharedSpaceDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SharedSpaceDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -105,8 +98,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SharedSpaceDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SharedSpaceDTO save(SharedSpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -116,7 +109,7 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      */
     @DEAction(ACTION_CHECK_ACCESS_PASSWORD)
     def checkAccessPassword(SharedSpaceDTO dto) throws Throwable {
-        this.execute(ACTION_CHECK_ACCESS_PASSWORD, dto)
+        this.execute(ACTION_CHECK_ACCESS_PASSWORD, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -126,7 +119,7 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      */
     @DEAction(ACTION_CHECK_SHARED)
     def checkShared(String key) throws Throwable {
-        return this.execute(ACTION_CHECK_SHARED, key)
+        return this.execute(ACTION_CHECK_SHARED, key, SharedSpaceDTO.class)
     }
 
     /**
@@ -136,7 +129,7 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      */
     @DEAction(ACTION_CLOSED_SHARED)
     def closedShared(SharedSpaceDTO dto) throws Throwable {
-        this.execute(ACTION_CLOSED_SHARED, dto)
+        this.execute(ACTION_CLOSED_SHARED, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -146,7 +139,7 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      */
     @DEAction(ACTION_SHARED_SETTING)
     def sharedSetting(SharedSpaceDTO dto) throws Throwable {
-        this.execute(ACTION_SHARED_SETTING, dto)
+        this.execute(ACTION_SHARED_SETTING, dto, SharedSpaceDTO.class)
     }
 
     /**
@@ -156,7 +149,7 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      */
     @DEAction(ACTION_SHARED_SPACE_INFO)
     def sharedSpaceInfo(String key) throws Throwable {
-        return this.execute(ACTION_SHARED_SPACE_INFO, key)
+        return this.execute(ACTION_SHARED_SPACE_INFO, key, SharedSpaceDTO.class)
     }
 
     /**
@@ -165,8 +158,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SharedSpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SharedSpaceDTO> fetchDefault(SharedSpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SharedSpaceDTO.class)
     }
 
     /**
@@ -175,8 +168,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(SharedSpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<SharedSpaceDTO> fetchAdmin(SharedSpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, SharedSpaceDTO.class)
     }
 
     /**
@@ -185,8 +178,8 @@ class SharedSpace extends GroovyDataEntityRuntime<SharedSpace,SharedSpaceDTO,Sha
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED)
-    def fetchShared(SharedSpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED, context)
+    Page<SharedSpaceDTO> fetchShared(SharedSpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED, context, SharedSpaceDTO.class)
     }
 
 }

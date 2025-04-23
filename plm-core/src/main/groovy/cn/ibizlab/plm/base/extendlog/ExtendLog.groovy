@@ -16,16 +16,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLogFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_EXECUTION_STATISTICS = "execution_statistics"
-    private static ExtendLog _instance;
+    private static ExtendLog _instance
     void setInstance(ExtendLog instance) {
         _instance = instance
     }
@@ -39,8 +32,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ExtendLogDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ExtendLogDTO create(ExtendLogDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ExtendLogDTO.class)
     }
 
     /**
@@ -49,8 +42,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ExtendLogDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ExtendLogDTO update(ExtendLogDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ExtendLogDTO.class)
     }
 
     /**
@@ -59,8 +52,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ExtendLogDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ExtendLogDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ExtendLogDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ExtendLogDTO getDraft(ExtendLogDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ExtendLogDTO.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ExtendLogDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ExtendLogDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -99,8 +92,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ExtendLogDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ExtendLogDTO save(ExtendLogDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ExtendLogDTO.class)
     }
 
     /**
@@ -109,8 +102,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ExtendLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ExtendLogDTO> fetchDefault(ExtendLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ExtendLogDTO.class)
     }
 
     /**
@@ -119,8 +112,8 @@ class ExtendLog extends GroovyDataEntityRuntime<ExtendLog,ExtendLogDTO,ExtendLog
      * @throws Throwable
      */
     @DEDataSet(DATASET_EXECUTION_STATISTICS)
-    def fetchExecutionStatistics(ExtendLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EXECUTION_STATISTICS, context)
+    Page<ExtendLogDTO> fetchExecutionStatistics(ExtendLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EXECUTION_STATISTICS, context, ExtendLogDTO.class)
     }
 
 }

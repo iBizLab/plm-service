@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensionNotifySetting,SystemExtensionNotifySettingDTO,SystemExtensionNotifySettingFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_VIEW = "VIEW"
     public static final String DATASET_CUR_USER = "CUR_USER"
-    private static SystemExtensionNotifySetting _instance;
+    private static SystemExtensionNotifySetting _instance
     void setInstance(SystemExtensionNotifySetting instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SystemExtensionNotifySettingDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SystemExtensionNotifySettingDTO create(SystemExtensionNotifySettingDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SystemExtensionNotifySettingDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SystemExtensionNotifySettingDTO update(SystemExtensionNotifySettingDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SystemExtensionNotifySettingDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SystemExtensionNotifySettingDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SystemExtensionNotifySettingDTO getDraft(SystemExtensionNotifySettingDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SystemExtensionNotifySettingDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SystemExtensionNotifySettingDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SystemExtensionNotifySettingDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SystemExtensionNotifySettingDTO save(SystemExtensionNotifySettingDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SystemExtensionNotifySettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SystemExtensionNotifySettingDTO> fetchDefault(SystemExtensionNotifySettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEDataSet(DATASET_VIEW)
-    def fetchView(SystemExtensionNotifySettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_VIEW, context)
+    Page<SystemExtensionNotifySettingDTO> fetchView(SystemExtensionNotifySettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_VIEW, context, SystemExtensionNotifySettingDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class SystemExtensionNotifySetting extends GroovyDataEntityRuntime<SystemExtensi
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_USER)
-    def fetchCurUser(SystemExtensionNotifySettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_USER, context)
+    Page<SystemExtensionNotifySettingDTO> fetchCurUser(SystemExtensionNotifySettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_USER, context, SystemExtensionNotifySettingDTO.class)
     }
 
 }

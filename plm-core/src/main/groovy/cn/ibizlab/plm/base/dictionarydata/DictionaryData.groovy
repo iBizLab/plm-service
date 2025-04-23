@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDataDTO,DictionaryDataFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_IDEA_STATE = "idea_state"
     public static final String DATASET_RELEASE_STAGE = "release_stage"
     public static final String DATASET_TICKET_STATE = "ticket_state"
-    private static DictionaryData _instance;
+    private static DictionaryData _instance
     void setInstance(DictionaryData instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DictionaryDataDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DictionaryDataDTO create(DictionaryDataDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DictionaryDataDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DictionaryDataDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DictionaryDataDTO update(DictionaryDataDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DictionaryDataDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DictionaryDataDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DictionaryDataDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DictionaryDataDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DictionaryDataDTO getDraft(DictionaryDataDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DictionaryDataDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DictionaryDataDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DictionaryDataDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DictionaryDataDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DictionaryDataDTO save(DictionaryDataDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DictionaryDataDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(DictionaryDataDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, DictionaryDataDTO.class)
     }
 
     /**
@@ -122,8 +115,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DictionaryDataFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DictionaryDataDTO> fetchDefault(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DictionaryDataDTO.class)
     }
 
     /**
@@ -132,8 +125,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_STATE)
-    def fetchIdeaState(DictionaryDataFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_STATE, context)
+    Page<DictionaryDataDTO> fetchIdeaState(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_STATE, context, DictionaryDataDTO.class)
     }
 
     /**
@@ -142,8 +135,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELEASE_STAGE)
-    def fetchReleaseStage(DictionaryDataFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELEASE_STAGE, context)
+    Page<DictionaryDataDTO> fetchReleaseStage(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELEASE_STAGE, context, DictionaryDataDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
      * @throws Throwable
      */
     @DEDataSet(DATASET_TICKET_STATE)
-    def fetchTicketState(DictionaryDataFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TICKET_STATE, context)
+    Page<DictionaryDataDTO> fetchTicketState(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET_STATE, context, DictionaryDataDTO.class)
     }
 
 }

@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSysBICubeFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSSysBICube _instance;
+    private static PSSysBICube _instance
     void setInstance(PSSysBICube instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSSysBICubeDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSSysBICubeDTO create(PSSysBICubeDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSSysBICubeDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSSysBICubeDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSSysBICubeDTO update(PSSysBICubeDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSSysBICubeDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSSysBICubeDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSSysBICubeDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSSysBICubeDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSSysBICubeDTO getDraft(PSSysBICubeDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSSysBICubeDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSSysBICubeDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSSysBICubeDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSSysBICubeDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSSysBICubeDTO save(PSSysBICubeDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSSysBICubeDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSSysBICube extends GroovyPSModelDERuntime<PSSysBICube,PSSysBICubeDTO,PSSy
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSSysBICubeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSSysBICubeDTO> fetchDefault(PSSysBICubeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSSysBICubeDTO.class)
     }
 
 }

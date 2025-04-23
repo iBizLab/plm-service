@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
@@ -54,7 +47,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
     public static final String DATASET_QUICK_USER = "quick_user"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_USER = "user"
-    private static Space _instance;
+    private static Space _instance
     void setInstance(Space instance) {
         _instance = instance
     }
@@ -68,8 +61,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SpaceDTO create(SpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SpaceDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SpaceDTO update(SpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SpaceDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -98,8 +91,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SpaceDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SpaceDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SpaceDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SpaceDTO getDraft(SpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SpaceDTO.class)
     }
 
     /**
@@ -118,8 +111,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SpaceDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SpaceDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -128,8 +121,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SpaceDTO save(SpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SpaceDTO.class)
     }
 
     /**
@@ -139,7 +132,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, SpaceDTO.class)
     }
 
     /**
@@ -149,7 +142,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, SpaceDTO.class)
     }
 
     /**
@@ -159,7 +152,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_CHANGE_ADMIN_ROLE)
     def changeAdminRole(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto)
+        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto, SpaceDTO.class)
     }
 
     /**
@@ -169,7 +162,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_DEL_RELATION)
     def delRelation(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_RELATION, dto)
+        this.execute(ACTION_DEL_RELATION, dto, SpaceDTO.class)
     }
 
     /**
@@ -179,7 +172,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_DELETE)
     def delete(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, SpaceDTO.class)
     }
 
     /**
@@ -189,7 +182,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, SpaceDTO.class)
     }
 
     /**
@@ -199,7 +192,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_MOVE_OUT_CATEGORY)
     def moveOutCategory(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_OUT_CATEGORY, dto)
+        this.execute(ACTION_MOVE_OUT_CATEGORY, dto, SpaceDTO.class)
     }
 
     /**
@@ -209,7 +202,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_MOVE_SPACE)
     def moveSpace(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_SPACE, dto)
+        this.execute(ACTION_MOVE_SPACE, dto, SpaceDTO.class)
     }
 
     /**
@@ -219,7 +212,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_OPEN_SHARED)
     def openShared(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_OPEN_SHARED, dto)
+        this.execute(ACTION_OPEN_SHARED, dto, SpaceDTO.class)
     }
 
     /**
@@ -229,7 +222,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_OTHER_RE_SPACE)
     def otherReSpace(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_SPACE, dto)
+        this.execute(ACTION_OTHER_RE_SPACE, dto, SpaceDTO.class)
     }
 
     /**
@@ -239,7 +232,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_RECOGNIZE_CUR_USER_ROLE)
     def recognizeCurUserRole(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_RECOGNIZE_CUR_USER_ROLE, dto)
+        this.execute(ACTION_RECOGNIZE_CUR_USER_ROLE, dto, SpaceDTO.class)
     }
 
     /**
@@ -249,7 +242,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_RECOVER)
     def recover(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, SpaceDTO.class)
     }
 
     /**
@@ -259,7 +252,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_SPACE_INDEX_ADDON_COUNTER)
     def spaceIndexAddonCounter(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_SPACE_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_SPACE_INDEX_ADDON_COUNTER, dto, SpaceDTO.class)
     }
 
     /**
@@ -269,7 +262,7 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, SpaceDTO.class)
     }
 
     /**
@@ -278,8 +271,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SpaceDTO> fetchDefault(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SpaceDTO.class)
     }
 
     /**
@@ -288,8 +281,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<SpaceDTO> fetchAdmin(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, SpaceDTO.class)
     }
 
     /**
@@ -298,8 +291,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<SpaceDTO> fetchArchived(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, SpaceDTO.class)
     }
 
     /**
@@ -308,8 +301,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CATEGORY_SPACE)
-    def fetchCategorySpace(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CATEGORY_SPACE, context)
+    Page<SpaceDTO> fetchCategorySpace(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CATEGORY_SPACE, context, SpaceDTO.class)
     }
 
     /**
@@ -318,8 +311,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CURRENT)
-    def fetchCurrent(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CURRENT, context)
+    Page<SpaceDTO> fetchCurrent(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CURRENT, context, SpaceDTO.class)
     }
 
     /**
@@ -328,8 +321,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<SpaceDTO> fetchDeleted(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, SpaceDTO.class)
     }
 
     /**
@@ -338,8 +331,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_FAVORITE)
-    def fetchFavorite(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FAVORITE, context)
+    Page<SpaceDTO> fetchFavorite(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FAVORITE, context, SpaceDTO.class)
     }
 
     /**
@@ -348,8 +341,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MAIN)
-    def fetchMain(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MAIN, context)
+    Page<SpaceDTO> fetchMain(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MAIN, context, SpaceDTO.class)
     }
 
     /**
@@ -358,8 +351,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_MAIN)
-    def fetchMobMain(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_MAIN, context)
+    Page<SpaceDTO> fetchMobMain(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_MAIN, context, SpaceDTO.class)
     }
 
     /**
@@ -368,8 +361,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_CATEGORY_SPACE)
-    def fetchNoCategorySpace(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_CATEGORY_SPACE, context)
+    Page<SpaceDTO> fetchNoCategorySpace(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_CATEGORY_SPACE, context, SpaceDTO.class)
     }
 
     /**
@@ -378,8 +371,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_RE_SPACE)
-    def fetchNoReSpace(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_RE_SPACE, context)
+    Page<SpaceDTO> fetchNoReSpace(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_RE_SPACE, context, SpaceDTO.class)
     }
 
     /**
@@ -388,8 +381,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<SpaceDTO> fetchNormal(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, SpaceDTO.class)
     }
 
     /**
@@ -398,8 +391,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_OTHER_RE_SPACE)
-    def fetchOtherReSpace(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_OTHER_RE_SPACE, context)
+    Page<SpaceDTO> fetchOtherReSpace(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_OTHER_RE_SPACE, context, SpaceDTO.class)
     }
 
     /**
@@ -408,8 +401,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK)
-    def fetchQuick(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK, context)
+    Page<SpaceDTO> fetchQuick(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK, context, SpaceDTO.class)
     }
 
     /**
@@ -418,8 +411,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK_USER)
-    def fetchQuickUser(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK_USER, context)
+    Page<SpaceDTO> fetchQuickUser(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK_USER, context, SpaceDTO.class)
     }
 
     /**
@@ -428,8 +421,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<SpaceDTO> fetchReader(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, SpaceDTO.class)
     }
 
     /**
@@ -438,8 +431,8 @@ class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(SpaceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<SpaceDTO> fetchUser(SpaceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, SpaceDTO.class)
     }
 
 }

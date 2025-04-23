@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDTO,PSSysBIReportFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_APPLY = "APPLY"
     public static final String ACTION_COMPILEAPPBIREPORT = "COMPILEAPPBIREPORT"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSSysBIReport _instance;
+    private static PSSysBIReport _instance
     void setInstance(PSSysBIReport instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSSysBIReportDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSSysBIReportDTO create(PSSysBIReportDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSSysBIReportDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSSysBIReportDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSSysBIReportDTO update(PSSysBIReportDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSSysBIReportDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSSysBIReportDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSSysBIReportDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSSysBIReportDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSSysBIReportDTO getDraft(PSSysBIReportDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSSysBIReportDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSSysBIReportDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSSysBIReportDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSSysBIReportDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSSysBIReportDTO save(PSSysBIReportDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSSysBIReportDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      */
     @DEAction(ACTION_APPLY)
     def apply(PSSysBIReportDTO dto) throws Throwable {
-        this.execute(ACTION_APPLY, dto)
+        this.execute(ACTION_APPLY, dto, PSSysBIReportDTO.class)
     }
 
     /**
@@ -121,7 +114,7 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      */
     @DEAction(ACTION_COMPILEAPPBIREPORT)
     def compileAppBIReport(PSSysBIReportDTO dto) throws Throwable {
-        this.execute(ACTION_COMPILEAPPBIREPORT, dto)
+        this.execute(ACTION_COMPILEAPPBIREPORT, dto, PSSysBIReportDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class PSSysBIReport extends GroovyPSModelDERuntime<PSSysBIReport,PSSysBIReportDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSSysBIReportFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSSysBIReportDTO> fetchDefault(PSSysBIReportFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSSysBIReportDTO.class)
     }
 
 }

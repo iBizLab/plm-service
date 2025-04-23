@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberDTO,LibraryMemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHANGE_POSITION = "change_position"
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String ACTION_CREATE_LIBRARY_MEMBER = "create_library_member"
@@ -30,7 +23,7 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
     public static final String DATASET_CUR_LIBRARY_MEMBER = "cur_library_member"
     public static final String DATASET_MOB_CUR_MEMBER = "mob_cur_member"
     public static final String DATASET_NO_ATTENTION = "no_attention"
-    private static LibraryMember _instance;
+    private static LibraryMember _instance
     void setInstance(LibraryMember instance) {
         _instance = instance
     }
@@ -44,8 +37,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(LibraryMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    LibraryMemberDTO create(LibraryMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -54,8 +47,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(LibraryMemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    LibraryMemberDTO update(LibraryMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -64,8 +57,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -74,8 +67,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    LibraryMemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, LibraryMemberDTO.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(LibraryMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    LibraryMemberDTO getDraft(LibraryMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(LibraryMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(LibraryMemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -104,8 +97,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(LibraryMemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    LibraryMemberDTO save(LibraryMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -115,7 +108,7 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      */
     @DEAction(ACTION_CHANGE_POSITION)
     def changePosition(LibraryMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_POSITION, dto)
+        this.execute(ACTION_CHANGE_POSITION, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -125,7 +118,7 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(LibraryMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -135,7 +128,7 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      */
     @DEAction(ACTION_CREATE_LIBRARY_MEMBER)
     def createLibraryMember(LibraryMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE_LIBRARY_MEMBER, dto)
+        this.execute(ACTION_CREATE_LIBRARY_MEMBER, dto, LibraryMemberDTO.class)
     }
 
     /**
@@ -144,8 +137,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(LibraryMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<LibraryMemberDTO> fetchDefault(LibraryMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, LibraryMemberDTO.class)
     }
 
     /**
@@ -154,8 +147,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_LIBRARY_MEMBER)
-    def fetchCurLibraryMember(LibraryMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_LIBRARY_MEMBER, context)
+    Page<LibraryMemberDTO> fetchCurLibraryMember(LibraryMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_LIBRARY_MEMBER, context, LibraryMemberDTO.class)
     }
 
     /**
@@ -164,8 +157,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_CUR_MEMBER)
-    def fetchMobCurMember(LibraryMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_CUR_MEMBER, context)
+    Page<LibraryMemberDTO> fetchMobCurMember(LibraryMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_CUR_MEMBER, context, LibraryMemberDTO.class)
     }
 
     /**
@@ -174,8 +167,8 @@ class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_ATTENTION)
-    def fetchNoAttention(LibraryMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_ATTENTION, context)
+    Page<LibraryMemberDTO> fetchNoAttention(LibraryMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_ATTENTION, context, LibraryMemberDTO.class)
     }
 
 }

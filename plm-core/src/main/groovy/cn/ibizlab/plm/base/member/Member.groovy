@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_MEMBER_POSITION = "add_member_position"
     public static final String ACTION_ADD_SHARED_PAGE_MEMBER = "add_shared_page_member"
     public static final String ACTION_CHANGE_ROLE = "change_role"
@@ -39,7 +32,7 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
     public static final String DATASET_RESOURCE_MEMBER = "resource_member"
     public static final String DATASET_SHARED_PAGE_MEMBER = "shared_page_member"
     public static final String DATASET_USER_GROUP_ADMIN = "user_group_admin"
-    private static Member _instance;
+    private static Member _instance
     void setInstance(Member instance) {
         _instance = instance
     }
@@ -53,8 +46,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    MemberDTO create(MemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, MemberDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    MemberDTO update(MemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, MemberDTO.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    MemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, MemberDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(MemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    MemberDTO getDraft(MemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, MemberDTO.class)
     }
 
     /**
@@ -103,8 +96,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(MemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(MemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -113,8 +106,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    MemberDTO save(MemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, MemberDTO.class)
     }
 
     /**
@@ -124,7 +117,7 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      */
     @DEAction(ACTION_ADD_MEMBER_POSITION)
     def addMemberPosition(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_MEMBER_POSITION, dto)
+        this.execute(ACTION_ADD_MEMBER_POSITION, dto, MemberDTO.class)
     }
 
     /**
@@ -134,7 +127,7 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      */
     @DEAction(ACTION_ADD_SHARED_PAGE_MEMBER)
     def addSharedPageMember(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_SHARED_PAGE_MEMBER, dto)
+        this.execute(ACTION_ADD_SHARED_PAGE_MEMBER, dto, MemberDTO.class)
     }
 
     /**
@@ -144,7 +137,7 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, MemberDTO.class)
     }
 
     /**
@@ -154,7 +147,7 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      */
     @DEAction(ACTION_CREATE_MEMBER)
     def createMember(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE_MEMBER, dto)
+        this.execute(ACTION_CREATE_MEMBER, dto, MemberDTO.class)
     }
 
     /**
@@ -164,7 +157,7 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      */
     @DEAction(ACTION_MOB_ADD_SHARED_MEMBER)
     def mobAddSharedMember(MemberDTO dto) throws Throwable {
-        this.execute(ACTION_MOB_ADD_SHARED_MEMBER, dto)
+        this.execute(ACTION_MOB_ADD_SHARED_MEMBER, dto, MemberDTO.class)
     }
 
     /**
@@ -173,8 +166,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<MemberDTO> fetchDefault(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, MemberDTO.class)
     }
 
     /**
@@ -183,8 +176,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_PORTFOLIO_RESOURCE)
-    def fetchChoosePortfolioResource(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_PORTFOLIO_RESOURCE, context)
+    Page<MemberDTO> fetchChoosePortfolioResource(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_PORTFOLIO_RESOURCE, context, MemberDTO.class)
     }
 
     /**
@@ -193,8 +186,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_PROJECT_RESOURCE)
-    def fetchChooseProjectResource(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_PROJECT_RESOURCE, context)
+    Page<MemberDTO> fetchChooseProjectResource(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_PROJECT_RESOURCE, context, MemberDTO.class)
     }
 
     /**
@@ -203,8 +196,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_RESOURCE_MEMBER)
-    def fetchChooseResourceMember(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_RESOURCE_MEMBER, context)
+    Page<MemberDTO> fetchChooseResourceMember(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_RESOURCE_MEMBER, context, MemberDTO.class)
     }
 
     /**
@@ -213,8 +206,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PORTFOLIO_RESOURCE)
-    def fetchCurPortfolioResource(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PORTFOLIO_RESOURCE, context)
+    Page<MemberDTO> fetchCurPortfolioResource(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PORTFOLIO_RESOURCE, context, MemberDTO.class)
     }
 
     /**
@@ -223,8 +216,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT_RESOURCE)
-    def fetchCurProjectResource(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT_RESOURCE, context)
+    Page<MemberDTO> fetchCurProjectResource(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT_RESOURCE, context, MemberDTO.class)
     }
 
     /**
@@ -233,8 +226,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_ATTENTION)
-    def fetchNoAttention(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_ATTENTION, context)
+    Page<MemberDTO> fetchNoAttention(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_ATTENTION, context, MemberDTO.class)
     }
 
     /**
@@ -243,8 +236,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_SPACE_MMEBER)
-    def fetchNotSpaceMmeber(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_SPACE_MMEBER, context)
+    Page<MemberDTO> fetchNotSpaceMmeber(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_SPACE_MMEBER, context, MemberDTO.class)
     }
 
     /**
@@ -253,8 +246,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RESOURCE_MEMBER)
-    def fetchResourceMember(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RESOURCE_MEMBER, context)
+    Page<MemberDTO> fetchResourceMember(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RESOURCE_MEMBER, context, MemberDTO.class)
     }
 
     /**
@@ -263,8 +256,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_PAGE_MEMBER)
-    def fetchSharedPageMember(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_PAGE_MEMBER, context)
+    Page<MemberDTO> fetchSharedPageMember(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_PAGE_MEMBER, context, MemberDTO.class)
     }
 
     /**
@@ -273,8 +266,8 @@ class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER_GROUP_ADMIN)
-    def fetchUserGroupAdmin(MemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER_GROUP_ADMIN, context)
+    Page<MemberDefGroupDTO> fetchUserGroupAdmin(MemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER_GROUP_ADMIN, context, MemberDefGroupDTO.class)
     }
 
 }

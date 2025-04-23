@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportDTO,InsightReportFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_COPY_REPORT = "copy_report"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
     public static final String ACTION_SYNC_MODEL = "sync_model"
@@ -30,7 +23,7 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_IS_SYSTEM = "is_system"
     public static final String DATASET_NORMAL = "normal"
-    private static InsightReport _instance;
+    private static InsightReport _instance
     void setInstance(InsightReport instance) {
         _instance = instance
     }
@@ -44,8 +37,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    InsightReportDTO create(InsightReportDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, InsightReportDTO.class)
     }
 
     /**
@@ -54,8 +47,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    InsightReportDTO update(InsightReportDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, InsightReportDTO.class)
     }
 
     /**
@@ -64,8 +57,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -74,8 +67,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    InsightReportDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, InsightReportDTO.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(InsightReportDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    InsightReportDTO getDraft(InsightReportDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, InsightReportDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(InsightReportDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(InsightReportDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -104,8 +97,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    InsightReportDTO save(InsightReportDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, InsightReportDTO.class)
     }
 
     /**
@@ -115,7 +108,7 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      */
     @DEAction(ACTION_COPY_REPORT)
     def copyReport(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_COPY_REPORT, dto)
+        this.execute(ACTION_COPY_REPORT, dto, InsightReportDTO.class)
     }
 
     /**
@@ -125,7 +118,7 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE_CATEGORIES, dto)
+        this.execute(ACTION_DELETE_CATEGORIES, dto, InsightReportDTO.class)
     }
 
     /**
@@ -135,7 +128,7 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      */
     @DEAction(ACTION_SYNC_MODEL)
     def syncModel(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_SYNC_MODEL, dto)
+        this.execute(ACTION_SYNC_MODEL, dto, InsightReportDTO.class)
     }
 
     /**
@@ -145,7 +138,7 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      */
     @DEAction(ACTION_USE_CUR_TEMPLATE)
     def useCurTemplate(InsightReportDTO dto) throws Throwable {
-        this.execute(ACTION_USE_CUR_TEMPLATE, dto)
+        this.execute(ACTION_USE_CUR_TEMPLATE, dto, InsightReportDTO.class)
     }
 
     /**
@@ -154,8 +147,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(InsightReportFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<InsightReportDTO> fetchDefault(InsightReportFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, InsightReportDTO.class)
     }
 
     /**
@@ -164,8 +157,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEDataSet(DATASET_IS_SYSTEM)
-    def fetchIsSystem(InsightReportFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IS_SYSTEM, context)
+    Page<InsightReportDTO> fetchIsSystem(InsightReportFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IS_SYSTEM, context, InsightReportDTO.class)
     }
 
     /**
@@ -174,8 +167,8 @@ class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportD
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(InsightReportFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<InsightReportDTO> fetchNormal(InsightReportFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, InsightReportDTO.class)
     }
 
 }

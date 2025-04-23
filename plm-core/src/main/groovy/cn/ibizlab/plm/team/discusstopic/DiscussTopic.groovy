@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,DiscussTopicFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
@@ -46,7 +39,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
     public static final String DATASET_QUICK_USER = "quick_user"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_USER = "user"
-    private static DiscussTopic _instance;
+    private static DiscussTopic _instance
     void setInstance(DiscussTopic instance) {
         _instance = instance
     }
@@ -60,8 +53,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DiscussTopicDTO create(DiscussTopicDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DiscussTopicDTO update(DiscussTopicDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DiscussTopicDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DiscussTopicDTO.class)
     }
 
     /**
@@ -100,8 +93,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DiscussTopicDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DiscussTopicDTO getDraft(DiscussTopicDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DiscussTopicDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DiscussTopicDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -120,8 +113,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DiscussTopicDTO save(DiscussTopicDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -131,7 +124,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -141,7 +134,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -151,7 +144,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_CHANGE_ADMIN_ROLE)
     def changeAdminRole(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto)
+        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -161,7 +154,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_DELETE)
     def delete(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -171,7 +164,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -181,7 +174,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_MOB_CHANGE_ADMIN_ROLE)
     def mobChangeAdminRole(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_MOB_CHANGE_ADMIN_ROLE, dto)
+        this.execute(ACTION_MOB_CHANGE_ADMIN_ROLE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -191,7 +184,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_MOVE_DISCUSS_TOPIC)
     def moveDiscussTopic(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_DISCUSS_TOPIC, dto)
+        this.execute(ACTION_MOVE_DISCUSS_TOPIC, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -201,7 +194,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_RECOVER)
     def recover(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -211,7 +204,7 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(DiscussTopicDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, DiscussTopicDTO.class)
     }
 
     /**
@@ -220,8 +213,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DiscussTopicDTO> fetchDefault(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -230,8 +223,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<DiscussTopicDTO> fetchAdmin(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -240,8 +233,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<DiscussTopicDTO> fetchArchived(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -250,8 +243,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED_MAIN)
-    def fetchArchivedMain(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED_MAIN, context)
+    Page<DiscussTopicDTO> fetchArchivedMain(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED_MAIN, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -260,8 +253,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<DiscussTopicDTO> fetchDeleted(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -270,8 +263,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_FAVORITE)
-    def fetchFavorite(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FAVORITE, context)
+    Page<DiscussTopicDTO> fetchFavorite(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FAVORITE, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -280,8 +273,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_GROUP)
-    def fetchGroup(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_GROUP, context)
+    Page<DiscussTopicDTO> fetchGroup(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_GROUP, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -290,8 +283,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_MAIN)
-    def fetchMain(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MAIN, context)
+    Page<DiscussTopicDTO> fetchMain(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MAIN, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -300,8 +293,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<DiscussTopicDTO> fetchNormal(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -310,8 +303,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_OSS_MAIN)
-    def fetchOssMain(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_OSS_MAIN, context)
+    Page<DiscussTopicDTO> fetchOssMain(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_OSS_MAIN, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -320,8 +313,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK)
-    def fetchQuick(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK, context)
+    Page<DiscussTopicDTO> fetchQuick(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -330,8 +323,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK_USER)
-    def fetchQuickUser(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK_USER, context)
+    Page<DiscussTopicDTO> fetchQuickUser(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK_USER, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -340,8 +333,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<DiscussTopicDTO> fetchReader(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, DiscussTopicDTO.class)
     }
 
     /**
@@ -350,8 +343,8 @@ class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(DiscussTopicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<DiscussTopicDTO> fetchUser(DiscussTopicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, DiscussTopicDTO.class)
     }
 
 }

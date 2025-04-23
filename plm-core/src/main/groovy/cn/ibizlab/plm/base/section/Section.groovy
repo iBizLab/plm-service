@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_THIS_PRODUCT_SECTION = "This_product_section"
     public static final String DATASET_CHECK_NAME = "check_name"
     public static final String DATASET_IDEA_SECTION = "idea_section"
     public static final String DATASET_MY_SECTION = "my_section"
-    private static Section _instance;
+    private static Section _instance
     void setInstance(Section instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SectionDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SectionDTO create(SectionDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SectionDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SectionDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SectionDTO update(SectionDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SectionDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SectionDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SectionDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SectionDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SectionDTO getDraft(SectionDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SectionDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SectionDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SectionDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -103,8 +96,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SectionDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SectionDTO save(SectionDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SectionDTO.class)
     }
 
     /**
@@ -114,7 +107,7 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(SectionDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, SectionDTO.class)
     }
 
     /**
@@ -123,8 +116,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SectionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SectionDTO> fetchDefault(SectionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SectionDTO.class)
     }
 
     /**
@@ -133,8 +126,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_THIS_PRODUCT_SECTION)
-    def fetchThisProductSection(SectionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_THIS_PRODUCT_SECTION, context)
+    Page<SectionDTO> fetchThisProductSection(SectionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_THIS_PRODUCT_SECTION, context, SectionDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHECK_NAME)
-    def fetchCheckName(SectionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHECK_NAME, context)
+    Page<SectionDTO> fetchCheckName(SectionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHECK_NAME, context, SectionDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_SECTION)
-    def fetchIdeaSection(SectionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_SECTION, context)
+    Page<SectionDTO> fetchIdeaSection(SectionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_SECTION, context, SectionDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class Section extends GroovyDataEntityRuntime<Section,SectionDTO,SectionFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_SECTION)
-    def fetchMySection(SectionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_SECTION, context)
+    Page<SectionDTO> fetchMySection(SectionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SECTION, context, SectionDTO.class)
     }
 
 }

@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,ProductPlanFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE = "delete"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
     public static final String ACTION_PRODUCT_PLAN_RELATION_IDEA = "product_plan_relation_idea"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NORMAL = "normal"
-    private static ProductPlan _instance;
+    private static ProductPlan _instance
     void setInstance(ProductPlan instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProductPlanDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProductPlanDTO create(ProductPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProductPlanDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProductPlanDTO update(ProductPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProductPlanDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProductPlanDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProductPlanDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProductPlanDTO getDraft(ProductPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProductPlanDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProductPlanDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProductPlanDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProductPlanDTO save(ProductPlanDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      */
     @DEAction(ACTION_DELETE)
     def delete(ProductPlanDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -123,7 +116,7 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(ProductPlanDTO dto) throws Throwable {
-        return this.execute(ACTION_DELETE_CATEGORIES, dto)
+        return this.execute(ACTION_DELETE_CATEGORIES, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -133,7 +126,7 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      */
     @DEAction(ACTION_PRODUCT_PLAN_RELATION_IDEA)
     def productPlanRelationIdea(ProductPlanDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_PLAN_RELATION_IDEA, dto)
+        this.execute(ACTION_PRODUCT_PLAN_RELATION_IDEA, dto, ProductPlanDTO.class)
     }
 
     /**
@@ -142,8 +135,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProductPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProductPlanDTO> fetchDefault(ProductPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProductPlanDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,Pro
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(ProductPlanFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<ProductPlanDTO> fetchNormal(ProductPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, ProductPlanDTO.class)
     }
 
 }

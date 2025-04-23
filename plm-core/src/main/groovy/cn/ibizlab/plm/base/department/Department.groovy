@@ -17,17 +17,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,DepartmentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_DEPT_FILTER = "dept_filter"
     public static final String DATASET_ROOT = "root"
-    private static Department _instance;
+    private static Department _instance
     void setInstance(Department instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_CREATE)
-    def create(DepartmentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DepartmentDTO create(DepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DepartmentDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_UPDATE)
-    def update(DepartmentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DepartmentDTO update(DepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DepartmentDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DepartmentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DepartmentDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_GETDRAFT)
-    def getDraft(DepartmentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DepartmentDTO getDraft(DepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DepartmentDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_CHECKKEY)
-    def checkKey(DepartmentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DepartmentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEAction(ACTION_SAVE)
-    def save(DepartmentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DepartmentDTO save(DepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DepartmentDTO.class)
     }
 
     /**
@@ -111,8 +104,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DepartmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DepartmentDTO> fetchDefault(DepartmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DepartmentDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEPT_FILTER)
-    def fetchDeptFilter(DepartmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEPT_FILTER, context)
+    Page<DepartmentDTO> fetchDeptFilter(DepartmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEPT_FILTER, context, DepartmentDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,Depart
      * @throws Throwable
      */
     //@DEDataSet(DATASET_ROOT)
-    def fetchRoot(DepartmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ROOT, context)
+    Page<DepartmentDTO> fetchRoot(DepartmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ROOT, context, DepartmentDTO.class)
     }
 
 }

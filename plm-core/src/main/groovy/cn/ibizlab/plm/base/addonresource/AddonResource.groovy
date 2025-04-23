@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceDTO,AddonResourceFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHECK_RESOURCE_IS_DELETED = "check_resource_is_deleted"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ALL = "all"
     public static final String DATASET_EMPTY = "empty"
-    private static AddonResource _instance;
+    private static AddonResource _instance
     void setInstance(AddonResource instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(AddonResourceDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    AddonResourceDTO create(AddonResourceDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AddonResourceDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(AddonResourceDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    AddonResourceDTO update(AddonResourceDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AddonResourceDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    AddonResourceDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AddonResourceDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(AddonResourceDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    AddonResourceDTO getDraft(AddonResourceDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AddonResourceDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(AddonResourceDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(AddonResourceDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(AddonResourceDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    AddonResourceDTO save(AddonResourceDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AddonResourceDTO.class)
     }
 
     /**
@@ -112,7 +105,7 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      */
     @DEAction(ACTION_CHECK_RESOURCE_IS_DELETED)
     def checkResourceIsDeleted(AddonResourceDTO dto) throws Throwable {
-        this.execute(ACTION_CHECK_RESOURCE_IS_DELETED, dto)
+        this.execute(ACTION_CHECK_RESOURCE_IS_DELETED, dto, AddonResourceDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(AddonResourceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<AddonResourceDTO> fetchDefault(AddonResourceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AddonResourceDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEDataSet(DATASET_ALL)
-    def fetchAll(AddonResourceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ALL, context)
+    Page<AddonResourceDTO> fetchAll(AddonResourceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL, context, AddonResourceDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceD
      * @throws Throwable
      */
     @DEDataSet(DATASET_EMPTY)
-    def fetchEmpty(AddonResourceFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EMPTY, context)
+    Page<AddonResourceDTO> fetchEmpty(AddonResourceFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EMPTY, context, AddonResourceDTO.class)
     }
 
 }

@@ -46,33 +46,33 @@ public class RTCodeUtils implements IRTCodeUtils{
 		CaseFormatMap.put("UPPER_UNDERSCORE", CaseFormat.UPPER_UNDERSCORE);
 	}
 
-	
+
 	private ISystemRuntimeContext iSystemRuntimeContext = null;
 	private CaseFormat codeNameCaseFormat = null;
-	
+
 	public RTCodeUtils(ISystemRuntimeContext iSystemRuntimeContext) {
 		Assert.notNull(iSystemRuntimeContext, "传入系统上下文对象无效");
 		this.iSystemRuntimeContext = iSystemRuntimeContext;
-		
+
 		this.codeNameCaseFormat = CaseFormat.UPPER_CAMEL;// ( caseFormat == null ? CaseFormat.UPPER_CAMEL:caseFormat);
 	}
-	
+
 	protected ISystemRuntimeContext getSystemRuntimeContext() {
 		return this.iSystemRuntimeContext;
 	}
-	
+
 	public CaseFormat getCodeNameCaseFormat() {
 		return codeNameCaseFormat;
 	}
 
 	public static List<IPSSysSFPlugin> buildPSSysSFPlugins(IPSSystemService iPSSystemService, File folder) throws Exception{
 		List<IPSSysSFPlugin> list = new ArrayList<IPSSysSFPlugin>();
-		
+
 		Map<String, File> fileMap = new HashMap<String, File>();
 		fillGroovySourceFileMap("", folder, fileMap);
-		
+
 		for(java.util.Map.Entry<String, File> entry : fileMap.entrySet()) {
-			
+
 			ObjectNode objectNode = JsonUtils.createObjectNode();
 			objectNode.put(PSSysSFPluginImpl.ATTR_GETID, entry.getKey());
 			objectNode.put(PSSysSFPluginImpl.ATTR_GETNAME, entry.getValue().getName());
@@ -82,19 +82,19 @@ public class RTCodeUtils implements IRTCodeUtils{
 			objectNode.put(PSSysSFPluginImpl.ATTR_GETRTOBJECTSOURCE, 1);
 			objectNode.put(PSSysSFPluginImpl.ATTR_ISTRYMODE, true);
 			objectNode.put(PSSysSFPluginImpl.ATTR_GETTEMPLCODE, FileUtils.readFileToString(entry.getValue(), "UTF-8"));
-			
+
 			IPSSysSFPlugin iPSSysSFPlugin = iPSSystemService.createAndInitPSModelObject((IPSModelObjectRuntime)iPSSystemService.getPSSystem(), IPSSysSFPlugin.class, objectNode);
 			list.add(iPSSysSFPlugin);
 		}
 		return list;
 	}
-	
+
 	private static void fillGroovySourceFileMap(String strPackage, File folder, Map<String, File> fileMap) throws Exception{
-		
+
 		if(StringUtils.hasLength(strPackage)) {
 			strPackage += ".";
 		}
-		
+
 		File[] files = folder.listFiles();
 		if(files == null) {
 			return;
@@ -113,11 +113,11 @@ public class RTCodeUtils implements IRTCodeUtils{
 			}
 		}
 	}
-	
+
 	public ISystemRuntime getSystemRuntime() {
 		return this.getSystemRuntimeContext().getSystemRuntime();
 	}
-	
+
 	@Override
 	public String getRTObjectName(IPSDataEntity iPSDataEntity) throws Exception{
 		if(!StringUtils.hasLength(iPSDataEntity.getCodeName())) {
@@ -126,7 +126,7 @@ public class RTCodeUtils implements IRTCodeUtils{
 		if(!StringUtils.hasLength(iPSDataEntity.getPSSystemModuleMust().getCodeName())) {
 			throw new Exception("系统模块代码标识无效");
 		}
-		
+
 		String strPKGCodeName = getPKGCodeName(iPSDataEntity.getPSSystemModuleMust());
 		return String.format("%1$s.%2$s.%3$s.%4$s", strPKGCodeName, this.getUpperCamelCodeName(iPSDataEntity.getPSSystemModuleMust().getCodeName()).toLowerCase(), this.getUpperCamelCodeName(iPSDataEntity.getCodeName()).toLowerCase(), this.getUpperCamelCodeName(iPSDataEntity.getCodeName()));
 	}
@@ -231,7 +231,7 @@ public class RTCodeUtils implements IRTCodeUtils{
 				return String.format("%1$s.%2$s", iPSSysModelGroup.getPKGCodeName(), this.getUpperCamelCodeName(iPSSysModelGroup.getCodeName()).toLowerCase());
 			}
 		}
-		
+
 		return getPKGCodeName(iPSSystemModule.getParentPSModelObject(IPSSystem.class));
 	}
 

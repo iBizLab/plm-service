@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_DEPENDENCY = "add_dependency"
     public static final String ACTION_DEL_RELATION = "del_relation"
     public static final String ACTION_PROGRAM_TEST_CASE = "program_test_case"
@@ -60,7 +53,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
     public static final String DATASET_WORK_ITEM_RELATION_TEST_CASE = "work_item_relation_test_case"
     public static final String DATASET_WORK_ITEM_RELATION_TICKET = "work_item_relation_ticket"
     public static final String DATASET_WORK_ITEM_VERSION_RELATION = "work_item_version_relation"
-    private static Relation _instance;
+    private static Relation _instance
     void setInstance(Relation instance) {
         _instance = instance
     }
@@ -74,8 +67,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    RelationDTO create(RelationDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, RelationDTO.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    RelationDTO update(RelationDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, RelationDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -104,8 +97,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    RelationDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, RelationDTO.class)
     }
 
     /**
@@ -114,8 +107,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(RelationDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    RelationDTO getDraft(RelationDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, RelationDTO.class)
     }
 
     /**
@@ -124,8 +117,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(RelationDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(RelationDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -134,8 +127,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    RelationDTO save(RelationDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, RelationDTO.class)
     }
 
     /**
@@ -145,7 +138,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      */
     @DEAction(ACTION_ADD_DEPENDENCY)
     def addDependency(RelationDTO dto) throws Throwable {
-        return this.execute(ACTION_ADD_DEPENDENCY, dto)
+        return this.execute(ACTION_ADD_DEPENDENCY, dto, RelationDTO.class)
     }
 
     /**
@@ -155,7 +148,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      */
     @DEAction(ACTION_DEL_RELATION)
     def delRelation(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_RELATION, dto)
+        this.execute(ACTION_DEL_RELATION, dto, RelationDTO.class)
     }
 
     /**
@@ -165,7 +158,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      */
     @DEAction(ACTION_PROGRAM_TEST_CASE)
     def programTestCase(RelationDTO dto) throws Throwable {
-        return this.execute(ACTION_PROGRAM_TEST_CASE, dto)
+        return this.execute(ACTION_PROGRAM_TEST_CASE, dto, RelationDTO.class)
     }
 
     /**
@@ -175,7 +168,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      */
     @DEAction(ACTION_RUN_DEL_RELATION_BUG)
     def runDelRelationBug(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_RUN_DEL_RELATION_BUG, dto)
+        this.execute(ACTION_RUN_DEL_RELATION_BUG, dto, RelationDTO.class)
     }
 
     /**
@@ -185,7 +178,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      */
     @DEAction(ACTION_TEST_CASE_DEL_RELATION_BUG)
     def testCaseDelRelationBug(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_TEST_CASE_DEL_RELATION_BUG, dto)
+        this.execute(ACTION_TEST_CASE_DEL_RELATION_BUG, dto, RelationDTO.class)
     }
 
     /**
@@ -195,7 +188,7 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      */
     @DEAction(ACTION_WORK_ITEM_DEL_RELATION_CASE)
     def workItemDelRelationCase(RelationDTO dto) throws Throwable {
-        this.execute(ACTION_WORK_ITEM_DEL_RELATION_CASE, dto)
+        this.execute(ACTION_WORK_ITEM_DEL_RELATION_CASE, dto, RelationDTO.class)
     }
 
     /**
@@ -204,8 +197,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<RelationDTO> fetchDefault(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, RelationDTO.class)
     }
 
     /**
@@ -214,8 +207,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ALL)
-    def fetchAll(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ALL, context)
+    Page<RelationDTO> fetchAll(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL, context, RelationDTO.class)
     }
 
     /**
@@ -224,8 +217,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEPENDENCY)
-    def fetchDependency(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEPENDENCY, context)
+    Page<RelationDTO> fetchDependency(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEPENDENCY, context, RelationDTO.class)
     }
 
     /**
@@ -234,8 +227,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEPENDENCY_WORK_ITEMS)
-    def fetchDependencyWorkItems(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEPENDENCY_WORK_ITEMS, context)
+    Page<RelationDTO> fetchDependencyWorkItems(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEPENDENCY_WORK_ITEMS, context, RelationDTO.class)
     }
 
     /**
@@ -244,8 +237,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_EXISTS_RUN_RELATION_BUG)
-    def fetchExistsRunRelationBug(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EXISTS_RUN_RELATION_BUG, context)
+    Page<RelationDTO> fetchExistsRunRelationBug(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EXISTS_RUN_RELATION_BUG, context, RelationDTO.class)
     }
 
     /**
@@ -254,8 +247,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RE_CUSTOMER)
-    def fetchIdeaReCustomer(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RE_CUSTOMER, context)
+    Page<RelationDTO> fetchIdeaReCustomer(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RE_CUSTOMER, context, RelationDTO.class)
     }
 
     /**
@@ -264,8 +257,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RE_IDEA)
-    def fetchIdeaReIdea(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RE_IDEA, context)
+    Page<RelationDTO> fetchIdeaReIdea(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RE_IDEA, context, RelationDTO.class)
     }
 
     /**
@@ -274,8 +267,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RE_TEST_CASE)
-    def fetchIdeaReTestCase(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RE_TEST_CASE, context)
+    Page<RelationDTO> fetchIdeaReTestCase(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RE_TEST_CASE, context, RelationDTO.class)
     }
 
     /**
@@ -284,8 +277,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RE_TICKET)
-    def fetchIdeaReTicket(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RE_TICKET, context)
+    Page<RelationDTO> fetchIdeaReTicket(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RE_TICKET, context, RelationDTO.class)
     }
 
     /**
@@ -294,8 +287,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RE_WORK_ITEM)
-    def fetchIdeaReWorkItem(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RE_WORK_ITEM, context)
+    Page<RelationDTO> fetchIdeaReWorkItem(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RE_WORK_ITEM, context, RelationDTO.class)
     }
 
     /**
@@ -304,8 +297,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_VERSION_RELATION)
-    def fetchIdeaVersionRelation(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_VERSION_RELATION, context)
+    Page<RelationDTO> fetchIdeaVersionRelation(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_VERSION_RELATION, context, RelationDTO.class)
     }
 
     /**
@@ -314,8 +307,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_RELATION)
-    def fetchMyRelation(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_RELATION, context)
+    Page<RelationDTO> fetchMyRelation(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_RELATION, context, RelationDTO.class)
     }
 
     /**
@@ -324,8 +317,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_PLAN_IDEA)
-    def fetchProductPlanIdea(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_PLAN_IDEA, context)
+    Page<RelationDTO> fetchProductPlanIdea(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_PLAN_IDEA, context, RelationDTO.class)
     }
 
     /**
@@ -334,8 +327,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_RE_PROJECT)
-    def fetchProductReProject(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_RE_PROJECT, context)
+    Page<RelationDTO> fetchProductReProject(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_RE_PROJECT, context, RelationDTO.class)
     }
 
     /**
@@ -344,8 +337,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_RE_PRODUCT)
-    def fetchProjectReProduct(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_RE_PRODUCT, context)
+    Page<RelationDTO> fetchProjectReProduct(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_RE_PRODUCT, context, RelationDTO.class)
     }
 
     /**
@@ -354,8 +347,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_REVIEW_RE_TEST_CASE)
-    def fetchReviewReTestCase(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REVIEW_RE_TEST_CASE, context)
+    Page<RelationDTO> fetchReviewReTestCase(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REVIEW_RE_TEST_CASE, context, RelationDTO.class)
     }
 
     /**
@@ -364,8 +357,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RUN_RE_BUG)
-    def fetchRunReBug(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RUN_RE_BUG, context)
+    Page<RelationDTO> fetchRunReBug(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RUN_RE_BUG, context, RelationDTO.class)
     }
 
     /**
@@ -374,8 +367,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RUN_RE_IDEA)
-    def fetchRunReIdea(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RUN_RE_IDEA, context)
+    Page<RelationDTO> fetchRunReIdea(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RUN_RE_IDEA, context, RelationDTO.class)
     }
 
     /**
@@ -384,8 +377,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RUN_RE_WORK_ITEM)
-    def fetchRunReWorkItem(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RUN_RE_WORK_ITEM, context)
+    Page<RelationDTO> fetchRunReWorkItem(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RUN_RE_WORK_ITEM, context, RelationDTO.class)
     }
 
     /**
@@ -394,8 +387,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_RE_BUG)
-    def fetchTestCaseReBug(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_RE_BUG, context)
+    Page<RelationDTO> fetchTestCaseReBug(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_RE_BUG, context, RelationDTO.class)
     }
 
     /**
@@ -404,8 +397,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_RE_IDEA)
-    def fetchTestCaseReIdea(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_RE_IDEA, context)
+    Page<RelationDTO> fetchTestCaseReIdea(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_RE_IDEA, context, RelationDTO.class)
     }
 
     /**
@@ -414,8 +407,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_RE_WORK_ITEM)
-    def fetchTestCaseReWorkItem(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_RE_WORK_ITEM, context)
+    Page<RelationDTO> fetchTestCaseReWorkItem(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_RE_WORK_ITEM, context, RelationDTO.class)
     }
 
     /**
@@ -424,8 +417,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_VERSION_RELATION)
-    def fetchTestCaseVersionRelation(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_VERSION_RELATION, context)
+    Page<RelationDTO> fetchTestCaseVersionRelation(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_VERSION_RELATION, context, RelationDTO.class)
     }
 
     /**
@@ -434,8 +427,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TICKET_RE_IDEA)
-    def fetchTicketReIdea(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TICKET_RE_IDEA, context)
+    Page<RelationDTO> fetchTicketReIdea(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET_RE_IDEA, context, RelationDTO.class)
     }
 
     /**
@@ -444,8 +437,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TICKET_RE_SELF)
-    def fetchTicketReSelf(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TICKET_RE_SELF, context)
+    Page<RelationDTO> fetchTicketReSelf(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET_RE_SELF, context, RelationDTO.class)
     }
 
     /**
@@ -454,8 +447,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TICKET_RE_WORK_ITEM)
-    def fetchTicketReWorkItem(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TICKET_RE_WORK_ITEM, context)
+    Page<RelationDTO> fetchTicketReWorkItem(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET_RE_WORK_ITEM, context, RelationDTO.class)
     }
 
     /**
@@ -464,8 +457,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_RELATION_IDEA)
-    def fetchWorkItemRelationIdea(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_RELATION_IDEA, context)
+    Page<RelationDTO> fetchWorkItemRelationIdea(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_RELATION_IDEA, context, RelationDTO.class)
     }
 
     /**
@@ -474,8 +467,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_RELATION_SELF)
-    def fetchWorkItemRelationSelf(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_RELATION_SELF, context)
+    Page<RelationDTO> fetchWorkItemRelationSelf(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_RELATION_SELF, context, RelationDTO.class)
     }
 
     /**
@@ -484,8 +477,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_RELATION_TEST_CASE)
-    def fetchWorkItemRelationTestCase(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_RELATION_TEST_CASE, context)
+    Page<RelationDTO> fetchWorkItemRelationTestCase(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_RELATION_TEST_CASE, context, RelationDTO.class)
     }
 
     /**
@@ -494,8 +487,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_RELATION_TICKET)
-    def fetchWorkItemRelationTicket(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_RELATION_TICKET, context)
+    Page<RelationDTO> fetchWorkItemRelationTicket(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_RELATION_TICKET, context, RelationDTO.class)
     }
 
     /**
@@ -504,8 +497,8 @@ class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_VERSION_RELATION)
-    def fetchWorkItemVersionRelation(RelationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_VERSION_RELATION, context)
+    Page<RelationDTO> fetchWorkItemVersionRelation(RelationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_VERSION_RELATION, context, RelationDTO.class)
     }
 
 }

@@ -16,16 +16,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDEMSLogicFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_APPLY = "APPLY"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSDEMSLogic _instance;
+    private static PSDEMSLogic _instance
     void setInstance(PSDEMSLogic instance) {
         _instance = instance
     }
@@ -39,8 +32,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSDEMSLogicDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSDEMSLogicDTO create(PSDEMSLogicDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSDEMSLogicDTO.class)
     }
 
     /**
@@ -49,8 +42,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSDEMSLogicDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSDEMSLogicDTO update(PSDEMSLogicDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSDEMSLogicDTO.class)
     }
 
     /**
@@ -59,8 +52,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSDEMSLogicDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSDEMSLogicDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSDEMSLogicDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSDEMSLogicDTO getDraft(PSDEMSLogicDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSDEMSLogicDTO.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSDEMSLogicDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSDEMSLogicDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -99,8 +92,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSDEMSLogicDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSDEMSLogicDTO save(PSDEMSLogicDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSDEMSLogicDTO.class)
     }
 
     /**
@@ -110,7 +103,7 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      */
     @DEAction(ACTION_APPLY)
     def apply(PSDEMSLogicDTO dto) throws Throwable {
-        this.execute(ACTION_APPLY, dto)
+        this.execute(ACTION_APPLY, dto, PSDEMSLogicDTO.class)
     }
 
     /**
@@ -119,8 +112,8 @@ class PSDEMSLogic extends GroovyPSModelDERuntime<PSDEMSLogic,PSDEMSLogicDTO,PSDE
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSDEMSLogicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSDEMSLogicDTO> fetchDefault(PSDEMSLogicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSDEMSLogicDTO.class)
     }
 
 }

@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_COMMENT_WORK_ITEM_EXECUTOR = "comment_work_item_executor"
     public static final String DATASET_EXECUTOR_BY_OWNERID = "executor_by_ownerid"
-    private static Executor _instance;
+    private static Executor _instance
     void setInstance(Executor instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ExecutorDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ExecutorDTO create(ExecutorDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ExecutorDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ExecutorDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ExecutorDTO update(ExecutorDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ExecutorDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ExecutorDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ExecutorDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ExecutorDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ExecutorDTO getDraft(ExecutorDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ExecutorDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ExecutorDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ExecutorDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ExecutorDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ExecutorDTO save(ExecutorDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ExecutorDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ExecutorFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ExecutorDTO> fetchDefault(ExecutorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ExecutorDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_WORK_ITEM_EXECUTOR)
-    def fetchCommentWorkItemExecutor(ExecutorFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_WORK_ITEM_EXECUTOR, context)
+    Page<ExecutorUserIdDTO> fetchCommentWorkItemExecutor(ExecutorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_WORK_ITEM_EXECUTOR, context, ExecutorUserIdDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_EXECUTOR_BY_OWNERID)
-    def fetchExecutorByOwnerid(ExecutorFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EXECUTOR_BY_OWNERID, context)
+    Page<ExecutorUserIdDTO> fetchExecutorByOwnerid(ExecutorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EXECUTOR_BY_OWNERID, context, ExecutorUserIdDTO.class)
     }
 
 }

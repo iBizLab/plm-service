@@ -17,19 +17,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
     public static final String ACTION_ACTIVATE = "Activate"
     public static final String ACTION_CHANGEPWD = "ChangePwd"
-    public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_FREEZE = "Freeze"
     public static final String ACTION_GETFULL = "GetFull"
     public static final String ACTION_INITPWD = "InitPwd"
     public static final String ACTION_RESETPASSWORD = "ResetPassword"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CANCEL_REPORT_FLAG = "cancel_report_flag"
     public static final String ACTION_SET_REPORT_FLAG = "set_report_flag"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -37,7 +30,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
     public static final String DATASET_UNASSIGNED_DEPT = "unassigned_dept"
     public static final String DATASET_USER = "user"
     public static final String DATASET_WORKLOAD = "workload"
-    private static User _instance;
+    private static User _instance
     void setInstance(User instance) {
         _instance = instance
     }
@@ -51,8 +44,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_CREATE)
-    def create(UserDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    UserDTO create(UserDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, UserDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_UPDATE)
-    def update(UserDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    UserDTO update(UserDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, UserDTO.class)
     }
 
     /**
@@ -71,18 +64,18 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
-     * 行为：获取用户简要信息 实际功能
+     * 行为：Get 实际功能
      * @param key
      * @throws Throwable
      */
     //@DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    UserDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, UserDTO.class)
     }
 
     /**
@@ -91,8 +84,28 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_GETDRAFT)
-    def getDraft(UserDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    UserDTO getDraft(UserDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, UserDTO.class)
+    }
+
+    /**
+     * 行为：CheckKey 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    //@DEAction(ACTION_CHECKKEY)
+    int checkKey(UserDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    //@DEAction(ACTION_SAVE)
+    UserDTO save(UserDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, UserDTO.class)
     }
 
     /**
@@ -102,7 +115,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_ACTIVATE)
     def activate(UserDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, UserDTO.class)
     }
 
     /**
@@ -112,17 +125,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_CHANGEPWD)
     def changePwd(UserDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGEPWD, dto)
-    }
-
-    /**
-     * 行为：CheckKey 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    //@DEAction(ACTION_CHECKKEY)
-    def checkKey(UserDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+        this.execute(ACTION_CHANGEPWD, dto, UserDTO.class)
     }
 
     /**
@@ -132,7 +135,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_FREEZE)
     def freeze(UserDTO dto) throws Throwable {
-        this.execute(ACTION_FREEZE, dto)
+        this.execute(ACTION_FREEZE, dto, UserDTO.class)
     }
 
     /**
@@ -142,7 +145,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_GETFULL)
     def getFull(String key) throws Throwable {
-        return this.execute(ACTION_GETFULL, key)
+        return this.execute(ACTION_GETFULL, key, UserDTO.class)
     }
 
     /**
@@ -152,7 +155,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_INITPWD)
     def initPwd(UserDTO dto) throws Throwable {
-        this.execute(ACTION_INITPWD, dto)
+        this.execute(ACTION_INITPWD, dto, UserDTO.class)
     }
 
     /**
@@ -162,17 +165,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_RESETPASSWORD)
     def resetPassword(UserDTO dto) throws Throwable {
-        this.execute(ACTION_RESETPASSWORD, dto)
-    }
-
-    /**
-     * 行为：Save 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    //@DEAction(ACTION_SAVE)
-    def save(UserDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+        this.execute(ACTION_RESETPASSWORD, dto, UserDTO.class)
     }
 
     /**
@@ -182,7 +175,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_CANCEL_REPORT_FLAG)
     def cancelReportFlag(UserDTO dto) throws Throwable {
-        this.execute(ACTION_CANCEL_REPORT_FLAG, dto)
+        this.execute(ACTION_CANCEL_REPORT_FLAG, dto, UserDTO.class)
     }
 
     /**
@@ -192,7 +185,7 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      */
     //@DEAction(ACTION_SET_REPORT_FLAG)
     def setReportFlag(UserDTO dto) throws Throwable {
-        this.execute(ACTION_SET_REPORT_FLAG, dto)
+        this.execute(ACTION_SET_REPORT_FLAG, dto, UserDTO.class)
     }
 
     /**
@@ -201,8 +194,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(UserFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<UserDTO> fetchDefault(UserFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, UserDTO.class)
     }
 
     /**
@@ -211,8 +204,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEDataSet(DATASET_NOT_SPACE_MMEBER)
-    def fetchNotSpaceMmeber(UserFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_SPACE_MMEBER, context)
+    Page<UserDTO> fetchNotSpaceMmeber(UserFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_SPACE_MMEBER, context, UserDTO.class)
     }
 
     /**
@@ -221,8 +214,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEDataSet(DATASET_UNASSIGNED_DEPT)
-    def fetchUnassignedDept(UserFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_UNASSIGNED_DEPT, context)
+    Page<UserDTO> fetchUnassignedDept(UserFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_UNASSIGNED_DEPT, context, UserDTO.class)
     }
 
     /**
@@ -231,8 +224,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEDataSet(DATASET_USER)
-    def fetchUser(UserFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<UserDTO> fetchUser(UserFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, UserDTO.class)
     }
 
     /**
@@ -241,8 +234,8 @@ class User extends GroovyDataEntityRuntime<User,UserDTO,UserFilterDTO> {
      * @throws Throwable
      */
     //@DEDataSet(DATASET_WORKLOAD)
-    def fetchWorkload(UserFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORKLOAD, context)
+    Page<UserDTO> fetchWorkload(UserFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORKLOAD, context, UserDTO.class)
     }
 
 }

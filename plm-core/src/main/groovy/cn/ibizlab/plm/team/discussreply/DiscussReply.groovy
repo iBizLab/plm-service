@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,DiscussReplyFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_REPLY = "add_reply"
     public static final String ACTION_DEL_COMMENT = "del_comment"
     public static final String ACTION_DEL_REPLY = "del_reply"
@@ -34,7 +27,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
     public static final String DATASET_MY_REPLY = "my_reply"
     public static final String DATASET_RECENT = "recent"
     public static final String DATASET_SUB_REPLY = "sub_reply"
-    private static DiscussReply _instance;
+    private static DiscussReply _instance
     void setInstance(DiscussReply instance) {
         _instance = instance
     }
@@ -48,8 +41,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DiscussReplyDTO create(DiscussReplyDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DiscussReplyDTO update(DiscussReplyDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DiscussReplyDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DiscussReplyDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DiscussReplyDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DiscussReplyDTO getDraft(DiscussReplyDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -98,8 +91,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DiscussReplyDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DiscussReplyDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -108,8 +101,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DiscussReplyDTO save(DiscussReplyDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -119,7 +112,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      */
     @DEAction(ACTION_ADD_REPLY)
     def addReply(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_REPLY, dto)
+        this.execute(ACTION_ADD_REPLY, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -129,7 +122,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      */
     @DEAction(ACTION_DEL_COMMENT)
     def delComment(DiscussReplyDTO dto) throws Throwable {
-        return this.execute(ACTION_DEL_COMMENT, dto)
+        return this.execute(ACTION_DEL_COMMENT, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -139,7 +132,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      */
     @DEAction(ACTION_DEL_REPLY)
     def delReply(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_REPLY, dto)
+        this.execute(ACTION_DEL_REPLY, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -149,7 +142,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      */
     @DEAction(ACTION_EDIT_REPLY)
     def editReply(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_EDIT_REPLY, dto)
+        this.execute(ACTION_EDIT_REPLY, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -159,7 +152,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      */
     @DEAction(ACTION_SEND_COMMENT)
     def sendComment(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_SEND_COMMENT, dto)
+        this.execute(ACTION_SEND_COMMENT, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -169,7 +162,7 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      */
     @DEAction(ACTION_UPDATE_COMMENT)
     def updateComment(DiscussReplyDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE_COMMENT, dto)
+        this.execute(ACTION_UPDATE_COMMENT, dto, DiscussReplyDTO.class)
     }
 
     /**
@@ -178,8 +171,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DiscussReplyFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DiscussReplyDTO> fetchDefault(DiscussReplyFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DiscussReplyDTO.class)
     }
 
     /**
@@ -188,8 +181,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ALL_REPLY)
-    def fetchMyAllReply(DiscussReplyFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ALL_REPLY, context)
+    Page<DiscussReplyDTO> fetchMyAllReply(DiscussReplyFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ALL_REPLY, context, DiscussReplyDTO.class)
     }
 
     /**
@@ -198,8 +191,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_REPLY)
-    def fetchMyReply(DiscussReplyFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_REPLY, context)
+    Page<DiscussReplyDTO> fetchMyReply(DiscussReplyFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_REPLY, context, DiscussReplyDTO.class)
     }
 
     /**
@@ -208,8 +201,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT)
-    def fetchRecent(DiscussReplyFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT, context)
+    Page<DiscussReplyDTO> fetchRecent(DiscussReplyFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT, context, DiscussReplyDTO.class)
     }
 
     /**
@@ -218,8 +211,8 @@ class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_SUB_REPLY)
-    def fetchSubReply(DiscussReplyFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SUB_REPLY, context)
+    Page<DiscussReplyDTO> fetchSubReply(DiscussReplyFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SUB_REPLY, context, DiscussReplyDTO.class)
     }
 
 }

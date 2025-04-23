@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,ProductTicketTypeDTO,ProductTicketTypeFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ProductTicketType _instance;
+    private static ProductTicketType _instance
     void setInstance(ProductTicketType instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProductTicketTypeDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProductTicketTypeDTO create(ProductTicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProductTicketTypeDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProductTicketTypeDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProductTicketTypeDTO update(ProductTicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProductTicketTypeDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProductTicketTypeDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProductTicketTypeDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProductTicketTypeDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProductTicketTypeDTO getDraft(ProductTicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProductTicketTypeDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProductTicketTypeDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProductTicketTypeDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProductTicketTypeDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProductTicketTypeDTO save(ProductTicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProductTicketTypeDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class ProductTicketType extends GroovyDataEntityRuntime<ProductTicketType,Produc
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProductTicketTypeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProductTicketTypeDTO> fetchDefault(ProductTicketTypeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProductTicketTypeDTO.class)
     }
 
 }

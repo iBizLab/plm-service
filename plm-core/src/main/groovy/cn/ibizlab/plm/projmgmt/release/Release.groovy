@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CAL_RELEASE_WORK_ITEM_NUM = "cal_release_work_item_num"
     public static final String ACTION_CHANGE_DRAFT = "change_draft"
     public static final String ACTION_CHANGE_STAGE = "change_stage"
@@ -40,7 +33,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
     public static final String DATASET_PUBLISHED = "published"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_SPRINT_RELATION = "sprint_relation"
-    private static Release _instance;
+    private static Release _instance
     void setInstance(Release instance) {
         _instance = instance
     }
@@ -54,8 +47,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ReleaseDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ReleaseDTO create(ReleaseDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ReleaseDTO.class)
     }
 
     /**
@@ -64,8 +57,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ReleaseDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ReleaseDTO update(ReleaseDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ReleaseDTO.class)
     }
 
     /**
@@ -74,8 +67,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ReleaseDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ReleaseDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ReleaseDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ReleaseDTO getDraft(ReleaseDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ReleaseDTO.class)
     }
 
     /**
@@ -104,8 +97,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ReleaseDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ReleaseDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -114,8 +107,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ReleaseDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ReleaseDTO save(ReleaseDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ReleaseDTO.class)
     }
 
     /**
@@ -125,7 +118,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_CAL_RELEASE_WORK_ITEM_NUM)
     def calReleaseWorkItemNum(String key) throws Throwable {
-        return this.execute(ACTION_CAL_RELEASE_WORK_ITEM_NUM, key)
+        return this.execute(ACTION_CAL_RELEASE_WORK_ITEM_NUM, key, ReleaseDTO.class)
     }
 
     /**
@@ -135,7 +128,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_CHANGE_DRAFT)
     def changeDraft(ReleaseDTO dto) throws Throwable {
-        return this.execute(ACTION_CHANGE_DRAFT, dto)
+        return this.execute(ACTION_CHANGE_DRAFT, dto, ReleaseDTO.class)
     }
 
     /**
@@ -145,7 +138,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_CHANGE_STAGE)
     def changeStage(ReleaseDTO dto) throws Throwable {
-        return this.execute(ACTION_CHANGE_STAGE, dto)
+        return this.execute(ACTION_CHANGE_STAGE, dto, ReleaseDTO.class)
     }
 
     /**
@@ -155,7 +148,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_DEL_RELATION)
     def delRelation(ReleaseDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_RELATION, dto)
+        this.execute(ACTION_DEL_RELATION, dto, ReleaseDTO.class)
     }
 
     /**
@@ -165,7 +158,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(ReleaseDTO dto) throws Throwable {
-        return this.execute(ACTION_DELETE_CATEGORIES, dto)
+        return this.execute(ACTION_DELETE_CATEGORIES, dto, ReleaseDTO.class)
     }
 
     /**
@@ -175,7 +168,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_PLAN_WORK_ITEM)
     def planWorkItem(ReleaseDTO dto) throws Throwable {
-        this.execute(ACTION_PLAN_WORK_ITEM, dto)
+        this.execute(ACTION_PLAN_WORK_ITEM, dto, ReleaseDTO.class)
     }
 
     /**
@@ -185,7 +178,7 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      */
     @DEAction(ACTION_RELEASE_RELATION_SPRINT)
     def releaseRelationSprint(ReleaseDTO dto) throws Throwable {
-        return this.execute(ACTION_RELEASE_RELATION_SPRINT, dto)
+        return this.execute(ACTION_RELEASE_RELATION_SPRINT, dto, ReleaseDTO.class)
     }
 
     /**
@@ -194,8 +187,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ReleaseDTO> fetchDefault(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ReleaseDTO.class)
     }
 
     /**
@@ -204,8 +197,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<ReleaseDTO> fetchBiDetail(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, ReleaseDTO.class)
     }
 
     /**
@@ -214,8 +207,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<ReleaseBiSearchGroupDTO> fetchBiSearch(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, ReleaseBiSearchGroupDTO.class)
     }
 
     /**
@@ -224,8 +217,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_RELESE_RELATION)
-    def fetchChooseReleseRelation(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_RELESE_RELATION, context)
+    Page<ReleaseDTO> fetchChooseReleseRelation(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_RELESE_RELATION, context, ReleaseDTO.class)
     }
 
     /**
@@ -234,8 +227,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_PROJECT_RELEASE)
-    def fetchMobProjectRelease(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_PROJECT_RELEASE, context)
+    Page<ReleaseDTO> fetchMobProjectRelease(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_PROJECT_RELEASE, context, ReleaseDTO.class)
     }
 
     /**
@@ -244,8 +237,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_PUBLISHED)
-    def fetchNotPublished(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_PUBLISHED, context)
+    Page<ReleaseDTO> fetchNotPublished(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_PUBLISHED, context, ReleaseDTO.class)
     }
 
     /**
@@ -254,8 +247,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_RE_PROJECT_PUBLISHED)
-    def fetchProductReProjectPublished(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_RE_PROJECT_PUBLISHED, context)
+    Page<ReleaseDTO> fetchProductReProjectPublished(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_RE_PROJECT_PUBLISHED, context, ReleaseDTO.class)
     }
 
     /**
@@ -264,8 +257,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_PUBLISHED)
-    def fetchPublished(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PUBLISHED, context)
+    Page<ReleaseDTO> fetchPublished(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PUBLISHED, context, ReleaseDTO.class)
     }
 
     /**
@@ -274,8 +267,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<ReleaseDTO> fetchReader(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, ReleaseDTO.class)
     }
 
     /**
@@ -284,8 +277,8 @@ class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPRINT_RELATION)
-    def fetchSprintRelation(ReleaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPRINT_RELATION, context)
+    Page<ReleaseDTO> fetchSprintRelation(ReleaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPRINT_RELATION, context, ReleaseDTO.class)
     }
 
 }

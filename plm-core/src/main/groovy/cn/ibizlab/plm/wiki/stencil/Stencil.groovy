@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_NEW_DRAFT_FORM_STENCIL = "new_draft_form_stencil"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NO_SPACE_STENCIL = "no_space_stencil"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_SPACE_STENCIL = "space_stencil"
-    private static Stencil _instance;
+    private static Stencil _instance
     void setInstance(Stencil instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(StencilDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    StencilDTO create(StencilDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, StencilDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(StencilDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    StencilDTO update(StencilDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, StencilDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    StencilDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, StencilDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(StencilDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    StencilDTO getDraft(StencilDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, StencilDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(StencilDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(StencilDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(StencilDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    StencilDTO save(StencilDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, StencilDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      */
     @DEAction(ACTION_NEW_DRAFT_FORM_STENCIL)
     def newDraftFormStencil(StencilDTO dto) throws Throwable {
-        this.execute(ACTION_NEW_DRAFT_FORM_STENCIL, dto)
+        this.execute(ACTION_NEW_DRAFT_FORM_STENCIL, dto, StencilDTO.class)
     }
 
     /**
@@ -122,8 +115,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(StencilFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<StencilDTO> fetchDefault(StencilFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, StencilDTO.class)
     }
 
     /**
@@ -132,8 +125,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_SPACE_STENCIL)
-    def fetchNoSpaceStencil(StencilFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_SPACE_STENCIL, context)
+    Page<StencilDTO> fetchNoSpaceStencil(StencilFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_SPACE_STENCIL, context, StencilDTO.class)
     }
 
     /**
@@ -142,8 +135,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(StencilFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<StencilDTO> fetchReader(StencilFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, StencilDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_STENCIL)
-    def fetchSpaceStencil(StencilFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_STENCIL, context)
+    Page<StencilDTO> fetchSpaceStencil(StencilFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_STENCIL, context, StencilDTO.class)
     }
 
 }

@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_GETLINKURL = "GetLinkUrl"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_CURUSER = "CurUser"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static SysTodo _instance;
+    private static SysTodo _instance
     void setInstance(SysTodo instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SysTodoDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SysTodoDTO create(SysTodoDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SysTodoDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SysTodoDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SysTodoDTO update(SysTodoDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SysTodoDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SysTodoDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SysTodoDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SysTodoDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SysTodoDTO getDraft(SysTodoDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SysTodoDTO.class)
     }
 
     /**
@@ -90,8 +83,18 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SysTodoDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SysTodoDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SAVE)
+    SysTodoDTO save(SysTodoDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SysTodoDTO.class)
     }
 
     /**
@@ -101,17 +104,7 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      */
     @DEAction(ACTION_GETLINKURL)
     def getLinkUrl(String key) throws Throwable {
-        return this.execute(ACTION_GETLINKURL, key)
-    }
-
-    /**
-     * 行为：Save 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_SAVE)
-    def save(SysTodoDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+        return this.execute(ACTION_GETLINKURL, key, SysTodoDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CURUSER)
-    def fetchCurUser(SysTodoFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CURUSER, context)
+    Page<SysTodoDTO> fetchCurUser(SysTodoFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CURUSER, context, SysTodoDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SysTodoFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SysTodoDTO> fetchDefault(SysTodoFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SysTodoDTO.class)
     }
 
 }

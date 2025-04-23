@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentDTO,RunAttachmentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static RunAttachment _instance;
+    private static RunAttachment _instance
     void setInstance(RunAttachment instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(RunAttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    RunAttachmentDTO create(RunAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, RunAttachmentDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(RunAttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    RunAttachmentDTO update(RunAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, RunAttachmentDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    RunAttachmentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, RunAttachmentDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(RunAttachmentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    RunAttachmentDTO getDraft(RunAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, RunAttachmentDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(RunAttachmentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(RunAttachmentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(RunAttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    RunAttachmentDTO save(RunAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, RunAttachmentDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(RunAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<RunAttachmentDTO> fetchDefault(RunAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, RunAttachmentDTO.class)
     }
 
 }

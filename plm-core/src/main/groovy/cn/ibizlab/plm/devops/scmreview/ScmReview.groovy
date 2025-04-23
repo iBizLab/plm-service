@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReviewFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ScmReview _instance;
+    private static ScmReview _instance
     void setInstance(ScmReview instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ScmReviewDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ScmReviewDTO create(ScmReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ScmReviewDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ScmReviewDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ScmReviewDTO update(ScmReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ScmReviewDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ScmReviewDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ScmReviewDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ScmReviewDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ScmReviewDTO getDraft(ScmReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ScmReviewDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ScmReviewDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ScmReviewDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ScmReviewDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ScmReviewDTO save(ScmReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ScmReviewDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReview
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ScmReviewFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ScmReviewDTO> fetchDefault(ScmReviewFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ScmReviewDTO.class)
     }
 
 }

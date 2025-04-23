@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
@@ -63,7 +56,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
     public static final String DATASET_UNDER_PROJECT_PORTFOLIO = "under_project_portfolio"
     public static final String DATASET_USER = "user"
     public static final String DATASET_WORK_PROJECT = "work_project"
-    private static Project _instance;
+    private static Project _instance
     void setInstance(Project instance) {
         _instance = instance
     }
@@ -77,8 +70,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProjectDTO create(ProjectDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProjectDTO.class)
     }
 
     /**
@@ -87,8 +80,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProjectDTO update(ProjectDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProjectDTO.class)
     }
 
     /**
@@ -97,8 +90,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -107,8 +100,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProjectDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProjectDTO.class)
     }
 
     /**
@@ -117,8 +110,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProjectDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProjectDTO getDraft(ProjectDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProjectDTO.class)
     }
 
     /**
@@ -127,8 +120,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProjectDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProjectDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -137,8 +130,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProjectDTO save(ProjectDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProjectDTO.class)
     }
 
     /**
@@ -148,7 +141,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, ProjectDTO.class)
     }
 
     /**
@@ -158,7 +151,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, ProjectDTO.class)
     }
 
     /**
@@ -168,7 +161,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_CHANGE_ADMIN_ROLE)
     def changeAdminRole(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto)
+        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto, ProjectDTO.class)
     }
 
     /**
@@ -178,7 +171,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_DELETE)
     def delete(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, ProjectDTO.class)
     }
 
     /**
@@ -188,7 +181,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, ProjectDTO.class)
     }
 
     /**
@@ -198,7 +191,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_GET_MAJOR_DATA)
     def getMajorData(String key) throws Throwable {
-        return this.execute(ACTION_GET_MAJOR_DATA, key)
+        return this.execute(ACTION_GET_MAJOR_DATA, key, ProjectRedirctDefGroupDTO.class)
     }
 
     /**
@@ -208,7 +201,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_HYBRID_INDEX_ADDON_COUNTER)
     def hybridIndexAddonCounter(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_HYBRID_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_HYBRID_INDEX_ADDON_COUNTER, dto, ProjectDTO.class)
     }
 
     /**
@@ -218,7 +211,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_KANBAN_INDEX_ADDON_COUNTER)
     def kanbanIndexAddonCounter(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_KANBAN_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_KANBAN_INDEX_ADDON_COUNTER, dto, ProjectDTO.class)
     }
 
     /**
@@ -228,7 +221,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_OTHER_RE_PROJECT)
     def otherReProject(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_PROJECT, dto)
+        this.execute(ACTION_OTHER_RE_PROJECT, dto, ProjectDTO.class)
     }
 
     /**
@@ -238,7 +231,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_OTHER_RE_SPACE)
     def otherReSpace(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_SPACE, dto)
+        this.execute(ACTION_OTHER_RE_SPACE, dto, ProjectDTO.class)
     }
 
     /**
@@ -248,7 +241,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_PROJECT_AUTOMATIC_CHANGE_STATE)
     def projectAutomaticChangeState(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_PROJECT_AUTOMATIC_CHANGE_STATE, dto)
+        this.execute(ACTION_PROJECT_AUTOMATIC_CHANGE_STATE, dto, ProjectDTO.class)
     }
 
     /**
@@ -258,7 +251,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_PROJECT_MOVE)
     def projectMove(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_PROJECT_MOVE, dto)
+        this.execute(ACTION_PROJECT_MOVE, dto, ProjectDTO.class)
     }
 
     /**
@@ -268,7 +261,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_RECOVER)
     def recover(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, ProjectDTO.class)
     }
 
     /**
@@ -278,7 +271,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_REMOVE_FROM_PROJECT_SET)
     def removeFromProjectSet(ProjectDTO dto) throws Throwable {
-        return this.execute(ACTION_REMOVE_FROM_PROJECT_SET, dto)
+        return this.execute(ACTION_REMOVE_FROM_PROJECT_SET, dto, ProjectDTO.class)
     }
 
     /**
@@ -288,7 +281,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_SCRUM_INDEX_ADDON_COUNTER)
     def scrumIndexAddonCounter(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_SCRUM_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_SCRUM_INDEX_ADDON_COUNTER, dto, ProjectDTO.class)
     }
 
     /**
@@ -298,7 +291,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, ProjectDTO.class)
     }
 
     /**
@@ -308,7 +301,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_WARNING_COUNT_LOGIC)
     def warningCountLogic(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_WARNING_COUNT_LOGIC, dto)
+        this.execute(ACTION_WARNING_COUNT_LOGIC, dto, ProjectDTO.class)
     }
 
     /**
@@ -318,7 +311,7 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      */
     @DEAction(ACTION_WATERFALL_INDEX_ADDON_COUNTER)
     def waterfallIndexAddonCounter(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_WATERFALL_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_WATERFALL_INDEX_ADDON_COUNTER, dto, ProjectDTO.class)
     }
 
     /**
@@ -327,8 +320,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProjectDTO> fetchDefault(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProjectDTO.class)
     }
 
     /**
@@ -337,8 +330,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_VIEW)
-    def fetchVIEW(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_VIEW, context)
+    Page<ProjectDTO> fetchVIEW(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_VIEW, context, ProjectDTO.class)
     }
 
     /**
@@ -347,8 +340,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<ProjectDTO> fetchAdmin(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, ProjectDTO.class)
     }
 
     /**
@@ -357,8 +350,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<ProjectDTO> fetchArchived(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, ProjectDTO.class)
     }
 
     /**
@@ -367,8 +360,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<ProjectDTO> fetchBiDetail(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, ProjectDTO.class)
     }
 
     /**
@@ -377,8 +370,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<ProjectBiSearchGroupDTO> fetchBiSearch(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, ProjectBiSearchGroupDTO.class)
     }
 
     /**
@@ -387,8 +380,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_PROJECT)
-    def fetchChooseProject(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_PROJECT, context)
+    Page<ProjectDTO> fetchChooseProject(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_PROJECT, context, ProjectDTO.class)
     }
 
     /**
@@ -397,8 +390,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CURRENT)
-    def fetchCurrent(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CURRENT, context)
+    Page<ProjectDTO> fetchCurrent(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CURRENT, context, ProjectDTO.class)
     }
 
     /**
@@ -407,8 +400,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<ProjectDTO> fetchDeleted(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, ProjectDTO.class)
     }
 
     /**
@@ -417,8 +410,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_FAVORITE)
-    def fetchFavorite(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FAVORITE, context)
+    Page<ProjectDTO> fetchFavorite(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FAVORITE, context, ProjectDTO.class)
     }
 
     /**
@@ -427,8 +420,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MAIN)
-    def fetchMain(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MAIN, context)
+    Page<ProjectDTO> fetchMain(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MAIN, context, ProjectDTO.class)
     }
 
     /**
@@ -437,8 +430,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_MAIN)
-    def fetchMobMain(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_MAIN, context)
+    Page<ProjectDTO> fetchMobMain(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_MAIN, context, ProjectDTO.class)
     }
 
     /**
@@ -447,8 +440,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_RELATION)
-    def fetchNoRelation(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_RELATION, context)
+    Page<ProjectDTO> fetchNoRelation(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_RELATION, context, ProjectDTO.class)
     }
 
     /**
@@ -457,8 +450,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<ProjectDTO> fetchNormal(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, ProjectDTO.class)
     }
 
     /**
@@ -467,8 +460,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_RE_PROJECT)
-    def fetchProductReProject(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_RE_PROJECT, context)
+    Page<ProjectDTO> fetchProductReProject(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_RE_PROJECT, context, ProjectDTO.class)
     }
 
     /**
@@ -477,8 +470,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK)
-    def fetchQuick(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK, context)
+    Page<ProjectDTO> fetchQuick(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK, context, ProjectDTO.class)
     }
 
     /**
@@ -487,8 +480,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK_USER)
-    def fetchQuickUser(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK_USER, context)
+    Page<ProjectDTO> fetchQuickUser(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK_USER, context, ProjectDTO.class)
     }
 
     /**
@@ -497,8 +490,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<ProjectDTO> fetchReader(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, ProjectDTO.class)
     }
 
     /**
@@ -507,8 +500,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_SAME_TYPE)
-    def fetchSameType(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SAME_TYPE, context)
+    Page<ProjectDTO> fetchSameType(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SAME_TYPE, context, ProjectDTO.class)
     }
 
     /**
@@ -517,8 +510,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_UNDER_PROJECT_PORTFOLIO)
-    def fetchUnderProjectPortfolio(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_UNDER_PROJECT_PORTFOLIO, context)
+    Page<ProjectDTO> fetchUnderProjectPortfolio(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_UNDER_PROJECT_PORTFOLIO, context, ProjectDTO.class)
     }
 
     /**
@@ -527,8 +520,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<ProjectDTO> fetchUser(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, ProjectDTO.class)
     }
 
     /**
@@ -537,8 +530,8 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_PROJECT)
-    def fetchWorkProject(ProjectFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_PROJECT, context)
+    Page<ProjectDTO> fetchWorkProject(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_PROJECT, context, ProjectDTO.class)
     }
 
 }

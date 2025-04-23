@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,ProjectTagFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE_TAG = "delete_tag"
     public static final String ACTION_GET_CON_PROJECT_TAG = "get_con_project_tag"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ProjectTag _instance;
+    private static ProjectTag _instance
     void setInstance(ProjectTag instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProjectTagDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProjectTagDTO create(ProjectTagDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProjectTagDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProjectTagDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProjectTagDTO update(ProjectTagDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProjectTagDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProjectTagDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProjectTagDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProjectTagDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProjectTagDTO getDraft(ProjectTagDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProjectTagDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProjectTagDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProjectTagDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProjectTagDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProjectTagDTO save(ProjectTagDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProjectTagDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      */
     @DEAction(ACTION_DELETE_TAG)
     def deleteTag(ProjectTagDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE_TAG, dto)
+        this.execute(ACTION_DELETE_TAG, dto, ProjectTagDTO.class)
     }
 
     /**
@@ -121,7 +114,7 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      */
     @DEAction(ACTION_GET_CON_PROJECT_TAG)
     def getConProjectTag(String key) throws Throwable {
-        return this.execute(ACTION_GET_CON_PROJECT_TAG, key)
+        return this.execute(ACTION_GET_CON_PROJECT_TAG, key, ProjectTagDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,Projec
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProjectTagFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProjectTagDTO> fetchDefault(ProjectTagFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProjectTagDTO.class)
     }
 
 }

@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,AttachmentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_MOB_WORK_ITEM_ATTACHMENT = "mob_work_item_attachment"
     public static final String DATASET_PROJECT_DELIVERABLE = "project_deliverable"
     public static final String DATASET_WORK_ITEM_DELIVERABLE = "work_item_deliverable"
-    private static Attachment _instance;
+    private static Attachment _instance
     void setInstance(Attachment instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(AttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    AttachmentDTO create(AttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AttachmentDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(AttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    AttachmentDTO update(AttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AttachmentDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    AttachmentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AttachmentDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(AttachmentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    AttachmentDTO getDraft(AttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AttachmentDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(AttachmentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(AttachmentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(AttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    AttachmentDTO save(AttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AttachmentDTO.class)
     }
 
     /**
@@ -111,8 +104,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(AttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<AttachmentDTO> fetchDefault(AttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AttachmentDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_WORK_ITEM_ATTACHMENT)
-    def fetchMobWorkItemAttachment(AttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_WORK_ITEM_ATTACHMENT, context)
+    Page<AttachmentDTO> fetchMobWorkItemAttachment(AttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_WORK_ITEM_ATTACHMENT, context, AttachmentDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_DELIVERABLE)
-    def fetchProjectDeliverable(AttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_DELIVERABLE, context)
+    Page<AttachmentDTO> fetchProjectDeliverable(AttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_DELIVERABLE, context, AttachmentDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_DELIVERABLE)
-    def fetchWorkItemDeliverable(AttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_DELIVERABLE, context)
+    Page<AttachmentDTO> fetchWorkItemDeliverable(AttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_DELIVERABLE, context, AttachmentDTO.class)
     }
 
 }

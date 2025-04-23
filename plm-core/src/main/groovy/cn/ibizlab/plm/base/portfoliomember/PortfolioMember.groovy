@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioMemberDTO,PortfolioMemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_PROJECT_SET = "cur_project_set"
-    private static PortfolioMember _instance;
+    private static PortfolioMember _instance
     void setInstance(PortfolioMember instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PortfolioMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PortfolioMemberDTO create(PortfolioMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PortfolioMemberDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PortfolioMemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PortfolioMemberDTO update(PortfolioMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PortfolioMemberDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PortfolioMemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PortfolioMemberDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PortfolioMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PortfolioMemberDTO getDraft(PortfolioMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PortfolioMemberDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PortfolioMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PortfolioMemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PortfolioMemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PortfolioMemberDTO save(PortfolioMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PortfolioMemberDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(PortfolioMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, PortfolioMemberDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PortfolioMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PortfolioMemberDTO> fetchDefault(PortfolioMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PortfolioMemberDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class PortfolioMember extends GroovyDataEntityRuntime<PortfolioMember,PortfolioM
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT_SET)
-    def fetchCurProjectSet(PortfolioMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT_SET, context)
+    Page<PortfolioMemberDTO> fetchCurProjectSet(PortfolioMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT_SET, context, PortfolioMemberDTO.class)
     }
 
 }

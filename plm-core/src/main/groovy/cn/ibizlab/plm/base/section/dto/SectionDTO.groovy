@@ -77,6 +77,16 @@ class SectionDTO extends GroovyDTO<SectionDTO> {
      */
     @JsonProperty("update_time")
     Timestamp updateTime
+    /**
+     * 「用户标记」
+     */
+    @JsonProperty("user_tag")
+    String userTag
+    /**
+     * 「用户标记2」
+     */
+    @JsonProperty("user_tag2")
+    String userTag2
 
     /**
      * 设置「所属数据标识」值
@@ -198,6 +208,26 @@ class SectionDTO extends GroovyDTO<SectionDTO> {
      */
     SectionDTO setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记」值
+     * @param val
+     */
+    SectionDTO setUserTag(String userTag) {
+        this.userTag = userTag
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记2」值
+     * @param val
+     */
+    SectionDTO setUserTag2(String userTag2) {
+        this.userTag2 = userTag2
         return this
     }
 

@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,CommonFlowFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static CommonFlow _instance;
+    private static CommonFlow _instance
     void setInstance(CommonFlow instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(CommonFlowDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    CommonFlowDTO create(CommonFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, CommonFlowDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(CommonFlowDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    CommonFlowDTO update(CommonFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, CommonFlowDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    CommonFlowDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, CommonFlowDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(CommonFlowDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    CommonFlowDTO getDraft(CommonFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, CommonFlowDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(CommonFlowDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(CommonFlowDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(CommonFlowDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    CommonFlowDTO save(CommonFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, CommonFlowDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,Common
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(CommonFlowFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<CommonFlowDTO> fetchDefault(CommonFlowFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, CommonFlowDTO.class)
     }
 
 }

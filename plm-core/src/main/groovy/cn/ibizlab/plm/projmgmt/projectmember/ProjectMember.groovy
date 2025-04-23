@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberDTO,ProjectMemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHANGE_POSITION = "change_position"
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String ACTION_MOB_CREATE_PROJECT_MEMBER = "mob_create_project_member"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_PROJECT = "CUR_PROJECT"
     public static final String DATASET_NO_ATTENTION = "no_attention"
-    private static ProjectMember _instance;
+    private static ProjectMember _instance
     void setInstance(ProjectMember instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProjectMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProjectMemberDTO create(ProjectMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProjectMemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProjectMemberDTO update(ProjectMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProjectMemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProjectMemberDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProjectMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProjectMemberDTO getDraft(ProjectMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProjectMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProjectMemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -103,8 +96,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProjectMemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProjectMemberDTO save(ProjectMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -114,7 +107,7 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      */
     @DEAction(ACTION_CHANGE_POSITION)
     def changePosition(ProjectMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_POSITION, dto)
+        this.execute(ACTION_CHANGE_POSITION, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -124,7 +117,7 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(ProjectMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -134,7 +127,7 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      */
     @DEAction(ACTION_MOB_CREATE_PROJECT_MEMBER)
     def mobCreateProjectMember(ProjectMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_MOB_CREATE_PROJECT_MEMBER, dto)
+        return this.execute(ACTION_MOB_CREATE_PROJECT_MEMBER, dto, ProjectMemberDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProjectMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProjectMemberDTO> fetchDefault(ProjectMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProjectMemberDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT)
-    def fetchCurProject(ProjectMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT, context)
+    Page<ProjectMemberDTO> fetchCurProject(ProjectMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT, context, ProjectMemberDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class ProjectMember extends GroovyDataEntityRuntime<ProjectMember,ProjectMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_ATTENTION)
-    def fetchNoAttention(ProjectMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_ATTENTION, context)
+    Page<ProjectMemberDTO> fetchNoAttention(ProjectMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_ATTENTION, context, ProjectMemberDTO.class)
     }
 
 }

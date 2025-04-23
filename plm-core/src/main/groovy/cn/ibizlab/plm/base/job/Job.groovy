@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Job _instance;
+    private static Job _instance
     void setInstance(Job instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(JobDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    JobDTO create(JobDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, JobDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(JobDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    JobDTO update(JobDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, JobDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    JobDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, JobDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(JobDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    JobDTO getDraft(JobDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, JobDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(JobDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(JobDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(JobDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    JobDTO save(JobDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, JobDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(JobFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<JobDTO> fetchDefault(JobFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, JobDTO.class)
     }
 
 }

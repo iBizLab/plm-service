@@ -16,19 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CASE_MOVE_PLAN = "case_move_plan"
     public static final String ACTION_CHOOSE_CASE_TEMPLATE = "choose_case_template"
     public static final String ACTION_COPY_CASE = "copy_case"
     public static final String ACTION_DELETE = "delete"
     public static final String ACTION_FINISH_ADD_ATTENTION = "finish_add_attention"
-    public static final String ACTION_GET_ATTENTION = "get_attention"
     public static final String ACTION_GET_BASELINE_NAME = "get_baseline_name"
     public static final String ACTION_MOVE_CASE = "move_case"
     public static final String ACTION_NEWEST_RUN = "newest_run"
@@ -77,7 +69,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     public static final String DATASET_THIS_SUITE_TEST_CASE = "this_suite_test_case"
     public static final String DATASET_TEST_CASE_MANEUVER_CONTEXT = "test_case_maneuver_context"
     public static final String DATASET_WORK_ITEM_RELATION_TEST_CASE = "work_item_relation_test_case"
-    private static TestCase _instance;
+    private static TestCase _instance
     void setInstance(TestCase instance) {
         _instance = instance
     }
@@ -91,8 +83,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TestCaseDTO create(TestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -101,8 +93,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TestCaseDTO update(TestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -111,8 +103,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -121,8 +113,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TestCaseDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TestCaseDTO.class)
     }
 
     /**
@@ -131,8 +123,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TestCaseDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TestCaseDTO getDraft(TestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TestCaseDTO.class)
     }
 
     /**
@@ -141,8 +133,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TestCaseDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TestCaseDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -151,8 +143,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TestCaseDTO save(TestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -162,7 +154,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_CASE_MOVE_PLAN)
     def caseMovePlan(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_CASE_MOVE_PLAN, dto)
+        this.execute(ACTION_CASE_MOVE_PLAN, dto, TestCaseDTO.class)
     }
 
     /**
@@ -172,7 +164,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_CHOOSE_CASE_TEMPLATE)
     def chooseCaseTemplate(TestCaseDTO dto) throws Throwable {
-        return this.execute(ACTION_CHOOSE_CASE_TEMPLATE, dto)
+        return this.execute(ACTION_CHOOSE_CASE_TEMPLATE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -182,7 +174,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_COPY_CASE)
     def copyCase(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_COPY_CASE, dto)
+        this.execute(ACTION_COPY_CASE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -192,7 +184,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_DELETE)
     def delete(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -202,17 +194,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_FINISH_ADD_ATTENTION)
     def finishAddAttention(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_FINISH_ADD_ATTENTION, dto)
-    }
-
-    /**
-     * 行为：获取关注人 实际功能
-     * @param key
-     * @throws Throwable
-     */
-    @DEAction(ACTION_GET_ATTENTION)
-    def getAttention(String key) throws Throwable {
-        return this.execute(ACTION_GET_ATTENTION, key)
+        this.execute(ACTION_FINISH_ADD_ATTENTION, dto, TestCaseDTO.class)
     }
 
     /**
@@ -222,7 +204,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_GET_BASELINE_NAME)
     def getBaselineName(String key) throws Throwable {
-        return this.execute(ACTION_GET_BASELINE_NAME, key)
+        return this.execute(ACTION_GET_BASELINE_NAME, key, TestCaseDTO.class)
     }
 
     /**
@@ -232,7 +214,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_MOVE_CASE)
     def moveCase(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_CASE, dto)
+        this.execute(ACTION_MOVE_CASE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -242,7 +224,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_NEWEST_RUN)
     def newestRun(String key) throws Throwable {
-        return this.execute(ACTION_NEWEST_RUN, key)
+        return this.execute(ACTION_NEWEST_RUN, key, TestCaseDTO.class)
     }
 
     /**
@@ -252,7 +234,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_OTHERS_RELATION_CASE)
     def othersRelationCase(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_CASE, dto)
+        this.execute(ACTION_OTHERS_RELATION_CASE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -262,7 +244,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_PROGRAM_TEST_CASE)
     def programTestCase(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_PROGRAM_TEST_CASE, dto)
+        this.execute(ACTION_PROGRAM_TEST_CASE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -272,7 +254,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_RECOVER)
     def recover(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, TestCaseDTO.class)
     }
 
     /**
@@ -282,7 +264,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_SET_LEVEL)
     def setLevel(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_SET_LEVEL, dto)
+        this.execute(ACTION_SET_LEVEL, dto, TestCaseDTO.class)
     }
 
     /**
@@ -292,7 +274,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_SET_MAINTENANCE)
     def setMaintenance(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_SET_MAINTENANCE, dto)
+        this.execute(ACTION_SET_MAINTENANCE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -302,7 +284,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_SET_STATE)
     def setState(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_SET_STATE, dto)
+        this.execute(ACTION_SET_STATE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -312,7 +294,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      */
     @DEAction(ACTION_TEST_CASE_RE_COUNTERS)
     def testCaseReCounters(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_TEST_CASE_RE_COUNTERS, dto)
+        this.execute(ACTION_TEST_CASE_RE_COUNTERS, dto, TestCaseDTO.class)
     }
 
     /**
@@ -321,8 +303,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TestCaseDTO> fetchDefault(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TestCaseDTO.class)
     }
 
     /**
@@ -331,8 +313,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IMPLEMENTATIONRESULTS)
-    def fetchImplementationResults(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IMPLEMENTATIONRESULTS, context)
+    Page<TestCaseDTO> fetchImplementationResults(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IMPLEMENTATIONRESULTS, context, TestCaseDTO.class)
     }
 
     /**
@@ -341,8 +323,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PERSONDISTRIBUTIONS)
-    def fetchPersonDistributions(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PERSONDISTRIBUTIONS, context)
+    Page<TestCaseDTO> fetchPersonDistributions(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PERSONDISTRIBUTIONS, context, TestCaseDTO.class)
     }
 
     /**
@@ -351,8 +333,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADVANCED_SEARCH)
-    def fetchAdvancedSearch(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADVANCED_SEARCH, context)
+    Page<TestCaseDTO> fetchAdvancedSearch(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADVANCED_SEARCH, context, TestCaseDTO.class)
     }
 
     /**
@@ -361,8 +343,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ASSESSMENTRESULT)
-    def fetchAssessmentResult(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ASSESSMENTRESULT, context)
+    Page<TestCaseDTO> fetchAssessmentResult(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ASSESSMENTRESULT, context, TestCaseDTO.class)
     }
 
     /**
@@ -371,8 +353,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_CHOOSE_CASE)
-    def fetchBaselineChooseCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_CHOOSE_CASE, context)
+    Page<TestCaseDTO> fetchBaselineChooseCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_CHOOSE_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -381,8 +363,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_PLAN_CASE)
-    def fetchBaselinePlanCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_PLAN_CASE, context)
+    Page<TestCaseDTO> fetchBaselinePlanCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_PLAN_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -391,8 +373,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<TestCaseDTO> fetchBiDetail(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, TestCaseDTO.class)
     }
 
     /**
@@ -401,8 +383,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<TestCaseBiSearchGroupDTO> fetchBiSearch(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, TestCaseBiSearchGroupDTO.class)
     }
 
     /**
@@ -411,8 +393,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CASEPERSON)
-    def fetchCasePerson(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CASEPERSON, context)
+    Page<TestCaseDTO> fetchCasePerson(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CASEPERSON, context, TestCaseDTO.class)
     }
 
     /**
@@ -421,8 +403,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CASETYPE)
-    def fetchCaseType(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CASETYPE, context)
+    Page<TestCaseDTO> fetchCaseType(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CASETYPE, context, TestCaseDTO.class)
     }
 
     /**
@@ -431,8 +413,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHECK_REFRESH_DATA)
-    def fetchCheckRefreshData(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHECK_REFRESH_DATA, context)
+    Page<TestCaseDTO> fetchCheckRefreshData(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHECK_REFRESH_DATA, context, TestCaseDTO.class)
     }
 
     /**
@@ -441,8 +423,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_NOTIFY_MAINTENANCE)
-    def fetchCommentNotifyMaintenance(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_NOTIFY_MAINTENANCE, context)
+    Page<TestCaseMaintenanceDTO> fetchCommentNotifyMaintenance(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_NOTIFY_MAINTENANCE, context, TestCaseMaintenanceDTO.class)
     }
 
     /**
@@ -451,8 +433,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DAILYTENDENCIES)
-    def fetchDailyTendencies(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DAILYTENDENCIES, context)
+    Page<TestCaseDTO> fetchDailyTendencies(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DAILYTENDENCIES, context, TestCaseDTO.class)
     }
 
     /**
@@ -461,8 +443,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEGREEIMPORTANCE)
-    def fetchDegreeImportance(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEGREEIMPORTANCE, context)
+    Page<TestCaseDTO> fetchDegreeImportance(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEGREEIMPORTANCE, context, TestCaseDTO.class)
     }
 
     /**
@@ -471,8 +453,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<TestCaseDTO> fetchDeleted(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, TestCaseDTO.class)
     }
 
     /**
@@ -481,8 +463,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_EVERYDAYTEST)
-    def fetchEverydayTest(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EVERYDAYTEST, context)
+    Page<TestCaseDTO> fetchEverydayTest(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EVERYDAYTEST, context, TestCaseDTO.class)
     }
 
     /**
@@ -491,8 +473,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RELATION_TEST_CASE)
-    def fetchIdeaRelationTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RELATION_TEST_CASE, context)
+    Page<TestCaseDTO> fetchIdeaRelationTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RELATION_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -501,8 +483,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGN)
-    def fetchMyAssign(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGN, context)
+    Page<TestCaseDTO> fetchMyAssign(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGN, context, TestCaseDTO.class)
     }
 
     /**
@@ -511,8 +493,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGNEE_COUNT_TEST_CASE)
-    def fetchMyAssigneeCountTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGNEE_COUNT_TEST_CASE, context)
+    Page<TestCaseDTO> fetchMyAssigneeCountTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGNEE_COUNT_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -521,8 +503,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ATTENTION)
-    def fetchMyAttention(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ATTENTION, context)
+    Page<TestCaseDTO> fetchMyAttention(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ATTENTION, context, TestCaseDTO.class)
     }
 
     /**
@@ -531,8 +513,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_CREATED)
-    def fetchMyCreated(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_CREATED, context)
+    Page<TestCaseDTO> fetchMyCreated(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_CREATED, context, TestCaseDTO.class)
     }
 
     /**
@@ -541,8 +523,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_FILTER)
-    def fetchMyFilter(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_FILTER, context)
+    Page<TestCaseDTO> fetchMyFilter(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_FILTER, context, TestCaseDTO.class)
     }
 
     /**
@@ -551,8 +533,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_SUMMARY_CASE)
-    def fetchMySummaryCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_SUMMARY_CASE, context)
+    Page<TestCaseDTO> fetchMySummaryCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SUMMARY_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -561,8 +543,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<TestCaseDTO> fetchNormal(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, TestCaseDTO.class)
     }
 
     /**
@@ -571,8 +553,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOSUITE_TEST_CASE)
-    def fetchNosuiteTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOSUITE_TEST_CASE, context)
+    Page<TestCaseDTO> fetchNosuiteTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOSUITE_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -581,8 +563,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_ADD_CASE)
-    def fetchNotAddCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_ADD_CASE, context)
+    Page<TestCaseDTO> fetchNotAddCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_ADD_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -591,8 +573,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_EXSISTS_RELATION)
-    def fetchNotExsistsRelation(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_EXSISTS_RELATION, context)
+    Page<TestCaseDTO> fetchNotExsistsRelation(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_EXSISTS_RELATION, context, TestCaseDTO.class)
     }
 
     /**
@@ -601,8 +583,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOTIFY_ASSIGNEE)
-    def fetchNotifyAssignee(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context)
+    Page<TestCaseDTO> fetchNotifyAssignee(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context, TestCaseDTO.class)
     }
 
     /**
@@ -611,8 +593,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRIORITYDISTRIBUTIONS)
-    def fetchPriorityDistributions(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRIORITYDISTRIBUTIONS, context)
+    Page<TestCaseDTO> fetchPriorityDistributions(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRIORITYDISTRIBUTIONS, context, TestCaseDTO.class)
     }
 
     /**
@@ -621,8 +603,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROGRAM_ANALYZE)
-    def fetchProgramAnalyze(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROGRAM_ANALYZE, context)
+    Page<TestCaseDTO> fetchProgramAnalyze(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROGRAM_ANALYZE, context, TestCaseDTO.class)
     }
 
     /**
@@ -631,8 +613,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<TestCaseDTO> fetchReader(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, TestCaseDTO.class)
     }
 
     /**
@@ -641,8 +623,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_TEST_CASE)
-    def fetchRecentTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_TEST_CASE, context)
+    Page<TestCaseDTO> fetchRecentTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -651,8 +633,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELATION_TEST_CASE)
-    def fetchRelationTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELATION_TEST_CASE, context)
+    Page<TestCaseDTO> fetchRelationTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELATION_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -661,8 +643,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_REVIEW_DATA)
-    def fetchReviewData(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REVIEW_DATA, context)
+    Page<TestCaseDTO> fetchReviewData(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REVIEW_DATA, context, TestCaseDTO.class)
     }
 
     /**
@@ -671,8 +653,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_THIS_SUITE_TEST_CASE)
-    def fetchSuitesTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_THIS_SUITE_TEST_CASE, context)
+    Page<TestCaseDTO> fetchSuitesTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_THIS_SUITE_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**
@@ -681,8 +663,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_MANEUVER_CONTEXT)
-    def fetchTestCaseManeuverContext(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_MANEUVER_CONTEXT, context)
+    Page<TestCaseDTO> fetchTestCaseManeuverContext(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_MANEUVER_CONTEXT, context, TestCaseDTO.class)
     }
 
     /**
@@ -691,8 +673,8 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_RELATION_TEST_CASE)
-    def fetchWorkItemRelationTestCase(TestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_RELATION_TEST_CASE, context)
+    Page<TestCaseDTO> fetchWorkItemRelationTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_RELATION_TEST_CASE, context, TestCaseDTO.class)
     }
 
 }

@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,DynaPortletSettingDTO,DynaPortletSettingFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static DynaPortletSetting _instance;
+    private static DynaPortletSetting _instance
     void setInstance(DynaPortletSetting instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DynaPortletSettingDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DynaPortletSettingDTO create(DynaPortletSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DynaPortletSettingDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DynaPortletSettingDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DynaPortletSettingDTO update(DynaPortletSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DynaPortletSettingDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DynaPortletSettingDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DynaPortletSettingDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DynaPortletSettingDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DynaPortletSettingDTO getDraft(DynaPortletSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DynaPortletSettingDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DynaPortletSettingDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DynaPortletSettingDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DynaPortletSettingDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DynaPortletSettingDTO save(DynaPortletSettingDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DynaPortletSettingDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class DynaPortletSetting extends GroovyDataEntityRuntime<DynaPortletSetting,Dyna
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DynaPortletSettingFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DynaPortletSettingDTO> fetchDefault(DynaPortletSettingFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DynaPortletSettingDTO.class)
     }
 
 }

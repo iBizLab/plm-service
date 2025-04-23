@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,ReviewStageFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ReviewStage _instance;
+    private static ReviewStage _instance
     void setInstance(ReviewStage instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ReviewStageDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ReviewStageDTO create(ReviewStageDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ReviewStageDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ReviewStageDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ReviewStageDTO update(ReviewStageDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ReviewStageDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ReviewStageDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ReviewStageDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ReviewStageDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ReviewStageDTO getDraft(ReviewStageDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ReviewStageDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ReviewStageDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ReviewStageDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ReviewStageDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ReviewStageDTO save(ReviewStageDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ReviewStageDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ReviewStageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ReviewStageDTO> fetchDefault(ReviewStageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ReviewStageDTO.class)
     }
 
 }

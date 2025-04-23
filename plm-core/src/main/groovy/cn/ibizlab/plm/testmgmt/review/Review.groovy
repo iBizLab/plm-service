@@ -16,20 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_REVIEW_CONTENT = "add_review_content"
     public static final String ACTION_CHANGE_REVIEW_STAGE = "change_review_stage"
     public static final String ACTION_COMPLETED_REVIEW = "completed_review"
     public static final String ACTION_FILL_CUREENT_STAGE_INFO = "fill_cureent_stage_info"
     public static final String ACTION_FILL_GUIDELINE = "fill_guideline"
     public static final String ACTION_FILL_STAGE_REVIEWER = "fill_stage_reviewer"
-    public static final String ACTION_GET_ATTENTION = "get_attention"
     public static final String ACTION_REPEAL_REVIEW = "repeal_review"
     public static final String ACTION_SUBMIT_REVIEW = "submit_review"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -37,7 +29,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
     public static final String DATASET_BI_SEARCH = "bi_search"
     public static final String DATASET_MY_ATTENTION = "my_attention"
     public static final String DATASET_MY_REVIEWED = "my_reviewed"
-    private static Review _instance;
+    private static Review _instance
     void setInstance(Review instance) {
         _instance = instance
     }
@@ -51,8 +43,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ReviewDTO create(ReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ReviewDTO.class)
     }
 
     /**
@@ -61,8 +53,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ReviewDTO update(ReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ReviewDTO.class)
     }
 
     /**
@@ -71,8 +63,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -81,8 +73,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ReviewDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ReviewDTO.class)
     }
 
     /**
@@ -91,8 +83,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ReviewDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ReviewDTO getDraft(ReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ReviewDTO.class)
     }
 
     /**
@@ -101,8 +93,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ReviewDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ReviewDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -111,8 +103,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ReviewDTO save(ReviewDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ReviewDTO.class)
     }
 
     /**
@@ -122,7 +114,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_ADD_REVIEW_CONTENT)
     def addReviewContent(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_REVIEW_CONTENT, dto)
+        this.execute(ACTION_ADD_REVIEW_CONTENT, dto, ReviewDTO.class)
     }
 
     /**
@@ -132,7 +124,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_CHANGE_REVIEW_STAGE)
     def changeReviewStage(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_REVIEW_STAGE, dto)
+        this.execute(ACTION_CHANGE_REVIEW_STAGE, dto, ReviewDTO.class)
     }
 
     /**
@@ -142,7 +134,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_COMPLETED_REVIEW)
     def completedReview(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_COMPLETED_REVIEW, dto)
+        this.execute(ACTION_COMPLETED_REVIEW, dto, ReviewDTO.class)
     }
 
     /**
@@ -152,7 +144,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_FILL_CUREENT_STAGE_INFO)
     def fillCureentStageInfo(ReviewDTO dto) throws Throwable {
-        return this.execute(ACTION_FILL_CUREENT_STAGE_INFO, dto)
+        return this.execute(ACTION_FILL_CUREENT_STAGE_INFO, dto, ReviewDTO.class)
     }
 
     /**
@@ -162,7 +154,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_FILL_GUIDELINE)
     def fillGuideline(ReviewDTO dto) throws Throwable {
-        return this.execute(ACTION_FILL_GUIDELINE, dto)
+        return this.execute(ACTION_FILL_GUIDELINE, dto, ReviewDTO.class)
     }
 
     /**
@@ -172,17 +164,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_FILL_STAGE_REVIEWER)
     def fillStageReviewer(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_FILL_STAGE_REVIEWER, dto)
-    }
-
-    /**
-     * 行为：获取关注人 实际功能
-     * @param key
-     * @throws Throwable
-     */
-    @DEAction(ACTION_GET_ATTENTION)
-    def getAttention(String key) throws Throwable {
-        return this.execute(ACTION_GET_ATTENTION, key)
+        this.execute(ACTION_FILL_STAGE_REVIEWER, dto, ReviewDTO.class)
     }
 
     /**
@@ -192,7 +174,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_REPEAL_REVIEW)
     def repealReview(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_REPEAL_REVIEW, dto)
+        this.execute(ACTION_REPEAL_REVIEW, dto, ReviewDTO.class)
     }
 
     /**
@@ -202,7 +184,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      */
     @DEAction(ACTION_SUBMIT_REVIEW)
     def submitReview(ReviewDTO dto) throws Throwable {
-        this.execute(ACTION_SUBMIT_REVIEW, dto)
+        this.execute(ACTION_SUBMIT_REVIEW, dto, ReviewDTO.class)
     }
 
     /**
@@ -211,8 +193,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ReviewFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ReviewDTO> fetchDefault(ReviewFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ReviewDTO.class)
     }
 
     /**
@@ -221,8 +203,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MYTODO)
-    def fetchMyTodo(ReviewFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MYTODO, context)
+    Page<ReviewDTO> fetchMyTodo(ReviewFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MYTODO, context, ReviewDTO.class)
     }
 
     /**
@@ -231,8 +213,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(ReviewFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<ReviewBiSearchGroupDTO> fetchBiSearch(ReviewFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, ReviewBiSearchGroupDTO.class)
     }
 
     /**
@@ -241,8 +223,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ATTENTION)
-    def fetchMyAttention(ReviewFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ATTENTION, context)
+    Page<ReviewDTO> fetchMyAttention(ReviewFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ATTENTION, context, ReviewDTO.class)
     }
 
     /**
@@ -251,8 +233,8 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_REVIEWED)
-    def fetchMyReviewed(ReviewFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_REVIEWED, context)
+    Page<ReviewDTO> fetchMyReviewed(ReviewFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_REVIEWED, context, ReviewDTO.class)
     }
 
 }

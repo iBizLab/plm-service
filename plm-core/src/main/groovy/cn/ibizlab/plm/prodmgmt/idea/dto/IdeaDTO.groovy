@@ -317,6 +317,16 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
      */
     @JsonProperty("update_time")
     Timestamp updateTime
+    /**
+     * 「用户标记」
+     */
+    @JsonProperty("user_tag")
+    String userTag
+    /**
+     * 「用户标记2」
+     */
+    @JsonProperty("user_tag2")
+    String userTag2
 
     /**
      * 设置「编号」值
@@ -906,6 +916,26 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
      */
     IdeaDTO setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记」值
+     * @param val
+     */
+    IdeaDTO setUserTag(String userTag) {
+        this.userTag = userTag
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记2」值
+     * @param val
+     */
+    IdeaDTO setUserTag2(String userTag2) {
+        this.userTag2 = userTag2
         return this
     }
 

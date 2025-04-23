@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,ParameterFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Parameter _instance;
+    private static Parameter _instance
     void setInstance(Parameter instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ParameterDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ParameterDTO create(ParameterDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ParameterDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ParameterDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ParameterDTO update(ParameterDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ParameterDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ParameterDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ParameterDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ParameterDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ParameterDTO getDraft(ParameterDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ParameterDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ParameterDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ParameterDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ParameterDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ParameterDTO save(ParameterDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ParameterDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,Parameter
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ParameterFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ParameterDTO> fetchDefault(ParameterFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ParameterDTO.class)
     }
 
 }

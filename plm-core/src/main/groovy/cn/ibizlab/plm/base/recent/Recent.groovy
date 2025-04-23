@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MY_CHARGE_ENTRY = "my_charge_entry"
     public static final String ACTION_MY_CREATED_ENTRY = "my_created_entry"
     public static final String ACTION_MY_SUMMARY = "my_summary"
@@ -46,7 +39,7 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
     public static final String DATASET_RECENT_WORK_ITEM_BUG = "recent_work_item_bug"
     public static final String DATASET_RECENT_WORK_ITEM_DEPENDENCY = "recent_work_item_dependency"
     public static final String DATASET_USER = "user"
-    private static Recent _instance;
+    private static Recent _instance
     void setInstance(Recent instance) {
         _instance = instance
     }
@@ -60,8 +53,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(RecentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    RecentDTO create(RecentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, RecentDTO.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(RecentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    RecentDTO update(RecentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, RecentDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    RecentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, RecentDTO.class)
     }
 
     /**
@@ -100,8 +93,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(RecentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    RecentDTO getDraft(RecentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, RecentDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(RecentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(RecentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -120,8 +113,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(RecentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    RecentDTO save(RecentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, RecentDTO.class)
     }
 
     /**
@@ -131,7 +124,7 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      */
     @DEAction(ACTION_MY_CHARGE_ENTRY)
     def myChargeEntry(RecentDTO dto) throws Throwable {
-        return this.execute(ACTION_MY_CHARGE_ENTRY, dto)
+        return this.execute(ACTION_MY_CHARGE_ENTRY, dto, RecentDTO.class)
     }
 
     /**
@@ -141,7 +134,7 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      */
     @DEAction(ACTION_MY_CREATED_ENTRY)
     def myCreatedEntry(RecentDTO dto) throws Throwable {
-        return this.execute(ACTION_MY_CREATED_ENTRY, dto)
+        return this.execute(ACTION_MY_CREATED_ENTRY, dto, RecentDTO.class)
     }
 
     /**
@@ -151,7 +144,7 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      */
     @DEAction(ACTION_MY_SUMMARY)
     def mySummary(RecentDTO dto) throws Throwable {
-        return this.execute(ACTION_MY_SUMMARY, dto)
+        return this.execute(ACTION_MY_SUMMARY, dto, RecentDTO.class)
     }
 
     /**
@@ -160,8 +153,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<RecentDTO> fetchDefault(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, RecentDTO.class)
     }
 
     /**
@@ -170,8 +163,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_HOME_RECENT_ACCESS)
-    def fetchMobHomeRecentAccess(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_HOME_RECENT_ACCESS, context)
+    Page<RecentDTO> fetchMobHomeRecentAccess(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_HOME_RECENT_ACCESS, context, RecentDTO.class)
     }
 
     /**
@@ -180,8 +173,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ONLY_TEN_ACCESS_USE)
-    def fetchOnlyTenAccessUse(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ONLY_TEN_ACCESS_USE, context)
+    Page<RecentDTO> fetchOnlyTenAccessUse(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ONLY_TEN_ACCESS_USE, context, RecentDTO.class)
     }
 
     /**
@@ -190,8 +183,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_ACCESS)
-    def fetchRecentAccess(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_ACCESS, context)
+    Page<RecentDTO> fetchRecentAccess(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_ACCESS, context, RecentDTO.class)
     }
 
     /**
@@ -200,8 +193,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_ACCESS_LOGIC)
-    def fetchRecentAccessLogic(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_ACCESS_LOGIC, context)
+    Page<RecentDTO> fetchRecentAccessLogic(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_ACCESS_LOGIC, context, RecentDTO.class)
     }
 
     /**
@@ -210,8 +203,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_CURPRODUCT_TICKET)
-    def fetchRecentCurproductTicket(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_CURPRODUCT_TICKET, context)
+    Page<RecentDTO> fetchRecentCurproductTicket(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_CURPRODUCT_TICKET, context, RecentDTO.class)
     }
 
     /**
@@ -220,8 +213,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_CURPROJECT_CHILD_WORK_ITEM)
-    def fetchRecentCurprojectChildWorkItem(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_CURPROJECT_CHILD_WORK_ITEM, context)
+    Page<RecentDTO> fetchRecentCurprojectChildWorkItem(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_CURPROJECT_CHILD_WORK_ITEM, context, RecentDTO.class)
     }
 
     /**
@@ -230,8 +223,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_CURPROJECT_WORK_ITEM)
-    def fetchRecentCurprojectWorkItem(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_CURPROJECT_WORK_ITEM, context)
+    Page<RecentDTO> fetchRecentCurprojectWorkItem(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_CURPROJECT_WORK_ITEM, context, RecentDTO.class)
     }
 
     /**
@@ -240,8 +233,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_IDEA)
-    def fetchRecentIdea(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_IDEA, context)
+    Page<RecentDTO> fetchRecentIdea(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_IDEA, context, RecentDTO.class)
     }
 
     /**
@@ -250,8 +243,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_PAGE)
-    def fetchRecentPage(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_PAGE, context)
+    Page<RecentDTO> fetchRecentPage(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_PAGE, context, RecentDTO.class)
     }
 
     /**
@@ -260,8 +253,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_PROJECT)
-    def fetchRecentProject(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_PROJECT, context)
+    Page<RecentDTO> fetchRecentProject(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_PROJECT, context, RecentDTO.class)
     }
 
     /**
@@ -270,8 +263,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_TEST_CASE)
-    def fetchRecentTestCase(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_TEST_CASE, context)
+    Page<RecentDTO> fetchRecentTestCase(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_TEST_CASE, context, RecentDTO.class)
     }
 
     /**
@@ -280,8 +273,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_TEST_CASE_INDEX)
-    def fetchRecentTestCaseIndex(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_TEST_CASE_INDEX, context)
+    Page<RecentDTO> fetchRecentTestCaseIndex(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_TEST_CASE_INDEX, context, RecentDTO.class)
     }
 
     /**
@@ -290,8 +283,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_TICKET)
-    def fetchRecentTicket(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_TICKET, context)
+    Page<RecentDTO> fetchRecentTicket(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_TICKET, context, RecentDTO.class)
     }
 
     /**
@@ -300,8 +293,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_USE)
-    def fetchRecentUse(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_USE, context)
+    Page<RecentDTO> fetchRecentUse(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_USE, context, RecentDTO.class)
     }
 
     /**
@@ -310,8 +303,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_WORK_ITEM)
-    def fetchRecentWorkItem(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_WORK_ITEM, context)
+    Page<RecentDTO> fetchRecentWorkItem(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_WORK_ITEM, context, RecentDTO.class)
     }
 
     /**
@@ -320,8 +313,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_WORK_ITEM_AND_NOBUG)
-    def fetchRecentWorkItemAndNobug(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_WORK_ITEM_AND_NOBUG, context)
+    Page<RecentDTO> fetchRecentWorkItemAndNobug(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_WORK_ITEM_AND_NOBUG, context, RecentDTO.class)
     }
 
     /**
@@ -330,8 +323,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_WORK_ITEM_BUG)
-    def fetchRecentWorkItemBug(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_WORK_ITEM_BUG, context)
+    Page<RecentDTO> fetchRecentWorkItemBug(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_WORK_ITEM_BUG, context, RecentDTO.class)
     }
 
     /**
@@ -340,8 +333,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_WORK_ITEM_DEPENDENCY)
-    def fetchRecentWorkItemDependency(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_WORK_ITEM_DEPENDENCY, context)
+    Page<RecentDTO> fetchRecentWorkItemDependency(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_WORK_ITEM_DEPENDENCY, context, RecentDTO.class)
     }
 
     /**
@@ -350,8 +343,8 @@ class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<RecentDTO> fetchUser(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, RecentDTO.class)
     }
 
 }

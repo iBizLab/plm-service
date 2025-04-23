@@ -17,16 +17,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,OrganizationFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ROOT = "root"
-    private static Organization _instance;
+    private static Organization _instance
     void setInstance(Organization instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_CREATE)
-    def create(OrganizationDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    OrganizationDTO create(OrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, OrganizationDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_UPDATE)
-    def update(OrganizationDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    OrganizationDTO update(OrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, OrganizationDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    OrganizationDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, OrganizationDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_GETDRAFT)
-    def getDraft(OrganizationDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    OrganizationDTO getDraft(OrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, OrganizationDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_CHECKKEY)
-    def checkKey(OrganizationDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(OrganizationDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEAction(ACTION_SAVE)
-    def save(OrganizationDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    OrganizationDTO save(OrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, OrganizationDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(OrganizationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<OrganizationDTO> fetchDefault(OrganizationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, OrganizationDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class Organization extends GroovyDataEntityRuntime<Organization,OrganizationDTO,
      * @throws Throwable
      */
     //@DEDataSet(DATASET_ROOT)
-    def fetchRoot(OrganizationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ROOT, context)
+    Page<OrganizationDTO> fetchRoot(OrganizationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ROOT, context, OrganizationDTO.class)
     }
 
 }

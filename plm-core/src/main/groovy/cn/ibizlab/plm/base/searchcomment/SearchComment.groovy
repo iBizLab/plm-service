@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentDTO,SearchCommentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
     public static final String DATASET_RELATION = "relation"
-    private static SearchComment _instance;
+    private static SearchComment _instance
     void setInstance(SearchComment instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SearchCommentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SearchCommentDTO create(SearchCommentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SearchCommentDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SearchCommentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SearchCommentDTO update(SearchCommentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SearchCommentDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SearchCommentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SearchCommentDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SearchCommentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SearchCommentDTO getDraft(SearchCommentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SearchCommentDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SearchCommentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SearchCommentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SearchCommentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SearchCommentDTO save(SearchCommentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SearchCommentDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SearchCommentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SearchCommentDTO> fetchDefault(SearchCommentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SearchCommentDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADVANCED_SEARCH)
-    def fetchAdvancedSearch(SearchCommentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADVANCED_SEARCH, context)
+    Page<SearchCommentDTO> fetchAdvancedSearch(SearchCommentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADVANCED_SEARCH, context, SearchCommentDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentD
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELATION)
-    def fetchRelation(SearchCommentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELATION, context)
+    Page<SearchCommentDTO> fetchRelation(SearchCommentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELATION, context, SearchCommentDTO.class)
     }
 
 }

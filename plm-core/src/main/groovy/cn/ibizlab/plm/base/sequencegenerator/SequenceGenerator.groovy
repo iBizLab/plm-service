@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,SequenceGeneratorDTO,SequenceGeneratorFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static SequenceGenerator _instance;
+    private static SequenceGenerator _instance
     void setInstance(SequenceGenerator instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SequenceGeneratorDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SequenceGeneratorDTO create(SequenceGeneratorDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SequenceGeneratorDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SequenceGeneratorDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SequenceGeneratorDTO update(SequenceGeneratorDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SequenceGeneratorDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SequenceGeneratorDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SequenceGeneratorDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SequenceGeneratorDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SequenceGeneratorDTO getDraft(SequenceGeneratorDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SequenceGeneratorDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SequenceGeneratorDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SequenceGeneratorDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SequenceGeneratorDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SequenceGeneratorDTO save(SequenceGeneratorDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SequenceGeneratorDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,Sequen
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SequenceGeneratorFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SequenceGeneratorDTO> fetchDefault(SequenceGeneratorFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SequenceGeneratorDTO.class)
     }
 
 }

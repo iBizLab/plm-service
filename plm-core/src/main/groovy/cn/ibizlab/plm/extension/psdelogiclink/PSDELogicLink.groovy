@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDTO,PSDELogicLinkFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_CURITEMBYDSCNODE = "CurItemByDscNode"
     public static final String DATASET_CURITEMBYSRCNODE = "CurItemBySrcNode"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSDELogicLink _instance;
+    private static PSDELogicLink _instance
     void setInstance(PSDELogicLink instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSDELogicLinkDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSDELogicLinkDTO create(PSDELogicLinkDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSDELogicLinkDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSDELogicLinkDTO update(PSDELogicLinkDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSDELogicLinkDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSDELogicLinkDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSDELogicLinkDTO getDraft(PSDELogicLinkDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSDELogicLinkDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSDELogicLinkDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSDELogicLinkDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSDELogicLinkDTO save(PSDELogicLinkDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -110,8 +103,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CURITEMBYDSCNODE)
-    def fetchCurItemByDscNode(PSDELogicLinkFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CURITEMBYDSCNODE, context)
+    Page<PSDELogicLinkDTO> fetchCurItemByDscNode(PSDELogicLinkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CURITEMBYDSCNODE, context, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CURITEMBYSRCNODE)
-    def fetchCurItemBySrcNode(PSDELogicLinkFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CURITEMBYSRCNODE, context)
+    Page<PSDELogicLinkDTO> fetchCurItemBySrcNode(PSDELogicLinkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CURITEMBYSRCNODE, context, PSDELogicLinkDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class PSDELogicLink extends GroovyPSModelDERuntime<PSDELogicLink,PSDELogicLinkDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSDELogicLinkFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSDELogicLinkDTO> fetchDefault(PSDELogicLinkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSDELogicLinkDTO.class)
     }
 
 }

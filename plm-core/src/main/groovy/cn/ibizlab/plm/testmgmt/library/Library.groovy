@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
@@ -45,7 +38,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
     public static final String DATASET_QUICK_USER = "quick_user"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_USER = "user"
-    private static Library _instance;
+    private static Library _instance
     void setInstance(Library instance) {
         _instance = instance
     }
@@ -59,8 +52,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    LibraryDTO create(LibraryDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, LibraryDTO.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    LibraryDTO update(LibraryDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, LibraryDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    LibraryDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, LibraryDTO.class)
     }
 
     /**
@@ -99,8 +92,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(LibraryDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    LibraryDTO getDraft(LibraryDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, LibraryDTO.class)
     }
 
     /**
@@ -109,8 +102,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(LibraryDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(LibraryDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -119,8 +112,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    LibraryDTO save(LibraryDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, LibraryDTO.class)
     }
 
     /**
@@ -130,7 +123,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, LibraryDTO.class)
     }
 
     /**
@@ -140,7 +133,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, LibraryDTO.class)
     }
 
     /**
@@ -150,7 +143,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_CHANGE_ADMIN_ROLE)
     def changeAdminRole(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto)
+        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto, LibraryDTO.class)
     }
 
     /**
@@ -160,7 +153,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_DELETE)
     def delete(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, LibraryDTO.class)
     }
 
     /**
@@ -170,7 +163,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, LibraryDTO.class)
     }
 
     /**
@@ -180,7 +173,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_LIBRARY_INDEX_ADDON_COUNTER)
     def libraryIndexAddonCounter(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_LIBRARY_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_LIBRARY_INDEX_ADDON_COUNTER, dto, LibraryDTO.class)
     }
 
     /**
@@ -190,7 +183,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_MOVE_LIBRARY)
     def moveLibrary(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_LIBRARY, dto)
+        this.execute(ACTION_MOVE_LIBRARY, dto, LibraryDTO.class)
     }
 
     /**
@@ -200,7 +193,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_RECOVER)
     def recover(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, LibraryDTO.class)
     }
 
     /**
@@ -210,7 +203,7 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(LibraryDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, LibraryDTO.class)
     }
 
     /**
@@ -219,8 +212,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<LibraryDTO> fetchDefault(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, LibraryDTO.class)
     }
 
     /**
@@ -229,8 +222,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<LibraryDTO> fetchAdmin(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, LibraryDTO.class)
     }
 
     /**
@@ -239,8 +232,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<LibraryDTO> fetchArchived(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, LibraryDTO.class)
     }
 
     /**
@@ -249,8 +242,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<LibraryDTO> fetchDeleted(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, LibraryDTO.class)
     }
 
     /**
@@ -259,8 +252,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_FAVORITE)
-    def fetchFavorite(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FAVORITE, context)
+    Page<LibraryDTO> fetchFavorite(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FAVORITE, context, LibraryDTO.class)
     }
 
     /**
@@ -269,8 +262,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MAIN)
-    def fetchMain(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MAIN, context)
+    Page<LibraryDTO> fetchMain(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MAIN, context, LibraryDTO.class)
     }
 
     /**
@@ -279,8 +272,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_MAIN)
-    def fetchMobMain(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_MAIN, context)
+    Page<LibraryDTO> fetchMobMain(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_MAIN, context, LibraryDTO.class)
     }
 
     /**
@@ -289,8 +282,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<LibraryDTO> fetchNormal(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, LibraryDTO.class)
     }
 
     /**
@@ -299,8 +292,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_RELATION_LIBRARY)
-    def fetchProjectRelationLibrary(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_RELATION_LIBRARY, context)
+    Page<LibraryDTO> fetchProjectRelationLibrary(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_RELATION_LIBRARY, context, LibraryDTO.class)
     }
 
     /**
@@ -309,8 +302,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK)
-    def fetchQuick(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK, context)
+    Page<LibraryDTO> fetchQuick(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK, context, LibraryDTO.class)
     }
 
     /**
@@ -319,8 +312,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK_USER)
-    def fetchQuickUser(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK_USER, context)
+    Page<LibraryDTO> fetchQuickUser(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK_USER, context, LibraryDTO.class)
     }
 
     /**
@@ -329,8 +322,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<LibraryDTO> fetchReader(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, LibraryDTO.class)
     }
 
     /**
@@ -339,8 +332,8 @@ class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(LibraryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<LibraryDTO> fetchUser(LibraryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, LibraryDTO.class)
     }
 
 }

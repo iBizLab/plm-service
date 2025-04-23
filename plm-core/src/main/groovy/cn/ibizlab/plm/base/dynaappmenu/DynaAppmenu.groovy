@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,DynaAppmenuFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static DynaAppmenu _instance;
+    private static DynaAppmenu _instance
     void setInstance(DynaAppmenu instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DynaAppmenuDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DynaAppmenuDTO create(DynaAppmenuDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DynaAppmenuDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DynaAppmenuDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DynaAppmenuDTO update(DynaAppmenuDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DynaAppmenuDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DynaAppmenuDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DynaAppmenuDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DynaAppmenuDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DynaAppmenuDTO getDraft(DynaAppmenuDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DynaAppmenuDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DynaAppmenuDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DynaAppmenuDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DynaAppmenuDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DynaAppmenuDTO save(DynaAppmenuDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DynaAppmenuDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,Dyn
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DynaAppmenuFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DynaAppmenuDTO> fetchDefault(DynaAppmenuFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DynaAppmenuDTO.class)
     }
 
 }

@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,SpaceMemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String ACTION_CHOOSE_POSITION = "choose_position"
     public static final String ACTION_MOB_CREATE_SPACE_MEMBER = "mob_create_space_member"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_SPACE = "cur_space"
     public static final String DATASET_NO_ATTENTION = "no_attention"
-    private static SpaceMember _instance;
+    private static SpaceMember _instance
     void setInstance(SpaceMember instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SpaceMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SpaceMemberDTO create(SpaceMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SpaceMemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SpaceMemberDTO update(SpaceMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SpaceMemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SpaceMemberDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SpaceMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SpaceMemberDTO getDraft(SpaceMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SpaceMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SpaceMemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -103,8 +96,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SpaceMemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SpaceMemberDTO save(SpaceMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -114,7 +107,7 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(SpaceMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -124,7 +117,7 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      */
     @DEAction(ACTION_CHOOSE_POSITION)
     def choosePosition(SpaceMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHOOSE_POSITION, dto)
+        this.execute(ACTION_CHOOSE_POSITION, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -134,7 +127,7 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      */
     @DEAction(ACTION_MOB_CREATE_SPACE_MEMBER)
     def mobCreateSpaceMember(SpaceMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_MOB_CREATE_SPACE_MEMBER, dto)
+        return this.execute(ACTION_MOB_CREATE_SPACE_MEMBER, dto, SpaceMemberDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SpaceMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SpaceMemberDTO> fetchDefault(SpaceMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SpaceMemberDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_SPACE)
-    def fetchCurSpace(SpaceMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_SPACE, context)
+    Page<SpaceMemberDTO> fetchCurSpace(SpaceMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_SPACE, context, SpaceMemberDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class SpaceMember extends GroovyDataEntityRuntime<SpaceMember,SpaceMemberDTO,Spa
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_ATTENTION)
-    def fetchNoAttention(SpaceMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_ATTENTION, context)
+    Page<SpaceMemberDTO> fetchNoAttention(SpaceMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_ATTENTION, context, SpaceMemberDTO.class)
     }
 
 }

@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CREATE_WORKLOAD = "create_workload"
     public static final String ACTION_FILL_WORKLOAD_DATA = "fill_workload_data"
     public static final String ACTION_GET_REGISTER_WORKLOAD = "get_register_workload"
@@ -58,7 +51,7 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
     public static final String DATASET_WORK_ITEM_DIMENSION = "work_item_dimension"
     public static final String DATASET_WORK_ITEM_MANAGEMENT_DIMENSION = "work_item_management_dimension"
     public static final String DATASET_WORK_ITEM_WORKLOAD = "work_item_workload"
-    private static Workload _instance;
+    private static Workload _instance
     void setInstance(Workload instance) {
         _instance = instance
     }
@@ -72,8 +65,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(WorkloadDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    WorkloadDTO create(WorkloadDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, WorkloadDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(WorkloadDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    WorkloadDTO update(WorkloadDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, WorkloadDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -102,8 +95,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    WorkloadDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, WorkloadDTO.class)
     }
 
     /**
@@ -112,8 +105,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(WorkloadDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    WorkloadDTO getDraft(WorkloadDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, WorkloadDTO.class)
     }
 
     /**
@@ -122,8 +115,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(WorkloadDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(WorkloadDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -132,8 +125,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(WorkloadDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    WorkloadDTO save(WorkloadDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, WorkloadDTO.class)
     }
 
     /**
@@ -143,7 +136,7 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      */
     @DEAction(ACTION_CREATE_WORKLOAD)
     def createWorkload(WorkloadDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE_WORKLOAD, dto)
+        this.execute(ACTION_CREATE_WORKLOAD, dto, WorkloadDTO.class)
     }
 
     /**
@@ -153,7 +146,7 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      */
     @DEAction(ACTION_FILL_WORKLOAD_DATA)
     def fillWorkloadData(WorkloadDTO dto) throws Throwable {
-        this.execute(ACTION_FILL_WORKLOAD_DATA, dto)
+        this.execute(ACTION_FILL_WORKLOAD_DATA, dto, WorkloadDTO.class)
     }
 
     /**
@@ -163,7 +156,7 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      */
     @DEAction(ACTION_GET_REGISTER_WORKLOAD)
     def getRegisterWorkload(String key) throws Throwable {
-        return this.execute(ACTION_GET_REGISTER_WORKLOAD, key)
+        return this.execute(ACTION_GET_REGISTER_WORKLOAD, key, WorkloadDTO.class)
     }
 
     /**
@@ -173,7 +166,7 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      */
     @DEAction(ACTION_UPDATE_WORKLOAD)
     def updateWorkload(WorkloadDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE_WORKLOAD, dto)
+        this.execute(ACTION_UPDATE_WORKLOAD, dto, WorkloadDTO.class)
     }
 
     /**
@@ -182,8 +175,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<WorkloadDTO> fetchDefault(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, WorkloadDTO.class)
     }
 
     /**
@@ -192,8 +185,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<WorkloadDTO> fetchBiDetail(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, WorkloadDTO.class)
     }
 
     /**
@@ -202,8 +195,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<WorkloadBiSearchGroupDTO> fetchBiSearch(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, WorkloadBiSearchGroupDTO.class)
     }
 
     /**
@@ -212,8 +205,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CALENDAR)
-    def fetchCalendar(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CALENDAR, context)
+    Page<WorkloadDTO> fetchCalendar(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CALENDAR, context, WorkloadDTO.class)
     }
 
     /**
@@ -222,8 +215,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_GROUP_MEMBER_DIMENSION)
-    def fetchGroupMemberDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_GROUP_MEMBER_DIMENSION, context)
+    Page<WorkloadDTO> fetchGroupMemberDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_GROUP_MEMBER_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -232,8 +225,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_DIMENSION)
-    def fetchIdeaDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_DIMENSION, context)
+    Page<WorkloadDTO> fetchIdeaDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -242,8 +235,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_MANAGEMENT_DIMENSION)
-    def fetchIdeaManagementDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_MANAGEMENT_DIMENSION, context)
+    Page<WorkloadDTO> fetchIdeaManagementDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_MANAGEMENT_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -252,8 +245,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_WORKLOAD)
-    def fetchIdeaWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_WORKLOAD, context)
+    Page<WorkloadDTO> fetchIdeaWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -262,8 +255,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_LOG)
-    def fetchLog(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_LOG, context)
+    Page<WorkloadDTO> fetchLog(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_LOG, context, WorkloadDTO.class)
     }
 
     /**
@@ -272,8 +265,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MEMBER_DIMENSION)
-    def fetchMemberDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MEMBER_DIMENSION, context)
+    Page<WorkloadDTO> fetchMemberDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MEMBER_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -282,8 +275,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_CALENDAR)
-    def fetchMobCalendar(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_CALENDAR, context)
+    Page<WorkloadDTO> fetchMobCalendar(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_CALENDAR, context, WorkloadDTO.class)
     }
 
     /**
@@ -292,8 +285,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_CALENDAR)
-    def fetchMyCalendar(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_CALENDAR, context)
+    Page<WorkloadDTO> fetchMyCalendar(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_CALENDAR, context, WorkloadDTO.class)
     }
 
     /**
@@ -302,8 +295,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_IDEA_WORKLOAD)
-    def fetchMyIdeaWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_IDEA_WORKLOAD, context)
+    Page<WorkloadDTO> fetchMyIdeaWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_IDEA_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -312,8 +305,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_LOG)
-    def fetchMyLog(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_LOG, context)
+    Page<WorkloadDTO> fetchMyLog(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_LOG, context, WorkloadDTO.class)
     }
 
     /**
@@ -322,8 +315,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_MOB_LOG)
-    def fetchMyMobLog(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_MOB_LOG, context)
+    Page<WorkloadDTO> fetchMyMobLog(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_MOB_LOG, context, WorkloadDTO.class)
     }
 
     /**
@@ -332,8 +325,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_TEST_CASE_WORKLOAD)
-    def fetchMyTestCaseWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_TEST_CASE_WORKLOAD, context)
+    Page<WorkloadDTO> fetchMyTestCaseWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_TEST_CASE_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -342,8 +335,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_TYPE_OF)
-    def fetchMyTypeOf(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_TYPE_OF, context)
+    Page<WorkloadDTO> fetchMyTypeOf(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_TYPE_OF, context, WorkloadDTO.class)
     }
 
     /**
@@ -352,8 +345,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_WORK_ITEM_WORKLOAD)
-    def fetchMyWorkItemWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_WORK_ITEM_WORKLOAD, context)
+    Page<WorkloadDTO> fetchMyWorkItemWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_WORK_ITEM_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -362,8 +355,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_WORKLOAD)
-    def fetchMyWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_WORKLOAD, context)
+    Page<WorkloadDTO> fetchMyWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -372,8 +365,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_DIMENSION)
-    def fetchTestCaseDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_DIMENSION, context)
+    Page<WorkloadDTO> fetchTestCaseDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -382,8 +375,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_MANAGEMENT_DIMENSION)
-    def fetchTestCaseManagementDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_MANAGEMENT_DIMENSION, context)
+    Page<WorkloadDTO> fetchTestCaseManagementDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_MANAGEMENT_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -392,8 +385,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_CASE_WORKLOAD)
-    def fetchTestCaseWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_CASE_WORKLOAD, context)
+    Page<WorkloadDTO> fetchTestCaseWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -402,8 +395,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TYPE_OF)
-    def fetchTypeOf(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TYPE_OF, context)
+    Page<WorkloadDTO> fetchTypeOf(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TYPE_OF, context, WorkloadDTO.class)
     }
 
     /**
@@ -412,8 +405,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TYPE_OF_DIMENSION)
-    def fetchTypeOfDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TYPE_OF_DIMENSION, context)
+    Page<WorkloadDTO> fetchTypeOfDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TYPE_OF_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -422,8 +415,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TYPE_OF_MANAGEMENT_DIMENSION)
-    def fetchTypeOfManagementDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TYPE_OF_MANAGEMENT_DIMENSION, context)
+    Page<WorkloadDTO> fetchTypeOfManagementDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TYPE_OF_MANAGEMENT_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -432,8 +425,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER_GROUP_DIMENSION)
-    def fetchUserGroupDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER_GROUP_DIMENSION, context)
+    Page<WorkloadDTO> fetchUserGroupDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER_GROUP_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -442,8 +435,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER_GROUP_LINK)
-    def fetchUserGroupLink(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER_GROUP_LINK, context)
+    Page<WorkloadDTO> fetchUserGroupLink(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER_GROUP_LINK, context, WorkloadDTO.class)
     }
 
     /**
@@ -452,8 +445,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER_GROUP_WORKLOAD)
-    def fetchUserGroupWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER_GROUP_WORKLOAD, context)
+    Page<WorkloadDTO> fetchUserGroupWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER_GROUP_WORKLOAD, context, WorkloadDTO.class)
     }
 
     /**
@@ -462,8 +455,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_DIMENSION)
-    def fetchWorkItemDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_DIMENSION, context)
+    Page<WorkloadDTO> fetchWorkItemDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -472,8 +465,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_MANAGEMENT_DIMENSION)
-    def fetchWorkItemManagementDimension(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_MANAGEMENT_DIMENSION, context)
+    Page<WorkloadDTO> fetchWorkItemManagementDimension(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_MANAGEMENT_DIMENSION, context, WorkloadDTO.class)
     }
 
     /**
@@ -482,8 +475,8 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_WORKLOAD)
-    def fetchWorkItemWorkload(WorkloadFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_WORKLOAD, context)
+    Page<WorkloadDTO> fetchWorkItemWorkload(WorkloadFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_WORKLOAD, context, WorkloadDTO.class)
     }
 
 }

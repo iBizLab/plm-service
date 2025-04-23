@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE_CHILD_CATEGORY = "delete_child_category"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -37,7 +30,7 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
     public static final String DATASET_PRODUCT_PLAN = "product_plan"
     public static final String DATASET_SPACE_CATEGORY = "space_category"
     public static final String DATASET_SPACE_CATEGORY_TOP = "space_category_top"
-    private static Category _instance;
+    private static Category _instance
     void setInstance(Category instance) {
         _instance = instance
     }
@@ -51,8 +44,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(CategoryDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    CategoryDTO create(CategoryDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, CategoryDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(CategoryDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    CategoryDTO update(CategoryDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, CategoryDTO.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    CategoryDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, CategoryDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(CategoryDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    CategoryDTO getDraft(CategoryDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, CategoryDTO.class)
     }
 
     /**
@@ -101,8 +94,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(CategoryDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(CategoryDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -111,8 +104,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(CategoryDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    CategoryDTO save(CategoryDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, CategoryDTO.class)
     }
 
     /**
@@ -122,7 +115,7 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      */
     @DEAction(ACTION_DELETE_CHILD_CATEGORY)
     def deleteChildCategory(CategoryDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE_CHILD_CATEGORY, dto)
+        this.execute(ACTION_DELETE_CHILD_CATEGORY, dto, CategoryDTO.class)
     }
 
     /**
@@ -132,7 +125,7 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(CategoryDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, CategoryDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<CategoryDTO> fetchDefault(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, CategoryDTO.class)
     }
 
     /**
@@ -151,8 +144,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHECK_NAME)
-    def fetchCheckName(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHECK_NAME, context)
+    Page<CategoryDTO> fetchCheckName(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHECK_NAME, context, CategoryDTO.class)
     }
 
     /**
@@ -161,8 +154,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMON_CATEGORIES)
-    def fetchCommonCategories(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMON_CATEGORIES, context)
+    Page<CategoryDTO> fetchCommonCategories(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMON_CATEGORIES, context, CategoryDTO.class)
     }
 
     /**
@@ -171,8 +164,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PRODUCT_IDEA_CATEGORY)
-    def fetchCurProductIdeaCategory(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PRODUCT_IDEA_CATEGORY, context)
+    Page<CategoryDTO> fetchCurProductIdeaCategory(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PRODUCT_IDEA_CATEGORY, context, CategoryDTO.class)
     }
 
     /**
@@ -181,8 +174,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_CATEGORY)
-    def fetchMyCategory(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_CATEGORY, context)
+    Page<CategoryDTO> fetchMyCategory(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_CATEGORY, context, CategoryDTO.class)
     }
 
     /**
@@ -191,8 +184,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_PARENT)
-    def fetchNoParent(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_PARENT, context)
+    Page<CategoryDTO> fetchNoParent(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_PARENT, context, CategoryDTO.class)
     }
 
     /**
@@ -201,8 +194,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_SECTION)
-    def fetchNoSection(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_SECTION, context)
+    Page<CategoryDTO> fetchNoSection(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_SECTION, context, CategoryDTO.class)
     }
 
     /**
@@ -211,8 +204,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_POSITION_CATEGORY)
-    def fetchPositionCategory(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_POSITION_CATEGORY, context)
+    Page<CategoryDTO> fetchPositionCategory(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_POSITION_CATEGORY, context, CategoryDTO.class)
     }
 
     /**
@@ -221,8 +214,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_IDEA_CATEGORY)
-    def fetchProductIdeaCategory(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_IDEA_CATEGORY, context)
+    Page<CategoryDTO> fetchProductIdeaCategory(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_IDEA_CATEGORY, context, CategoryDTO.class)
     }
 
     /**
@@ -231,8 +224,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_PLAN)
-    def fetchProductPlan(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_PLAN, context)
+    Page<CategoryDTO> fetchProductPlan(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_PLAN, context, CategoryDTO.class)
     }
 
     /**
@@ -241,8 +234,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_CATEGORY)
-    def fetchSpaceCategory(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_CATEGORY, context)
+    Page<CategoryDTO> fetchSpaceCategory(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_CATEGORY, context, CategoryDTO.class)
     }
 
     /**
@@ -251,8 +244,8 @@ class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_CATEGORY_TOP)
-    def fetchSpaceCategoryTop(CategoryFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_CATEGORY_TOP, context)
+    Page<CategoryDTO> fetchSpaceCategoryTop(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_CATEGORY_TOP, context, CategoryDTO.class)
     }
 
 }

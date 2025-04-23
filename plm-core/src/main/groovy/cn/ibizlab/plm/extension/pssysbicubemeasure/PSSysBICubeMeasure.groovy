@@ -16,16 +16,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSysBICubeMeasureDTO,PSSysBICubeMeasureFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_APPLY = "APPLY"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSSysBICubeMeasure _instance;
+    private static PSSysBICubeMeasure _instance
     void setInstance(PSSysBICubeMeasure instance) {
         _instance = instance
     }
@@ -39,8 +32,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSSysBICubeMeasureDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSSysBICubeMeasureDTO create(PSSysBICubeMeasureDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSSysBICubeMeasureDTO.class)
     }
 
     /**
@@ -49,8 +42,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSSysBICubeMeasureDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSSysBICubeMeasureDTO update(PSSysBICubeMeasureDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSSysBICubeMeasureDTO.class)
     }
 
     /**
@@ -59,8 +52,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSSysBICubeMeasureDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSSysBICubeMeasureDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSSysBICubeMeasureDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSSysBICubeMeasureDTO getDraft(PSSysBICubeMeasureDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSSysBICubeMeasureDTO.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSSysBICubeMeasureDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSSysBICubeMeasureDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -99,8 +92,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSSysBICubeMeasureDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSSysBICubeMeasureDTO save(PSSysBICubeMeasureDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSSysBICubeMeasureDTO.class)
     }
 
     /**
@@ -110,7 +103,7 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      */
     @DEAction(ACTION_APPLY)
     def apply(PSSysBICubeMeasureDTO dto) throws Throwable {
-        this.execute(ACTION_APPLY, dto)
+        this.execute(ACTION_APPLY, dto, PSSysBICubeMeasureDTO.class)
     }
 
     /**
@@ -119,8 +112,8 @@ class PSSysBICubeMeasure extends GroovyPSModelDERuntime<PSSysBICubeMeasure,PSSys
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSSysBICubeMeasureFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSSysBICubeMeasureDTO> fetchDefault(PSSysBICubeMeasureFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSSysBICubeMeasureDTO.class)
     }
 
 }

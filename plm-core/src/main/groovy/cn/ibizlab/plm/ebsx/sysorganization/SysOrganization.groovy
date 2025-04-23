@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganizationDTO,SysOrganizationFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static SysOrganization _instance;
+    private static SysOrganization _instance
     void setInstance(SysOrganization instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SysOrganizationDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SysOrganizationDTO create(SysOrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SysOrganizationDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SysOrganizationDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SysOrganizationDTO update(SysOrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SysOrganizationDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SysOrganizationDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SysOrganizationDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SysOrganizationDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SysOrganizationDTO getDraft(SysOrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SysOrganizationDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SysOrganizationDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SysOrganizationDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SysOrganizationDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SysOrganizationDTO save(SysOrganizationDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SysOrganizationDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganiz
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SysOrganizationFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SysOrganizationDTO> fetchDefault(SysOrganizationFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SysOrganizationDTO.class)
     }
 
 }

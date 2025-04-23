@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,GuidelineFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_BASE = "base"
     public static final String DATASET_NORMAL = "normal"
     public static final String DATASET_UNDER_LIBRARY = "under_library"
-    private static Guideline _instance;
+    private static Guideline _instance
     void setInstance(Guideline instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(GuidelineDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    GuidelineDTO create(GuidelineDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, GuidelineDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(GuidelineDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    GuidelineDTO update(GuidelineDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, GuidelineDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    GuidelineDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, GuidelineDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(GuidelineDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    GuidelineDTO getDraft(GuidelineDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, GuidelineDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(GuidelineDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(GuidelineDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(GuidelineDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    GuidelineDTO save(GuidelineDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, GuidelineDTO.class)
     }
 
     /**
@@ -111,8 +104,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(GuidelineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<GuidelineDefGroupDTO> fetchDefault(GuidelineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, GuidelineDefGroupDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASE)
-    def fetchBase(GuidelineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASE, context)
+    Page<GuidelineDefGroupDTO> fetchBase(GuidelineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASE, context, GuidelineDefGroupDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(GuidelineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<GuidelineDTO> fetchNormal(GuidelineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, GuidelineDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,Guideline
      * @throws Throwable
      */
     @DEDataSet(DATASET_UNDER_LIBRARY)
-    def fetchUnderLibrary(GuidelineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_UNDER_LIBRARY, context)
+    Page<GuidelineDefGroupDTO> fetchUnderLibrary(GuidelineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_UNDER_LIBRARY, context, GuidelineDefGroupDTO.class)
     }
 
 }

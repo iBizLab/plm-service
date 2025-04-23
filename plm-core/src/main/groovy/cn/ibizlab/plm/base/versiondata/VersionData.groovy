@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,VersionDataFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static VersionData _instance;
+    private static VersionData _instance
     void setInstance(VersionData instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(VersionDataDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    VersionDataDTO create(VersionDataDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, VersionDataDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(VersionDataDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    VersionDataDTO update(VersionDataDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, VersionDataDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    VersionDataDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, VersionDataDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(VersionDataDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    VersionDataDTO getDraft(VersionDataDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, VersionDataDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(VersionDataDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(VersionDataDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(VersionDataDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    VersionDataDTO save(VersionDataDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, VersionDataDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class VersionData extends GroovyDataEntityRuntime<VersionData,VersionDataDTO,Ver
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(VersionDataFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<VersionDataDTO> fetchDefault(VersionDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, VersionDataDTO.class)
     }
 
 }

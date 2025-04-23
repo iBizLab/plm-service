@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,AuthLogAdminFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_USER = "cur_user"
     public static final String DATASET_DISTINCT_USERID = "distinct_userid"
     public static final String DATASET_GROUP_BY_DATA = "group_by_data"
-    private static AuthLogAdmin _instance;
+    private static AuthLogAdmin _instance
     void setInstance(AuthLogAdmin instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(AuthLogAdminDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    AuthLogAdminDTO create(AuthLogAdminDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AuthLogAdminDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(AuthLogAdminDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    AuthLogAdminDTO update(AuthLogAdminDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AuthLogAdminDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    AuthLogAdminDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AuthLogAdminDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(AuthLogAdminDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    AuthLogAdminDTO getDraft(AuthLogAdminDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AuthLogAdminDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(AuthLogAdminDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(AuthLogAdminDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(AuthLogAdminDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    AuthLogAdminDTO save(AuthLogAdminDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AuthLogAdminDTO.class)
     }
 
     /**
@@ -111,8 +104,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(AuthLogAdminFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<AuthLogAdminDTO> fetchDefault(AuthLogAdminFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AuthLogAdminDTO.class)
     }
 
     /**
@@ -121,8 +114,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_USER)
-    def fetchCurUser(AuthLogAdminFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_USER, context)
+    Page<AuthLogAdminDTO> fetchCurUser(AuthLogAdminFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_USER, context, AuthLogAdminDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DISTINCT_USERID)
-    def fetchDistinctUserid(AuthLogAdminFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DISTINCT_USERID, context)
+    Page<AuthLogAdminDTO> fetchDistinctUserid(AuthLogAdminFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DISTINCT_USERID, context, AuthLogAdminDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class AuthLogAdmin extends GroovyDataEntityRuntime<AuthLogAdmin,AuthLogAdminDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_GROUP_BY_DATA)
-    def fetchGroupByData(AuthLogAdminFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_GROUP_BY_DATA, context)
+    Page<AuthLogAdminDTO> fetchGroupByData(AuthLogAdminFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_GROUP_BY_DATA, context, AuthLogAdminDTO.class)
     }
 
 }

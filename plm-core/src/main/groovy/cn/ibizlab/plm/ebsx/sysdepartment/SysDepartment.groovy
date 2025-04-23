@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentDTO,SysDepartmentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static SysDepartment _instance;
+    private static SysDepartment _instance
     void setInstance(SysDepartment instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SysDepartmentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SysDepartmentDTO create(SysDepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SysDepartmentDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SysDepartmentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SysDepartmentDTO update(SysDepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SysDepartmentDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SysDepartmentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SysDepartmentDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SysDepartmentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SysDepartmentDTO getDraft(SysDepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SysDepartmentDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SysDepartmentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SysDepartmentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SysDepartmentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SysDepartmentDTO save(SysDepartmentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SysDepartmentDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SysDepartmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SysDepartmentDTO> fetchDefault(SysDepartmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SysDepartmentDTO.class)
     }
 
 }

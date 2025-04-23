@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_GET_ACTIVITY_OBJ_DETAIL = "get_activity_obj_detail"
     public static final String DATASET_ALL = "ALL"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Activity _instance;
+    private static Activity _instance
     void setInstance(Activity instance) {
         _instance = instance
     }
@@ -35,43 +28,43 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
     }
 
     /**
-     * 行为：创建活动 实际功能
+     * 行为：Create 实际功能
      * @param dto
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ActivityDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ActivityDTO create(ActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ActivityDTO.class)
     }
 
     /**
-     * 行为：更新活动 实际功能
+     * 行为：Update 实际功能
      * @param dto
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ActivityDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ActivityDTO update(ActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ActivityDTO.class)
     }
 
     /**
-     * 行为：删除活动 实际功能
+     * 行为：Remove 实际功能
      * @param keys
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
-     * 行为：获取活动 实际功能
+     * 行为：Get 实际功能
      * @param key
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ActivityDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ActivityDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ActivityDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ActivityDTO getDraft(ActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ActivityDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ActivityDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ActivityDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ActivityDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ActivityDTO save(ActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ActivityDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
      */
     @DEAction(ACTION_GET_ACTIVITY_OBJ_DETAIL)
     def getActivityObjDetail(ActivityDTO dto) throws Throwable {
-        this.execute(ACTION_GET_ACTIVITY_OBJ_DETAIL, dto)
+        this.execute(ACTION_GET_ACTIVITY_OBJ_DETAIL, dto, ActivityDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ALL)
-    def fetchALL(ActivityFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ALL, context)
+    Page<ActivityDTO> fetchALL(ActivityFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL, context, ActivityDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ActivityFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ActivityDTO> fetchDefault(ActivityFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ActivityDTO.class)
     }
 
 }

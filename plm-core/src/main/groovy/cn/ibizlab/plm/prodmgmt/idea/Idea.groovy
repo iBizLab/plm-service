@@ -16,19 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_STATE = "change_state"
     public static final String ACTION_CHOOSE_CASE_TEMPLATE = "choose_case_template"
     public static final String ACTION_DELETE = "delete"
-    public static final String ACTION_GET_ATTENTION = "get_attention"
     public static final String ACTION_GET_BASELINE_NAME = "get_baseline_name"
     public static final String ACTION_GET_CUSTOMER_SCORE = "get_customer_score"
     public static final String ACTION_GET_TICKET_NUM = "get_ticket_num"
@@ -73,7 +65,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_RECENT_IDEA = "recent_idea"
     public static final String DATASET_RELATION_IDEA = "relation_idea"
     public static final String DATASET_USER = "user"
-    private static Idea _instance;
+    private static Idea _instance
     void setInstance(Idea instance) {
         _instance = instance
     }
@@ -87,8 +79,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    IdeaDTO create(IdeaDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, IdeaDTO.class)
     }
 
     /**
@@ -97,8 +89,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    IdeaDTO update(IdeaDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, IdeaDTO.class)
     }
 
     /**
@@ -107,8 +99,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -117,8 +109,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    IdeaDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, IdeaDTO.class)
     }
 
     /**
@@ -127,8 +119,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(IdeaDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    IdeaDTO getDraft(IdeaDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, IdeaDTO.class)
     }
 
     /**
@@ -137,8 +129,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(IdeaDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(IdeaDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -147,8 +139,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    IdeaDTO save(IdeaDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, IdeaDTO.class)
     }
 
     /**
@@ -158,7 +150,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, IdeaDTO.class)
     }
 
     /**
@@ -168,7 +160,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, IdeaDTO.class)
     }
 
     /**
@@ -178,7 +170,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_CHANGE_STATE)
     def changeState(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_STATE, dto)
+        this.execute(ACTION_CHANGE_STATE, dto, IdeaDTO.class)
     }
 
     /**
@@ -188,7 +180,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_CHOOSE_CASE_TEMPLATE)
     def chooseCaseTemplate(IdeaDTO dto) throws Throwable {
-        return this.execute(ACTION_CHOOSE_CASE_TEMPLATE, dto)
+        return this.execute(ACTION_CHOOSE_CASE_TEMPLATE, dto, IdeaDTO.class)
     }
 
     /**
@@ -198,17 +190,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_DELETE)
     def delete(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
-    }
-
-    /**
-     * 行为：获取关注人 实际功能
-     * @param key
-     * @throws Throwable
-     */
-    @DEAction(ACTION_GET_ATTENTION)
-    def getAttention(String key) throws Throwable {
-        return this.execute(ACTION_GET_ATTENTION, key)
+        this.execute(ACTION_DELETE, dto, IdeaDTO.class)
     }
 
     /**
@@ -218,7 +200,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_GET_BASELINE_NAME)
     def getBaselineName(String key) throws Throwable {
-        return this.execute(ACTION_GET_BASELINE_NAME, key)
+        return this.execute(ACTION_GET_BASELINE_NAME, key, IdeaDTO.class)
     }
 
     /**
@@ -228,7 +210,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_GET_CUSTOMER_SCORE)
     def getCustomerScore(IdeaDTO dto) throws Throwable {
-        return this.execute(ACTION_GET_CUSTOMER_SCORE, dto)
+        return this.execute(ACTION_GET_CUSTOMER_SCORE, dto, IdeaDefGroupCommonDTO.class)
     }
 
     /**
@@ -238,7 +220,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_GET_TICKET_NUM)
     def getTicketNum(String key) throws Throwable {
-        return this.execute(ACTION_GET_TICKET_NUM, key)
+        return this.execute(ACTION_GET_TICKET_NUM, key, IdeaDTO.class)
     }
 
     /**
@@ -248,7 +230,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_IDEA_CATEGORY)
     def ideaCategory(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_IDEA_CATEGORY, dto)
+        this.execute(ACTION_IDEA_CATEGORY, dto, IdeaDTO.class)
     }
 
     /**
@@ -258,7 +240,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_IDEA_COPY)
     def ideaCopy(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_IDEA_COPY, dto)
+        this.execute(ACTION_IDEA_COPY, dto, IdeaDTO.class)
     }
 
     /**
@@ -268,7 +250,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_IDEA_MOVE)
     def ideaMove(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_IDEA_MOVE, dto)
+        this.execute(ACTION_IDEA_MOVE, dto, IdeaDTO.class)
     }
 
     /**
@@ -278,7 +260,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_IDEA_RE_PLAN)
     def ideaRePlan(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_IDEA_RE_PLAN, dto)
+        this.execute(ACTION_IDEA_RE_PLAN, dto, IdeaDTO.class)
     }
 
     /**
@@ -288,7 +270,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_IDEA_READONLY_RECOGNIZE)
     def ideaReadonlyRecognize(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_IDEA_READONLY_RECOGNIZE, dto)
+        this.execute(ACTION_IDEA_READONLY_RECOGNIZE, dto, IdeaDTO.class)
     }
 
     /**
@@ -298,7 +280,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_MOB_IDEA_ATTENTION)
     def mobIdeaAttention(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_MOB_IDEA_ATTENTION, dto)
+        this.execute(ACTION_MOB_IDEA_ATTENTION, dto, IdeaDTO.class)
     }
 
     /**
@@ -308,7 +290,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(IdeaDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, IdeaDTO.class)
     }
 
     /**
@@ -318,7 +300,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_OTHERS_RELATION_IDEA)
     def othersRelationIdea(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_IDEA, dto)
+        this.execute(ACTION_OTHERS_RELATION_IDEA, dto, IdeaDTO.class)
     }
 
     /**
@@ -328,7 +310,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_PLAN_DELETE_IDEA)
     def planDeleteIdea(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_PLAN_DELETE_IDEA, dto)
+        this.execute(ACTION_PLAN_DELETE_IDEA, dto, IdeaDTO.class)
     }
 
     /**
@@ -338,7 +320,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_PRODUCT_IDEA_RE_COUNTERS)
     def productIdeaReCounters(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_IDEA_RE_COUNTERS, dto)
+        this.execute(ACTION_PRODUCT_IDEA_RE_COUNTERS, dto, IdeaDTO.class)
     }
 
     /**
@@ -348,7 +330,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_RECOVER)
     def recover(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, IdeaDTO.class)
     }
 
     /**
@@ -358,7 +340,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_UPDATE_IDEA_PROGRESS)
     def updateIdeaProgress(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE_IDEA_PROGRESS, dto)
+        this.execute(ACTION_UPDATE_IDEA_PROGRESS, dto, IdeaDTO.class)
     }
 
     /**
@@ -367,8 +349,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<IdeaDTO> fetchDefault(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, IdeaDTO.class)
     }
 
     /**
@@ -377,8 +359,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<IdeaDTO> fetchAdmin(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, IdeaDTO.class)
     }
 
     /**
@@ -387,8 +369,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADVANCED_SEARCH)
-    def fetchAdvancedSearch(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADVANCED_SEARCH, context)
+    Page<IdeaAdvancedSearchDTO> fetchAdvancedSearch(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADVANCED_SEARCH, context, IdeaAdvancedSearchDTO.class)
     }
 
     /**
@@ -397,8 +379,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<IdeaDTO> fetchArchived(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, IdeaDTO.class)
     }
 
     /**
@@ -407,8 +389,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_CHOOSE_IDEA)
-    def fetchBaselineChooseIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_CHOOSE_IDEA, context)
+    Page<IdeaDTO> fetchBaselineChooseIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_CHOOSE_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -417,8 +399,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_PLAN_IDEA)
-    def fetchBaselinePlanIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_PLAN_IDEA, context)
+    Page<IdeaDTO> fetchBaselinePlanIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_PLAN_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -427,8 +409,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<IdeaDTO> fetchBiDetail(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, IdeaDTO.class)
     }
 
     /**
@@ -437,8 +419,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<IdeaBiSearchGroupDTO> fetchBiSearch(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, IdeaBiSearchGroupDTO.class)
     }
 
     /**
@@ -447,8 +429,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_NOTIFY_ASSIGNEE)
-    def fetchCommentNotifyAssignee(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context)
+    Page<IdeaAssigneeDTO> fetchCommentNotifyAssignee(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context, IdeaAssigneeDTO.class)
     }
 
     /**
@@ -457,8 +439,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMON)
-    def fetchCommon(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMON, context)
+    Page<IdeaDTO> fetchCommon(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMON, context, IdeaDTO.class)
     }
 
     /**
@@ -467,8 +449,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUSTOMER_USER)
-    def fetchCustomerUser(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUSTOMER_USER, context)
+    Page<IdeaDTO> fetchCustomerUser(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUSTOMER_USER, context, IdeaDTO.class)
     }
 
     /**
@@ -477,8 +459,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<IdeaDTO> fetchDeleted(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, IdeaDTO.class)
     }
 
     /**
@@ -487,8 +469,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_NOT_ARCHIVED)
-    def fetchMobNotArchived(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_NOT_ARCHIVED, context)
+    Page<IdeaDTO> fetchMobNotArchived(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_NOT_ARCHIVED, context, IdeaDTO.class)
     }
 
     /**
@@ -497,8 +479,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOVE_IDEA)
-    def fetchMoveIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOVE_IDEA, context)
+    Page<IdeaDTO> fetchMoveIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOVE_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -507,8 +489,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGN)
-    def fetchMyAssign(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGN, context)
+    Page<IdeaDTO> fetchMyAssign(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGN, context, IdeaDTO.class)
     }
 
     /**
@@ -517,8 +499,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGNEE_COUNT)
-    def fetchMyAssigneeCount(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGNEE_COUNT, context)
+    Page<IdeaDTO> fetchMyAssigneeCount(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGNEE_COUNT, context, IdeaDTO.class)
     }
 
     /**
@@ -527,8 +509,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ATTENTION)
-    def fetchMyAttention(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ATTENTION, context)
+    Page<IdeaDTO> fetchMyAttention(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ATTENTION, context, IdeaDTO.class)
     }
 
     /**
@@ -537,8 +519,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_CREATED)
-    def fetchMyCreated(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_CREATED, context)
+    Page<IdeaDTO> fetchMyCreated(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_CREATED, context, IdeaDTO.class)
     }
 
     /**
@@ -547,8 +529,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_FILTER)
-    def fetchMyFilter(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_FILTER, context)
+    Page<IdeaDTO> fetchMyFilter(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_FILTER, context, IdeaDTO.class)
     }
 
     /**
@@ -557,8 +539,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_SUMMARY_IDEA)
-    def fetchMySummaryIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_SUMMARY_IDEA, context)
+    Page<IdeaDTO> fetchMySummaryIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SUMMARY_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -567,8 +549,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<IdeaDTO> fetchNormal(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, IdeaDTO.class)
     }
 
     /**
@@ -577,8 +559,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_EXSISTS_RELATION)
-    def fetchNotExsistsRelation(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_EXSISTS_RELATION, context)
+    Page<IdeaDTO> fetchNotExsistsRelation(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_EXSISTS_RELATION, context, IdeaDTO.class)
     }
 
     /**
@@ -587,8 +569,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOTIFY_ASSIGNEE)
-    def fetchNotifyAssignee(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context)
+    Page<IdeaAssigneeDTO> fetchNotifyAssignee(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context, IdeaAssigneeDTO.class)
     }
 
     /**
@@ -597,8 +579,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_PLAN_RELATION_IDEA)
-    def fetchPlanRelationIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PLAN_RELATION_IDEA, context)
+    Page<IdeaDTO> fetchPlanRelationIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PLAN_RELATION_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -607,8 +589,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_PLAN_TRACK_DATA)
-    def fetchPlanTrackData(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PLAN_TRACK_DATA, context)
+    Page<IdeaDTO> fetchPlanTrackData(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PLAN_TRACK_DATA, context, IdeaDTO.class)
     }
 
     /**
@@ -617,8 +599,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<IdeaDTO> fetchReader(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, IdeaDTO.class)
     }
 
     /**
@@ -627,8 +609,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_IDEA)
-    def fetchRecentIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_IDEA, context)
+    Page<IdeaDTO> fetchRecentIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -637,8 +619,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELATION_IDEA)
-    def fetchRelationIdea(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELATION_IDEA, context)
+    Page<IdeaDTO> fetchRelationIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELATION_IDEA, context, IdeaDTO.class)
     }
 
     /**
@@ -647,8 +629,8 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(IdeaFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<IdeaDTO> fetchUser(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, IdeaDTO.class)
     }
 
 }

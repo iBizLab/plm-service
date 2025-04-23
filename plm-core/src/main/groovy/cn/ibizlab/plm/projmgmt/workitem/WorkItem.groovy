@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_BOARD_MOVE_POSITION = "board_move_position"
@@ -40,7 +33,6 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     public static final String ACTION_FILL_NOT_COMPLETED_NUM = "fill_not_completed_num"
     public static final String ACTION_FILL_TYPE_OF_STATE = "fill_type_of_state"
     public static final String ACTION_FIX_COMMIT = "fix_commit"
-    public static final String ACTION_GET_ATTENTION = "get_attention"
     public static final String ACTION_GET_BASELINE_NAME = "get_baseline_name"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String ACTION_MOVE_WORK_ITEM = "move_work_item"
@@ -141,7 +133,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     public static final String DATASET_UNDER_WORK_RESOURCE = "under_work_resource"
     public static final String DATASET_WORK_ITEM_DISTRIBUTION = "work_item_distribution"
     public static final String DATASET_WORK_ITEM_TYPE = "work_item_type"
-    private static WorkItem _instance;
+    private static WorkItem _instance
     void setInstance(WorkItem instance) {
         _instance = instance
     }
@@ -155,8 +147,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    WorkItemDTO create(WorkItemDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -165,8 +157,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    WorkItemDTO update(WorkItemDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -175,8 +167,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -185,8 +177,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    WorkItemDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, WorkItemDTO.class)
     }
 
     /**
@@ -195,8 +187,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    WorkItemDTO getDraft(WorkItemDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -205,8 +197,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(WorkItemDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -215,8 +207,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    WorkItemDTO save(WorkItemDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -226,7 +218,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -236,7 +228,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -246,7 +238,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_BOARD_MOVE_POSITION)
     def boardMovePosition(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_BOARD_MOVE_POSITION, dto)
+        return this.executeForList(ACTION_BOARD_MOVE_POSITION, dto, WorkItemDTO.class)
     }
 
     /**
@@ -256,7 +248,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CHANGE_ASSIGNEE)
     def changeAssignee(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ASSIGNEE, dto)
+        this.execute(ACTION_CHANGE_ASSIGNEE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -266,7 +258,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CHANGE_PARENT)
     def changeParent(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_PARENT, dto)
+        this.execute(ACTION_CHANGE_PARENT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -276,7 +268,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CHANGE_STATE)
     def changeState(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_STATE, dto)
+        this.execute(ACTION_CHANGE_STATE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -286,7 +278,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CHANGE_TIME)
     def changeTime(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_TIME, dto)
+        this.execute(ACTION_CHANGE_TIME, dto, WorkItemDTO.class)
     }
 
     /**
@@ -296,7 +288,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CHILD_DEL_RELATION)
     def childDelRelation(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHILD_DEL_RELATION, dto)
+        this.execute(ACTION_CHILD_DEL_RELATION, dto, WorkItemDTO.class)
     }
 
     /**
@@ -306,7 +298,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CHOOSE_CHILD)
     def chooseChild(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHOOSE_CHILD, dto)
+        this.execute(ACTION_CHOOSE_CHILD, dto, WorkItemDTO.class)
     }
 
     /**
@@ -316,7 +308,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_COPY)
     def copy(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_COPY, dto)
+        this.execute(ACTION_COPY, dto, WorkItemDTO.class)
     }
 
     /**
@@ -326,7 +318,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_COUNT_MY_TODO)
     def countMyTodo(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_COUNT_MY_TODO, dto)
+        return this.execute(ACTION_COUNT_MY_TODO, dto, WorkItemDTO.class)
     }
 
     /**
@@ -336,7 +328,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CREATE_PLAN_SNAPSHOT)
     def createPlanSnapshot(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_CREATE_PLAN_SNAPSHOT, dto)
+        return this.execute(ACTION_CREATE_PLAN_SNAPSHOT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -346,7 +338,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_CUSTOM_DRAFT)
     def customDraft(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_CUSTOM_DRAFT, dto)
+        return this.execute(ACTION_CUSTOM_DRAFT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -356,7 +348,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_DELETE)
     def delete(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -366,7 +358,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_FILL_NOT_COMPLETED_NUM)
     def fillNotCompletedNum(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_FILL_NOT_COMPLETED_NUM, dto)
+        return this.execute(ACTION_FILL_NOT_COMPLETED_NUM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -376,7 +368,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_FILL_TYPE_OF_STATE)
     def fillTypeOfState(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_FILL_TYPE_OF_STATE, dto)
+        return this.execute(ACTION_FILL_TYPE_OF_STATE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -386,17 +378,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_FIX_COMMIT)
     def fixCommit(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_FIX_COMMIT, dto)
-    }
-
-    /**
-     * 行为：获取关注人 实际功能
-     * @param key
-     * @throws Throwable
-     */
-    @DEAction(ACTION_GET_ATTENTION)
-    def getAttention(String key) throws Throwable {
-        return this.execute(ACTION_GET_ATTENTION, key)
+        this.execute(ACTION_FIX_COMMIT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -406,7 +388,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_GET_BASELINE_NAME)
     def getBaselineName(String key) throws Throwable {
-        return this.execute(ACTION_GET_BASELINE_NAME, key)
+        return this.execute(ACTION_GET_BASELINE_NAME, key, WorkItemDTO.class)
     }
 
     /**
@@ -416,7 +398,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, WorkItemDTO.class)
     }
 
     /**
@@ -426,7 +408,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_MOVE_WORK_ITEM)
     def moveWorkItem(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_WORK_ITEM, dto)
+        this.execute(ACTION_MOVE_WORK_ITEM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -436,7 +418,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_OTHERS_RELATION_WORK_ITEM)
     def othersRelationWorkItem(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_WORK_ITEM, dto)
+        this.execute(ACTION_OTHERS_RELATION_WORK_ITEM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -446,7 +428,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_PLAN_WORK_ITEM)
     def planWorkItem(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_PLAN_WORK_ITEM, dto)
+        this.execute(ACTION_PLAN_WORK_ITEM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -456,7 +438,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_PROJECT_RESOURCE_SETTING)
     def projectResourceSetting(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_PROJECT_RESOURCE_SETTING, dto)
+        return this.execute(ACTION_PROJECT_RESOURCE_SETTING, dto, WorkItemDTO.class)
     }
 
     /**
@@ -466,7 +448,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_RECOVER)
     def recover(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, WorkItemDTO.class)
     }
 
     /**
@@ -476,7 +458,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_RESOURCE_MEMBER_SETTING)
     def resourceMemberSetting(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_RESOURCE_MEMBER_SETTING, dto)
+        return this.execute(ACTION_RESOURCE_MEMBER_SETTING, dto, WorkItemDTO.class)
     }
 
     /**
@@ -486,7 +468,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_RESTORE_VERSION)
     def restoreVersion(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_RESTORE_VERSION, dto)
+        this.execute(ACTION_RESTORE_VERSION, dto, WorkItemDTO.class)
     }
 
     /**
@@ -496,7 +478,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SET_DEFAULT_ENTRY)
     def setDefaultEntry(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_SET_DEFAULT_ENTRY, dto)
+        return this.execute(ACTION_SET_DEFAULT_ENTRY, dto, WorkItemDTO.class)
     }
 
     /**
@@ -506,7 +488,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SET_TYPE_BUG)
     def setTypeBug(WorkItemDTO dto) throws Throwable {
-        return this.execute(ACTION_SET_TYPE_BUG, dto)
+        return this.execute(ACTION_SET_TYPE_BUG, dto, WorkItemDTO.class)
     }
 
     /**
@@ -516,7 +498,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SHIFT_IN_KANBAN)
     def shiftInKanban(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_IN_KANBAN, dto)
+        this.execute(ACTION_SHIFT_IN_KANBAN, dto, WorkItemDTO.class)
     }
 
     /**
@@ -526,7 +508,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SHIFT_IN_RELEASE)
     def shiftInRelease(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_IN_RELEASE, dto)
+        this.execute(ACTION_SHIFT_IN_RELEASE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -536,7 +518,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SHIFT_IN_SPRINT)
     def shiftInSprint(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_IN_SPRINT, dto)
+        this.execute(ACTION_SHIFT_IN_SPRINT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -546,7 +528,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SHIFT_OUT_RELEASE)
     def shiftOutRelease(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_OUT_RELEASE, dto)
+        this.execute(ACTION_SHIFT_OUT_RELEASE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -556,7 +538,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_SHIFT_OUT_SPRINT)
     def shiftOutSprint(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_OUT_SPRINT, dto)
+        this.execute(ACTION_SHIFT_OUT_SPRINT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -566,7 +548,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_WORK_ITEM_RE_COUNTERS)
     def workItemReCounters(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_WORK_ITEM_RE_COUNTERS, dto)
+        this.execute(ACTION_WORK_ITEM_RE_COUNTERS, dto, WorkItemDTO.class)
     }
 
     /**
@@ -576,7 +558,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_WORK_ITEM_READONLY_RECOGNIZE)
     def workItemReadonlyRecognize(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_WORK_ITEM_READONLY_RECOGNIZE, dto)
+        this.execute(ACTION_WORK_ITEM_READONLY_RECOGNIZE, dto, WorkItemDTO.class)
     }
 
     /**
@@ -586,7 +568,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_WORK_ITEM_TEST_PLAN_PROJECT)
     def workItemTestPlanProject(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_WORK_ITEM_TEST_PLAN_PROJECT, dto)
+        this.execute(ACTION_WORK_ITEM_TEST_PLAN_PROJECT, dto, WorkItemDTO.class)
     }
 
     /**
@@ -596,7 +578,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      */
     @DEAction(ACTION_WORK_ITEM_TYPE_ID)
     def workItemTypeId(String key) throws Throwable {
-        return this.execute(ACTION_WORK_ITEM_TYPE_ID, key)
+        return this.execute(ACTION_WORK_ITEM_TYPE_ID, key, WorkItemDTO.class)
     }
 
     /**
@@ -605,8 +587,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<WorkItemDTO> fetchDefault(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, WorkItemDTO.class)
     }
 
     /**
@@ -615,8 +597,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADVANCED_SEARCH)
-    def fetchAdvancedSearch(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADVANCED_SEARCH, context)
+    Page<WorkItemDTO> fetchAdvancedSearch(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADVANCED_SEARCH, context, WorkItemDTO.class)
     }
 
     /**
@@ -625,8 +607,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<WorkItemDTO> fetchArchived(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, WorkItemDTO.class)
     }
 
     /**
@@ -635,8 +617,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BACKLOG_ACCUMULATE_FLOW)
-    def fetchBacklogAccumulateFlow(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BACKLOG_ACCUMULATE_FLOW, context)
+    Page<WorkItemDTO> fetchBacklogAccumulateFlow(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BACKLOG_ACCUMULATE_FLOW, context, WorkItemDTO.class)
     }
 
     /**
@@ -645,8 +627,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BACKLOG_AGE_REPORT)
-    def fetchBacklogAgeReport(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BACKLOG_AGE_REPORT, context)
+    Page<WorkItemDTO> fetchBacklogAgeReport(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BACKLOG_AGE_REPORT, context, WorkItemDTO.class)
     }
 
     /**
@@ -655,8 +637,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BACKLOG_DAILY_TREND)
-    def fetchBacklogDailyTrend(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BACKLOG_DAILY_TREND, context)
+    Page<WorkItemDTO> fetchBacklogDailyTrend(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BACKLOG_DAILY_TREND, context, WorkItemDTO.class)
     }
 
     /**
@@ -665,8 +647,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BACKLOG_PROPERTY_DISTRIBUTION)
-    def fetchBacklogPropertyDistribution(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BACKLOG_PROPERTY_DISTRIBUTION, context)
+    Page<WorkItemUsuallyDTO> fetchBacklogPropertyDistribution(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BACKLOG_PROPERTY_DISTRIBUTION, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -675,8 +657,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BACKLOG_STATE_DISTRIBUTION)
-    def fetchBacklogStateDistribution(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BACKLOG_STATE_DISTRIBUTION, context)
+    Page<WorkItemUsuallyDTO> fetchBacklogStateDistribution(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BACKLOG_STATE_DISTRIBUTION, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -685,8 +667,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_CHOOSE_WORK_ITEM)
-    def fetchBaselineChooseWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_CHOOSE_WORK_ITEM, context)
+    Page<WorkItemBaselineChooseDTO> fetchBaselineChooseWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_CHOOSE_WORK_ITEM, context, WorkItemBaselineChooseDTO.class)
     }
 
     /**
@@ -695,8 +677,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_PLAN_WORK_ITEM)
-    def fetchBaselinePlanWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_PLAN_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchBaselinePlanWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_PLAN_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -705,8 +687,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<WorkItemBiSearchGroupDTO> fetchBiDetail(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, WorkItemBiSearchGroupDTO.class)
     }
 
     /**
@@ -715,8 +697,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<WorkItemBiSearchGroupDTO> fetchBiSearch(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, WorkItemBiSearchGroupDTO.class)
     }
 
     /**
@@ -725,8 +707,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BUG)
-    def fetchBug(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BUG, context)
+    Page<WorkItemDTO> fetchBug(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BUG, context, WorkItemDTO.class)
     }
 
     /**
@@ -735,8 +717,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BUG_DAILY_TIDE)
-    def fetchBugDailyTide(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BUG_DAILY_TIDE, context)
+    Page<WorkItemDTO> fetchBugDailyTide(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BUG_DAILY_TIDE, context, WorkItemDTO.class)
     }
 
     /**
@@ -745,8 +727,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BUG_STATE_GROUP_GRID)
-    def fetchBugStateGroupGrid(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BUG_STATE_GROUP_GRID, context)
+    Page<WorkItemDTO> fetchBugStateGroupGrid(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BUG_STATE_GROUP_GRID, context, WorkItemDTO.class)
     }
 
     /**
@@ -755,8 +737,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHANGE_PARENT)
-    def fetchChangeParent(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHANGE_PARENT, context)
+    Page<WorkItemDTO> fetchChangeParent(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHANGE_PARENT, context, WorkItemDTO.class)
     }
 
     /**
@@ -765,8 +747,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHILD)
-    def fetchChild(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHILD, context)
+    Page<WorkItemChildDTO> fetchChild(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHILD, context, WorkItemChildDTO.class)
     }
 
     /**
@@ -775,8 +757,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE)
-    def fetchChoose(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE, context)
+    Page<WorkItemDTO> fetchChoose(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE, context, WorkItemDTO.class)
     }
 
     /**
@@ -785,8 +767,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_CHILD)
-    def fetchChooseChild(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_CHILD, context)
+    Page<WorkItemDTO> fetchChooseChild(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_CHILD, context, WorkItemDTO.class)
     }
 
     /**
@@ -795,8 +777,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_DEPENDENCY)
-    def fetchChooseDependency(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_DEPENDENCY, context)
+    Page<WorkItemDTO> fetchChooseDependency(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_DEPENDENCY, context, WorkItemDTO.class)
     }
 
     /**
@@ -805,8 +787,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_PARENT_WORK_ITEM)
-    def fetchChooseParentWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_PARENT_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchChooseParentWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_PARENT_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -815,8 +797,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_NOTIFY_ASSIGNEE)
-    def fetchCommentNotifyAssignee(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context)
+    Page<WorkItemAssigneeDTO> fetchCommentNotifyAssignee(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context, WorkItemAssigneeDTO.class)
     }
 
     /**
@@ -825,8 +807,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMON)
-    def fetchCommon(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMON, context)
+    Page<WorkItemUsuallyDTO> fetchCommon(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMON, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -835,8 +817,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMON_BUG)
-    def fetchCommonBug(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMON_BUG, context)
+    Page<WorkItemUsuallyDTO> fetchCommonBug(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMON_BUG, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -845,8 +827,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMPLETE_TREND)
-    def fetchCompleteTrend(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMPLETE_TREND, context)
+    Page<WorkItemDTO> fetchCompleteTrend(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMPLETE_TREND, context, WorkItemDTO.class)
     }
 
     /**
@@ -855,8 +837,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFECT_AGE_REPORT)
-    def fetchDefectAgeReport(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFECT_AGE_REPORT, context)
+    Page<WorkItemDTO> fetchDefectAgeReport(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFECT_AGE_REPORT, context, WorkItemDTO.class)
     }
 
     /**
@@ -865,8 +847,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFECT_PROPERTY_DISTRIBUTION)
-    def fetchDefectPropertyDistribution(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFECT_PROPERTY_DISTRIBUTION, context)
+    Page<WorkItemDTO> fetchDefectPropertyDistribution(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFECT_PROPERTY_DISTRIBUTION, context, WorkItemDTO.class)
     }
 
     /**
@@ -875,8 +857,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFECT_TOTAL_TREND)
-    def fetchDefectTotalTrend(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFECT_TOTAL_TREND, context)
+    Page<WorkItemDTO> fetchDefectTotalTrend(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFECT_TOTAL_TREND, context, WorkItemDTO.class)
     }
 
     /**
@@ -885,8 +867,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<WorkItemDTO> fetchDeleted(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, WorkItemDTO.class)
     }
 
     /**
@@ -895,8 +877,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RELATION_WORK_ITEM)
-    def fetchIdeaRelationWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RELATION_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchIdeaRelationWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RELATION_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -905,8 +887,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_KANBAN_USER_STAT)
-    def fetchKanbanUserStat(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_KANBAN_USER_STAT, context)
+    Page<WorkItemDTO> fetchKanbanUserStat(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_KANBAN_USER_STAT, context, WorkItemDTO.class)
     }
 
     /**
@@ -915,8 +897,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MILESTONE)
-    def fetchMilestone(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MILESTONE, context)
+    Page<WorkItemDTO> fetchMilestone(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MILESTONE, context, WorkItemDTO.class)
     }
 
     /**
@@ -925,8 +907,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOVE_WORK_ITEM)
-    def fetchMoveWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOVE_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchMoveWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOVE_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -935,8 +917,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGNEE)
-    def fetchMyAssignee(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGNEE, context)
+    Page<WorkItemDTO> fetchMyAssignee(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGNEE, context, WorkItemDTO.class)
     }
 
     /**
@@ -945,8 +927,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ASSIGNEE_COUNT)
-    def fetchMyAssigneeCount(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ASSIGNEE_COUNT, context)
+    Page<WorkItemDTO> fetchMyAssigneeCount(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ASSIGNEE_COUNT, context, WorkItemDTO.class)
     }
 
     /**
@@ -955,8 +937,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_ATTENTION)
-    def fetchMyAttention(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_ATTENTION, context)
+    Page<WorkItemDTO> fetchMyAttention(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_ATTENTION, context, WorkItemDTO.class)
     }
 
     /**
@@ -965,8 +947,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_CREATED)
-    def fetchMyCreated(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_CREATED, context)
+    Page<WorkItemDTO> fetchMyCreated(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_CREATED, context, WorkItemDTO.class)
     }
 
     /**
@@ -975,8 +957,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_FILTER)
-    def fetchMyFilter(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_FILTER, context)
+    Page<WorkItemDTO> fetchMyFilter(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_FILTER, context, WorkItemDTO.class)
     }
 
     /**
@@ -985,8 +967,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_SUMMARY_BUG)
-    def fetchMySummaryBug(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_SUMMARY_BUG, context)
+    Page<WorkItemDTO> fetchMySummaryBug(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SUMMARY_BUG, context, WorkItemDTO.class)
     }
 
     /**
@@ -995,8 +977,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_SUMMARY_OTHER)
-    def fetchMySummaryOther(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_SUMMARY_OTHER, context)
+    Page<WorkItemDTO> fetchMySummaryOther(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SUMMARY_OTHER, context, WorkItemDTO.class)
     }
 
     /**
@@ -1005,8 +987,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_SUMMARY_TASK)
-    def fetchMySummaryTask(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_SUMMARY_TASK, context)
+    Page<WorkItemDTO> fetchMySummaryTask(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SUMMARY_TASK, context, WorkItemDTO.class)
     }
 
     /**
@@ -1015,8 +997,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_TODO)
-    def fetchMyTodo(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_TODO, context)
+    Page<WorkItemDTO> fetchMyTodo(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_TODO, context, WorkItemDTO.class)
     }
 
     /**
@@ -1025,8 +1007,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_BUG_WORK_ITEM)
-    def fetchNoBugWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_BUG_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchNoBugWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_BUG_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -1035,8 +1017,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_COMPLETED)
-    def fetchNoCompleted(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_COMPLETED, context)
+    Page<WorkItemUsuallyDTO> fetchNoCompleted(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_COMPLETED, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1045,8 +1027,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<WorkItemDTO> fetchNormal(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, WorkItemDTO.class)
     }
 
     /**
@@ -1055,8 +1037,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_EXSISTS_BUG_RELATION)
-    def fetchNotExsistsBugRelation(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_EXSISTS_BUG_RELATION, context)
+    Page<WorkItemDTO> fetchNotExsistsBugRelation(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_EXSISTS_BUG_RELATION, context, WorkItemDTO.class)
     }
 
     /**
@@ -1065,8 +1047,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_EXSISTS_RELATION)
-    def fetchNotExsistsRelation(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_EXSISTS_RELATION, context)
+    Page<WorkItemDTO> fetchNotExsistsRelation(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_EXSISTS_RELATION, context, WorkItemDTO.class)
     }
 
     /**
@@ -1075,8 +1057,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOTBUG_EXSISTS_RELATION)
-    def fetchNotbugExsistsRelation(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOTBUG_EXSISTS_RELATION, context)
+    Page<WorkItemDTO> fetchNotbugExsistsRelation(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOTBUG_EXSISTS_RELATION, context, WorkItemDTO.class)
     }
 
     /**
@@ -1085,8 +1067,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOTIFY_ASSIGNEE)
-    def fetchNotifyAssignee(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context)
+    Page<WorkItemAssigneeDTO> fetchNotifyAssignee(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context, WorkItemAssigneeDTO.class)
     }
 
     /**
@@ -1095,8 +1077,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_OVERDUE_WORK_ITEM)
-    def fetchOverdueWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_OVERDUE_WORK_ITEM, context)
+    Page<WorkItemUsuallyDTO> fetchOverdueWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_OVERDUE_WORK_ITEM, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1105,8 +1087,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_OVERVIEW_CHART)
-    def fetchOverviewChart(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_OVERVIEW_CHART, context)
+    Page<WorkItemDTO> fetchOverviewChart(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_OVERVIEW_CHART, context, WorkItemDTO.class)
     }
 
     /**
@@ -1115,8 +1097,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PLAN_SNAPSHOT)
-    def fetchPlanSnapshot(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PLAN_SNAPSHOT, context)
+    Page<WorkItemCreatePlanSnapshotDTO> fetchPlanSnapshot(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PLAN_SNAPSHOT, context, WorkItemCreatePlanSnapshotDTO.class)
     }
 
     /**
@@ -1125,8 +1107,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_RESOURCE)
-    def fetchProjectResource(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_RESOURCE, context)
+    Page<WorkItemResourceAssignmentDTO> fetchProjectResource(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_RESOURCE, context, WorkItemResourceAssignmentDTO.class)
     }
 
     /**
@@ -1135,8 +1117,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROPERTY_DISTRIBUTION)
-    def fetchPropertyDistribution(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROPERTY_DISTRIBUTION, context)
+    Page<WorkItemUsuallyDTO> fetchPropertyDistribution(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROPERTY_DISTRIBUTION, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1145,8 +1127,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<WorkItemDTO> fetchReader(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, WorkItemDTO.class)
     }
 
     /**
@@ -1155,8 +1137,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RECENT_WORK_ITEM)
-    def fetchRecentWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RECENT_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchRecentWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RECENT_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -1165,8 +1147,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELATION_WORK_ITEM)
-    def fetchRelationWorkItem(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELATION_WORK_ITEM, context)
+    Page<WorkItemDTO> fetchRelationWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELATION_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**
@@ -1175,8 +1157,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELEASE)
-    def fetchRelease(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELEASE, context)
+    Page<WorkItemUsuallyDTO> fetchRelease(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELEASE, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1185,8 +1167,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELEASE_PLAN)
-    def fetchReleasePlan(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELEASE_PLAN, context)
+    Page<WorkItemDTO> fetchReleasePlan(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELEASE_PLAN, context, WorkItemDTO.class)
     }
 
     /**
@@ -1195,8 +1177,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELEASE_WORK_ITEM_CHART)
-    def fetchReleaseWorkItemChart(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELEASE_WORK_ITEM_CHART, context)
+    Page<WorkItemDTO> fetchReleaseWorkItemChart(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELEASE_WORK_ITEM_CHART, context, WorkItemDTO.class)
     }
 
     /**
@@ -1205,8 +1187,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_REQUIRE_BURN_OUT)
-    def fetchRequireBurnOut(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REQUIRE_BURN_OUT, context)
+    Page<WorkItemDTO> fetchRequireBurnOut(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REQUIRE_BURN_OUT, context, WorkItemDTO.class)
     }
 
     /**
@@ -1215,8 +1197,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_REQUIREMENT)
-    def fetchRequirement(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REQUIREMENT, context)
+    Page<WorkItemUsuallyDTO> fetchRequirement(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REQUIREMENT, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1225,8 +1207,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_REQUIREMENT_TREE)
-    def fetchRequirementTree(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REQUIREMENT_TREE, context)
+    Page<WorkItemUsuallyDTO> fetchRequirementTree(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REQUIREMENT_TREE, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1235,8 +1217,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_REQUIREMENT_TREE_OR_TILE)
-    def fetchRequirementTreeOrTile(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REQUIREMENT_TREE_OR_TILE, context)
+    Page<WorkItemDTO> fetchRequirementTreeOrTile(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REQUIREMENT_TREE_OR_TILE, context, WorkItemDTO.class)
     }
 
     /**
@@ -1245,8 +1227,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RESOURCE)
-    def fetchResource(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RESOURCE, context)
+    Page<WorkItemDTO> fetchResource(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RESOURCE, context, WorkItemDTO.class)
     }
 
     /**
@@ -1255,8 +1237,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SEVEN_DAYS)
-    def fetchSevenDays(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SEVEN_DAYS, context)
+    Page<WorkItemDTO> fetchSevenDays(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SEVEN_DAYS, context, WorkItemDTO.class)
     }
 
     /**
@@ -1265,8 +1247,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPRINT_COMPLETED)
-    def fetchSprintCompleted(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPRINT_COMPLETED, context)
+    Page<WorkItemDTO> fetchSprintCompleted(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPRINT_COMPLETED, context, WorkItemDTO.class)
     }
 
     /**
@@ -1275,8 +1257,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPRINT_CONTRIBUTION)
-    def fetchSprintContribution(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPRINT_CONTRIBUTION, context)
+    Page<WorkItemDTO> fetchSprintContribution(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPRINT_CONTRIBUTION, context, WorkItemDTO.class)
     }
 
     /**
@@ -1285,8 +1267,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPRINT_MEMBER_CHART)
-    def fetchSprintMemberChart(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPRINT_MEMBER_CHART, context)
+    Page<WorkItemDTO> fetchSprintMemberChart(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPRINT_MEMBER_CHART, context, WorkItemDTO.class)
     }
 
     /**
@@ -1295,8 +1277,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPRINT_USER_STAT)
-    def fetchSprintUserStat(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPRINT_USER_STAT, context)
+    Page<WorkItemDTO> fetchSprintUserStat(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPRINT_USER_STAT, context, WorkItemDTO.class)
     }
 
     /**
@@ -1305,8 +1287,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPRINT_WORK_ITEM_CHART)
-    def fetchSprintWorkItemChart(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPRINT_WORK_ITEM_CHART, context)
+    Page<WorkItemDTO> fetchSprintWorkItemChart(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPRINT_WORK_ITEM_CHART, context, WorkItemDTO.class)
     }
 
     /**
@@ -1315,8 +1297,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEMP_SPEED_REPORT)
-    def fetchTempSpeedReport(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEMP_SPEED_REPORT, context)
+    Page<WorkItemDTO> fetchTempSpeedReport(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEMP_SPEED_REPORT, context, WorkItemDTO.class)
     }
 
     /**
@@ -1325,8 +1307,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TEST_PLAN_RELATION_BUG)
-    def fetchTestPlanRelationBug(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TEST_PLAN_RELATION_BUG, context)
+    Page<WorkItemDTO> fetchTestPlanRelationBug(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_PLAN_RELATION_BUG, context, WorkItemDTO.class)
     }
 
     /**
@@ -1335,8 +1317,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TOP)
-    def fetchTop(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TOP, context)
+    Page<WorkItemDTO> fetchTop(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TOP, context, WorkItemDTO.class)
     }
 
     /**
@@ -1345,8 +1327,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TREE)
-    def fetchTree(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TREE, context)
+    Page<WorkItemUsuallyDTO> fetchTree(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TREE, context, WorkItemUsuallyDTO.class)
     }
 
     /**
@@ -1355,8 +1337,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TREE_OR_TILE)
-    def fetchTreeOrTile(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TREE_OR_TILE, context)
+    Page<WorkItemDTO> fetchTreeOrTile(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TREE_OR_TILE, context, WorkItemDTO.class)
     }
 
     /**
@@ -1365,8 +1347,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_UNDER_WORK)
-    def fetchUnderWork(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_UNDER_WORK, context)
+    Page<WorkItemDTO> fetchUnderWork(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_UNDER_WORK, context, WorkItemDTO.class)
     }
 
     /**
@@ -1375,8 +1357,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_UNDER_WORK_RESOURCE)
-    def fetchUnderWorkResource(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_UNDER_WORK_RESOURCE, context)
+    Page<WorkItemResourceAssignmentDTO> fetchUnderWorkResource(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_UNDER_WORK_RESOURCE, context, WorkItemResourceAssignmentDTO.class)
     }
 
     /**
@@ -1385,8 +1367,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_DISTRIBUTION)
-    def fetchWorkItemDistribution(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_DISTRIBUTION, context)
+    Page<WorkItemDTO> fetchWorkItemDistribution(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_DISTRIBUTION, context, WorkItemDTO.class)
     }
 
     /**
@@ -1395,8 +1377,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_ITEM_TYPE)
-    def fetchWorkItemType(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_ITEM_TYPE, context)
+    Page<WorkItemWorkItemTypeIdDTO> fetchWorkItemType(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_TYPE, context, WorkItemWorkItemTypeIdDTO.class)
     }
 
 }

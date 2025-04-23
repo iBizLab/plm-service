@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,BaselinePageFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_SHIFT_IN_BASELINE = "shift_in_baseline"
     public static final String ACTION_SHIFT_OUT_BASELINE = "shift_out_baseline"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_BASELINE_COMPARISON = "baseline_comparison"
     public static final String DATASET_FILL_VERSION_DATA = "fill_version_data"
-    private static BaselinePage _instance;
+    private static BaselinePage _instance
     void setInstance(BaselinePage instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(BaselinePageDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    BaselinePageDTO create(BaselinePageDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, BaselinePageDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(BaselinePageDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    BaselinePageDTO update(BaselinePageDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, BaselinePageDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    BaselinePageDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, BaselinePageDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(BaselinePageDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    BaselinePageDTO getDraft(BaselinePageDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, BaselinePageDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(BaselinePageDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(BaselinePageDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(BaselinePageDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    BaselinePageDTO save(BaselinePageDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, BaselinePageDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      */
     @DEAction(ACTION_SHIFT_IN_BASELINE)
     def shiftInBaseline(BaselinePageDTO dto) throws Throwable {
-        return this.execute(ACTION_SHIFT_IN_BASELINE, dto)
+        return this.execute(ACTION_SHIFT_IN_BASELINE, dto, BaselinePageDTO.class)
     }
 
     /**
@@ -123,7 +116,7 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      */
     @DEAction(ACTION_SHIFT_OUT_BASELINE)
     def shiftOutBaseline(BaselinePageDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_OUT_BASELINE, dto)
+        this.execute(ACTION_SHIFT_OUT_BASELINE, dto, BaselinePageDTO.class)
     }
 
     /**
@@ -132,8 +125,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(BaselinePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<BaselinePageDTO> fetchDefault(BaselinePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, BaselinePageDTO.class)
     }
 
     /**
@@ -142,8 +135,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_COMPARISON)
-    def fetchBaselineComparison(BaselinePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_COMPARISON, context)
+    Page<BaselinePageDTO> fetchBaselineComparison(BaselinePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_COMPARISON, context, BaselinePageDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class BaselinePage extends GroovyDataEntityRuntime<BaselinePage,BaselinePageDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_FILL_VERSION_DATA)
-    def fetchFillVersionData(BaselinePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FILL_VERSION_DATA, context)
+    Page<BaselinePageDTO> fetchFillVersionData(BaselinePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FILL_VERSION_DATA, context, BaselinePageDTO.class)
     }
 
 }

@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,UpdateRecordFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static UpdateRecord _instance;
+    private static UpdateRecord _instance
     void setInstance(UpdateRecord instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(UpdateRecordDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    UpdateRecordDTO create(UpdateRecordDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, UpdateRecordDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(UpdateRecordDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    UpdateRecordDTO update(UpdateRecordDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, UpdateRecordDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    UpdateRecordDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, UpdateRecordDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(UpdateRecordDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    UpdateRecordDTO getDraft(UpdateRecordDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, UpdateRecordDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(UpdateRecordDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(UpdateRecordDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(UpdateRecordDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    UpdateRecordDTO save(UpdateRecordDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, UpdateRecordDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(UpdateRecordFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<UpdateRecordDTO> fetchDefault(UpdateRecordFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, UpdateRecordDTO.class)
     }
 
 }

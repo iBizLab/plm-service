@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSCorePrd _instance;
+    private static PSCorePrd _instance
     void setInstance(PSCorePrd instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSCorePrdDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSCorePrdDTO create(PSCorePrdDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSCorePrdDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSCorePrdDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSCorePrdDTO update(PSCorePrdDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSCorePrdDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSCorePrdDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSCorePrdDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSCorePrdDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSCorePrdDTO getDraft(PSCorePrdDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSCorePrdDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSCorePrdDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSCorePrdDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSCorePrdDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSCorePrdDTO save(PSCorePrdDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSCorePrdDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSCorePrd extends GroovyPSModelDERuntime<PSCorePrd,PSCorePrdDTO,PSCorePrdF
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSCorePrdFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSCorePrdDTO> fetchDefault(PSCorePrdFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSCorePrdDTO.class)
     }
 
 }

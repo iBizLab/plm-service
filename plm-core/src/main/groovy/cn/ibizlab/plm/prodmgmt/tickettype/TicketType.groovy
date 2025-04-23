@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,TicketTypeFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_GET_CON_TICKET = "get_con_ticket"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NOT_EXISTS_TICKET_TYPE = "not_exists_ticket_type"
-    private static TicketType _instance;
+    private static TicketType _instance
     void setInstance(TicketType instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TicketTypeDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TicketTypeDTO create(TicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TicketTypeDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TicketTypeDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TicketTypeDTO update(TicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TicketTypeDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TicketTypeDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TicketTypeDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TicketTypeDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TicketTypeDTO getDraft(TicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TicketTypeDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TicketTypeDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TicketTypeDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TicketTypeDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TicketTypeDTO save(TicketTypeDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TicketTypeDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      */
     @DEAction(ACTION_GET_CON_TICKET)
     def getConTicket(String key) throws Throwable {
-        return this.execute(ACTION_GET_CON_TICKET, key)
+        return this.execute(ACTION_GET_CON_TICKET, key, TicketTypeDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TicketTypeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TicketTypeDTO> fetchDefault(TicketTypeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TicketTypeDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,Ticket
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOT_EXISTS_TICKET_TYPE)
-    def fetchNotExistsTicketType(TicketTypeFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOT_EXISTS_TICKET_TYPE, context)
+    Page<TicketTypeDTO> fetchNotExistsTicketType(TicketTypeFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_EXISTS_TICKET_TYPE, context, TicketTypeDTO.class)
     }
 
 }

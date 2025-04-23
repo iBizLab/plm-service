@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
@@ -35,7 +28,6 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
     public static final String ACTION_PRODUCT_MOVE = "product_move"
     public static final String ACTION_PRODUCT_READONLY_RECOGNIZE = "product_readonly_recognize"
     public static final String ACTION_RECOVER = "recover"
-    public static final String ACTION_TEST_COUNTER = "test_counter"
     public static final String ACTION_UN_FAVORITE = "un_favorite"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADMIN = "admin"
@@ -52,7 +44,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
     public static final String DATASET_QUICK_USER = "quick_user"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_USER = "user"
-    private static Product _instance;
+    private static Product _instance
     void setInstance(Product instance) {
         _instance = instance
     }
@@ -66,8 +58,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProductDTO create(ProductDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProductDTO.class)
     }
 
     /**
@@ -76,8 +68,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProductDTO update(ProductDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProductDTO.class)
     }
 
     /**
@@ -86,8 +78,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -96,8 +88,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProductDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProductDTO.class)
     }
 
     /**
@@ -106,8 +98,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProductDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProductDTO getDraft(ProductDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProductDTO.class)
     }
 
     /**
@@ -116,8 +108,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProductDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProductDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -126,8 +118,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProductDTO save(ProductDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProductDTO.class)
     }
 
     /**
@@ -137,7 +129,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_ACTIVATE)
     def activate(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_ACTIVATE, dto)
+        this.execute(ACTION_ACTIVATE, dto, ProductDTO.class)
     }
 
     /**
@@ -147,7 +139,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_ARCHIVE)
     def archive(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_ARCHIVE, dto)
+        this.execute(ACTION_ARCHIVE, dto, ProductDTO.class)
     }
 
     /**
@@ -157,7 +149,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_CHANGE_ADMIN_ROLE)
     def changeAdminRole(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto)
+        this.execute(ACTION_CHANGE_ADMIN_ROLE, dto, ProductDTO.class)
     }
 
     /**
@@ -167,7 +159,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_DELETE)
     def delete(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, ProductDTO.class)
     }
 
     /**
@@ -177,7 +169,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, ProductDTO.class)
     }
 
     /**
@@ -187,7 +179,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_OTHER_RE_PRODUCT)
     def otherReProduct(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_PRODUCT, dto)
+        this.execute(ACTION_OTHER_RE_PRODUCT, dto, ProductDTO.class)
     }
 
     /**
@@ -197,7 +189,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_OTHER_RE_SPACE)
     def otherReSpace(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_SPACE, dto)
+        this.execute(ACTION_OTHER_RE_SPACE, dto, ProductDTO.class)
     }
 
     /**
@@ -207,7 +199,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_PRODUCT_COUNTERS)
     def productCounters(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_COUNTERS, dto)
+        this.execute(ACTION_PRODUCT_COUNTERS, dto, ProductDTO.class)
     }
 
     /**
@@ -217,7 +209,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_PRODUCT_INDEX_ADDON_COUNTER)
     def productIndexAddonCounter(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_PRODUCT_INDEX_ADDON_COUNTER, dto, ProductDTO.class)
     }
 
     /**
@@ -227,7 +219,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_PRODUCT_MOVE)
     def productMove(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_MOVE, dto)
+        this.execute(ACTION_PRODUCT_MOVE, dto, ProductDTO.class)
     }
 
     /**
@@ -237,7 +229,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_PRODUCT_READONLY_RECOGNIZE)
     def productReadonlyRecognize(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_READONLY_RECOGNIZE, dto)
+        this.execute(ACTION_PRODUCT_READONLY_RECOGNIZE, dto, ProductDTO.class)
     }
 
     /**
@@ -247,17 +239,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_RECOVER)
     def recover(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
-    }
-
-    /**
-     * 行为：test_counter 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_TEST_COUNTER)
-    def testCounter(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_TEST_COUNTER, dto)
+        this.execute(ACTION_RECOVER, dto, ProductDTO.class)
     }
 
     /**
@@ -267,7 +249,7 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, ProductDTO.class)
     }
 
     /**
@@ -276,8 +258,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProductDTO> fetchDefault(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProductDTO.class)
     }
 
     /**
@@ -286,8 +268,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<ProductDTO> fetchAdmin(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, ProductDTO.class)
     }
 
     /**
@@ -296,8 +278,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_ARCHIVED)
-    def fetchArchived(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ARCHIVED, context)
+    Page<ProductDTO> fetchArchived(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ARCHIVED, context, ProductDTO.class)
     }
 
     /**
@@ -306,8 +288,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PRODUCT)
-    def fetchCurProduct(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PRODUCT, context)
+    Page<ProductDTO> fetchCurProduct(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PRODUCT, context, ProductDTO.class)
     }
 
     /**
@@ -316,8 +298,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUSTOMER_USER)
-    def fetchCustomerUser(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUSTOMER_USER, context)
+    Page<ProductDTO> fetchCustomerUser(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUSTOMER_USER, context, ProductDTO.class)
     }
 
     /**
@@ -326,8 +308,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_DELETED)
-    def fetchDeleted(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DELETED, context)
+    Page<ProductDTO> fetchDeleted(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DELETED, context, ProductDTO.class)
     }
 
     /**
@@ -336,8 +318,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_FAVORITE)
-    def fetchFavorite(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FAVORITE, context)
+    Page<ProductDTO> fetchFavorite(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FAVORITE, context, ProductDTO.class)
     }
 
     /**
@@ -346,8 +328,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MAIN)
-    def fetchMain(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MAIN, context)
+    Page<ProductDTO> fetchMain(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MAIN, context, ProductDTO.class)
     }
 
     /**
@@ -356,8 +338,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_MOB_MAIN)
-    def fetchMobMain(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MOB_MAIN, context)
+    Page<ProductDTO> fetchMobMain(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MOB_MAIN, context, ProductDTO.class)
     }
 
     /**
@@ -366,8 +348,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_RELATION)
-    def fetchNoRelation(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_RELATION, context)
+    Page<ProductDTO> fetchNoRelation(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_RELATION, context, ProductDTO.class)
     }
 
     /**
@@ -376,8 +358,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<ProductDTO> fetchNormal(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, ProductDTO.class)
     }
 
     /**
@@ -386,8 +368,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK)
-    def fetchQuick(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK, context)
+    Page<ProductDTO> fetchQuick(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK, context, ProductDTO.class)
     }
 
     /**
@@ -396,8 +378,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_QUICK_USER)
-    def fetchQuickUser(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_QUICK_USER, context)
+    Page<ProductDTO> fetchQuickUser(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_QUICK_USER, context, ProductDTO.class)
     }
 
     /**
@@ -406,8 +388,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<ProductDTO> fetchReader(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, ProductDTO.class)
     }
 
     /**
@@ -416,8 +398,8 @@ class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDT
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(ProductFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<ProductDTO> fetchUser(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, ProductDTO.class)
     }
 
 }

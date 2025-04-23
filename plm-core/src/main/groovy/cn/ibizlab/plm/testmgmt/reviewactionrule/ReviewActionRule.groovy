@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewActionRuleDTO,ReviewActionRuleFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ReviewActionRule _instance;
+    private static ReviewActionRule _instance
     void setInstance(ReviewActionRule instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ReviewActionRuleDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ReviewActionRuleDTO create(ReviewActionRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ReviewActionRuleDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ReviewActionRuleDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ReviewActionRuleDTO update(ReviewActionRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ReviewActionRuleDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ReviewActionRuleDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ReviewActionRuleDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ReviewActionRuleDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ReviewActionRuleDTO getDraft(ReviewActionRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ReviewActionRuleDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ReviewActionRuleDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ReviewActionRuleDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ReviewActionRuleDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ReviewActionRuleDTO save(ReviewActionRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ReviewActionRuleDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewAc
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ReviewActionRuleFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ReviewActionRuleDTO> fetchDefault(ReviewActionRuleFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ReviewActionRuleDTO.class)
     }
 
 }

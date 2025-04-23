@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_PLAN_RUN = "add_plan_run"
     public static final String ACTION_BATCH_SAVE_RUN_HISTORY = "batch_save_run_history"
     public static final String ACTION_GET_ACTUAL_WORKLOAD = "get_actual_workload"
@@ -52,7 +45,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
     public static final String DATASET_PLAN_RUN_HISTORY = "plan_run_history"
     public static final String DATASET_PRIORITYDISTRIBUTIONS = "priorityDistributions"
     public static final String DATASET_READER = "reader"
-    private static Run _instance;
+    private static Run _instance
     void setInstance(Run instance) {
         _instance = instance
     }
@@ -66,8 +59,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(RunDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    RunDTO create(RunDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, RunDTO.class)
     }
 
     /**
@@ -76,8 +69,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(RunDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    RunDTO update(RunDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, RunDTO.class)
     }
 
     /**
@@ -86,8 +79,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -96,8 +89,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    RunDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, RunDTO.class)
     }
 
     /**
@@ -106,8 +99,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    RunDTO getDraft(RunDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, RunDTO.class)
     }
 
     /**
@@ -116,8 +109,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(RunDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -126,8 +119,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(RunDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    RunDTO save(RunDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, RunDTO.class)
     }
 
     /**
@@ -137,7 +130,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_ADD_PLAN_RUN)
     def addPlanRun(RunDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_PLAN_RUN, dto)
+        this.execute(ACTION_ADD_PLAN_RUN, dto, RunDTO.class)
     }
 
     /**
@@ -147,7 +140,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_BATCH_SAVE_RUN_HISTORY)
     def batchSaveRunHistory(RunDTO dto) throws Throwable {
-        this.execute(ACTION_BATCH_SAVE_RUN_HISTORY, dto)
+        this.execute(ACTION_BATCH_SAVE_RUN_HISTORY, dto, RunDTO.class)
     }
 
     /**
@@ -157,7 +150,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_GET_ACTUAL_WORKLOAD)
     def getActualWorkload(String key) throws Throwable {
-        return this.execute(ACTION_GET_ACTUAL_WORKLOAD, key)
+        return this.execute(ACTION_GET_ACTUAL_WORKLOAD, key, RunDTO.class)
     }
 
     /**
@@ -167,7 +160,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_OTHER_RELATION_RUN)
     def otherRelationRun(RunDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RELATION_RUN, dto)
+        this.execute(ACTION_OTHER_RELATION_RUN, dto, RunDTO.class)
     }
 
     /**
@@ -177,7 +170,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_PROGRAM_PLAN)
     def programPlan(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_PROGRAM_PLAN, dto)
+        return this.execute(ACTION_PROGRAM_PLAN, dto, RunDTO.class)
     }
 
     /**
@@ -187,7 +180,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_PROGRAM_PLAN_BY_RELEASE)
     def programPlanByRelease(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_PROGRAM_PLAN_BY_RELEASE, dto)
+        return this.execute(ACTION_PROGRAM_PLAN_BY_RELEASE, dto, RunDTO.class)
     }
 
     /**
@@ -197,7 +190,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_PROGRAM_PLAN_BY_SPRINT)
     def programPlanBySprint(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_PROGRAM_PLAN_BY_SPRINT, dto)
+        return this.execute(ACTION_PROGRAM_PLAN_BY_SPRINT, dto, RunDTO.class)
     }
 
     /**
@@ -207,7 +200,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_PROGRAM_PLAN_BY_WORKITEM)
     def programPlanByWorkitem(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_PROGRAM_PLAN_BY_WORKITEM, dto)
+        return this.execute(ACTION_PROGRAM_PLAN_BY_WORKITEM, dto, RunDTO.class)
     }
 
     /**
@@ -217,7 +210,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_RESET_NOT_TEST)
     def resetNotTest(RunDTO dto) throws Throwable {
-        this.execute(ACTION_RESET_NOT_TEST, dto)
+        this.execute(ACTION_RESET_NOT_TEST, dto, RunDTO.class)
     }
 
     /**
@@ -227,7 +220,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_RUN_HISTORY_GET)
     def runHistoryGet(RunDTO dto) throws Throwable {
-        return this.execute(ACTION_RUN_HISTORY_GET, dto)
+        return this.execute(ACTION_RUN_HISTORY_GET, dto, RunDTO.class)
     }
 
     /**
@@ -237,7 +230,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_RUN_RE_COUNTERS)
     def runReCounters(RunDTO dto) throws Throwable {
-        this.execute(ACTION_RUN_RE_COUNTERS, dto)
+        this.execute(ACTION_RUN_RE_COUNTERS, dto, RunDTO.class)
     }
 
     /**
@@ -247,7 +240,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_SAVE_RUN_HISTORY)
     def saveRunHistory(RunDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE_RUN_HISTORY, dto)
+        this.execute(ACTION_SAVE_RUN_HISTORY, dto, RunDTO.class)
     }
 
     /**
@@ -257,7 +250,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_SET_EXECUTOR)
     def setExecutor(RunDTO dto) throws Throwable {
-        this.execute(ACTION_SET_EXECUTOR, dto)
+        this.execute(ACTION_SET_EXECUTOR, dto, RunDTO.class)
     }
 
     /**
@@ -267,7 +260,7 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_THIS_RUN_DETAILS)
     def thisRunDetails(String key) throws Throwable {
-        return this.execute(ACTION_THIS_RUN_DETAILS, key)
+        return this.execute(ACTION_THIS_RUN_DETAILS, key, RunDTO.class)
     }
 
     /**
@@ -276,8 +269,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<RunDTO> fetchDefault(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, RunDTO.class)
     }
 
     /**
@@ -286,8 +279,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_IMPLEMENTATIONRESULTS)
-    def fetchImplementationResults(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IMPLEMENTATIONRESULTS, context)
+    Page<RunDTO> fetchImplementationResults(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IMPLEMENTATIONRESULTS, context, RunDTO.class)
     }
 
     /**
@@ -296,8 +289,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_DETAIL)
-    def fetchBiDetail(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_DETAIL, context)
+    Page<RunDTO> fetchBiDetail(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_DETAIL, context, RunDTO.class)
     }
 
     /**
@@ -306,8 +299,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_BI_SEARCH)
-    def fetchBiSearch(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BI_SEARCH, context)
+    Page<RunBiSearchGroupDTO> fetchBiSearch(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BI_SEARCH, context, RunBiSearchGroupDTO.class)
     }
 
     /**
@@ -316,8 +309,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CASEPERSON)
-    def fetchCasePerson(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CASEPERSON, context)
+    Page<RunDTO> fetchCasePerson(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CASEPERSON, context, RunDTO.class)
     }
 
     /**
@@ -326,8 +319,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CASE_LATEST_EXECUTED)
-    def fetchCaseLatestExecuted(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CASE_LATEST_EXECUTED, context)
+    Page<RunDTO> fetchCaseLatestExecuted(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CASE_LATEST_EXECUTED, context, RunDTO.class)
     }
 
     /**
@@ -336,8 +329,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_NOTIFY_EXECUTOR)
-    def fetchCommentNotifyExecutor(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_NOTIFY_EXECUTOR, context)
+    Page<RunExecutorDTO> fetchCommentNotifyExecutor(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_NOTIFY_EXECUTOR, context, RunExecutorDTO.class)
     }
 
     /**
@@ -346,8 +339,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMPARATIVEANALYSIS)
-    def fetchComparativeAnalysis(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMPARATIVEANALYSIS, context)
+    Page<RunDTO> fetchComparativeAnalysis(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMPARATIVEANALYSIS, context, RunDTO.class)
     }
 
     /**
@@ -356,8 +349,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DAILYTENDENCIES)
-    def fetchDailyTendencies(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DAILYTENDENCIES, context)
+    Page<RunDTO> fetchDailyTendencies(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DAILYTENDENCIES, context, RunDTO.class)
     }
 
     /**
@@ -366,8 +359,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_EVERYDAYTEST)
-    def fetchEverydayTest(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EVERYDAYTEST, context)
+    Page<RunDTO> fetchEverydayTest(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EVERYDAYTEST, context, RunDTO.class)
     }
 
     /**
@@ -376,8 +369,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_FILTER)
-    def fetchMyFilter(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_FILTER, context)
+    Page<RunDTO> fetchMyFilter(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_FILTER, context, RunDTO.class)
     }
 
     /**
@@ -386,8 +379,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<RunDTO> fetchNormal(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, RunDTO.class)
     }
 
     /**
@@ -396,8 +389,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_PLAN_RUN_HISTORY)
-    def fetchPlanRunHistory(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PLAN_RUN_HISTORY, context)
+    Page<RunDTO> fetchPlanRunHistory(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PLAN_RUN_HISTORY, context, RunDTO.class)
     }
 
     /**
@@ -406,8 +399,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRIORITYDISTRIBUTIONS)
-    def fetchPriorityDistributions(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRIORITYDISTRIBUTIONS, context)
+    Page<RunDTO> fetchPriorityDistributions(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRIORITYDISTRIBUTIONS, context, RunDTO.class)
     }
 
     /**
@@ -416,8 +409,8 @@ class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(RunFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<RunDTO> fetchReader(RunFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, RunDTO.class)
     }
 
 }

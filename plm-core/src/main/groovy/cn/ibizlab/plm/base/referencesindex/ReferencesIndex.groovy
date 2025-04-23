@@ -16,16 +16,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,ReferencesIndexDTO,ReferencesIndexFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_INDEXDER = "IndexDER"
-    private static ReferencesIndex _instance;
+    private static ReferencesIndex _instance
     void setInstance(ReferencesIndex instance) {
         _instance = instance
     }
@@ -39,8 +32,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ReferencesIndexDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ReferencesIndexDTO create(ReferencesIndexDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ReferencesIndexDTO.class)
     }
 
     /**
@@ -49,8 +42,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ReferencesIndexDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ReferencesIndexDTO update(ReferencesIndexDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ReferencesIndexDTO.class)
     }
 
     /**
@@ -59,8 +52,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ReferencesIndexDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ReferencesIndexDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ReferencesIndexDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ReferencesIndexDTO getDraft(ReferencesIndexDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ReferencesIndexDTO.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ReferencesIndexDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ReferencesIndexDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -99,8 +92,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ReferencesIndexDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ReferencesIndexDTO save(ReferencesIndexDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ReferencesIndexDTO.class)
     }
 
     /**
@@ -109,8 +102,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ReferencesIndexFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ReferencesIndexDTO> fetchDefault(ReferencesIndexFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ReferencesIndexDTO.class)
     }
 
     /**
@@ -119,8 +112,8 @@ class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,References
      * @throws Throwable
      */
     @DEDataSet(DATASET_INDEXDER)
-    def fetchIndexDER(ReferencesIndexFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_INDEXDER, context)
+    Page<ReferencesIndexDTO> fetchIndexDER(ReferencesIndexFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_INDEXDER, context, ReferencesIndexDTO.class)
     }
 
 }

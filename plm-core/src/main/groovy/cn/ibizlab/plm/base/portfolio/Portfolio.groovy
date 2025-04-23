@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,PortfolioFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE_PROJECT_SET = "delete_project_set"
     public static final String ACTION_FAVORITE = "favorite"
     public static final String ACTION_PORTFOLIO_INDEX_ADDON_COUNTER = "portfolio_index_addon_counter"
@@ -39,7 +32,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
     public static final String DATASET_READER = "reader"
     public static final String DATASET_USER = "user"
     public static final String DATASET_WORK_PROJECT_PORTFOLIO = "work_project_portfolio"
-    private static Portfolio _instance;
+    private static Portfolio _instance
     void setInstance(Portfolio instance) {
         _instance = instance
     }
@@ -53,8 +46,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PortfolioDTO create(PortfolioDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PortfolioDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PortfolioDTO update(PortfolioDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PortfolioDTO.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PortfolioDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PortfolioDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PortfolioDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PortfolioDTO getDraft(PortfolioDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PortfolioDTO.class)
     }
 
     /**
@@ -103,8 +96,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PortfolioDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PortfolioDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -113,8 +106,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PortfolioDTO save(PortfolioDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PortfolioDTO.class)
     }
 
     /**
@@ -124,7 +117,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_DELETE_PROJECT_SET)
     def deleteProjectSet(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE_PROJECT_SET, dto)
+        this.execute(ACTION_DELETE_PROJECT_SET, dto, PortfolioDTO.class)
     }
 
     /**
@@ -134,7 +127,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, PortfolioDTO.class)
     }
 
     /**
@@ -144,7 +137,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_PORTFOLIO_INDEX_ADDON_COUNTER)
     def portfolioIndexAddonCounter(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_PORTFOLIO_INDEX_ADDON_COUNTER, dto)
+        this.execute(ACTION_PORTFOLIO_INDEX_ADDON_COUNTER, dto, PortfolioDTO.class)
     }
 
     /**
@@ -154,7 +147,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_RECOVER_PROJECT_SET)
     def recoverProjectSet(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER_PROJECT_SET, dto)
+        this.execute(ACTION_RECOVER_PROJECT_SET, dto, PortfolioDTO.class)
     }
 
     /**
@@ -164,7 +157,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_REMOVE_FROM_PROJECT_SET)
     def removeFromProjectSet(PortfolioDTO dto) throws Throwable {
-        return this.execute(ACTION_REMOVE_FROM_PROJECT_SET, dto)
+        return this.execute(ACTION_REMOVE_FROM_PROJECT_SET, dto, PortfolioDTO.class)
     }
 
     /**
@@ -174,7 +167,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_RESOURCE_SETTING)
     def resourceSetting(PortfolioDTO dto) throws Throwable {
-        return this.execute(ACTION_RESOURCE_SETTING, dto)
+        return this.execute(ACTION_RESOURCE_SETTING, dto, PortfolioDTO.class)
     }
 
     /**
@@ -184,7 +177,7 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(PortfolioDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, PortfolioDTO.class)
     }
 
     /**
@@ -193,8 +186,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PortfolioDTO> fetchDefault(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PortfolioDTO.class)
     }
 
     /**
@@ -203,8 +196,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADMIN)
-    def fetchAdmin(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADMIN, context)
+    Page<PortfolioDTO> fetchAdmin(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADMIN, context, PortfolioDTO.class)
     }
 
     /**
@@ -213,8 +206,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_PROJECT_PORTFOLIO)
-    def fetchChooseProjectPortfolio(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_PROJECT_PORTFOLIO, context)
+    Page<PortfolioDTO> fetchChooseProjectPortfolio(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_PROJECT_PORTFOLIO, context, PortfolioDTO.class)
     }
 
     /**
@@ -223,8 +216,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_FAVORITE)
-    def fetchFavorite(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FAVORITE, context)
+    Page<PortfolioDTO> fetchFavorite(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FAVORITE, context, PortfolioDTO.class)
     }
 
     /**
@@ -233,8 +226,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_SET_DELETED)
-    def fetchProjectSetDeleted(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_SET_DELETED, context)
+    Page<PortfolioDTO> fetchProjectSetDeleted(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_SET_DELETED, context, PortfolioDTO.class)
     }
 
     /**
@@ -243,8 +236,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_SET_GOING)
-    def fetchProjectSetGoing(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_SET_GOING, context)
+    Page<PortfolioDTO> fetchProjectSetGoing(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_SET_GOING, context, PortfolioDTO.class)
     }
 
     /**
@@ -253,8 +246,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<PortfolioDTO> fetchReader(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, PortfolioDTO.class)
     }
 
     /**
@@ -263,8 +256,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<PortfolioDTO> fetchUser(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, PortfolioDTO.class)
     }
 
     /**
@@ -273,8 +266,8 @@ class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,Portfolio
      * @throws Throwable
      */
     @DEDataSet(DATASET_WORK_PROJECT_PORTFOLIO)
-    def fetchWorkProjectPortfolio(PortfolioFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_WORK_PROJECT_PORTFOLIO, context)
+    Page<PortfolioDTO> fetchWorkProjectPortfolio(PortfolioFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_PROJECT_PORTFOLIO, context, PortfolioDTO.class)
     }
 
 }

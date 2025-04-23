@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NO_SECTION = "no_section"
     public static final String DATASET_READER = "reader"
     public static final String DATASET_USER = "user"
     public static final String DATASET_USER_GROUP_ADMIN = "user_group_admin"
-    private static Group _instance;
+    private static Group _instance
     void setInstance(Group instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(GroupDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    GroupDTO create(GroupDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, GroupDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(GroupDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    GroupDTO update(GroupDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, GroupDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    GroupDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, GroupDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(GroupDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    GroupDTO getDraft(GroupDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, GroupDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(GroupDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(GroupDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -103,8 +96,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(GroupDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    GroupDTO save(GroupDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, GroupDTO.class)
     }
 
     /**
@@ -114,7 +107,7 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(GroupDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, GroupDTO.class)
     }
 
     /**
@@ -123,8 +116,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(GroupFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<GroupDTO> fetchDefault(GroupFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, GroupDTO.class)
     }
 
     /**
@@ -133,8 +126,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_SECTION)
-    def fetchNoSection(GroupFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_SECTION, context)
+    Page<GroupDTO> fetchNoSection(GroupFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_SECTION, context, GroupDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(GroupFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<GroupDTO> fetchReader(GroupFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, GroupDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER)
-    def fetchUser(GroupFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER, context)
+    Page<GroupDTO> fetchUser(GroupFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER, context, GroupDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class Group extends GroovyDataEntityRuntime<Group,GroupDTO,GroupFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_USER_GROUP_ADMIN)
-    def fetchUserGroupAdmin(GroupFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_USER_GROUP_ADMIN, context)
+    Page<GroupDTO> fetchUserGroupAdmin(GroupFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_USER_GROUP_ADMIN, context, GroupDTO.class)
     }
 
 }

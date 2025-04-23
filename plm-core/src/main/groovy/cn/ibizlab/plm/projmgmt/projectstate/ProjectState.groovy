@@ -16,16 +16,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,ProjectStateFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ProjectState _instance;
+    private static ProjectState _instance
     void setInstance(ProjectState instance) {
         _instance = instance
     }
@@ -39,8 +32,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProjectStateDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProjectStateDTO create(ProjectStateDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProjectStateDTO.class)
     }
 
     /**
@@ -49,8 +42,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProjectStateDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProjectStateDTO update(ProjectStateDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProjectStateDTO.class)
     }
 
     /**
@@ -59,8 +52,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProjectStateDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProjectStateDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProjectStateDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProjectStateDTO getDraft(ProjectStateDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProjectStateDTO.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProjectStateDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProjectStateDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -99,8 +92,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProjectStateDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProjectStateDTO save(ProjectStateDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProjectStateDTO.class)
     }
 
     /**
@@ -110,7 +103,7 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(ProjectStateDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, ProjectStateDTO.class)
     }
 
     /**
@@ -119,8 +112,8 @@ class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProjectStateFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProjectStateDTO> fetchDefault(ProjectStateFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProjectStateDTO.class)
     }
 
 }

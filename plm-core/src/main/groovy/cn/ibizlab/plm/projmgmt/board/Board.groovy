@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHECK_BOARD_IS_DELETED = "check_board_is_deleted"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_BOARD_UPLOAD = "cur_board_upload"
     public static final String DATASET_CUR_PROJECT_BOARD = "cur_project_board"
     public static final String DATASET_READER = "reader"
-    private static Board _instance;
+    private static Board _instance
     void setInstance(Board instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(BoardDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    BoardDTO create(BoardDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, BoardDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(BoardDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    BoardDTO update(BoardDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, BoardDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    BoardDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, BoardDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(BoardDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    BoardDTO getDraft(BoardDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, BoardDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(BoardDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(BoardDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(BoardDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    BoardDTO save(BoardDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, BoardDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      */
     @DEAction(ACTION_CHECK_BOARD_IS_DELETED)
     def checkBoardIsDeleted(BoardDTO dto) throws Throwable {
-        this.execute(ACTION_CHECK_BOARD_IS_DELETED, dto)
+        this.execute(ACTION_CHECK_BOARD_IS_DELETED, dto, BoardDTO.class)
     }
 
     /**
@@ -122,8 +115,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(BoardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<BoardDTO> fetchDefault(BoardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, BoardDTO.class)
     }
 
     /**
@@ -132,8 +125,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_BOARD_UPLOAD)
-    def fetchCurBoardUpload(BoardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_BOARD_UPLOAD, context)
+    Page<BoardDTO> fetchCurBoardUpload(BoardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_BOARD_UPLOAD, context, BoardDTO.class)
     }
 
     /**
@@ -142,8 +135,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT_BOARD)
-    def fetchCurProjectBoard(BoardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT_BOARD, context)
+    Page<BoardDTO> fetchCurProjectBoard(BoardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT_BOARD, context, BoardDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(BoardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<BoardDTO> fetchReader(BoardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, BoardDTO.class)
     }
 
 }

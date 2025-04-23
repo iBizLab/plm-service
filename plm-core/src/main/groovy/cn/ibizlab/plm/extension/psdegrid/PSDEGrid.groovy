@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSDEGrid _instance;
+    private static PSDEGrid _instance
     void setInstance(PSDEGrid instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSDEGridDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSDEGridDTO create(PSDEGridDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSDEGridDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSDEGridDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSDEGridDTO update(PSDEGridDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSDEGridDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSDEGridDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSDEGridDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSDEGridDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSDEGridDTO getDraft(PSDEGridDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSDEGridDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSDEGridDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSDEGridDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSDEGridDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSDEGridDTO save(PSDEGridDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSDEGridDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class PSDEGrid extends GroovyPSModelDERuntime<PSDEGrid,PSDEGridDTO,PSDEGridFilte
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSDEGridFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSDEGridDTO> fetchDefault(PSDEGridFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSDEGridDTO.class)
     }
 
 }

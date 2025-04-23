@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,TemplateFlowFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static TemplateFlow _instance;
+    private static TemplateFlow _instance
     void setInstance(TemplateFlow instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TemplateFlowDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TemplateFlowDTO create(TemplateFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TemplateFlowDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TemplateFlowDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TemplateFlowDTO update(TemplateFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TemplateFlowDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TemplateFlowDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TemplateFlowDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TemplateFlowDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TemplateFlowDTO getDraft(TemplateFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TemplateFlowDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TemplateFlowDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TemplateFlowDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TemplateFlowDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TemplateFlowDTO save(TemplateFlowDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TemplateFlowDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TemplateFlowFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TemplateFlowDTO> fetchDefault(TemplateFlowFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TemplateFlowDTO.class)
     }
 
 }

@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberDTO,DiscussMemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_RESTART = "Restart"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_STOP = "Stop"
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String ACTION_CHOOSE_POSITION = "choose_position"
     public static final String ACTION_MOB_CREATE_TOPIC_MEMBER = "mob_create_topic_member"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static DiscussMember _instance;
+    private static DiscussMember _instance
     void setInstance(DiscussMember instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DiscussMemberDTO create(DiscussMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DiscussMemberDTO update(DiscussMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DiscussMemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DiscussMemberDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DiscussMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DiscussMemberDTO getDraft(DiscussMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -93,8 +86,18 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DiscussMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DiscussMemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SAVE)
+    DiscussMemberDTO save(DiscussMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -104,17 +107,7 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      */
     @DEAction(ACTION_RESTART)
     def restart(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_RESTART, dto)
-    }
-
-    /**
-     * 行为：Save 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_SAVE)
-    def save(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+        this.execute(ACTION_RESTART, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -124,7 +117,7 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      */
     @DEAction(ACTION_STOP)
     def stop(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_STOP, dto)
+        this.execute(ACTION_STOP, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -134,7 +127,7 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -144,7 +137,7 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      */
     @DEAction(ACTION_CHOOSE_POSITION)
     def choosePosition(DiscussMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHOOSE_POSITION, dto)
+        this.execute(ACTION_CHOOSE_POSITION, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -154,7 +147,7 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      */
     @DEAction(ACTION_MOB_CREATE_TOPIC_MEMBER)
     def mobCreateTopicMember(DiscussMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_MOB_CREATE_TOPIC_MEMBER, dto)
+        return this.execute(ACTION_MOB_CREATE_TOPIC_MEMBER, dto, DiscussMemberDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DiscussMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DiscussMemberDTO> fetchDefault(DiscussMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DiscussMemberDTO.class)
     }
 
 }

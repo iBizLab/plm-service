@@ -16,18 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,ProductTagFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE_TAG = "delete_tag"
     public static final String ACTION_GET_CON_PRODUCT_TAG = "get_con_product_tag"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CUR_PRODUCT_TAG = "cur_product_tag"
-    private static ProductTag _instance;
+    private static ProductTag _instance
     void setInstance(ProductTag instance) {
         _instance = instance
     }
@@ -41,8 +34,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ProductTagDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ProductTagDTO create(ProductTagDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ProductTagDTO.class)
     }
 
     /**
@@ -51,8 +44,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ProductTagDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ProductTagDTO update(ProductTagDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ProductTagDTO.class)
     }
 
     /**
@@ -61,8 +54,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -71,8 +64,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ProductTagDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ProductTagDTO.class)
     }
 
     /**
@@ -81,8 +74,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ProductTagDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ProductTagDTO getDraft(ProductTagDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ProductTagDTO.class)
     }
 
     /**
@@ -91,8 +84,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ProductTagDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ProductTagDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -101,8 +94,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ProductTagDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ProductTagDTO save(ProductTagDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ProductTagDTO.class)
     }
 
     /**
@@ -112,7 +105,7 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      */
     @DEAction(ACTION_DELETE_TAG)
     def deleteTag(ProductTagDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE_TAG, dto)
+        this.execute(ACTION_DELETE_TAG, dto, ProductTagDTO.class)
     }
 
     /**
@@ -122,7 +115,7 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      */
     @DEAction(ACTION_GET_CON_PRODUCT_TAG)
     def getConProductTag(String key) throws Throwable {
-        return this.execute(ACTION_GET_CON_PRODUCT_TAG, key)
+        return this.execute(ACTION_GET_CON_PRODUCT_TAG, key, ProductTagDTO.class)
     }
 
     /**
@@ -131,8 +124,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ProductTagFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ProductTagDTO> fetchDefault(ProductTagFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ProductTagDTO.class)
     }
 
     /**
@@ -141,8 +134,8 @@ class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,Produc
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PRODUCT_TAG)
-    def fetchCurProductTag(ProductTagFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PRODUCT_TAG, context)
+    Page<ProductTagDTO> fetchCurProductTag(ProductTagFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PRODUCT_TAG, context, ProductTagDTO.class)
     }
 
 }

@@ -16,19 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ADD_CATEGORIES = "add_categories"
     public static final String ACTION_CUSTOMER_CHOOSE_TICKET = "customer_choose_ticket"
     public static final String ACTION_CUSTOMER_READONLY_RECOGNIZE = "customer_readonly_recognize"
     public static final String ACTION_DEL_RELATION = "del_relation"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
-    public static final String ACTION_GET_ATTENTION = "get_attention"
     public static final String ACTION_GET_IDEA_CUSTOMER_INFO = "get_idea_customer_info"
     public static final String ACTION_OTHERS_RELATION_CUSTOMER = "others_relation_customer"
     public static final String ACTION_PRODUCT_CUSTOMER_RE_COUNTERS = "product_customer_re_counters"
@@ -38,7 +30,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
     public static final String DATASET_IDEA_RELATION_CUSTOMER = "idea_relation_customer"
     public static final String DATASET_NORMAL = "normal"
     public static final String DATASET_NOTIFY_ASSIGNEE = "notify_assignee"
-    private static Customer _instance;
+    private static Customer _instance
     void setInstance(Customer instance) {
         _instance = instance
     }
@@ -52,8 +44,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    CustomerDTO create(CustomerDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, CustomerDTO.class)
     }
 
     /**
@@ -62,8 +54,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    CustomerDTO update(CustomerDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, CustomerDTO.class)
     }
 
     /**
@@ -72,8 +64,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -82,8 +74,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    CustomerDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, CustomerDTO.class)
     }
 
     /**
@@ -92,8 +84,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(CustomerDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    CustomerDTO getDraft(CustomerDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, CustomerDTO.class)
     }
 
     /**
@@ -102,8 +94,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(CustomerDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(CustomerDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -112,8 +104,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    CustomerDTO save(CustomerDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, CustomerDTO.class)
     }
 
     /**
@@ -123,7 +115,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_ADD_CATEGORIES)
     def addCategories(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_ADD_CATEGORIES, dto)
+        this.execute(ACTION_ADD_CATEGORIES, dto, CustomerDTO.class)
     }
 
     /**
@@ -133,7 +125,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_CUSTOMER_CHOOSE_TICKET)
     def customerChooseTicket(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_CUSTOMER_CHOOSE_TICKET, dto)
+        this.execute(ACTION_CUSTOMER_CHOOSE_TICKET, dto, CustomerDTO.class)
     }
 
     /**
@@ -143,7 +135,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_CUSTOMER_READONLY_RECOGNIZE)
     def customerReadonlyRecognize(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_CUSTOMER_READONLY_RECOGNIZE, dto)
+        this.execute(ACTION_CUSTOMER_READONLY_RECOGNIZE, dto, CustomerDTO.class)
     }
 
     /**
@@ -153,7 +145,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_DEL_RELATION)
     def delRelation(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_RELATION, dto)
+        this.execute(ACTION_DEL_RELATION, dto, CustomerDTO.class)
     }
 
     /**
@@ -163,17 +155,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(CustomerDTO dto) throws Throwable {
-        return this.execute(ACTION_DELETE_CATEGORIES, dto)
-    }
-
-    /**
-     * 行为：获取关注人 实际功能
-     * @param key
-     * @throws Throwable
-     */
-    @DEAction(ACTION_GET_ATTENTION)
-    def getAttention(String key) throws Throwable {
-        return this.execute(ACTION_GET_ATTENTION, key)
+        return this.execute(ACTION_DELETE_CATEGORIES, dto, CustomerDTO.class)
     }
 
     /**
@@ -183,7 +165,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_GET_IDEA_CUSTOMER_INFO)
     def getIdeaCustomerInfo(CustomerDTO dto) throws Throwable {
-        return this.execute(ACTION_GET_IDEA_CUSTOMER_INFO, dto)
+        return this.execute(ACTION_GET_IDEA_CUSTOMER_INFO, dto, CustomerDTO.class)
     }
 
     /**
@@ -193,7 +175,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_OTHERS_RELATION_CUSTOMER)
     def othersRelationCustomer(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_CUSTOMER, dto)
+        this.execute(ACTION_OTHERS_RELATION_CUSTOMER, dto, CustomerDTO.class)
     }
 
     /**
@@ -203,7 +185,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      */
     @DEAction(ACTION_PRODUCT_CUSTOMER_RE_COUNTERS)
     def productCustomerReCounters(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_CUSTOMER_RE_COUNTERS, dto)
+        this.execute(ACTION_PRODUCT_CUSTOMER_RE_COUNTERS, dto, CustomerDTO.class)
     }
 
     /**
@@ -212,8 +194,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(CustomerFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<CustomerDTO> fetchDefault(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, CustomerDTO.class)
     }
 
     /**
@@ -222,8 +204,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_COMMENT_NOTIFY_ASSIGNEE)
-    def fetchCommentNotifyAssignee(CustomerFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context)
+    Page<CustomerAssigneeDTO> fetchCommentNotifyAssignee(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context, CustomerAssigneeDTO.class)
     }
 
     /**
@@ -232,8 +214,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_NOITRE_CUSTOMER)
-    def fetchIdeaNotreCustomer(CustomerFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_NOITRE_CUSTOMER, context)
+    Page<CustomerDTO> fetchIdeaNotreCustomer(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_NOITRE_CUSTOMER, context, CustomerDTO.class)
     }
 
     /**
@@ -242,8 +224,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_IDEA_RELATION_CUSTOMER)
-    def fetchIdeaRelationCustomer(CustomerFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IDEA_RELATION_CUSTOMER, context)
+    Page<CustomerDTO> fetchIdeaRelationCustomer(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_RELATION_CUSTOMER, context, CustomerDTO.class)
     }
 
     /**
@@ -252,8 +234,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(CustomerFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<CustomerDTO> fetchNormal(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, CustomerDTO.class)
     }
 
     /**
@@ -262,8 +244,8 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NOTIFY_ASSIGNEE)
-    def fetchNotifyAssignee(CustomerFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context)
+    Page<CustomerAssigneeDTO> fetchNotifyAssignee(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOTIFY_ASSIGNEE, context, CustomerAssigneeDTO.class)
     }
 
 }

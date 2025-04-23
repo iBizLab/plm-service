@@ -16,20 +16,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,BaselineTestCaseDTO,BaselineTestCaseFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_SHIFT_IN_BASELINE = "shift_in_baseline"
     public static final String ACTION_SHIFT_OUT_BASELINE = "shift_out_baseline"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_BASELINE_COMPARISON = "baseline_comparison"
     public static final String DATASET_BASELINE_RELATION_VERSION = "baseline_relation_version"
     public static final String DATASET_FILL_VERSION_DATA = "fill_version_data"
-    private static BaselineTestCase _instance;
+    private static BaselineTestCase _instance
     void setInstance(BaselineTestCase instance) {
         _instance = instance
     }
@@ -43,8 +36,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(BaselineTestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    BaselineTestCaseDTO create(BaselineTestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -53,8 +46,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(BaselineTestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    BaselineTestCaseDTO update(BaselineTestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -63,8 +56,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -73,8 +66,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    BaselineTestCaseDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -83,8 +76,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(BaselineTestCaseDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    BaselineTestCaseDTO getDraft(BaselineTestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -93,8 +86,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(BaselineTestCaseDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(BaselineTestCaseDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -103,8 +96,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(BaselineTestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    BaselineTestCaseDTO save(BaselineTestCaseDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -114,7 +107,7 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      */
     @DEAction(ACTION_SHIFT_IN_BASELINE)
     def shiftInBaseline(BaselineTestCaseDTO dto) throws Throwable {
-        return this.execute(ACTION_SHIFT_IN_BASELINE, dto)
+        return this.execute(ACTION_SHIFT_IN_BASELINE, dto, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -124,7 +117,7 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      */
     @DEAction(ACTION_SHIFT_OUT_BASELINE)
     def shiftOutBaseline(BaselineTestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_SHIFT_OUT_BASELINE, dto)
+        this.execute(ACTION_SHIFT_OUT_BASELINE, dto, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -133,8 +126,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(BaselineTestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<BaselineTestCaseDTO> fetchDefault(BaselineTestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -143,8 +136,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_COMPARISON)
-    def fetchBaselineComparison(BaselineTestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_COMPARISON, context)
+    Page<BaselineTestCaseDTO> fetchBaselineComparison(BaselineTestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_COMPARISON, context, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -153,8 +146,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_RELATION_VERSION)
-    def fetchBaselineRelationVersion(BaselineTestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_RELATION_VERSION, context)
+    Page<BaselineTestCaseDTO> fetchBaselineRelationVersion(BaselineTestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_RELATION_VERSION, context, BaselineTestCaseDTO.class)
     }
 
     /**
@@ -163,8 +156,8 @@ class BaselineTestCase extends GroovyDataEntityRuntime<BaselineTestCase,Baseline
      * @throws Throwable
      */
     @DEDataSet(DATASET_FILL_VERSION_DATA)
-    def fetchFillVersionData(BaselineTestCaseFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_FILL_VERSION_DATA, context)
+    Page<BaselineTestCaseDTO> fetchFillVersionData(BaselineTestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FILL_VERSION_DATA, context, BaselineTestCaseDTO.class)
     }
 
 }

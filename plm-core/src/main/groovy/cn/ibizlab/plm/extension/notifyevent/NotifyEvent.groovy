@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,NotifyEventFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static NotifyEvent _instance;
+    private static NotifyEvent _instance
     void setInstance(NotifyEvent instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(NotifyEventDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    NotifyEventDTO create(NotifyEventDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, NotifyEventDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(NotifyEventDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    NotifyEventDTO update(NotifyEventDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, NotifyEventDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    NotifyEventDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, NotifyEventDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(NotifyEventDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    NotifyEventDTO getDraft(NotifyEventDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, NotifyEventDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(NotifyEventDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(NotifyEventDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(NotifyEventDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    NotifyEventDTO save(NotifyEventDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, NotifyEventDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,Not
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(NotifyEventFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<NotifyEventDTO> fetchDefault(NotifyEventFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, NotifyEventDTO.class)
     }
 
 }

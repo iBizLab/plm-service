@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,ReviewRuleFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ReviewRule _instance;
+    private static ReviewRule _instance
     void setInstance(ReviewRule instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ReviewRuleDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ReviewRuleDTO create(ReviewRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ReviewRuleDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ReviewRuleDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ReviewRuleDTO update(ReviewRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ReviewRuleDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ReviewRuleDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ReviewRuleDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ReviewRuleDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ReviewRuleDTO getDraft(ReviewRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ReviewRuleDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ReviewRuleDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ReviewRuleDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ReviewRuleDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ReviewRuleDTO save(ReviewRuleDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ReviewRuleDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class ReviewRule extends GroovyDataEntityRuntime<ReviewRule,ReviewRuleDTO,Review
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ReviewRuleFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ReviewRuleDTO> fetchDefault(ReviewRuleFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ReviewRuleDTO.class)
     }
 
 }

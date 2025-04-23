@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardDTO,DynaDashboardFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_FILL_OTHER_BOARD = "fill_other_board"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String ACTION_ONLY_GET = "only_get"
@@ -32,7 +25,7 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
     public static final String DATASET_IS_SYSTEM = "is_system"
     public static final String DATASET_MY_DASHBOARD = "my_dashboard"
     public static final String DATASET_NORMAL = "normal"
-    private static DynaDashboard _instance;
+    private static DynaDashboard _instance
     void setInstance(DynaDashboard instance) {
         _instance = instance
     }
@@ -46,8 +39,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(DynaDashboardDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    DynaDashboardDTO create(DynaDashboardDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -56,8 +49,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(DynaDashboardDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    DynaDashboardDTO update(DynaDashboardDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -66,8 +59,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -76,8 +69,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    DynaDashboardDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, DynaDashboardDTO.class)
     }
 
     /**
@@ -86,8 +79,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(DynaDashboardDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    DynaDashboardDTO getDraft(DynaDashboardDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -96,8 +89,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(DynaDashboardDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(DynaDashboardDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -106,8 +99,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(DynaDashboardDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    DynaDashboardDTO save(DynaDashboardDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -117,7 +110,7 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      */
     @DEAction(ACTION_FILL_OTHER_BOARD)
     def fillOtherBoard(DynaDashboardDTO dto) throws Throwable {
-        this.execute(ACTION_FILL_OTHER_BOARD, dto)
+        this.execute(ACTION_FILL_OTHER_BOARD, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -127,7 +120,7 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(DynaDashboardDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -137,7 +130,7 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      */
     @DEAction(ACTION_ONLY_GET)
     def onlyGet(String key) throws Throwable {
-        return this.execute(ACTION_ONLY_GET, key)
+        return this.execute(ACTION_ONLY_GET, key, DynaDashboardDTO.class)
     }
 
     /**
@@ -147,7 +140,7 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      */
     @DEAction(ACTION_USE_CUR_TEMPLATE)
     def useCurTemplate(DynaDashboardDTO dto) throws Throwable {
-        this.execute(ACTION_USE_CUR_TEMPLATE, dto)
+        this.execute(ACTION_USE_CUR_TEMPLATE, dto, DynaDashboardDTO.class)
     }
 
     /**
@@ -156,8 +149,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(DynaDashboardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<DynaDashboardDTO> fetchDefault(DynaDashboardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, DynaDashboardDTO.class)
     }
 
     /**
@@ -166,8 +159,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEDataSet(DATASET_EXAMPLE_CHART)
-    def fetchExampleChart(DynaDashboardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_EXAMPLE_CHART, context)
+    Page<DynaDashboardExampleChartDTO> fetchExampleChart(DynaDashboardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EXAMPLE_CHART, context, DynaDashboardExampleChartDTO.class)
     }
 
     /**
@@ -176,8 +169,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEDataSet(DATASET_IS_SYSTEM)
-    def fetchIsSystem(DynaDashboardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IS_SYSTEM, context)
+    Page<DynaDashboardDTO> fetchIsSystem(DynaDashboardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IS_SYSTEM, context, DynaDashboardDTO.class)
     }
 
     /**
@@ -186,8 +179,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_DASHBOARD)
-    def fetchMyDashboard(DynaDashboardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_DASHBOARD, context)
+    Page<DynaDashboardDTO> fetchMyDashboard(DynaDashboardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_DASHBOARD, context, DynaDashboardDTO.class)
     }
 
     /**
@@ -196,8 +189,8 @@ class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardD
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(DynaDashboardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<DynaDashboardDTO> fetchNormal(DynaDashboardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, DynaDashboardDTO.class)
     }
 
 }

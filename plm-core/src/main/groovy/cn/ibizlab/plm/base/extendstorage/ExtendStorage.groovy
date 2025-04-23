@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageDTO,ExtendStorageFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static ExtendStorage _instance;
+    private static ExtendStorage _instance
     void setInstance(ExtendStorage instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ExtendStorageDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ExtendStorageDTO create(ExtendStorageDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ExtendStorageDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ExtendStorageDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ExtendStorageDTO update(ExtendStorageDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ExtendStorageDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ExtendStorageDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ExtendStorageDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ExtendStorageDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ExtendStorageDTO getDraft(ExtendStorageDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ExtendStorageDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ExtendStorageDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ExtendStorageDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ExtendStorageDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ExtendStorageDTO save(ExtendStorageDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ExtendStorageDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class ExtendStorage extends GroovyDataEntityRuntime<ExtendStorage,ExtendStorageD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ExtendStorageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ExtendStorageDTO> fetchDefault(ExtendStorageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ExtendStorageDTO.class)
     }
 
 }

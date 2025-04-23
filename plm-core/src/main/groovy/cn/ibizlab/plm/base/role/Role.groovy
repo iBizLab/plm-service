@@ -17,15 +17,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Role _instance;
+    private static Role _instance
     void setInstance(Role instance) {
         _instance = instance
     }
@@ -39,8 +32,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_CREATE)
-    def create(RoleDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    RoleDTO create(RoleDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, RoleDTO.class)
     }
 
     /**
@@ -49,8 +42,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_UPDATE)
-    def update(RoleDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    RoleDTO update(RoleDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, RoleDTO.class)
     }
 
     /**
@@ -59,8 +52,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -69,8 +62,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    RoleDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, RoleDTO.class)
     }
 
     /**
@@ -79,8 +72,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_GETDRAFT)
-    def getDraft(RoleDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    RoleDTO getDraft(RoleDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, RoleDTO.class)
     }
 
     /**
@@ -89,8 +82,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_CHECKKEY)
-    def checkKey(RoleDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(RoleDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -99,8 +92,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEAction(ACTION_SAVE)
-    def save(RoleDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    RoleDTO save(RoleDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, RoleDTO.class)
     }
 
     /**
@@ -109,8 +102,8 @@ class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(RoleFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<RoleDTO> fetchDefault(RoleFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, RoleDTO.class)
     }
 
 }

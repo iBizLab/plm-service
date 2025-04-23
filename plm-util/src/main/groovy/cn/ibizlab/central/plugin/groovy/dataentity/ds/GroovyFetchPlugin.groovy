@@ -11,7 +11,7 @@ class GroovyFetchPlugin extends DEDataSetPluginRuntimeBase{
     @Override
     Object fetch(IDataEntityRuntimeContext iDataEntityRuntimeContext, IPSDEDataSet iPSDEDataSet, Object[] args, Object actionData) throws Throwable {
         if (args != null && args.length > 0) {
-            Object arg = args[0];
+            Object arg = args[0]
             if (arg instanceof GroovyFilter) {
                 return this.onFetch((ISearchContextDTO) arg)
             }
@@ -22,13 +22,13 @@ class GroovyFetchPlugin extends DEDataSetPluginRuntimeBase{
 
     @Override
     protected Object onFetch(IDataEntityRuntimeContext iDataEntityRuntimeContext, IPSDEDataSet iPSDEDataSet, Object[] args, Object actionData) throws Throwable {
-        return iDataEntityRuntimeContext.fetchDataSetReal(iPSDEDataSet, args, actionData);
+        return iDataEntityRuntimeContext.fetchDataSetReal(iPSDEDataSet, args, actionData)
     }
 
 
     @Override
     protected Object onFetch(ISearchContextDTO iSearchContextDTO) throws Throwable {
-        throw new Exception("没有实现");
+        throw new Exception("没有实现")
     }
 
 }

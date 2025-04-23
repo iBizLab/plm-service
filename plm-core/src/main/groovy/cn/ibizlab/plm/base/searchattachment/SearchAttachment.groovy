@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAttachmentDTO,SearchAttachmentFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
     public static final String DATASET_CUR_PRODUCT = "cur_product"
@@ -30,7 +23,7 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
     public static final String DATASET_PRODUCT_FILE = "product_file"
     public static final String DATASET_PROJECT_FILE = "project_file"
     public static final String DATASET_RELATION = "relation"
-    private static SearchAttachment _instance;
+    private static SearchAttachment _instance
     void setInstance(SearchAttachment instance) {
         _instance = instance
     }
@@ -44,8 +37,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(SearchAttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    SearchAttachmentDTO create(SearchAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, SearchAttachmentDTO.class)
     }
 
     /**
@@ -54,8 +47,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(SearchAttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    SearchAttachmentDTO update(SearchAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, SearchAttachmentDTO.class)
     }
 
     /**
@@ -64,8 +57,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -74,8 +67,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    SearchAttachmentDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, SearchAttachmentDTO.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(SearchAttachmentDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    SearchAttachmentDTO getDraft(SearchAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, SearchAttachmentDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(SearchAttachmentDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(SearchAttachmentDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -104,8 +97,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(SearchAttachmentDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    SearchAttachmentDTO save(SearchAttachmentDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, SearchAttachmentDTO.class)
     }
 
     /**
@@ -114,8 +107,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<SearchAttachmentDTO> fetchDefault(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, SearchAttachmentDTO.class)
     }
 
     /**
@@ -124,8 +117,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADVANCED_SEARCH)
-    def fetchAdvancedSearch(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADVANCED_SEARCH, context)
+    Page<SearchAttachmentDTO> fetchAdvancedSearch(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADVANCED_SEARCH, context, SearchAttachmentDTO.class)
     }
 
     /**
@@ -134,8 +127,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PRODUCT)
-    def fetchCurProduct(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PRODUCT, context)
+    Page<SearchAttachmentDTO> fetchCurProduct(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PRODUCT, context, SearchAttachmentDTO.class)
     }
 
     /**
@@ -144,8 +137,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_CUR_PROJECT)
-    def fetchCurProject(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_PROJECT, context)
+    Page<SearchAttachmentDTO> fetchCurProject(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PROJECT, context, SearchAttachmentDTO.class)
     }
 
     /**
@@ -154,8 +147,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PRODUCT_FILE)
-    def fetchProductFile(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PRODUCT_FILE, context)
+    Page<SearchAttachmentDTO> fetchProductFile(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PRODUCT_FILE, context, SearchAttachmentDTO.class)
     }
 
     /**
@@ -164,8 +157,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_PROJECT_FILE)
-    def fetchProjectFile(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_PROJECT_FILE, context)
+    Page<SearchAttachmentDTO> fetchProjectFile(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_FILE, context, SearchAttachmentDTO.class)
     }
 
     /**
@@ -174,8 +167,8 @@ class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAt
      * @throws Throwable
      */
     @DEDataSet(DATASET_RELATION)
-    def fetchRelation(SearchAttachmentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_RELATION, context)
+    Page<SearchAttachmentDTO> fetchRelation(SearchAttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RELATION, context, SearchAttachmentDTO.class)
     }
 
 }

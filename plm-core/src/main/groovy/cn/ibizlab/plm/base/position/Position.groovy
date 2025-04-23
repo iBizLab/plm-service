@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NO_CATEGORY = "no_category"
-    private static Position _instance;
+    private static Position _instance
     void setInstance(Position instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PositionDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PositionDTO create(PositionDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PositionDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PositionDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PositionDTO update(PositionDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PositionDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PositionDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PositionDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PositionDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PositionDTO getDraft(PositionDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PositionDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PositionDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PositionDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PositionDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PositionDTO save(PositionDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PositionDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(PositionDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, PositionDTO.class)
     }
 
     /**
@@ -120,8 +113,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PositionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PositionDTO> fetchDefault(PositionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PositionDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_CATEGORY)
-    def fetchNoCategory(PositionFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_CATEGORY, context)
+    Page<PositionDTO> fetchNoCategory(PositionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_CATEGORY, context, PositionDTO.class)
     }
 
 }

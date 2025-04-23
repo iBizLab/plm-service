@@ -16,19 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_APPLY = "APPLY"
     public static final String ACTION_DISABLE = "DISABLE"
     public static final String ACTION_ENABLE = "ENABLE"
     public static final String ACTION_GET_LAST_RUN_INFO = "get_last_run_info"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static PSDELogic _instance;
+    private static PSDELogic _instance
     void setInstance(PSDELogic instance) {
         _instance = instance
     }
@@ -42,8 +35,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PSDELogicDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PSDELogicDTO create(PSDELogicDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -52,8 +45,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PSDELogicDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PSDELogicDTO update(PSDELogicDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -62,8 +55,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -72,8 +65,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PSDELogicDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PSDELogicDTO.class)
     }
 
     /**
@@ -82,8 +75,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PSDELogicDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PSDELogicDTO getDraft(PSDELogicDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -92,8 +85,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PSDELogicDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PSDELogicDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -102,8 +95,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PSDELogicDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PSDELogicDTO save(PSDELogicDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -113,7 +106,7 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      */
     @DEAction(ACTION_APPLY)
     def apply(PSDELogicDTO dto) throws Throwable {
-        this.execute(ACTION_APPLY, dto)
+        this.execute(ACTION_APPLY, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -123,7 +116,7 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      */
     @DEAction(ACTION_DISABLE)
     def disable(PSDELogicDTO dto) throws Throwable {
-        this.execute(ACTION_DISABLE, dto)
+        this.execute(ACTION_DISABLE, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -133,7 +126,7 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      */
     @DEAction(ACTION_ENABLE)
     def enable(PSDELogicDTO dto) throws Throwable {
-        this.execute(ACTION_ENABLE, dto)
+        this.execute(ACTION_ENABLE, dto, PSDELogicDTO.class)
     }
 
     /**
@@ -143,7 +136,7 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      */
     @DEAction(ACTION_GET_LAST_RUN_INFO)
     def getLastRunInfo(String key) throws Throwable {
-        return this.execute(ACTION_GET_LAST_RUN_INFO, key)
+        return this.execute(ACTION_GET_LAST_RUN_INFO, key, PSDELogicDTO.class)
     }
 
     /**
@@ -152,8 +145,8 @@ class PSDELogic extends GroovyPSModelDERuntime<PSDELogic,PSDELogicDTO,PSDELogicF
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PSDELogicFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PSDELogicDTO> fetchDefault(PSDELogicFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PSDELogicDTO.class)
     }
 
 }

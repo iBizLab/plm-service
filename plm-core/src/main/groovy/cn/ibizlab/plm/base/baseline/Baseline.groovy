@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
     public static final String ACTION_PLAN_SNAPSHOT = "plan_snapshot"
     public static final String ACTION_SET_COMPLETE_LIBRARY = "set_complete_library"
@@ -32,7 +25,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_BASELINE = "baseline"
     public static final String DATASET_SNAPSHOT = "snapshot"
-    private static Baseline _instance;
+    private static Baseline _instance
     void setInstance(Baseline instance) {
         _instance = instance
     }
@@ -46,8 +39,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    BaselineDTO create(BaselineDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, BaselineDTO.class)
     }
 
     /**
@@ -56,8 +49,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    BaselineDTO update(BaselineDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, BaselineDTO.class)
     }
 
     /**
@@ -66,8 +59,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -76,8 +69,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    BaselineDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, BaselineDTO.class)
     }
 
     /**
@@ -86,8 +79,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(BaselineDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    BaselineDTO getDraft(BaselineDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, BaselineDTO.class)
     }
 
     /**
@@ -96,8 +89,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(BaselineDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(BaselineDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -106,8 +99,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    BaselineDTO save(BaselineDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, BaselineDTO.class)
     }
 
     /**
@@ -117,7 +110,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      */
     @DEAction(ACTION_DELETE_CATEGORIES)
     def deleteCategories(BaselineDTO dto) throws Throwable {
-        return this.execute(ACTION_DELETE_CATEGORIES, dto)
+        return this.execute(ACTION_DELETE_CATEGORIES, dto, BaselineDTO.class)
     }
 
     /**
@@ -127,7 +120,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      */
     @DEAction(ACTION_PLAN_SNAPSHOT)
     def planSnapshot(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_PLAN_SNAPSHOT, dto)
+        this.execute(ACTION_PLAN_SNAPSHOT, dto, BaselineDTO.class)
     }
 
     /**
@@ -137,7 +130,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      */
     @DEAction(ACTION_SET_COMPLETE_LIBRARY)
     def setCompleteLibrary(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_SET_COMPLETE_LIBRARY, dto)
+        this.execute(ACTION_SET_COMPLETE_LIBRARY, dto, BaselineDTO.class)
     }
 
     /**
@@ -147,7 +140,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      */
     @DEAction(ACTION_SET_COMPLETE_PRODUCT)
     def setCompleteProduct(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_SET_COMPLETE_PRODUCT, dto)
+        this.execute(ACTION_SET_COMPLETE_PRODUCT, dto, BaselineDTO.class)
     }
 
     /**
@@ -157,7 +150,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      */
     @DEAction(ACTION_SET_COMPLETE_PROJECT)
     def setCompleteProject(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_SET_COMPLETE_PROJECT, dto)
+        this.execute(ACTION_SET_COMPLETE_PROJECT, dto, BaselineDTO.class)
     }
 
     /**
@@ -167,7 +160,7 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      */
     @DEAction(ACTION_SET_COMPLETE_SPACE)
     def setCompleteSpace(BaselineDTO dto) throws Throwable {
-        this.execute(ACTION_SET_COMPLETE_SPACE, dto)
+        this.execute(ACTION_SET_COMPLETE_SPACE, dto, BaselineDTO.class)
     }
 
     /**
@@ -176,8 +169,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(BaselineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<BaselineDTO> fetchDefault(BaselineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, BaselineDTO.class)
     }
 
     /**
@@ -186,8 +179,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE)
-    def fetchBaseline(BaselineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE, context)
+    Page<BaselineDTO> fetchBaseline(BaselineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE, context, BaselineDTO.class)
     }
 
     /**
@@ -196,8 +189,8 @@ class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_SNAPSHOT)
-    def fetchSnapshot(BaselineFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SNAPSHOT, context)
+    Page<BaselineDTO> fetchSnapshot(BaselineFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SNAPSHOT, context, BaselineDTO.class)
     }
 
 }

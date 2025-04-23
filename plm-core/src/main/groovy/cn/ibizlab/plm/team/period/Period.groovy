@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static Period _instance;
+    private static Period _instance
     void setInstance(Period instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(PeriodDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    PeriodDTO create(PeriodDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, PeriodDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(PeriodDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    PeriodDTO update(PeriodDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, PeriodDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    PeriodDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, PeriodDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(PeriodDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    PeriodDTO getDraft(PeriodDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, PeriodDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(PeriodDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(PeriodDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(PeriodDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    PeriodDTO save(PeriodDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, PeriodDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(PeriodFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<PeriodDTO> fetchDefault(PeriodFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, PeriodDTO.class)
     }
 
 }

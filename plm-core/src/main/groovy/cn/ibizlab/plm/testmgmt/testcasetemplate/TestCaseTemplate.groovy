@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCaseTemplateDTO,TestCaseTemplateFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static TestCaseTemplate _instance;
+    private static TestCaseTemplate _instance
     void setInstance(TestCaseTemplate instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(TestCaseTemplateDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    TestCaseTemplateDTO create(TestCaseTemplateDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, TestCaseTemplateDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(TestCaseTemplateDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    TestCaseTemplateDTO update(TestCaseTemplateDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, TestCaseTemplateDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    TestCaseTemplateDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, TestCaseTemplateDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(TestCaseTemplateDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    TestCaseTemplateDTO getDraft(TestCaseTemplateDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, TestCaseTemplateDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(TestCaseTemplateDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(TestCaseTemplateDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(TestCaseTemplateDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    TestCaseTemplateDTO save(TestCaseTemplateDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, TestCaseTemplateDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCase
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(TestCaseTemplateFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<TestCaseTemplateDTO> fetchDefault(TestCaseTemplateFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, TestCaseTemplateDTO.class)
     }
 
 }

@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWizardDTO,WorkItemWizardFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHANGE = "change"
     public static final String ACTION_FILL_DETAILS = "fill_details"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static WorkItemWizard _instance;
+    private static WorkItemWizard _instance
     void setInstance(WorkItemWizard instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(WorkItemWizardDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    WorkItemWizardDTO create(WorkItemWizardDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, WorkItemWizardDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(WorkItemWizardDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    WorkItemWizardDTO update(WorkItemWizardDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, WorkItemWizardDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    WorkItemWizardDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, WorkItemWizardDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(WorkItemWizardDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    WorkItemWizardDTO getDraft(WorkItemWizardDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, WorkItemWizardDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(WorkItemWizardDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(WorkItemWizardDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(WorkItemWizardDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    WorkItemWizardDTO save(WorkItemWizardDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, WorkItemWizardDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      */
     @DEAction(ACTION_CHANGE)
     def change(WorkItemWizardDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE, dto)
+        this.execute(ACTION_CHANGE, dto, WorkItemWizardDTO.class)
     }
 
     /**
@@ -121,7 +114,7 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      */
     @DEAction(ACTION_FILL_DETAILS)
     def fillDetails(WorkItemWizardDTO dto) throws Throwable {
-        this.execute(ACTION_FILL_DETAILS, dto)
+        this.execute(ACTION_FILL_DETAILS, dto, WorkItemWizardDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWiza
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(WorkItemWizardFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<WorkItemWizardDTO> fetchDefault(WorkItemWizardFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, WorkItemWizardDTO.class)
     }
 
 }

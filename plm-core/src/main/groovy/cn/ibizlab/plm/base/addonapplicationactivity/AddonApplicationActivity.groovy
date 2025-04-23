@@ -16,15 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationActivity,AddonApplicationActivityDTO,AddonApplicationActivityFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static AddonApplicationActivity _instance;
+    private static AddonApplicationActivity _instance
     void setInstance(AddonApplicationActivity instance) {
         _instance = instance
     }
@@ -38,8 +31,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(AddonApplicationActivityDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    AddonApplicationActivityDTO create(AddonApplicationActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AddonApplicationActivityDTO.class)
     }
 
     /**
@@ -48,8 +41,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(AddonApplicationActivityDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    AddonApplicationActivityDTO update(AddonApplicationActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AddonApplicationActivityDTO.class)
     }
 
     /**
@@ -58,8 +51,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -68,8 +61,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    AddonApplicationActivityDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AddonApplicationActivityDTO.class)
     }
 
     /**
@@ -78,8 +71,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(AddonApplicationActivityDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    AddonApplicationActivityDTO getDraft(AddonApplicationActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AddonApplicationActivityDTO.class)
     }
 
     /**
@@ -88,8 +81,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(AddonApplicationActivityDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(AddonApplicationActivityDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -98,8 +91,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(AddonApplicationActivityDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    AddonApplicationActivityDTO save(AddonApplicationActivityDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AddonApplicationActivityDTO.class)
     }
 
     /**
@@ -108,8 +101,8 @@ class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationA
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(AddonApplicationActivityFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<AddonApplicationActivityDTO> fetchDefault(AddonApplicationActivityFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AddonApplicationActivityDTO.class)
     }
 
 }

@@ -16,17 +16,10 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberDTO,InsightMemberFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String ACTION_CHOOSE_POSITION = "choose_position"
     public static final String DATASET_DEFAULT = "DEFAULT"
-    private static InsightMember _instance;
+    private static InsightMember _instance
     void setInstance(InsightMember instance) {
         _instance = instance
     }
@@ -40,8 +33,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(InsightMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    InsightMemberDTO create(InsightMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, InsightMemberDTO.class)
     }
 
     /**
@@ -50,8 +43,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(InsightMemberDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    InsightMemberDTO update(InsightMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, InsightMemberDTO.class)
     }
 
     /**
@@ -60,8 +53,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -70,8 +63,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    InsightMemberDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, InsightMemberDTO.class)
     }
 
     /**
@@ -80,8 +73,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(InsightMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    InsightMemberDTO getDraft(InsightMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, InsightMemberDTO.class)
     }
 
     /**
@@ -90,8 +83,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(InsightMemberDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(InsightMemberDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -100,8 +93,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(InsightMemberDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    InsightMemberDTO save(InsightMemberDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, InsightMemberDTO.class)
     }
 
     /**
@@ -111,7 +104,7 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      */
     @DEAction(ACTION_CHANGE_ROLE)
     def changeRole(InsightMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHANGE_ROLE, dto)
+        this.execute(ACTION_CHANGE_ROLE, dto, InsightMemberDTO.class)
     }
 
     /**
@@ -121,7 +114,7 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      */
     @DEAction(ACTION_CHOOSE_POSITION)
     def choosePosition(InsightMemberDTO dto) throws Throwable {
-        this.execute(ACTION_CHOOSE_POSITION, dto)
+        this.execute(ACTION_CHOOSE_POSITION, dto, InsightMemberDTO.class)
     }
 
     /**
@@ -130,8 +123,8 @@ class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberD
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(InsightMemberFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<InsightMemberDTO> fetchDefault(InsightMemberFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, InsightMemberDTO.class)
     }
 
 }

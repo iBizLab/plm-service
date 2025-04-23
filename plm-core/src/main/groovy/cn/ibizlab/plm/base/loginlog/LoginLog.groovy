@@ -17,20 +17,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_ACTIVE_MEMBER = "active_member"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CALC_CHART_DATAS = "CALC_CHART_DATAS"
     public static final String DATASET_CUR_USER = "CUR_USER"
     public static final String DATASET_DISTINCT_USERID = "DISTINCT_USERID"
     public static final String DATASET_ECHARTS_DATAS = "ECHARTS_DATAS"
-    private static LoginLog _instance;
+    private static LoginLog _instance
     void setInstance(LoginLog instance) {
         _instance = instance
     }
@@ -44,8 +37,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_CREATE)
-    def create(LoginLogDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    LoginLogDTO create(LoginLogDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, LoginLogDTO.class)
     }
 
     /**
@@ -54,8 +47,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_UPDATE)
-    def update(LoginLogDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    LoginLogDTO update(LoginLogDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, LoginLogDTO.class)
     }
 
     /**
@@ -64,8 +57,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -74,8 +67,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    LoginLogDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, LoginLogDTO.class)
     }
 
     /**
@@ -84,8 +77,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_GETDRAFT)
-    def getDraft(LoginLogDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    LoginLogDTO getDraft(LoginLogDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, LoginLogDTO.class)
     }
 
     /**
@@ -94,8 +87,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_CHECKKEY)
-    def checkKey(LoginLogDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(LoginLogDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -104,8 +97,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEAction(ACTION_SAVE)
-    def save(LoginLogDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    LoginLogDTO save(LoginLogDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, LoginLogDTO.class)
     }
 
     /**
@@ -115,7 +108,7 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      */
     //@DEAction(ACTION_ACTIVE_MEMBER)
     def activeMember(LoginLogDTO dto) throws Throwable {
-        return this.execute(ACTION_ACTIVE_MEMBER, dto)
+        return this.execute(ACTION_ACTIVE_MEMBER, dto, LoginLogDTO.class)
     }
 
     /**
@@ -124,8 +117,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(LoginLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<LoginLogDTO> fetchDefault(LoginLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, LoginLogDTO.class)
     }
 
     /**
@@ -134,8 +127,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEDataSet(DATASET_CALC_CHART_DATAS)
-    def fetchCalcChartDatas(LoginLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CALC_CHART_DATAS, context)
+    Page<LoginLogDTO> fetchCalcChartDatas(LoginLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CALC_CHART_DATAS, context, LoginLogDTO.class)
     }
 
     /**
@@ -144,8 +137,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEDataSet(DATASET_CUR_USER)
-    def fetchCurUser(LoginLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CUR_USER, context)
+    Page<LoginLogDTO> fetchCurUser(LoginLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_USER, context, LoginLogDTO.class)
     }
 
     /**
@@ -154,8 +147,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEDataSet(DATASET_DISTINCT_USERID)
-    def fetchDistinctUserid(LoginLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DISTINCT_USERID, context)
+    Page<LoginLogDTO> fetchDistinctUserid(LoginLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DISTINCT_USERID, context, LoginLogDTO.class)
     }
 
     /**
@@ -164,8 +157,8 @@ class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilt
      * @throws Throwable
      */
     //@DEDataSet(DATASET_ECHARTS_DATAS)
-    def fetchEchartsDatas(LoginLogFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ECHARTS_DATAS, context)
+    Page<LoginLogDTO> fetchEchartsDatas(LoginLogFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ECHARTS_DATAS, context, LoginLogDTO.class)
     }
 
 }

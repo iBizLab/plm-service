@@ -16,13 +16,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,ArticlePageFilterDTO> {
 
-    public static final String ACTION_CREATE = "Create"
-    public static final String ACTION_UPDATE = "Update"
-    public static final String ACTION_REMOVE = "Remove"
-    public static final String ACTION_GET = "Get"
-    public static final String ACTION_GETDRAFT = "GetDraft"
-    public static final String ACTION_CHECKKEY = "CheckKey"
-    public static final String ACTION_SAVE = "Save"
     public static final String ACTION_CHECK_ACCESS_PASSWORD = "check_access_password"
     public static final String ACTION_CHECK_SHARED = "check_shared"
     public static final String ACTION_CLOSED_SHARED = "closed_shared"
@@ -73,7 +66,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
     public static final String DATASET_SPACE_SHARED_PAGES = "space_shared_pages"
     public static final String DATASET_SPACE_SHARED_SEARCH = "space_shared_search"
     public static final String DATASET_SPACE_SHARED_TOP = "space_shared_top"
-    private static ArticlePage _instance;
+    private static ArticlePage _instance
     void setInstance(ArticlePage instance) {
         _instance = instance
     }
@@ -87,8 +80,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_CREATE)
-    def create(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_CREATE, dto)
+    ArticlePageDTO create(ArticlePageDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -97,8 +90,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_UPDATE)
-    def update(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_UPDATE, dto)
+    ArticlePageDTO update(ArticlePageDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -107,8 +100,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_REMOVE)
-    def remove(List<String> keys) throws Throwable {
-        this.execute(ACTION_REMOVE, keys)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
     }
 
     /**
@@ -117,8 +110,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_GET)
-    def get(String key) throws Throwable {
-        return this.execute(ACTION_GET, key)
+    ArticlePageDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, ArticlePageDTO.class)
     }
 
     /**
@@ -127,8 +120,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_GETDRAFT)
-    def getDraft(ArticlePageDTO dto) throws Throwable {
-        return this.execute(ACTION_GETDRAFT, dto)
+    ArticlePageDTO getDraft(ArticlePageDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -137,8 +130,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_CHECKKEY)
-    def checkKey(ArticlePageDTO dto) throws Throwable {
-        return this.execute(ACTION_CHECKKEY, dto)
+    int checkKey(ArticlePageDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
     }
 
     /**
@@ -147,8 +140,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEAction(ACTION_SAVE)
-    def save(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE, dto)
+    ArticlePageDTO save(ArticlePageDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -158,7 +151,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_CHECK_ACCESS_PASSWORD)
     def checkAccessPassword(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_CHECK_ACCESS_PASSWORD, dto)
+        this.execute(ACTION_CHECK_ACCESS_PASSWORD, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -168,7 +161,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_CHECK_SHARED)
     def checkShared(String key) throws Throwable {
-        return this.execute(ACTION_CHECK_SHARED, key)
+        return this.execute(ACTION_CHECK_SHARED, key, ArticlePageDTO.class)
     }
 
     /**
@@ -178,7 +171,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_CLOSED_SHARED)
     def closedShared(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_CLOSED_SHARED, dto)
+        this.execute(ACTION_CLOSED_SHARED, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -188,7 +181,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_COMMIT_VERSION)
     def commitVersion(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_COMMIT_VERSION, dto)
+        this.execute(ACTION_COMMIT_VERSION, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -198,7 +191,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_COPY_PAGE)
     def copyPage(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_COPY_PAGE, dto)
+        this.execute(ACTION_COPY_PAGE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -208,7 +201,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_COUNT_COMMENT)
     def countComment(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_COUNT_COMMENT, dto)
+        this.execute(ACTION_COUNT_COMMENT, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -218,7 +211,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_DELETE)
     def delete(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_DELETE, dto)
+        this.execute(ACTION_DELETE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -228,7 +221,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_EXPORT_TO_PDF)
     def exportToPdf(ArticlePageDTO dto) throws Throwable {
-        return this.execute(ACTION_EXPORT_TO_PDF, dto)
+        return this.execute(ACTION_EXPORT_TO_PDF, dto, Object.class)
     }
 
     /**
@@ -238,7 +231,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_FAVORITE)
     def favorite(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_FAVORITE, dto)
+        this.execute(ACTION_FAVORITE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -248,7 +241,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_FINISH_ADD_ATTENTION)
     def finishAddAttention(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_FINISH_ADD_ATTENTION, dto)
+        this.execute(ACTION_FINISH_ADD_ATTENTION, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -258,7 +251,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_GET_DRAFT_PAGES)
     def getDraftPages(ArticlePageDTO dto) throws Throwable {
-        return this.execute(ACTION_GET_DRAFT_PAGES, dto)
+        return this.execute(ACTION_GET_DRAFT_PAGES, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -268,7 +261,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_LOCK_PAGE)
     def lockPage(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_LOCK_PAGE, dto)
+        this.execute(ACTION_LOCK_PAGE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -278,7 +271,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_MOVE_ORDER)
     def moveOrder(ArticlePageDTO dto) throws Throwable {
-        return this.execute(ACTION_MOVE_ORDER, dto)
+        return this.executeForList(ACTION_MOVE_ORDER, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -288,7 +281,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_MOVE_PAGE)
     def movePage(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_MOVE_PAGE, dto)
+        this.execute(ACTION_MOVE_PAGE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -298,7 +291,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_SET_NAME_VERSION)
     def nameVersionSave(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_SET_NAME_VERSION, dto)
+        this.execute(ACTION_SET_NAME_VERSION, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -308,7 +301,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_PUBLISH_PAGE)
     def publishPage(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_PUBLISH_PAGE, dto)
+        this.execute(ACTION_PUBLISH_PAGE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -318,7 +311,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_RECOVER)
     def recover(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER, dto)
+        this.execute(ACTION_RECOVER, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -328,7 +321,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_RECOVER_VERSION)
     def recoverVersion(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_RECOVER_VERSION, dto)
+        this.execute(ACTION_RECOVER_VERSION, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -338,7 +331,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_SAVE_TO_STENCIL)
     def saveToStencil(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_SAVE_TO_STENCIL, dto)
+        this.execute(ACTION_SAVE_TO_STENCIL, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -348,7 +341,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_SHARED)
     def shared(String key) throws Throwable {
-        return this.execute(ACTION_SHARED, key)
+        return this.execute(ACTION_SHARED, key, ArticlePageDTO.class)
     }
 
     /**
@@ -358,7 +351,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_SHARED_SETTING)
     def sharedSetting(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_SHARED_SETTING, dto)
+        this.execute(ACTION_SHARED_SETTING, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -368,7 +361,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_SHARED_URL)
     def sharedUrl(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_SHARED_URL, dto)
+        this.execute(ACTION_SHARED_URL, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -378,7 +371,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_UN_FAVORITE)
     def unFavorite(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_UN_FAVORITE, dto)
+        this.execute(ACTION_UN_FAVORITE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -388,7 +381,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      */
     @DEAction(ACTION_UNLOCK_PAGE)
     def unlockPage(ArticlePageDTO dto) throws Throwable {
-        this.execute(ACTION_UNLOCK_PAGE, dto)
+        this.execute(ACTION_UNLOCK_PAGE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -397,8 +390,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_DEFAULT)
-    def fetchDefault(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DEFAULT, context)
+    Page<ArticlePageDTO> fetchDefault(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, ArticlePageDTO.class)
     }
 
     /**
@@ -407,8 +400,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_ADVANCED_SEARCH)
-    def fetchAdvancedSearch(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ADVANCED_SEARCH, context)
+    Page<ArticlePageDTO> fetchAdvancedSearch(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ADVANCED_SEARCH, context, ArticlePageDTO.class)
     }
 
     /**
@@ -417,8 +410,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_ALL_SHARED_PAGES)
-    def fetchAllSharedPages(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ALL_SHARED_PAGES, context)
+    Page<ArticlePageSharedFieldsDTO> fetchAllSharedPages(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL_SHARED_PAGES, context, ArticlePageSharedFieldsDTO.class)
     }
 
     /**
@@ -427,8 +420,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_CHOOSE_PAGE)
-    def fetchBaselineChoosePage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_CHOOSE_PAGE, context)
+    Page<ArticlePageDTO> fetchBaselineChoosePage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_CHOOSE_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -437,8 +430,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_BASELINE_PLAN_PAGE)
-    def fetchBaselinePlanPage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_BASELINE_PLAN_PAGE, context)
+    Page<ArticlePageDTO> fetchBaselinePlanPage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_PLAN_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -447,8 +440,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_CHOOSE_SHARED)
-    def fetchChooseShared(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_CHOOSE_SHARED, context)
+    Page<ArticlePageNameDTO> fetchChooseShared(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CHOOSE_SHARED, context, ArticlePageNameDTO.class)
     }
 
     /**
@@ -457,8 +450,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_DRAFT_PAGE)
-    def fetchDraftPage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_DRAFT_PAGE, context)
+    Page<ArticlePageDTO> fetchDraftPage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DRAFT_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -467,8 +460,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_HOME_PAGE)
-    def fetchHomePage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_HOME_PAGE, context)
+    Page<ArticlePageDTO> fetchHomePage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_HOME_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -477,8 +470,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_IS_DELETED)
-    def fetchIsDeleted(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_IS_DELETED, context)
+    Page<ArticlePageDTO> fetchIsDeleted(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IS_DELETED, context, ArticlePageDTO.class)
     }
 
     /**
@@ -487,8 +480,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_FAVORITE_PAGE)
-    def fetchMyFavoritePage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_FAVORITE_PAGE, context)
+    Page<ArticlePageDTO> fetchMyFavoritePage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_FAVORITE_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -497,8 +490,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_MY_FILTER)
-    def fetchMyFilter(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_MY_FILTER, context)
+    Page<ArticlePageDTO> fetchMyFilter(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_FILTER, context, ArticlePageDTO.class)
     }
 
     /**
@@ -507,8 +500,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_NO_PARENT_PAGE)
-    def fetchNoParentPage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NO_PARENT_PAGE, context)
+    Page<ArticlePageDTO> fetchNoParentPage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NO_PARENT_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -517,8 +510,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    def fetchNormal(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context)
+    Page<ArticlePageDTO> fetchNormal(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, ArticlePageDTO.class)
     }
 
     /**
@@ -527,8 +520,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL_TREE_PAGE)
-    def fetchNormalTreePage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL_TREE_PAGE, context)
+    Page<ArticlePageDTO> fetchNormalTreePage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL_TREE_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -537,8 +530,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_ONLY_PAGE)
-    def fetchOnlyPage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ONLY_PAGE, context)
+    Page<ArticlePageDTO> fetchOnlyPage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ONLY_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -547,8 +540,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_READER)
-    def fetchReader(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_READER, context)
+    Page<ArticlePageDTO> fetchReader(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_READER, context, ArticlePageDTO.class)
     }
 
     /**
@@ -557,8 +550,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_PAGE)
-    def fetchSharedPage(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_PAGE, context)
+    Page<ArticlePageDTO> fetchSharedPage(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_PAGE, context, ArticlePageDTO.class)
     }
 
     /**
@@ -567,8 +560,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_READER)
-    def fetchSharedReader(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_READER, context)
+    Page<ArticlePageSharedReadDTO> fetchSharedReader(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_READER, context, ArticlePageSharedReadDTO.class)
     }
 
     /**
@@ -577,8 +570,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_SEARCH)
-    def fetchSharedSearch(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_SEARCH, context)
+    Page<ArticlePageDTO> fetchSharedSearch(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_SEARCH, context, ArticlePageDTO.class)
     }
 
     /**
@@ -587,8 +580,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_SUB_PAGES)
-    def fetchSharedSubPages(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_SUB_PAGES, context)
+    Page<ArticlePageDTO> fetchSharedSubPages(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_SUB_PAGES, context, ArticlePageDTO.class)
     }
 
     /**
@@ -597,8 +590,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_WITH_ME)
-    def fetchSharedWithMe(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_WITH_ME, context)
+    Page<ArticlePageSharedFieldsDTO> fetchSharedWithMe(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_WITH_ME, context, ArticlePageSharedFieldsDTO.class)
     }
 
     /**
@@ -607,8 +600,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SHARED_WITH_ME_EDIT)
-    def fetchSharedWithMeEdit(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SHARED_WITH_ME_EDIT, context)
+    Page<ArticlePageDTO> fetchSharedWithMeEdit(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SHARED_WITH_ME_EDIT, context, ArticlePageDTO.class)
     }
 
     /**
@@ -617,8 +610,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_SHARED_HOME)
-    def fetchSpaceSharedHome(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_SHARED_HOME, context)
+    Page<ArticlePageDTO> fetchSpaceSharedHome(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_SHARED_HOME, context, ArticlePageDTO.class)
     }
 
     /**
@@ -627,8 +620,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_SHARED_PAGES)
-    def fetchSpaceSharedPages(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_SHARED_PAGES, context)
+    Page<ArticlePageDTO> fetchSpaceSharedPages(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_SHARED_PAGES, context, ArticlePageDTO.class)
     }
 
     /**
@@ -637,8 +630,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_SHARED_SEARCH)
-    def fetchSpaceSharedSearch(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_SHARED_SEARCH, context)
+    Page<ArticlePageDTO> fetchSpaceSharedSearch(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_SHARED_SEARCH, context, ArticlePageDTO.class)
     }
 
     /**
@@ -647,8 +640,8 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
      * @throws Throwable
      */
     @DEDataSet(DATASET_SPACE_SHARED_TOP)
-    def fetchSpaceSharedTop(ArticlePageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_SPACE_SHARED_TOP, context)
+    Page<ArticlePageDTO> fetchSpaceSharedTop(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_SPACE_SHARED_TOP, context, ArticlePageDTO.class)
     }
 
 }
