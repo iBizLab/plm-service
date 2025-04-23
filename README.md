@@ -6,6 +6,8 @@
 
 通过引入 Groovy 动态语言特性，结合 `ibiz-service-runner` 动态执行引擎，极大简化了代码结构，提高了开发效率与可维护性。同时解决了 service-runner 不便调试的问题。
 
+📢 📢 [介绍视频](https://www.bilibili.com/video/BV1sCoNYMEeV) 📢 📢
+
 ![img](doc/images/plmdeploy.jpg)
 
 ## 架构说明
