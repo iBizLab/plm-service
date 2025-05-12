@@ -41,6 +41,7 @@ mybatis-plus:
   configuration:
     jdbc-type-for-null: 'null'
     map-underscore-to-camel-case: false
+    call-setters-on-nulls: true
   type-handlers-package: net.ibizsys.central.plugin.mybatisplus.spring.typehandler
  
 #Log配置
