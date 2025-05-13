@@ -27,7 +27,7 @@ class RunDTO extends GroovyDTO<RunDTO> {
     @JsonProperty("title")
     String title
     /**
-     * 「评审状态」
+     * 「用例状态」
      * 字典[用例状态]
      */
     @JsonProperty("state")
@@ -223,6 +223,12 @@ class RunDTO extends GroovyDTO<RunDTO> {
     @JsonProperty("library_is_archived")
     Integer libraryIsArchived
     /**
+     * 「评审结果」
+     * 字典[评审结果]
+     */
+    @JsonProperty("review_result_state")
+    String reviewResultState
+    /**
      * 「关注人」
      */
     @JsonProperty("attentions_imp")
@@ -301,7 +307,7 @@ class RunDTO extends GroovyDTO<RunDTO> {
 
 
     /**
-     * 设置「评审状态」值
+     * 设置「用例状态」值
      * 字典[用例状态]
      * @param val
      */
@@ -677,6 +683,17 @@ class RunDTO extends GroovyDTO<RunDTO> {
      */
     RunDTO setLibraryIsArchived(Integer libraryIsArchived) {
         this.libraryIsArchived = libraryIsArchived
+        return this
+    }
+
+
+    /**
+     * 设置「评审结果」值
+     * 字典[评审结果]
+     * @param val
+     */
+    RunDTO setReviewResultState(String reviewResultState) {
+        this.reviewResultState = reviewResultState
         return this
     }
 

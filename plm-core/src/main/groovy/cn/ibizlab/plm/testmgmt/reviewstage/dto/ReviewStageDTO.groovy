@@ -39,7 +39,7 @@ class ReviewStageDTO extends GroovyDTO<ReviewStageDTO> {
      * 「顺序」
      */
     @JsonProperty("order")
-    BigInteger order
+    Integer order
     /**
      * 「建立人」
      * 字典[云系统操作者]
@@ -124,7 +124,7 @@ class ReviewStageDTO extends GroovyDTO<ReviewStageDTO> {
      * 设置「顺序」值
      * @param val
      */
-    ReviewStageDTO setOrder(BigInteger order) {
+    ReviewStageDTO setOrder(Integer order) {
         this.order = order
         return this
     }

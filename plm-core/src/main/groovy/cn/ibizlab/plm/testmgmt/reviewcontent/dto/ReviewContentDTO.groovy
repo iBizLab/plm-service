@@ -60,11 +60,6 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
     @JsonProperty("target_type")
     String targetType
     /**
-     * 「关联目标标识」
-     */
-    @JsonProperty("target_id")
-    String targetId
-    /**
      * 「父对象版本标识」
      */
     @JsonProperty("parent_version_id")
@@ -124,6 +119,11 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      */
     @JsonProperty("target_parent_id")
     String targetParentId
+    /**
+     * 「关联目标标识」
+     */
+    @JsonProperty("target_id")
+    String targetId
     /**
      * 「建立人」
      * 字典[云系统操作者]
@@ -235,16 +235,6 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      */
     ReviewContentDTO setTargetType(String targetType) {
         this.targetType = targetType
-        return this
-    }
-
-
-    /**
-     * 设置「关联目标标识」值
-     * @param val
-     */
-    ReviewContentDTO setTargetId(String targetId) {
-        this.targetId = targetId
         return this
     }
 
@@ -365,6 +355,16 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      */
     ReviewContentDTO setTargetParentId(String targetParentId) {
         this.targetParentId = targetParentId
+        return this
+    }
+
+
+    /**
+     * 设置「关联目标标识」值
+     * @param val
+     */
+    ReviewContentDTO setTargetId(String targetId) {
+        this.targetId = targetId
         return this
     }
 

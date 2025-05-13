@@ -114,7 +114,7 @@ class RunBiSearchGroupDTO extends GroovyDTO<RunBiSearchGroupDTO> {
     @JsonProperty("level")
     String level
     /**
-     * 「评审状态」
+     * 「用例状态」
      * 字典[用例状态]
      */
     @JsonProperty("state")
@@ -396,7 +396,7 @@ class RunBiSearchGroupDTO extends GroovyDTO<RunBiSearchGroupDTO> {
 
 
     /**
-     * 设置「评审状态」值
+     * 设置「用例状态」值
      * 字典[用例状态]
      * @param val
      */

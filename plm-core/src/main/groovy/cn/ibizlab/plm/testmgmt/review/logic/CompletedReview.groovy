@@ -77,6 +77,10 @@ class CompletedReview extends DELogicRuntime {
                 //执行逻辑节点[拒绝]
                 executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM8":
+                //执行逻辑节点[设置评审建议]
+                executePREPAREPARAM8(iDELogicSession, iPSDELogicNode)
+                break
             case "DEACTION1":
                 //执行逻辑节点[更新]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
@@ -213,6 +217,16 @@ class CompletedReview extends DELogicRuntime {
      * @throws Throwable
      */
     private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[设置评审建议]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM8(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

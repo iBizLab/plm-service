@@ -26,6 +26,7 @@ class ReviewContent extends GroovyDataEntityRuntime<ReviewContent,ReviewContentD
     public static final String ACTION_SUBMIT_REVIEW = "submit_review"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ALL = "all"
+    public static final String DATASET_CUR_HISTORY = "cur_history"
     public static final String DATASET_HISTORY_LIST = "history_list"
     private static ReviewContent _instance
     void setInstance(ReviewContent instance) {
@@ -203,6 +204,16 @@ class ReviewContent extends GroovyDataEntityRuntime<ReviewContent,ReviewContentD
     @DEDataSet(DATASET_ALL)
     Page<ReviewContentDTO> fetchAll(ReviewContentFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ALL, context, ReviewContentDTO.class)
+    }
+
+    /**
+     * 数据集：当前评审历史 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_CUR_HISTORY)
+    Page<ReviewContentDTO> fetchCurHistory(ReviewContentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_HISTORY, context, ReviewContentDTO.class)
     }
 
     /**

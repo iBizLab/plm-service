@@ -123,6 +123,8 @@ class GroovyPSModelDERuntime <T extends GroovyPSModelDERuntime,D extends GroovyD
         Object ret = doFetchDataSetReal(strDataSetName, this.getPSDEDataSet(strDataSetName), [arg] as Object[], null)
         if (!clazz)
             return ret
+        if (ret == null)
+            return null
         if (ret instanceof Page) {
             Page page = (Page) ret
             if (page.content?.every { clazz.isInstance(it) }) {
@@ -144,6 +146,8 @@ class GroovyPSModelDERuntime <T extends GroovyPSModelDERuntime,D extends GroovyD
     }
 
     private <E extends GroovyDTO> E convertOne(Object item, Class<E> clazz) {
+        if(item == null)
+            return null
         if (clazz.isInstance(item))
             return (E) item
         return clazz.newInstance().from(item)

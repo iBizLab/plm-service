@@ -30,6 +30,21 @@ class ReviewDTO extends GroovyDTO<ReviewDTO> {
     @JsonProperty("type")
     String type
     /**
+     * 「评审主体标识」
+     */
+    @JsonProperty("principal_id")
+    String principalId
+    /**
+     * 「评审主体名称」
+     */
+    @JsonProperty("principal_name")
+    String principalName
+    /**
+     * 「评审主体类型」
+     */
+    @JsonProperty("principal_type")
+    String principalType
+    /**
      * 「描述」
      */
     @JsonProperty("description")
@@ -187,6 +202,36 @@ class ReviewDTO extends GroovyDTO<ReviewDTO> {
      */
     ReviewDTO setType(String type) {
         this.type = type
+        return this
+    }
+
+
+    /**
+     * 设置「评审主体标识」值
+     * @param val
+     */
+    ReviewDTO setPrincipalId(String principalId) {
+        this.principalId = principalId
+        return this
+    }
+
+
+    /**
+     * 设置「评审主体名称」值
+     * @param val
+     */
+    ReviewDTO setPrincipalName(String principalName) {
+        this.principalName = principalName
+        return this
+    }
+
+
+    /**
+     * 设置「评审主体类型」值
+     * @param val
+     */
+    ReviewDTO setPrincipalType(String principalType) {
+        this.principalType = principalType
         return this
     }
 

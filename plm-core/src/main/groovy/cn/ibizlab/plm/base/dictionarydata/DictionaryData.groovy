@@ -18,6 +18,7 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
 
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_IDEA = "idea"
     public static final String DATASET_IDEA_STATE = "idea_state"
     public static final String DATASET_RELEASE_STAGE = "release_stage"
     public static final String DATASET_TICKET_STATE = "ticket_state"
@@ -117,6 +118,16 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
     @DEDataSet(DATASET_DEFAULT)
     Page<DictionaryDataDTO> fetchDefault(DictionaryDataFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：需求 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEA)
+    Page<DictionaryDataDTO> fetchIdea(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA, context, DictionaryDataDTO.class)
     }
 
     /**

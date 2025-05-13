@@ -37,21 +37,13 @@ class FillStageOrder extends DELogicRuntime {
                 //执行逻辑节点[准备参数]
                 executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
                 break
-            case "LOOPSUBCALL1":
-                //执行逻辑节点[循环子调用]
-                executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
+            case "RAWSFCODE1":
+                //执行逻辑节点[设置排序值]
+                executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM3":
                 //执行逻辑节点[准备参数]
                 executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEBUGPARAM2":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM2":
-                //执行逻辑节点[准备参数]
-                executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -89,13 +81,30 @@ class FillStageOrder extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * 执行逻辑节点[设置排序值]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    private void executeRAWSFCODE1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        // 执行Groovy脚本代码
+        def objRet = { sys,logic ->
+            def stage_list = logic.param('stage_list').getReal();
+			def order = 1;
+			stage_list.each { stage ->
+			    println "Order: $order, Stage: $stage"
+			    stage.set("order", order);
+			    order++;
+			}
+			
+        }.call(iDELogicSession.getDELogicRuntime().getSystemRuntime(), iDELogicSession.getDELogicRuntime())
+        //设置返回值
+        iDELogicSession.setLastReturn(objRet);
+        if(iPSDELogicNode.getRetPSDELogicParam() != null) {
+            def retDELogicParamRuntime = this.getDELogicParamRuntime(iPSDELogicNode.getRetPSDELogicParam().getCodeName(), false);
+            retDELogicParamRuntime.bind(iDELogicSession, objRet);
+        }
+        //super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**
@@ -105,26 +114,6 @@ class FillStageOrder extends DELogicRuntime {
      * @throws Throwable
      */
     private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEBUGPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }
