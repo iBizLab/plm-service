@@ -81,6 +81,14 @@ class CompleteReview extends DELogicRuntime {
                 //执行逻辑节点[附加到数组变量，且获取选中阶段的下一阶段数据]
                 executePREPAREPARAM8(iDELogicSession, iPSDELogicNode)
                 break
+            case "DENOTIFY1":
+                //执行逻辑节点[通知下一评审人（需求）]
+                executeDENOTIFY1(iDELogicSession, iPSDELogicNode)
+                break
+            case "DENOTIFY2":
+                //执行逻辑节点[通知下一评审人（测试用例）]
+                executeDENOTIFY2(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM3":
                 //执行逻辑节点[设置阶段完成]
                 executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
@@ -239,6 +247,26 @@ class CompleteReview extends DELogicRuntime {
      * @throws Throwable
      */
     private void executePREPAREPARAM8(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[通知下一评审人（需求）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[通知下一评审人（测试用例）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

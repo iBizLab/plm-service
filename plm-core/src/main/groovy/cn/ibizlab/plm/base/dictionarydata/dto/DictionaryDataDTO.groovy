@@ -41,6 +41,12 @@ class DictionaryDataDTO extends GroovyDTO<DictionaryDataDTO> {
     @JsonProperty("is_system")
     Integer isSystem
     /**
+     * 「背景样式」
+     * 字典[背景样式]
+     */
+    @JsonProperty("style")
+    String style
+    /**
      * 「字典目录」
      * 字典[字典目录]
      */
@@ -127,6 +133,17 @@ class DictionaryDataDTO extends GroovyDTO<DictionaryDataDTO> {
      */
     DictionaryDataDTO setIsSystem(Integer isSystem) {
         this.isSystem = isSystem
+        return this
+    }
+
+
+    /**
+     * 设置「背景样式」值
+     * 字典[背景样式]
+     * @param val
+     */
+    DictionaryDataDTO setStyle(String style) {
+        this.style = style
         return this
     }
 

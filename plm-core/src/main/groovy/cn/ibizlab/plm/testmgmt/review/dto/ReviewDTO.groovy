@@ -50,6 +50,11 @@ class ReviewDTO extends GroovyDTO<ReviewDTO> {
     @JsonProperty("description")
     String description
     /**
+     * 「评审人」
+     */
+    @JsonProperty("reviewer")
+    String reviewer
+    /**
      * 「提交时间」
      */
     @JsonProperty("submitted_at")
@@ -242,6 +247,16 @@ class ReviewDTO extends GroovyDTO<ReviewDTO> {
      */
     ReviewDTO setDescription(String description) {
         this.description = description
+        return this
+    }
+
+
+    /**
+     * 设置「评审人」值
+     * @param val
+     */
+    ReviewDTO setReviewer(String reviewer) {
+        this.reviewer = reviewer
         return this
     }
 

@@ -199,6 +199,12 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
     @JsonProperty("relation_total_test_case")
     BigDecimal relationTotalTestCase
     /**
+     * 「评审结果」
+     * 字典[评审结果]
+     */
+    @JsonProperty("review_result_state")
+    String reviewResultState
+    /**
      * 「剩余工时」
      */
     @JsonProperty("remaining_workload")
@@ -682,6 +688,17 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
      */
     IdeaDTO setRelationTotalTestCase(BigDecimal relationTotalTestCase) {
         this.relationTotalTestCase = relationTotalTestCase
+        return this
+    }
+
+
+    /**
+     * 设置「评审结果」值
+     * 字典[评审结果]
+     * @param val
+     */
+    IdeaDTO setReviewResultState(String reviewResultState) {
+        this.reviewResultState = reviewResultState
         return this
     }
 

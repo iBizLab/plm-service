@@ -22,6 +22,7 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
     public static final String ACTION_FILL_CUREENT_STAGE_INFO = "fill_cureent_stage_info"
     public static final String ACTION_FILL_GUIDELINE = "fill_guideline"
     public static final String ACTION_FILL_STAGE_REVIEWER = "fill_stage_reviewer"
+    public static final String ACTION_GET_REDIRECT_DATA = "get_redirect_data"
     public static final String ACTION_REPEAL_REVIEW = "repeal_review"
     public static final String ACTION_SUBMIT_REVIEW = "submit_review"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -165,6 +166,16 @@ class Review extends GroovyDataEntityRuntime<Review,ReviewDTO,ReviewFilterDTO> {
     @DEAction(ACTION_FILL_STAGE_REVIEWER)
     def fillStageReviewer(ReviewDTO dto) throws Throwable {
         this.execute(ACTION_FILL_STAGE_REVIEWER, dto, ReviewDTO.class)
+    }
+
+    /**
+     * 行为：获取重定向数据 实际功能
+     * @param key
+     * @throws Throwable
+     */
+    @DEAction(ACTION_GET_REDIRECT_DATA)
+    def getRedirectData(String key) throws Throwable {
+        return this.execute(ACTION_GET_REDIRECT_DATA, key, ReviewDTO.class)
     }
 
     /**

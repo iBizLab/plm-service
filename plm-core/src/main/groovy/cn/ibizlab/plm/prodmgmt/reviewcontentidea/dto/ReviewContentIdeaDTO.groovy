@@ -1,4 +1,4 @@
-package cn.ibizlab.plm.testmgmt.reviewcontent.dto
+package cn.ibizlab.plm.prodmgmt.reviewcontentidea.dto
 
 import java.util.*
 import java.math.*
@@ -11,12 +11,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
 import cn.ibizlab.plm.testmgmt.reviewresult.dto.ReviewResultDTO
 import cn.ibizlab.plm.testmgmt.review.dto.ReviewDTO
 import cn.ibizlab.plm.prodmgmt.idea.dto.IdeaDTO
-import cn.ibizlab.plm.testmgmt.testcase.dto.TestCaseDTO
 import cn.ibizlab.plm.base.version.dto.VersionDTO
 
 @DEDataModel
 @JsonInclude(JsonInclude.Include.NON_NULL)
-class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
+class ReviewContentIdeaDTO extends GroovyDTO<ReviewContentIdeaDTO> {
 
     /**
      * 「变更类型」
@@ -71,6 +70,38 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
     @JsonProperty("target_version_id")
     String targetVersionId
     /**
+     * 「标识」
+     */
+    @JsonProperty("id")
+    String id
+    /**
+     * 「名称」
+     */
+    @JsonProperty("name")
+    String name
+    /**
+     * 「创建时间」
+     */
+    @JsonProperty("create_time")
+    Timestamp createTime
+    /**
+     * 「更新时间」
+     */
+    @JsonProperty("update_time")
+    Timestamp updateTime
+    /**
+     * 「建立人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("create_man")
+    String createMan
+    /**
+     * 「更新人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("update_man")
+    String updateMan
+    /**
      * 「评审数据」
      */
     @JsonProperty("review_data")
@@ -80,11 +111,6 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      */
     @JsonProperty("idea")
     IdeaDTO idea
-    /**
-     * 「测试用例」
-     */
-    @JsonProperty("test_case")
-    TestCaseDTO testCase
     /**
      * 「当前版本标识」
      */
@@ -130,45 +156,13 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      */
     @JsonProperty("target_id")
     String targetId
-    /**
-     * 「建立人」
-     * 字典[云系统操作者]
-     */
-    @JsonProperty("create_man")
-    String createMan
-    /**
-     * 「建立时间」
-     */
-    @JsonProperty("create_time")
-    Timestamp createTime
-    /**
-     * 「标识」
-     */
-    @JsonProperty("id")
-    String id
-    /**
-     * 「名称」
-     */
-    @JsonProperty("name")
-    String name
-    /**
-     * 「更新人」
-     * 字典[云系统操作者]
-     */
-    @JsonProperty("update_man")
-    String updateMan
-    /**
-     * 「更新时间」
-     */
-    @JsonProperty("update_time")
-    Timestamp updateTime
 
     /**
      * 设置「变更类型」值
      * 字典[评审内容变更类型]
      * @param val
      */
-    ReviewContentDTO setChangeType(String changeType) {
+    ReviewContentIdeaDTO setChangeType(String changeType) {
         this.changeType = changeType
         return this
     }
@@ -178,7 +172,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「关联主体标识」值
      * @param val
      */
-    ReviewContentDTO setPrincipalId(String principalId) {
+    ReviewContentIdeaDTO setPrincipalId(String principalId) {
         this.principalId = principalId
         return this
     }
@@ -188,7 +182,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「变更版本」值
      * @param val
      */
-    ReviewContentDTO setChangeVersion(List<IEntity> changeVersion) {
+    ReviewContentIdeaDTO setChangeVersion(List<IEntity> changeVersion) {
         this.changeVersion = changeVersion
         return this
     }
@@ -198,7 +192,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「所属数据对象」值
      * @param val
      */
-    ReviewContentDTO setOwnerType(String ownerType) {
+    ReviewContentIdeaDTO setOwnerType(String ownerType) {
         this.ownerType = ownerType
         return this
     }
@@ -208,7 +202,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「关联主体类型」值
      * @param val
      */
-    ReviewContentDTO setPrincipalType(String principalType) {
+    ReviewContentIdeaDTO setPrincipalType(String principalType) {
         this.principalType = principalType
         return this
     }
@@ -218,7 +212,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「评审结果」值
      * @param val
      */
-    ReviewContentDTO setStageResults(List<ReviewResultDTO> stageResults) {
+    ReviewContentIdeaDTO setStageResults(List<ReviewResultDTO> stageResults) {
         this.stageResults = stageResults
         return this
     }
@@ -229,7 +223,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 字典[最终评审结果]
      * @param val
      */
-    ReviewContentDTO setFinalStageResults(String finalStageResults) {
+    ReviewContentIdeaDTO setFinalStageResults(String finalStageResults) {
         this.finalStageResults = finalStageResults
         return this
     }
@@ -239,7 +233,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「关联目标类型」值
      * @param val
      */
-    ReviewContentDTO setTargetType(String targetType) {
+    ReviewContentIdeaDTO setTargetType(String targetType) {
         this.targetType = targetType
         return this
     }
@@ -249,7 +243,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「父对象版本标识」值
      * @param val
      */
-    ReviewContentDTO setParentVersionId(String parentVersionId) {
+    ReviewContentIdeaDTO setParentVersionId(String parentVersionId) {
         this.parentVersionId = parentVersionId
         return this
     }
@@ -259,149 +253,8 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「目标对象版本标识」值
      * @param val
      */
-    ReviewContentDTO setTargetVersionId(String targetVersionId) {
+    ReviewContentIdeaDTO setTargetVersionId(String targetVersionId) {
         this.targetVersionId = targetVersionId
-        return this
-    }
-
-
-    /**
-     * 设置「评审数据」值
-     * @param val
-     */
-    ReviewContentDTO setReviewData(ReviewDTO reviewData) {
-        this.reviewData = reviewData
-        return this
-    }
-
-
-    /**
-     * 设置「产品需求」值
-     * @param val
-     */
-    ReviewContentDTO setIdea(IdeaDTO idea) {
-        this.idea = idea
-        return this
-    }
-
-
-    /**
-     * 设置「测试用例」值
-     * @param val
-     */
-    ReviewContentDTO setTestCase(TestCaseDTO testCase) {
-        this.testCase = testCase
-        return this
-    }
-
-
-    /**
-     * 设置「当前版本标识」值
-     * @param val
-     */
-    ReviewContentDTO setCurVersionId(String curVersionId) {
-        this.curVersionId = curVersionId
-        return this
-    }
-
-
-    /**
-     * 设置「目标对象编号」值
-     * @param val
-     */
-    ReviewContentDTO setTargetIdentifier(String targetIdentifier) {
-        this.targetIdentifier = targetIdentifier
-        return this
-    }
-
-
-    /**
-     * 设置「目标对象标题」值
-     * @param val
-     */
-    ReviewContentDTO setTargetTitle(String targetTitle) {
-        this.targetTitle = targetTitle
-        return this
-    }
-
-
-    /**
-     * 设置「目标对象状态」值
-     * @param val
-     */
-    ReviewContentDTO setTargetState(String targetState) {
-        this.targetState = targetState
-        return this
-    }
-
-
-    /**
-     * 设置「目标对象负责人」值
-     * @param val
-     */
-    ReviewContentDTO setTargetAssignee(String targetAssignee) {
-        this.targetAssignee = targetAssignee
-        return this
-    }
-
-
-    /**
-     * 设置「关联目标版本」值
-     * @param val
-     */
-    ReviewContentDTO setTargetVersion(VersionDTO targetVersion) {
-        this.targetVersion = targetVersion
-        return this
-    }
-
-
-    /**
-     * 设置「目标对象优先级」值
-     * @param val
-     */
-    ReviewContentDTO setTargetPriority(String targetPriority) {
-        this.targetPriority = targetPriority
-        return this
-    }
-
-
-    /**
-     * 设置「目标对象父标识」值
-     * @param val
-     */
-    ReviewContentDTO setTargetParentId(String targetParentId) {
-        this.targetParentId = targetParentId
-        return this
-    }
-
-
-    /**
-     * 设置「关联目标标识」值
-     * @param val
-     */
-    ReviewContentDTO setTargetId(String targetId) {
-        this.targetId = targetId
-        return this
-    }
-
-
-    /**
-     * 设置「建立人」值
-     * 字典[云系统操作者]
-     * @param val
-     */
-    ReviewContentDTO setCreateMan(String createMan) {
-        this.createMan = createMan
-        return this
-    }
-
-
-    /**
-     * 设置「建立时间」值
-     * @param val
-     */
-    ReviewContentDTO setCreateTime(Timestamp createTime) {
-        this.createTime = createTime
         return this
     }
 
@@ -410,7 +263,7 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「标识」值
      * @param val
      */
-    ReviewContentDTO setId(String id) {
+    ReviewContentIdeaDTO setId(String id) {
         this.id = id
         return this
     }
@@ -420,8 +273,39 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 设置「名称」值
      * @param val
      */
-    ReviewContentDTO setName(String name) {
+    ReviewContentIdeaDTO setName(String name) {
         this.name = name
+        return this
+    }
+
+
+    /**
+     * 设置「创建时间」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setCreateTime(Timestamp createTime) {
+        this.createTime = createTime
+        return this
+    }
+
+
+    /**
+     * 设置「更新时间」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime
+        return this
+    }
+
+
+    /**
+     * 设置「建立人」值
+     * 字典[云系统操作者]
+     * @param val
+     */
+    ReviewContentIdeaDTO setCreateMan(String createMan) {
+        this.createMan = createMan
         return this
     }
 
@@ -431,18 +315,118 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
      * 字典[云系统操作者]
      * @param val
      */
-    ReviewContentDTO setUpdateMan(String updateMan) {
+    ReviewContentIdeaDTO setUpdateMan(String updateMan) {
         this.updateMan = updateMan
         return this
     }
 
 
     /**
-     * 设置「更新时间」值
+     * 设置「评审数据」值
      * @param val
      */
-    ReviewContentDTO setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime
+    ReviewContentIdeaDTO setReviewData(ReviewDTO reviewData) {
+        this.reviewData = reviewData
+        return this
+    }
+
+
+    /**
+     * 设置「产品需求」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setIdea(IdeaDTO idea) {
+        this.idea = idea
+        return this
+    }
+
+
+    /**
+     * 设置「当前版本标识」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setCurVersionId(String curVersionId) {
+        this.curVersionId = curVersionId
+        return this
+    }
+
+
+    /**
+     * 设置「目标对象编号」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetIdentifier(String targetIdentifier) {
+        this.targetIdentifier = targetIdentifier
+        return this
+    }
+
+
+    /**
+     * 设置「目标对象标题」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetTitle(String targetTitle) {
+        this.targetTitle = targetTitle
+        return this
+    }
+
+
+    /**
+     * 设置「目标对象状态」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetState(String targetState) {
+        this.targetState = targetState
+        return this
+    }
+
+
+    /**
+     * 设置「目标对象负责人」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetAssignee(String targetAssignee) {
+        this.targetAssignee = targetAssignee
+        return this
+    }
+
+
+    /**
+     * 设置「关联目标版本」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetVersion(VersionDTO targetVersion) {
+        this.targetVersion = targetVersion
+        return this
+    }
+
+
+    /**
+     * 设置「目标对象优先级」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetPriority(String targetPriority) {
+        this.targetPriority = targetPriority
+        return this
+    }
+
+
+    /**
+     * 设置「目标对象父标识」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetParentId(String targetParentId) {
+        this.targetParentId = targetParentId
+        return this
+    }
+
+
+    /**
+     * 设置「关联目标标识」值
+     * @param val
+     */
+    ReviewContentIdeaDTO setTargetId(String targetId) {
+        this.targetId = targetId
         return this
     }
 

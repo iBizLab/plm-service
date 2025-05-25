@@ -18,6 +18,7 @@ class ReviewContent extends GroovyDataEntityRuntime<ReviewContent,ReviewContentD
 
     public static final String ACTION_ADD_REVIEW_CONTENT = "add_review_content"
     public static final String ACTION_COMPLETE_REVIEW = "complete_review"
+    public static final String ACTION_CREATE_REVIEW_DATA = "create_review_data"
     public static final String ACTION_PROGRAM_TEST_CASE = "program_test_case"
     public static final String ACTION_REVIEW_CONTENT_TOTAL = "review_content_total"
     public static final String ACTION_SET_REVIEW_RESULT = "set_review_result"
@@ -124,6 +125,16 @@ class ReviewContent extends GroovyDataEntityRuntime<ReviewContent,ReviewContentD
     @DEAction(ACTION_COMPLETE_REVIEW)
     def completeReview(ReviewContentDTO dto) throws Throwable {
         return this.execute(ACTION_COMPLETE_REVIEW, dto, ReviewContentDTO.class)
+    }
+
+    /**
+     * 行为：创建评审数据 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CREATE_REVIEW_DATA)
+    def createReviewData(ReviewContentDTO dto) throws Throwable {
+        this.execute(ACTION_CREATE_REVIEW_DATA, dto, ReviewContentDTO.class)
     }
 
     /**

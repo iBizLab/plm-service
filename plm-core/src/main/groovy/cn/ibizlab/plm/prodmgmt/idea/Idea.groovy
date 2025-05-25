@@ -41,6 +41,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_BASELINE_CHOOSE_IDEA = "baseline_choose_idea"
+    public static final String DATASET_BASELINE_IDEA = "baseline_idea"
     public static final String DATASET_BASELINE_PLAN_IDEA = "baseline_plan_idea"
     public static final String DATASET_BI_DETAIL = "bi_detail"
     public static final String DATASET_BI_SEARCH = "bi_search"
@@ -64,6 +65,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_READER = "reader"
     public static final String DATASET_RECENT_IDEA = "recent_idea"
     public static final String DATASET_RELATION_IDEA = "relation_idea"
+    public static final String DATASET_REVIEW_DATA = "review_data"
     public static final String DATASET_USER = "user"
     private static Idea _instance
     void setInstance(Idea instance) {
@@ -394,6 +396,16 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     }
 
     /**
+     * 数据集：基线需求 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_BASELINE_IDEA)
+    Page<IdeaDTO> fetchBaselineIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_IDEA, context, IdeaDTO.class)
+    }
+
+    /**
      * 数据集：基线规划需求数据查询 实际功能
      * @param dto
      * @throws Throwable
@@ -621,6 +633,16 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     @DEDataSet(DATASET_RELATION_IDEA)
     Page<IdeaDTO> fetchRelationIdea(IdeaFilterDTO context) throws Throwable {
         return this.fetch(DATASET_RELATION_IDEA, context, IdeaDTO.class)
+    }
+
+    /**
+     * 数据集：评审数据 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_REVIEW_DATA)
+    Page<IdeaDTO> fetchReviewData(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REVIEW_DATA, context, IdeaDTO.class)
     }
 
     /**

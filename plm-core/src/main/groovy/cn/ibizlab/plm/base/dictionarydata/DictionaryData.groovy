@@ -19,9 +19,26 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_IDEA = "idea"
+    public static final String DATASET_IDEA_PRIORITY = "idea_priority"
+    public static final String DATASET_IDEA_SOURCE = "idea_source"
     public static final String DATASET_IDEA_STATE = "idea_state"
+    public static final String DATASET_IDEA_TYPE = "idea_type"
     public static final String DATASET_RELEASE_STAGE = "release_stage"
+    public static final String DATASET_TEST_CASE = "test_case"
+    public static final String DATASET_TEST_CASE_IMPORTANCE_LEVEL = "test_case_importance_level"
+    public static final String DATASET_TEST_CASE_STATUS = "test_case_status"
+    public static final String DATASET_TEST_CASE_TEST_TYPE = "test_case_test_type"
+    public static final String DATASET_TEST_CASE_TYPE = "test_case_type"
+    public static final String DATASET_TICKET = "ticket"
+    public static final String DATASET_TICKET_PRIORITY = "ticket_priority"
+    public static final String DATASET_TICKET_SOLUTION = "ticket_solution"
     public static final String DATASET_TICKET_STATE = "ticket_state"
+    public static final String DATASET_WORK_ITEM = "work_item"
+    public static final String DATASET_WORK_ITEM_CATEGORY = "work_item_category"
+    public static final String DATASET_WORK_ITEM_PRIORITY = "work_item_priority"
+    public static final String DATASET_WORK_ITEM_PROBABILITY = "work_item_probability"
+    public static final String DATASET_WORK_ITEM_RISK = "work_item_risk"
+    public static final String DATASET_WORK_ITEM_SEVERITY = "work_item_severity"
     private static DictionaryData _instance
     void setInstance(DictionaryData instance) {
         _instance = instance
@@ -131,6 +148,26 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
     }
 
     /**
+     * 数据集：需求优先级 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEA_PRIORITY)
+    Page<DictionaryDataDTO> fetchIdeaPriority(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_PRIORITY, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：需求来源 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEA_SOURCE)
+    Page<DictionaryDataDTO> fetchIdeaSource(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_SOURCE, context, DictionaryDataDTO.class)
+    }
+
+    /**
      * 数据集：需求状态 实际功能
      * @param dto
      * @throws Throwable
@@ -138,6 +175,16 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
     @DEDataSet(DATASET_IDEA_STATE)
     Page<DictionaryDataDTO> fetchIdeaState(DictionaryDataFilterDTO context) throws Throwable {
         return this.fetch(DATASET_IDEA_STATE, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：需求类型 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEA_TYPE)
+    Page<DictionaryDataDTO> fetchIdeaType(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEA_TYPE, context, DictionaryDataDTO.class)
     }
 
     /**
@@ -151,6 +198,86 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
     }
 
     /**
+     * 数据集：测试用例 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_CASE)
+    Page<DictionaryDataDTO> fetchTestCase(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：测试用例重要程度 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_CASE_IMPORTANCE_LEVEL)
+    Page<DictionaryDataDTO> fetchTestCaseImportanceLevel(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_IMPORTANCE_LEVEL, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：测试用例状态 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_CASE_STATUS)
+    Page<DictionaryDataDTO> fetchTestCaseStatus(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_STATUS, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：测试用例测试类型 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_CASE_TEST_TYPE)
+    Page<DictionaryDataDTO> fetchTestCaseTestType(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_TEST_TYPE, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：测试用例类型 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_CASE_TYPE)
+    Page<DictionaryDataDTO> fetchTestCaseType(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_CASE_TYPE, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工单 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TICKET)
+    Page<DictionaryDataDTO> fetchTicket(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工单优先级 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TICKET_PRIORITY)
+    Page<DictionaryDataDTO> fetchTicketPriority(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET_PRIORITY, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工单解决方案 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TICKET_SOLUTION)
+    Page<DictionaryDataDTO> fetchTicketSolution(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TICKET_SOLUTION, context, DictionaryDataDTO.class)
+    }
+
+    /**
      * 数据集：工单状态 实际功能
      * @param dto
      * @throws Throwable
@@ -158,6 +285,66 @@ class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDa
     @DEDataSet(DATASET_TICKET_STATE)
     Page<DictionaryDataDTO> fetchTicketState(DictionaryDataFilterDTO context) throws Throwable {
         return this.fetch(DATASET_TICKET_STATE, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工作项 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORK_ITEM)
+    Page<DictionaryDataDTO> fetchWorkItem(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工作项任务类别 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORK_ITEM_CATEGORY)
+    Page<DictionaryDataDTO> fetchWorkItemCategory(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_CATEGORY, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工作项优先级 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORK_ITEM_PRIORITY)
+    Page<DictionaryDataDTO> fetchWorkItemPriority(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_PRIORITY, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工作项复现概率 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORK_ITEM_PROBABILITY)
+    Page<DictionaryDataDTO> fetchWorkItemProbability(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_PROBABILITY, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工作项风险 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORK_ITEM_RISK)
+    Page<DictionaryDataDTO> fetchWorkItemRisk(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_RISK, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：工作项严重程度 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORK_ITEM_SEVERITY)
+    Page<DictionaryDataDTO> fetchWorkItemSeverity(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORK_ITEM_SEVERITY, context, DictionaryDataDTO.class)
     }
 
 }

@@ -26,6 +26,7 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
     public static final String ACTION_PRODUCT_CUSTOMER_RE_COUNTERS = "product_customer_re_counters"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_COMMENT_NOTIFY_ASSIGNEE = "comment_notify_assignee"
+    public static final String DATASET_CUR_PRODUCT_CUSTOMER = "cur_product_customer"
     public static final String DATASET_IDEA_NOITRE_CUSTOMER = "idea_noitre_customer"
     public static final String DATASET_IDEA_RELATION_CUSTOMER = "idea_relation_customer"
     public static final String DATASET_NORMAL = "normal"
@@ -206,6 +207,16 @@ class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilt
     @DEDataSet(DATASET_COMMENT_NOTIFY_ASSIGNEE)
     Page<CustomerAssigneeDTO> fetchCommentNotifyAssignee(CustomerFilterDTO context) throws Throwable {
         return this.fetch(DATASET_COMMENT_NOTIFY_ASSIGNEE, context, CustomerAssigneeDTO.class)
+    }
+
+    /**
+     * 数据集：当前产品客户 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_CUR_PRODUCT_CUSTOMER)
+    Page<CustomerDTO> fetchCurProductCustomer(CustomerFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_PRODUCT_CUSTOMER, context, CustomerDTO.class)
     }
 
     /**
