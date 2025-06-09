@@ -29,6 +29,7 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
     public static final String DATASET_MY_PARTICIPATE = "my_participate"
     public static final String DATASET_PENDING_AND_IN_PROGRESS = "pending_and_in_progress"
     public static final String DATASET_QUERY_NO_SHIFT_IN = "query_no_shift_in"
+    public static final String DATASET_TEST_PLAN = "test_plan"
     public static final String DATASET_UN_JOIN_PLAN = "un_join_plan"
     private static TestPlan _instance
     void setInstance(TestPlan instance) {
@@ -236,6 +237,16 @@ class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilt
     @DEDataSet(DATASET_QUERY_NO_SHIFT_IN)
     Page<TestPlanDTO> fetchQueryNoShiftIn(TestPlanFilterDTO context) throws Throwable {
         return this.fetch(DATASET_QUERY_NO_SHIFT_IN, context, TestPlanDTO.class)
+    }
+
+    /**
+     * 数据集：测试计划 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_PLAN)
+    Page<TestPlanDTO> fetchTestPlan(TestPlanFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_PLAN, context, TestPlanDTO.class)
     }
 
     /**

@@ -53,6 +53,14 @@ class WorkloadAutoCal extends DELogicRuntime {
                 //执行逻辑节点[保存剩余工时]
                 executeDEACTION5(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM5":
+                //执行逻辑节点[设置预估工时]
+                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEACTION6":
+                //执行逻辑节点[保存预估工时]
+                executeDEACTION6(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM9":
                 //执行逻辑节点[填充递归调用参数]
                 executePREPAREPARAM9(iDELogicSession, iPSDELogicNode)
@@ -145,6 +153,26 @@ class WorkloadAutoCal extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEACTION5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[设置预估工时]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[保存预估工时]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

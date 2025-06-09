@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import net.ibizsys.central.util.*
 import cn.ibizlab.central.plugin.groovy.annotation.DEDataModel
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
+import cn.ibizlab.plm.base.parameter.dto.ParameterDTO
 import cn.ibizlab.plm.testmgmt.librarymember.dto.LibraryMemberDTO
 
 @DEDataModel
@@ -64,6 +65,11 @@ class LibraryDTO extends GroovyDTO<LibraryDTO> {
      */
     @JsonProperty("scope_id")
     String scopeId
+    /**
+     * 「执行用例参数」
+     */
+    @JsonProperty("run_parameter")
+    List<ParameterDTO> runParameter
     /**
      * 「成员」
      */
@@ -193,6 +199,16 @@ class LibraryDTO extends GroovyDTO<LibraryDTO> {
      */
     LibraryDTO setScopeId(String scopeId) {
         this.scopeId = scopeId
+        return this
+    }
+
+
+    /**
+     * 设置「执行用例参数」值
+     * @param val
+     */
+    LibraryDTO setRunParameter(List<ParameterDTO> runParameter) {
+        this.runParameter = runParameter
         return this
     }
 

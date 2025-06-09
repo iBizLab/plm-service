@@ -29,6 +29,10 @@ class GenerateReviewResults extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEBUGPARAM4":
+                //执行逻辑节点[调试逻辑参数]
+                executeDEBUGPARAM4(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM6":
                 //执行逻辑节点[测试用例]
                 executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
@@ -73,6 +77,14 @@ class GenerateReviewResults extends DELogicRuntime {
                 //执行逻辑节点[创建前的评审结果]
                 executeDEBUGPARAM3(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM7":
+                //执行逻辑节点[准备参数]
+                executePREPAREPARAM7(iDELogicSession, iPSDELogicNode)
+                break
+            case "LOOPSUBCALL2":
+                //执行逻辑节点[循环子调用]
+                executeLOOPSUBCALL2(iDELogicSession, iPSDELogicNode)
+                break
             case "DEACTION1":
                 //执行逻辑节点[创建评审结果]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
@@ -93,6 +105,16 @@ class GenerateReviewResults extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeBegin(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEBUGPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -203,6 +225,26 @@ class GenerateReviewResults extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEBUGPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM7(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeLOOPSUBCALL2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

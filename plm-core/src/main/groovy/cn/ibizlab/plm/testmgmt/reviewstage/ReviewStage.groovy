@@ -17,7 +17,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
 class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,ReviewStageFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
-    public static final String DATASET_REVIEWERS = "reviewers"
     private static ReviewStage _instance
     void setInstance(ReviewStage instance) {
         _instance = instance
@@ -104,16 +103,6 @@ class ReviewStage extends GroovyDataEntityRuntime<ReviewStage,ReviewStageDTO,Rev
     @DEDataSet(DATASET_DEFAULT)
     Page<ReviewStageDTO> fetchDefault(ReviewStageFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, ReviewStageDTO.class)
-    }
-
-    /**
-     * 数据集：参与评审人 实际功能
-     * @param dto
-     * @throws Throwable
-     */
-    @DEDataSet(DATASET_REVIEWERS)
-    Page<ReviewStageDTO> fetchReviewers(ReviewStageFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_REVIEWERS, context, ReviewStageDTO.class)
     }
 
 }

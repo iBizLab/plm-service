@@ -29,9 +29,21 @@ class SetChangeType extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM5":
+                //执行逻辑节点[准备计划参数]
+                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEDATASET4":
+                //执行逻辑节点[获取计划用例]
+                executeDEDATASET4(iDELogicSession, iPSDELogicNode)
+                break
             case "DEBUGPARAM3":
                 //执行逻辑节点[调试逻辑参数]
                 executeDEBUGPARAM3(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM4":
+                //执行逻辑节点[准备基线参数]
+                executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
                 break
             case "DEDATASET1":
                 //执行逻辑节点[查询用例分页数据]
@@ -41,10 +53,6 @@ class SetChangeType extends DELogicRuntime {
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM4":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM4(iDELogicSession, iPSDELogicNode)
-                break
             case "PREPAREPARAM1":
                 //执行逻辑节点[设置版本过滤器]
                 executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
@@ -53,9 +61,17 @@ class SetChangeType extends DELogicRuntime {
                 //执行逻辑节点[获取评审测试用例]
                 executeRAWSQLCALL1(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEBUGPARAM4":
+                //执行逻辑节点[调试逻辑参数]
+                executeDEBUGPARAM4(iDELogicSession, iPSDELogicNode)
+                break
             case "DEDATASET2":
                 //执行逻辑节点[查询符合条件的版本]
                 executeDEDATASET2(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEDATASET3":
+                //执行逻辑节点[获取基线用例]
+                executeDEDATASET3(iDELogicSession, iPSDELogicNode)
                 break
             case "DEBUGPARAM2":
                 //执行逻辑节点[调试逻辑参数]
@@ -97,12 +113,42 @@ class SetChangeType extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[准备计划参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取计划用例]，逻辑类型[DEDATASET]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEDATASET4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeDEBUGPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[准备基线参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -127,16 +173,6 @@ class SetChangeType extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEBUGPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[设置版本过滤器]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -157,12 +193,32 @@ class SetChangeType extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEBUGPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[查询符合条件的版本]，逻辑类型[DEDATASET]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeDEDATASET2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取基线用例]，逻辑类型[DEDATASET]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEDATASET3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

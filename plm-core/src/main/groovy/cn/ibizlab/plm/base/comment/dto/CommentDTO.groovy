@@ -51,6 +51,12 @@ class CommentDTO extends GroovyDTO<CommentDTO> {
     @JsonProperty("pcreate_man")
     String pcreateMan
     /**
+     * 「是否置顶」
+     * 字典[是否]
+     */
+    @JsonProperty("is_top")
+    Integer isTop
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -156,6 +162,17 @@ class CommentDTO extends GroovyDTO<CommentDTO> {
      */
     CommentDTO setPcreateMan(String pcreateMan) {
         this.pcreateMan = pcreateMan
+        return this
+    }
+
+
+    /**
+     * 设置「是否置顶」值
+     * 字典[是否]
+     * @param val
+     */
+    CommentDTO setIsTop(Integer isTop) {
+        this.isTop = isTop
         return this
     }
 

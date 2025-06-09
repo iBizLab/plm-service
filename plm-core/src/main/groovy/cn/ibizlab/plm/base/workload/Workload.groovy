@@ -18,6 +18,7 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
 
     public static final String ACTION_CREATE_WORKLOAD = "create_workload"
     public static final String ACTION_FILL_WORKLOAD_DATA = "fill_workload_data"
+    public static final String ACTION_GET_REDIRECT_DATA = "get_redirect_data"
     public static final String ACTION_GET_REGISTER_WORKLOAD = "get_register_workload"
     public static final String ACTION_UPDATE_WORKLOAD = "update_workload"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -147,6 +148,16 @@ class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilt
     @DEAction(ACTION_FILL_WORKLOAD_DATA)
     def fillWorkloadData(WorkloadDTO dto) throws Throwable {
         this.execute(ACTION_FILL_WORKLOAD_DATA, dto, WorkloadDTO.class)
+    }
+
+    /**
+     * 行为：获取重定向数据 实际功能
+     * @param key
+     * @throws Throwable
+     */
+    @DEAction(ACTION_GET_REDIRECT_DATA)
+    def getRedirectData(String key) throws Throwable {
+        return this.execute(ACTION_GET_REDIRECT_DATA, key, WorkloadDTO.class)
     }
 
     /**

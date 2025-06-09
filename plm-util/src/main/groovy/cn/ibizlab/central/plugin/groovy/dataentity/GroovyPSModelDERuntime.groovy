@@ -145,7 +145,7 @@ class GroovyPSModelDERuntime <T extends GroovyPSModelDERuntime,D extends GroovyD
         return new PageImpl<>([convertOne(ret, clazz)])
     }
 
-    private <E extends GroovyDTO> E convertOne(Object item, Class<E> clazz) {
+    public <E extends GroovyDTO> E convertOne(Object item, Class<E> clazz) {
         if(item == null)
             return null
         if (clazz.isInstance(item))

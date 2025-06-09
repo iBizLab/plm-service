@@ -38,12 +38,14 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     public static final String DATASET_ASSESSMENTRESULT = "assessmentResult"
     public static final String DATASET_BASELINE_CHOOSE_CASE = "baseline_choose_case"
     public static final String DATASET_BASELINE_PLAN_CASE = "baseline_plan_case"
+    public static final String DATASET_BASELINE_TEST_CASE = "baseline_test_case"
     public static final String DATASET_BI_DETAIL = "bi_detail"
     public static final String DATASET_BI_SEARCH = "bi_search"
     public static final String DATASET_CASEPERSON = "casePerson"
     public static final String DATASET_CASETYPE = "caseType"
     public static final String DATASET_CHECK_REFRESH_DATA = "check_refresh_data"
     public static final String DATASET_COMMENT_NOTIFY_MAINTENANCE = "comment_notify_maintenance"
+    public static final String DATASET_COMMON = "common"
     public static final String DATASET_DAILYTENDENCIES = "dailyTendencies"
     public static final String DATASET_DEGREEIMPORTANCE = "degreeImportance"
     public static final String DATASET_DELETED = "deleted"
@@ -68,6 +70,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     public static final String DATASET_REVIEW_DATA = "review_data"
     public static final String DATASET_THIS_SUITE_TEST_CASE = "this_suite_test_case"
     public static final String DATASET_TEST_CASE_MANEUVER_CONTEXT = "test_case_maneuver_context"
+    public static final String DATASET_TEST_PLAN_TEST_CASE = "test_plan_test_case"
     public static final String DATASET_WORK_ITEM_RELATION_TEST_CASE = "work_item_relation_test_case"
     private static TestCase _instance
     void setInstance(TestCase instance) {
@@ -368,6 +371,16 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     }
 
     /**
+     * 数据集：基线用例 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_BASELINE_TEST_CASE)
+    Page<TestCaseDTO> fetchBaselineTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_BASELINE_TEST_CASE, context, TestCaseDTO.class)
+    }
+
+    /**
      * 数据集：BI反查 实际功能
      * @param dto
      * @throws Throwable
@@ -425,6 +438,16 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     @DEDataSet(DATASET_COMMENT_NOTIFY_MAINTENANCE)
     Page<TestCaseMaintenanceDTO> fetchCommentNotifyMaintenance(TestCaseFilterDTO context) throws Throwable {
         return this.fetch(DATASET_COMMENT_NOTIFY_MAINTENANCE, context, TestCaseMaintenanceDTO.class)
+    }
+
+    /**
+     * 数据集：测试用例 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_COMMON)
+    Page<TestCaseDTO> fetchCommon(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COMMON, context, TestCaseDTO.class)
     }
 
     /**
@@ -665,6 +688,16 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     @DEDataSet(DATASET_TEST_CASE_MANEUVER_CONTEXT)
     Page<TestCaseDTO> fetchTestCaseManeuverContext(TestCaseFilterDTO context) throws Throwable {
         return this.fetch(DATASET_TEST_CASE_MANEUVER_CONTEXT, context, TestCaseDTO.class)
+    }
+
+    /**
+     * 数据集：测试计划用例 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TEST_PLAN_TEST_CASE)
+    Page<TestCaseDTO> fetchTestPlanTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TEST_PLAN_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**

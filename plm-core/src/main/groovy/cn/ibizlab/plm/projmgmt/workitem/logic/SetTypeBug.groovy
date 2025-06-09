@@ -37,6 +37,10 @@ class SetTypeBug extends DELogicRuntime {
                 //执行逻辑节点[获取项目信息]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEBUGPARAM1":
+                //执行逻辑节点[调试逻辑参数]
+                executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM2":
                 //执行逻辑节点[设置项目类别]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
@@ -85,6 +89,16 @@ class SetTypeBug extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEACTION1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEBUGPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

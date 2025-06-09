@@ -27,6 +27,11 @@ class WorkloadDTO extends GroovyDTO<WorkloadDTO> {
     @JsonProperty("principal_id")
     String principalId
     /**
+     * 「工时类别」
+     */
+    @JsonProperty("category")
+    String category
+    /**
      * 「所属数据对象」
      */
     @JsonProperty("owner_type")
@@ -145,6 +150,16 @@ class WorkloadDTO extends GroovyDTO<WorkloadDTO> {
      */
     WorkloadDTO setPrincipalId(String principalId) {
         this.principalId = principalId
+        return this
+    }
+
+
+    /**
+     * 设置「工时类别」值
+     * @param val
+     */
+    WorkloadDTO setCategory(String category) {
+        this.category = category
         return this
     }
 

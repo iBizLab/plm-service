@@ -21,6 +21,7 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
     public static final String DATASET_ATTENTION_BY_OWNERID = "attention_by_ownerid"
     public static final String DATASET_COMMENT_ATTENTION = "comment_attention"
     public static final String DATASET_NOTIFY = "notify"
+    public static final String DATASET_REVIEW_NOTIFY = "review_notify"
     private static Attention _instance
     void setInstance(Attention instance) {
         _instance = instance
@@ -147,6 +148,16 @@ class Attention extends GroovyDataEntityRuntime<Attention,AttentionDTO,Attention
     @DEDataSet(DATASET_NOTIFY)
     Page<AttentionDTO> fetchNotify(AttentionFilterDTO context) throws Throwable {
         return this.fetch(DATASET_NOTIFY, context, AttentionDTO.class)
+    }
+
+    /**
+     * 数据集：评审关注 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_REVIEW_NOTIFY)
+    Page<AttentionDTO> fetchReviewNotify(AttentionFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_REVIEW_NOTIFY, context, AttentionDTO.class)
     }
 
 }

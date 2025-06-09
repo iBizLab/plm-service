@@ -29,9 +29,17 @@ class AutoCreateGuideline extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEACTION2":
+                //执行逻辑节点[创建配置参数]
+                executeDEACTION2(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM2":
                 //执行逻辑节点[设置过滤参数]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM7":
+                //执行逻辑节点[设置配置参数]
+                executePREPAREPARAM7(iDELogicSession, iPSDELogicNode)
                 break
             case "DEDATASET1":
                 //执行逻辑节点[查询测试库全局流程规则]
@@ -97,12 +105,32 @@ class AutoCreateGuideline extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[创建配置参数]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[设置过滤参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[设置配置参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM7(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

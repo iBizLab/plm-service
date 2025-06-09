@@ -25,6 +25,12 @@ class ReviewResultDTO extends GroovyDTO<ReviewResultDTO> {
     @JsonProperty("comment")
     String comment
     /**
+     * 「评审人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("reviewer")
+    String reviewer
+    /**
      * 「是否可评审」
      * 字典[是否]
      */
@@ -95,6 +101,17 @@ class ReviewResultDTO extends GroovyDTO<ReviewResultDTO> {
      */
     ReviewResultDTO setComment(String comment) {
         this.comment = comment
+        return this
+    }
+
+
+    /**
+     * 设置「评审人」值
+     * 字典[云系统操作者]
+     * @param val
+     */
+    ReviewResultDTO setReviewer(String reviewer) {
+        this.reviewer = reviewer
         return this
     }
 

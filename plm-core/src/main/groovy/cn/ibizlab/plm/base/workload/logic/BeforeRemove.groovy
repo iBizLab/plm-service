@@ -33,57 +33,61 @@ class BeforeRemove extends DELogicRuntime {
                 //执行逻辑节点[获取工时明细]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
                 break
-            case "RAWSQLCALL2":
-                //执行逻辑节点[获取已登记工时]
-                executeRAWSQLCALL2(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM1":
-                //执行逻辑节点[准备查询过滤器参数]
-                executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEDATASET1":
-                //执行逻辑节点[获取预估工时]
-                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
-                break
             case "BINDPARAM1":
                 //执行逻辑节点[绑定预估工时]
                 executeBINDPARAM1(iDELogicSession, iPSDELogicNode)
                 break
+            case "RAWSQLCALL2":
+                //执行逻辑节点[获取已登记工时]
+                executeRAWSQLCALL2(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM7":
+                //执行逻辑节点[预估工时]
+                executePREPAREPARAM7(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEDATASET1":
+                //执行逻辑节点[获取预估/实际工时]
+                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM2":
-                //执行逻辑节点[填充实际工时和剩余工时]
+                //执行逻辑节点[填充实际/预估/剩余工时]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEDATASET2":
-                //执行逻辑节点[获取剩余工时]
-                executeDEDATASET2(iDELogicSession, iPSDELogicNode)
-                break
-            case "BINDPARAM2":
-                //执行逻辑节点[绑定剩余工时]
-                executeBINDPARAM2(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSFCODE1":
                 //执行逻辑节点[计算剩余工时]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEACTION2":
-                //执行逻辑节点[更新剩余工时]
-                executeDEACTION2(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM1":
+                //执行逻辑节点[准备查询过滤器参数]
+                executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
                 break
-            case "PREPAREPARAM3":
-                //执行逻辑节点[置空实际工时]
-                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEACTION3":
-                //执行逻辑节点[更新实际工时]
-                executeDEACTION3(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM6":
+                //执行逻辑节点[实际工时]
+                executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM4":
                 //执行逻辑节点[设置工作项标识]
                 executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEACTION3":
+                //执行逻辑节点[更新实际/预估工时]
+                executeDEACTION3(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEACTION2":
+                //执行逻辑节点[更新剩余工时]
+                executeDEACTION2(iDELogicSession, iPSDELogicNode)
+                break
+            case "BINDPARAM3":
+                //执行逻辑节点[绑定实际工时]
+                executeBINDPARAM3(iDELogicSession, iPSDELogicNode)
+                break
             case "DEACTION4":
                 //执行逻辑节点[获取工作项]
                 executeDEACTION4(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM3":
+                //执行逻辑节点[置空实际工时]
+                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM5":
                 //执行逻辑节点[填充父工作项标识]
@@ -119,36 +123,6 @@ class BeforeRemove extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[获取已登记工时]，逻辑类型[RAWSQLCALL]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeRAWSQLCALL2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[准备查询过滤器参数]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[获取预估工时]，逻辑类型[DEDATASET]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[绑定预估工时]，逻辑类型[BINDPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -159,32 +133,42 @@ class BeforeRemove extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[填充实际工时和剩余工时]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[获取已登记工时]，逻辑类型[RAWSQLCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRAWSQLCALL2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[预估工时]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM7(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取预估/实际工时]，逻辑类型[DEDATASET]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[填充实际/预估/剩余工时]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[获取剩余工时]，逻辑类型[DEDATASET]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEDATASET2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[绑定剩余工时]，逻辑类型[BINDPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeBINDPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -199,32 +183,22 @@ class BeforeRemove extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[更新剩余工时]，逻辑类型[DEACTION]
+     * 执行逻辑节点[准备查询过滤器参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEACTION2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**
-     * 执行逻辑节点[置空实际工时]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[实际工时]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[更新实际工时]，逻辑类型[DEACTION]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEACTION3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -239,12 +213,52 @@ class BeforeRemove extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[更新实际/预估工时]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[更新剩余工时]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[绑定实际工时]，逻辑类型[BINDPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeBINDPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[获取工作项]，逻辑类型[DEACTION]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeDEACTION4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[置空实际工时]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

@@ -29,13 +29,21 @@ class GetRegisterWorkload extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEBUGPARAM1":
+                //执行逻辑节点[调试逻辑参数]
+                executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
+                break
             case "DEACTION1":
                 //执行逻辑节点[获取工时明细]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSQLCALL1":
-                //执行逻辑节点[获取已登记工时]
+                //执行逻辑节点[获取已登记实际工时]
                 executeRAWSQLCALL1(iDELogicSession, iPSDELogicNode)
+                break
+            case "RAWSQLCALL4":
+                //执行逻辑节点[获取已登记预估工时]
+                executeRAWSQLCALL4(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSQLCALL2":
                 //执行逻辑节点[获取剩余工时]
@@ -69,6 +77,16 @@ class GetRegisterWorkload extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEBUGPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[获取工时明细]，逻辑类型[DEACTION]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -79,12 +97,22 @@ class GetRegisterWorkload extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[获取已登记工时]，逻辑类型[RAWSQLCALL]
+     * 执行逻辑节点[获取已登记实际工时]，逻辑类型[RAWSQLCALL]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeRAWSQLCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[获取已登记预估工时]，逻辑类型[RAWSQLCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRAWSQLCALL4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

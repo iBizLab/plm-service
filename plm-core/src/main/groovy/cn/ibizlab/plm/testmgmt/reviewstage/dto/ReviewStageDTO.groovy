@@ -21,6 +21,7 @@ class ReviewStageDTO extends GroovyDTO<ReviewStageDTO> {
     String reviewerType
     /**
      * 「评审人」
+     * 字典[云系统操作者]
      */
     @JsonProperty("reviewer")
     String reviewer
@@ -91,6 +92,7 @@ class ReviewStageDTO extends GroovyDTO<ReviewStageDTO> {
 
     /**
      * 设置「评审人」值
+     * 字典[云系统操作者]
      * @param val
      */
     ReviewStageDTO setReviewer(String reviewer) {

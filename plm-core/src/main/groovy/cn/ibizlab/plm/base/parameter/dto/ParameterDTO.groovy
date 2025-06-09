@@ -14,6 +14,26 @@ import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
 class ParameterDTO extends GroovyDTO<ParameterDTO> {
 
     /**
+     * 「所属数据标识」
+     */
+    @JsonProperty("owner_id")
+    String ownerId
+    /**
+     * 「所属数据对象」
+     */
+    @JsonProperty("owner_type")
+    String ownerType
+    /**
+     * 「值」
+     */
+    @JsonProperty("val")
+    String val
+    /**
+     * 「所属对象子类型」
+     */
+    @JsonProperty("owner_subtype")
+    String ownerSubtype
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -45,6 +65,46 @@ class ParameterDTO extends GroovyDTO<ParameterDTO> {
      */
     @JsonProperty("update_time")
     Timestamp updateTime
+
+    /**
+     * 设置「所属数据标识」值
+     * @param val
+     */
+    ParameterDTO setOwnerId(String ownerId) {
+        this.ownerId = ownerId
+        return this
+    }
+
+
+    /**
+     * 设置「所属数据对象」值
+     * @param val
+     */
+    ParameterDTO setOwnerType(String ownerType) {
+        this.ownerType = ownerType
+        return this
+    }
+
+
+    /**
+     * 设置「值」值
+     * @param val
+     */
+    ParameterDTO setVal(String val) {
+        this.val = val
+        return this
+    }
+
+
+    /**
+     * 设置「所属对象子类型」值
+     * @param val
+     */
+    ParameterDTO setOwnerSubtype(String ownerSubtype) {
+        this.ownerSubtype = ownerSubtype
+        return this
+    }
+
 
     /**
      * 设置「建立人」值

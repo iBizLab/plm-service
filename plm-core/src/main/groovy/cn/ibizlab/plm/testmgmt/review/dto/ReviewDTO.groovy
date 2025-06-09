@@ -50,7 +50,13 @@ class ReviewDTO extends GroovyDTO<ReviewDTO> {
     @JsonProperty("description")
     String description
     /**
+     * 「下一个评审人」
+     */
+    @JsonProperty("next_reviewer")
+    String nextReviewer
+    /**
      * 「评审人」
+     * 字典[云系统操作者]
      */
     @JsonProperty("reviewer")
     String reviewer
@@ -252,7 +258,18 @@ class ReviewDTO extends GroovyDTO<ReviewDTO> {
 
 
     /**
+     * 设置「下一个评审人」值
+     * @param val
+     */
+    ReviewDTO setNextReviewer(String nextReviewer) {
+        this.nextReviewer = nextReviewer
+        return this
+    }
+
+
+    /**
      * 设置「评审人」值
+     * 字典[云系统操作者]
      * @param val
      */
     ReviewDTO setReviewer(String reviewer) {

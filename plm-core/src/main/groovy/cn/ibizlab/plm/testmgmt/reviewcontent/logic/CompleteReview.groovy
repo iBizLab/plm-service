@@ -97,6 +97,10 @@ class CompleteReview extends DELogicRuntime {
                 //执行逻辑节点[附加到数组变量]
                 executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
                 break
+            case "DENOTIFY3":
+                //执行逻辑节点[通知关注人（需求）]
+                executeDENOTIFY3(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM6":
                 //执行逻辑节点[变更阶段状态]
                 executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
@@ -104,6 +108,10 @@ class CompleteReview extends DELogicRuntime {
             case "RAWSFCODE1":
                 //执行逻辑节点[完成时间]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
+                break
+            case "DENOTIFY4":
+                //执行逻辑节点[通知关注人（用例）]
+                executeDENOTIFY4(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -291,6 +299,16 @@ class CompleteReview extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[通知关注人（需求）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[变更阶段状态]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -307,6 +325,16 @@ class CompleteReview extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeRAWSFCODE1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[通知关注人（用例）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }
