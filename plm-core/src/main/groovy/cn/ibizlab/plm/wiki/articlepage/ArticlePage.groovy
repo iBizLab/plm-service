@@ -31,6 +31,7 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String ACTION_MOVE_PAGE = "move_page"
     public static final String ACTION_SET_NAME_VERSION = "set_name_version"
+    public static final String ACTION_PUBLISH_NAME = "publish_name"
     public static final String ACTION_PUBLISH_PAGE = "publish_page"
     public static final String ACTION_RECOVER = "recover"
     public static final String ACTION_RECOVER_VERSION = "recover_version"
@@ -292,6 +293,16 @@ class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,Art
     @DEAction(ACTION_SET_NAME_VERSION)
     def nameVersionSave(ArticlePageDTO dto) throws Throwable {
         this.execute(ACTION_SET_NAME_VERSION, dto, ArticlePageDTO.class)
+    }
+
+    /**
+     * 行为：发布名称 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_PUBLISH_NAME)
+    def publishName(ArticlePageDTO dto) throws Throwable {
+        this.execute(ACTION_PUBLISH_NAME, dto, ArticlePageDTO.class)
     }
 
     /**

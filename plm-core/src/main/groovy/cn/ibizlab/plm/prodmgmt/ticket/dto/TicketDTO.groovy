@@ -16,6 +16,58 @@ import cn.ibizlab.plm.base.attention.dto.AttentionDTO
 class TicketDTO extends GroovyDTO<TicketDTO> {
 
     /**
+     * 「标识」
+     */
+    @JsonProperty("id")
+    String id
+    /**
+     * 「名称」
+     */
+    @JsonProperty("name")
+    String name
+    /**
+     * 「建立时间」
+     */
+    @JsonProperty("create_time")
+    Timestamp createTime
+    /**
+     * 「建立人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("create_man")
+    String createMan
+    /**
+     * 「更新时间」
+     */
+    @JsonProperty("update_time")
+    Timestamp updateTime
+    /**
+     * 「更新人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("update_man")
+    String updateMan
+    /**
+     * 「产品标识」
+     */
+    @JsonProperty("product_id")
+    String productId
+    /**
+     * 「所属产品」
+     */
+    @JsonProperty("product_name")
+    String productName
+    /**
+     * 「客户标识」
+     */
+    @JsonProperty("customer_id")
+    String customerId
+    /**
+     * 「客户」
+     */
+    @JsonProperty("customer_name")
+    String customerName
+    /**
      * 「编号」
      */
     @JsonProperty("identifier")
@@ -169,58 +221,108 @@ class TicketDTO extends GroovyDTO<TicketDTO> {
      */
     @JsonProperty("recent_create_days")
     Integer recentCreateDays
+
     /**
-     * 「建立人」
+     * 设置「标识」值
+     * @param val
+     */
+    TicketDTO setId(String id) {
+        this.id = id
+        return this
+    }
+
+
+    /**
+     * 设置「名称」值
+     * @param val
+     */
+    TicketDTO setName(String name) {
+        this.name = name
+        return this
+    }
+
+
+    /**
+     * 设置「建立时间」值
+     * @param val
+     */
+    TicketDTO setCreateTime(Timestamp createTime) {
+        this.createTime = createTime
+        return this
+    }
+
+
+    /**
+     * 设置「建立人」值
      * 字典[云系统操作者]
+     * @param val
      */
-    @JsonProperty("create_man")
-    String createMan
+    TicketDTO setCreateMan(String createMan) {
+        this.createMan = createMan
+        return this
+    }
+
+
     /**
-     * 「建立时间」
+     * 设置「更新时间」值
+     * @param val
      */
-    @JsonProperty("create_time")
-    Timestamp createTime
+    TicketDTO setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime
+        return this
+    }
+
+
     /**
-     * 「客户标识」
-     */
-    @JsonProperty("customer_id")
-    String customerId
-    /**
-     * 「客户」
-     */
-    @JsonProperty("customer_name")
-    String customerName
-    /**
-     * 「标识」
-     */
-    @JsonProperty("id")
-    String id
-    /**
-     * 「名称」
-     */
-    @JsonProperty("name")
-    String name
-    /**
-     * 「产品标识」
-     */
-    @JsonProperty("product_id")
-    String productId
-    /**
-     * 「所属产品」
-     */
-    @JsonProperty("product_name")
-    String productName
-    /**
-     * 「更新人」
+     * 设置「更新人」值
      * 字典[云系统操作者]
+     * @param val
      */
-    @JsonProperty("update_man")
-    String updateMan
+    TicketDTO setUpdateMan(String updateMan) {
+        this.updateMan = updateMan
+        return this
+    }
+
+
     /**
-     * 「更新时间」
+     * 设置「产品标识」值
+     * @param val
      */
-    @JsonProperty("update_time")
-    Timestamp updateTime
+    TicketDTO setProductId(String productId) {
+        this.productId = productId
+        return this
+    }
+
+
+    /**
+     * 设置「所属产品」值
+     * @param val
+     */
+    TicketDTO setProductName(String productName) {
+        this.productName = productName
+        return this
+    }
+
+
+    /**
+     * 设置「客户标识」值
+     * @param val
+     */
+    TicketDTO setCustomerId(String customerId) {
+        this.customerId = customerId
+        return this
+    }
+
+
+    /**
+     * 设置「客户」值
+     * @param val
+     */
+    TicketDTO setCustomerName(String customerName) {
+        this.customerName = customerName
+        return this
+    }
+
 
     /**
      * 设置「编号」值
@@ -517,108 +619,6 @@ class TicketDTO extends GroovyDTO<TicketDTO> {
      */
     TicketDTO setRecentCreateDays(Integer recentCreateDays) {
         this.recentCreateDays = recentCreateDays
-        return this
-    }
-
-
-    /**
-     * 设置「建立人」值
-     * 字典[云系统操作者]
-     * @param val
-     */
-    TicketDTO setCreateMan(String createMan) {
-        this.createMan = createMan
-        return this
-    }
-
-
-    /**
-     * 设置「建立时间」值
-     * @param val
-     */
-    TicketDTO setCreateTime(Timestamp createTime) {
-        this.createTime = createTime
-        return this
-    }
-
-
-    /**
-     * 设置「客户标识」值
-     * @param val
-     */
-    TicketDTO setCustomerId(String customerId) {
-        this.customerId = customerId
-        return this
-    }
-
-
-    /**
-     * 设置「客户」值
-     * @param val
-     */
-    TicketDTO setCustomerName(String customerName) {
-        this.customerName = customerName
-        return this
-    }
-
-
-    /**
-     * 设置「标识」值
-     * @param val
-     */
-    TicketDTO setId(String id) {
-        this.id = id
-        return this
-    }
-
-
-    /**
-     * 设置「名称」值
-     * @param val
-     */
-    TicketDTO setName(String name) {
-        this.name = name
-        return this
-    }
-
-
-    /**
-     * 设置「产品标识」值
-     * @param val
-     */
-    TicketDTO setProductId(String productId) {
-        this.productId = productId
-        return this
-    }
-
-
-    /**
-     * 设置「所属产品」值
-     * @param val
-     */
-    TicketDTO setProductName(String productName) {
-        this.productName = productName
-        return this
-    }
-
-
-    /**
-     * 设置「更新人」值
-     * 字典[云系统操作者]
-     * @param val
-     */
-    TicketDTO setUpdateMan(String updateMan) {
-        this.updateMan = updateMan
-        return this
-    }
-
-
-    /**
-     * 设置「更新时间」值
-     * @param val
-     */
-    TicketDTO setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime
         return this
     }
 

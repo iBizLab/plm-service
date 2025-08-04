@@ -15,6 +15,38 @@ import cn.ibizlab.plm.prodmgmt.productmember.dto.ProductMemberDTO
 class ProductDTO extends GroovyDTO<ProductDTO> {
 
     /**
+     * 「标识」
+     */
+    @JsonProperty("id")
+    String id
+    /**
+     * 「产品名称」
+     */
+    @JsonProperty("name")
+    String name
+    /**
+     * 「建立时间」
+     */
+    @JsonProperty("create_time")
+    Timestamp createTime
+    /**
+     * 「建立人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("create_man")
+    String createMan
+    /**
+     * 「更新时间」
+     */
+    @JsonProperty("update_time")
+    Timestamp updateTime
+    /**
+     * 「更新人」
+     * 字典[云系统操作者]
+     */
+    @JsonProperty("update_man")
+    String updateMan
+    /**
      * 「产品标识」
      */
     @JsonProperty("identifier")
@@ -70,38 +102,6 @@ class ProductDTO extends GroovyDTO<ProductDTO> {
     @JsonProperty("scope_id")
     String scopeId
     /**
-     * 「建立人」
-     * 字典[云系统操作者]
-     */
-    @JsonProperty("create_man")
-    String createMan
-    /**
-     * 「建立时间」
-     */
-    @JsonProperty("create_time")
-    Timestamp createTime
-    /**
-     * 「标识」
-     */
-    @JsonProperty("id")
-    String id
-    /**
-     * 「产品名称」
-     */
-    @JsonProperty("name")
-    String name
-    /**
-     * 「更新人」
-     * 字典[云系统操作者]
-     */
-    @JsonProperty("update_man")
-    String updateMan
-    /**
-     * 「更新时间」
-     */
-    @JsonProperty("update_time")
-    Timestamp updateTime
-    /**
      * 「用户标记」
      */
     @JsonProperty("user_tag")
@@ -111,6 +111,68 @@ class ProductDTO extends GroovyDTO<ProductDTO> {
      */
     @JsonProperty("user_tag2")
     String userTag2
+
+    /**
+     * 设置「标识」值
+     * @param val
+     */
+    ProductDTO setId(String id) {
+        this.id = id
+        return this
+    }
+
+
+    /**
+     * 设置「产品名称」值
+     * @param val
+     */
+    ProductDTO setName(String name) {
+        this.name = name
+        return this
+    }
+
+
+    /**
+     * 设置「建立时间」值
+     * @param val
+     */
+    ProductDTO setCreateTime(Timestamp createTime) {
+        this.createTime = createTime
+        return this
+    }
+
+
+    /**
+     * 设置「建立人」值
+     * 字典[云系统操作者]
+     * @param val
+     */
+    ProductDTO setCreateMan(String createMan) {
+        this.createMan = createMan
+        return this
+    }
+
+
+    /**
+     * 设置「更新时间」值
+     * @param val
+     */
+    ProductDTO setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime
+        return this
+    }
+
+
+    /**
+     * 设置「更新人」值
+     * 字典[云系统操作者]
+     * @param val
+     */
+    ProductDTO setUpdateMan(String updateMan) {
+        this.updateMan = updateMan
+        return this
+    }
+
 
     /**
      * 设置「产品标识」值
@@ -213,68 +275,6 @@ class ProductDTO extends GroovyDTO<ProductDTO> {
      */
     ProductDTO setScopeId(String scopeId) {
         this.scopeId = scopeId
-        return this
-    }
-
-
-    /**
-     * 设置「建立人」值
-     * 字典[云系统操作者]
-     * @param val
-     */
-    ProductDTO setCreateMan(String createMan) {
-        this.createMan = createMan
-        return this
-    }
-
-
-    /**
-     * 设置「建立时间」值
-     * @param val
-     */
-    ProductDTO setCreateTime(Timestamp createTime) {
-        this.createTime = createTime
-        return this
-    }
-
-
-    /**
-     * 设置「标识」值
-     * @param val
-     */
-    ProductDTO setId(String id) {
-        this.id = id
-        return this
-    }
-
-
-    /**
-     * 设置「产品名称」值
-     * @param val
-     */
-    ProductDTO setName(String name) {
-        this.name = name
-        return this
-    }
-
-
-    /**
-     * 设置「更新人」值
-     * 字典[云系统操作者]
-     * @param val
-     */
-    ProductDTO setUpdateMan(String updateMan) {
-        this.updateMan = updateMan
-        return this
-    }
-
-
-    /**
-     * 设置「更新时间」值
-     * @param val
-     */
-    ProductDTO setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime
         return this
     }
 

@@ -66,6 +66,11 @@ class UserDTO extends GroovyDTO<UserDTO> {
     @JsonProperty("title")
     String title
     /**
+     * 「第三方用户标识」
+     */
+    @JsonProperty("open_user_tag")
+    String openUserTag
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -226,6 +231,16 @@ class UserDTO extends GroovyDTO<UserDTO> {
      */
     UserDTO setTitle(String title) {
         this.title = title
+        return this
+    }
+
+
+    /**
+     * 设置「第三方用户标识」值
+     * @param val
+     */
+    UserDTO setOpenUserTag(String openUserTag) {
+        this.openUserTag = openUserTag
         return this
     }
 

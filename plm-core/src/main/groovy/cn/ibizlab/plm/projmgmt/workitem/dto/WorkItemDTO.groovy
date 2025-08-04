@@ -12,6 +12,7 @@ import cn.ibizlab.plm.base.attachment.dto.AttachmentDTO
 import cn.ibizlab.plm.base.deliverable.dto.DeliverableDTO
 import cn.ibizlab.plm.base.attention.dto.AttentionDTO
 import cn.ibizlab.plm.base.executor.dto.ExecutorDTO
+import cn.ibizlab.plm.base.dependency.dto.DependencyDTO
 
 @DEDataModel
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -398,6 +399,11 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
      */
     @JsonProperty("project_is_archived")
     Integer projectIsArchived
+    /**
+     * 「依赖」
+     */
+    @JsonProperty("dependencies")
+    List<DependencyDTO> dependencies
     /**
      * 「看板标识」
      */
@@ -1249,6 +1255,16 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
      */
     WorkItemDTO setProjectIsArchived(Integer projectIsArchived) {
         this.projectIsArchived = projectIsArchived
+        return this
+    }
+
+
+    /**
+     * 设置「依赖」值
+     * @param val
+     */
+    WorkItemDTO setDependencies(List<DependencyDTO> dependencies) {
+        this.dependencies = dependencies
         return this
     }
 

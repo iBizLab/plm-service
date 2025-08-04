@@ -1027,8 +1027,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_NORMAL)
-    Page<WorkItemDTO> fetchNormal(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_NORMAL, context, WorkItemDTO.class)
+    Page<WorkItemPlanDTO> fetchNormal(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NORMAL, context, WorkItemPlanDTO.class)
     }
 
     /**
@@ -1317,8 +1317,8 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @throws Throwable
      */
     @DEDataSet(DATASET_TOP)
-    Page<WorkItemDTO> fetchTop(WorkItemFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_TOP, context, WorkItemDTO.class)
+    Page<WorkItemPlanDTO> fetchTop(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TOP, context, WorkItemPlanDTO.class)
     }
 
     /**
