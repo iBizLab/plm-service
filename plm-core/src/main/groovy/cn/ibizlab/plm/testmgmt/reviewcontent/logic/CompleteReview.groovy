@@ -73,6 +73,10 @@ class CompleteReview extends DELogicRuntime {
                 //执行逻辑节点[生成最终评审结果]
                 executeDELOGIC1(iDELogicSession, iPSDELogicNode)
                 break
+            case "DENOTIFY1":
+                //执行逻辑节点[通知下一评审人（需求）]
+                executeDENOTIFY1(iDELogicSession, iPSDELogicNode)
+                break
             case "DEBUGPARAM2":
                 //执行逻辑节点[当前阶段数据]
                 executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
@@ -81,13 +85,13 @@ class CompleteReview extends DELogicRuntime {
                 //执行逻辑节点[附加到数组变量，且获取选中阶段的下一阶段数据]
                 executePREPAREPARAM8(iDELogicSession, iPSDELogicNode)
                 break
-            case "DENOTIFY1":
-                //执行逻辑节点[通知下一评审人（需求）]
-                executeDENOTIFY1(iDELogicSession, iPSDELogicNode)
-                break
             case "DENOTIFY2":
                 //执行逻辑节点[通知下一评审人（测试用例）]
                 executeDENOTIFY2(iDELogicSession, iPSDELogicNode)
+                break
+            case "DENOTIFY6":
+                //执行逻辑节点[通知下一评审人（工作项）]
+                executeDENOTIFY6(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM3":
                 //执行逻辑节点[设置阶段完成]
@@ -97,9 +101,17 @@ class CompleteReview extends DELogicRuntime {
                 //执行逻辑节点[附加到数组变量]
                 executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
                 break
+            case "DENOTIFY5":
+                //执行逻辑节点[通知下一评审人（页面）]
+                executeDENOTIFY5(iDELogicSession, iPSDELogicNode)
+                break
             case "DENOTIFY3":
                 //执行逻辑节点[通知关注人（需求）]
                 executeDENOTIFY3(iDELogicSession, iPSDELogicNode)
+                break
+            case "DENOTIFY4":
+                //执行逻辑节点[通知关注人（用例）]
+                executeDENOTIFY4(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM6":
                 //执行逻辑节点[变更阶段状态]
@@ -109,9 +121,13 @@ class CompleteReview extends DELogicRuntime {
                 //执行逻辑节点[完成时间]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DENOTIFY4":
-                //执行逻辑节点[通知关注人（用例）]
-                executeDENOTIFY4(iDELogicSession, iPSDELogicNode)
+            case "DENOTIFY7":
+                //执行逻辑节点[通知关注人（工作项）]
+                executeDENOTIFY7(iDELogicSession, iPSDELogicNode)
+                break
+            case "DENOTIFY8":
+                //执行逻辑节点[通知关注人（页面）]
+                executeDENOTIFY8(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -239,6 +255,16 @@ class CompleteReview extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[通知下一评审人（需求）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[当前阶段数据]，逻辑类型[DEBUGPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -259,22 +285,22 @@ class CompleteReview extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[通知下一评审人（需求）]，逻辑类型[DENOTIFY]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDENOTIFY1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[通知下一评审人（测试用例）]，逻辑类型[DENOTIFY]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeDENOTIFY2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[通知下一评审人（工作项）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -299,12 +325,32 @@ class CompleteReview extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[通知下一评审人（页面）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[通知关注人（需求）]，逻辑类型[DENOTIFY]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeDENOTIFY3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[通知关注人（用例）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -329,12 +375,22 @@ class CompleteReview extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[通知关注人（用例）]，逻辑类型[DENOTIFY]
+     * 执行逻辑节点[通知关注人（工作项）]，逻辑类型[DENOTIFY]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDENOTIFY4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDENOTIFY7(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[通知关注人（页面）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY8(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

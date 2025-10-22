@@ -33,9 +33,9 @@ class FillGuideline extends DELogicRuntime {
                 //执行逻辑节点[测试库参数]
                 executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM1":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM3":
+                //执行逻辑节点[需求参数]
+                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
                 break
             case "END1":
                 //执行逻辑节点[结束]
@@ -53,13 +53,13 @@ class FillGuideline extends DELogicRuntime {
                 //执行逻辑节点[设置返回的guideline_id]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM2":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM5":
+                //执行逻辑节点[工作项参数]
+                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
                 break
-            case "PREPAREPARAM3":
-                //执行逻辑节点[需求参数]
-                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM8":
+                //执行逻辑节点[页面参数]
+                executePREPAREPARAM8(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -87,12 +87,12 @@ class FillGuideline extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * 执行逻辑节点[需求参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEBUGPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -137,22 +137,22 @@ class FillGuideline extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * 执行逻辑节点[工作项参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEBUGPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**
-     * 执行逻辑节点[需求参数]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[页面参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM8(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

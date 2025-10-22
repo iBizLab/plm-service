@@ -29,13 +29,9 @@ class GenerateReviewResults extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM4":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM4(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM6":
-                //执行逻辑节点[测试用例]
-                executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM5":
+                //执行逻辑节点[产品需求]
+                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
                 break
             case "END1":
                 //执行逻辑节点[结束]
@@ -44,6 +40,10 @@ class GenerateReviewResults extends DELogicRuntime {
             case "DEBUGPARAM2":
                 //执行逻辑节点[调试逻辑参数]
                 executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM6":
+                //执行逻辑节点[测试用例]
+                executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM1":
                 //执行逻辑节点[通用参数]
@@ -65,13 +65,17 @@ class GenerateReviewResults extends DELogicRuntime {
                 //执行逻辑节点[循环评审阶段]
                 executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
                 break
-            case "PREPAREPARAM5":
-                //执行逻辑节点[产品需求]
-                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM8":
+                //执行逻辑节点[项目工作项]
+                executePREPAREPARAM8(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM3":
                 //执行逻辑节点[设置新建的评审结果数据]
                 executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM9":
+                //执行逻辑节点[空间页面]
+                executePREPAREPARAM9(iDELogicSession, iPSDELogicNode)
                 break
             case "DEBUGPARAM3":
                 //执行逻辑节点[创建前的评审结果]
@@ -109,22 +113,12 @@ class GenerateReviewResults extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * 执行逻辑节点[产品需求]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEBUGPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[测试用例]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -145,6 +139,16 @@ class GenerateReviewResults extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEBUGPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[测试用例]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -199,12 +203,12 @@ class GenerateReviewResults extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[产品需求]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[项目工作项]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM8(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -215,6 +219,16 @@ class GenerateReviewResults extends DELogicRuntime {
      * @throws Throwable
      */
     private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[空间页面]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM9(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

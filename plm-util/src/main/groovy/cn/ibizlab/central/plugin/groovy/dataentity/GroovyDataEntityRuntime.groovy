@@ -27,6 +27,7 @@ class GroovyDataEntityRuntime<T extends GroovyDataEntityRuntime,D extends Groovy
     public static final String ACTION_GETDRAFT = "GetDraft"
     public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_SAVE = "Save"
+    public static final String ACTION_COPY = "Copy"
 
     void setInstance(T instance) {
 

@@ -51,6 +51,7 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     public static final String DATASET_DELETED = "deleted"
     public static final String DATASET_EVERYDAYTEST = "everydayTest"
     public static final String DATASET_IDEA_RELATION_TEST_CASE = "idea_relation_test_case"
+    public static final String DATASET_IDEAS_RELATION_TEST_CASE = "ideas_relation_test_case"
     public static final String DATASET_MY_ASSIGN = "my_assign"
     public static final String DATASET_MY_ASSIGNEE_COUNT_TEST_CASE = "my_assignee_count_test_case"
     public static final String DATASET_MY_ATTENTION = "my_attention"
@@ -498,6 +499,16 @@ class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilt
     @DEDataSet(DATASET_IDEA_RELATION_TEST_CASE)
     Page<TestCaseDTO> fetchIdeaRelationTestCase(TestCaseFilterDTO context) throws Throwable {
         return this.fetch(DATASET_IDEA_RELATION_TEST_CASE, context, TestCaseDTO.class)
+    }
+
+    /**
+     * 数据集：关联测试用例（多需求） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEAS_RELATION_TEST_CASE)
+    Page<TestCaseDTO> fetchIdeasRelationTestCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEAS_RELATION_TEST_CASE, context, TestCaseDTO.class)
     }
 
     /**

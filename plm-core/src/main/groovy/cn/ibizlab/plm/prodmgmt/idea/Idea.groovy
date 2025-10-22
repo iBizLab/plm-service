@@ -49,6 +49,7 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_COMMON = "common"
     public static final String DATASET_CUSTOMER_USER = "customer_user"
     public static final String DATASET_DELETED = "deleted"
+    public static final String DATASET_IDEAS_RELATION_IDEA = "ideas_relation_idea"
     public static final String DATASET_MOB_NOT_ARCHIVED = "mob_not_archived"
     public static final String DATASET_MOVE_IDEA = "move_idea"
     public static final String DATASET_MY_ASSIGN = "my_assign"
@@ -473,6 +474,16 @@ class Idea extends GroovyDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     @DEDataSet(DATASET_DELETED)
     Page<IdeaDTO> fetchDeleted(IdeaFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DELETED, context, IdeaDTO.class)
+    }
+
+    /**
+     * 数据集：关联需求（多需求） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEAS_RELATION_IDEA)
+    Page<IdeaDTO> fetchIdeasRelationIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEAS_RELATION_IDEA, context, IdeaDTO.class)
     }
 
     /**

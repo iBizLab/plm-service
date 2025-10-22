@@ -182,6 +182,12 @@ class ArticlePageDTO extends GroovyDTO<ArticlePageDTO> {
     @JsonProperty("shared_time")
     Timestamp sharedTime
     /**
+     * 「评审结果」
+     * 字典[评审结果]
+     */
+    @JsonProperty("review_result_state")
+    String reviewResultState
+    /**
      * 「关注数」
      */
     @JsonProperty("attention_count")
@@ -581,6 +587,17 @@ class ArticlePageDTO extends GroovyDTO<ArticlePageDTO> {
      */
     ArticlePageDTO setSharedTime(Timestamp sharedTime) {
         this.sharedTime = sharedTime
+        return this
+    }
+
+
+    /**
+     * 设置「评审结果」值
+     * 字典[评审结果]
+     * @param val
+     */
+    ArticlePageDTO setReviewResultState(String reviewResultState) {
+        this.reviewResultState = reviewResultState
         return this
     }
 

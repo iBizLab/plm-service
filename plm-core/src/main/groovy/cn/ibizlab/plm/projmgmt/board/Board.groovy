@@ -100,6 +100,16 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
     }
 
     /**
+     * 行为：拷贝 实际功能 BoardCopyDEActionRuntime
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_COPY)
+    def copy(BoardDTO dto) throws Throwable {
+        this.execute(ACTION_COPY, dto, BoardDTO.class)
+    }
+
+    /**
      * 行为：判断看板是否已删除 实际功能
      * @param dto
      * @throws Throwable

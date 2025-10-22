@@ -42,6 +42,7 @@ class Ticket extends GroovyDataEntityRuntime<Ticket,TicketDTO,TicketFilterDTO> {
     public static final String DATASET_CUSTOMER_USER = "customer_user"
     public static final String DATASET_DELETED = "deleted"
     public static final String DATASET_IDEA_RELATION_TICKET = "idea_relation_ticket"
+    public static final String DATASET_IDEAS_RELATION_TICKET = "ideas_relation_ticket"
     public static final String DATASET_MOB_TICKET_LIST = "mob_ticket_list"
     public static final String DATASET_MY_ASSIGN = "my_assign"
     public static final String DATASET_MY_ASSIGNEE_COUNT = "my_assignee_count"
@@ -396,6 +397,16 @@ class Ticket extends GroovyDataEntityRuntime<Ticket,TicketDTO,TicketFilterDTO> {
     @DEDataSet(DATASET_IDEA_RELATION_TICKET)
     Page<TicketDTO> fetchIdeaRelationTicket(TicketFilterDTO context) throws Throwable {
         return this.fetch(DATASET_IDEA_RELATION_TICKET, context, TicketDTO.class)
+    }
+
+    /**
+     * 数据集：关联工单（多需求） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEAS_RELATION_TICKET)
+    Page<TicketDTO> fetchIdeasRelationTicket(TicketFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEAS_RELATION_TICKET, context, TicketDTO.class)
     }
 
     /**

@@ -17,6 +17,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
 class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,AttachmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_ATTACHMENTS = "attachments"
     public static final String DATASET_MOB_WORK_ITEM_ATTACHMENT = "mob_work_item_attachment"
     public static final String DATASET_PROJECT_DELIVERABLE = "project_deliverable"
     public static final String DATASET_WORK_ITEM_DELIVERABLE = "work_item_deliverable"
@@ -106,6 +107,16 @@ class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,Attach
     @DEDataSet(DATASET_DEFAULT)
     Page<AttachmentDTO> fetchDefault(AttachmentFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, AttachmentDTO.class)
+    }
+
+    /**
+     * 数据集：附件 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_ATTACHMENTS)
+    Page<AttachmentDTO> fetchAttachments(AttachmentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ATTACHMENTS, context, AttachmentDTO.class)
     }
 
     /**

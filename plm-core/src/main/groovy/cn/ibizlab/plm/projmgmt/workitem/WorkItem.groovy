@@ -25,7 +25,7 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     public static final String ACTION_CHANGE_TIME = "change_time"
     public static final String ACTION_CHILD_DEL_RELATION = "child_del_relation"
     public static final String ACTION_CHOOSE_CHILD = "choose_child"
-    public static final String ACTION_COPY = "copy"
+    public static final String ACTION_COPY_ITEM = "copy_item"
     public static final String ACTION_COUNT_MY_TODO = "count_my_todo"
     public static final String ACTION_CREATE_PLAN_SNAPSHOT = "create_plan_snapshot"
     public static final String ACTION_CUSTOM_DRAFT = "custom_draft"
@@ -78,11 +78,13 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     public static final String DATASET_COMMON = "common"
     public static final String DATASET_COMMON_BUG = "common_bug"
     public static final String DATASET_COMPLETE_TREND = "complete_trend"
+    public static final String DATASET_COPY = "copy"
     public static final String DATASET_DEFECT_AGE_REPORT = "defect_age_report"
     public static final String DATASET_DEFECT_PROPERTY_DISTRIBUTION = "defect_property_distribution"
     public static final String DATASET_DEFECT_TOTAL_TREND = "defect_total_trend"
     public static final String DATASET_DELETED = "deleted"
     public static final String DATASET_IDEA_RELATION_WORK_ITEM = "idea_relation_work_item"
+    public static final String DATASET_IDEAS_RELATION_WORK_ITEM = "ideas_relation_work_item"
     public static final String DATASET_KANBAN_USER_STAT = "kanban_user_stat"
     public static final String DATASET_MILESTONE = "milestone"
     public static final String DATASET_MOVE_WORK_ITEM = "move_work_item"
@@ -212,6 +214,16 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     }
 
     /**
+     * 行为：复制 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_COPY)
+    def copy(WorkItemDTO dto) throws Throwable {
+        return this.execute(ACTION_COPY, dto, WorkItemDTO.class)
+    }
+
+    /**
      * 行为：激活 实际功能
      * @param dto
      * @throws Throwable
@@ -306,9 +318,9 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
      * @param dto
      * @throws Throwable
      */
-    @DEAction(ACTION_COPY)
-    def copy(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_COPY, dto, WorkItemDTO.class)
+    @DEAction(ACTION_COPY_ITEM)
+    def copyItem(WorkItemDTO dto) throws Throwable {
+        this.execute(ACTION_COPY_ITEM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -832,6 +844,16 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     }
 
     /**
+     * 数据集：拷贝集合 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_COPY)
+    Page<WorkItemDTO> fetchCopy(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_COPY, context, WorkItemDTO.class)
+    }
+
+    /**
      * 数据集：缺陷年龄报告 实际功能
      * @param dto
      * @throws Throwable
@@ -879,6 +901,16 @@ class WorkItem extends GroovyDataEntityRuntime<WorkItem,WorkItemDTO,WorkItemFilt
     @DEDataSet(DATASET_IDEA_RELATION_WORK_ITEM)
     Page<WorkItemDTO> fetchIdeaRelationWorkItem(WorkItemFilterDTO context) throws Throwable {
         return this.fetch(DATASET_IDEA_RELATION_WORK_ITEM, context, WorkItemDTO.class)
+    }
+
+    /**
+     * 数据集：关联工作项（多需求） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_IDEAS_RELATION_WORK_ITEM)
+    Page<WorkItemDTO> fetchIdeasRelationWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_IDEAS_RELATION_WORK_ITEM, context, WorkItemDTO.class)
     }
 
     /**

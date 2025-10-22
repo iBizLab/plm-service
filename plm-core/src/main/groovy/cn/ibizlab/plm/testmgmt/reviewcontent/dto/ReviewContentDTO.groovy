@@ -11,7 +11,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
 import cn.ibizlab.plm.testmgmt.reviewresult.dto.ReviewResultDTO
 import cn.ibizlab.plm.testmgmt.review.dto.ReviewDTO
 import cn.ibizlab.plm.prodmgmt.idea.dto.IdeaDTO
+import cn.ibizlab.plm.wiki.articlepage.dto.ArticlePageDTO
 import cn.ibizlab.plm.testmgmt.testcase.dto.TestCaseDTO
+import cn.ibizlab.plm.projmgmt.workitem.dto.WorkItemDTO
 import cn.ibizlab.plm.base.version.dto.VersionDTO
 
 @DEDataModel
@@ -81,10 +83,20 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
     @JsonProperty("idea")
     IdeaDTO idea
     /**
+     * 「空间页面」
+     */
+    @JsonProperty("page")
+    ArticlePageDTO page
+    /**
      * 「测试用例」
      */
     @JsonProperty("test_case")
     TestCaseDTO testCase
+    /**
+     * 「项目工作项」
+     */
+    @JsonProperty("work_item")
+    WorkItemDTO workItem
     /**
      * 「当前版本标识」
      */
@@ -286,11 +298,31 @@ class ReviewContentDTO extends GroovyDTO<ReviewContentDTO> {
 
 
     /**
+     * 设置「空间页面」值
+     * @param val
+     */
+    ReviewContentDTO setPage(ArticlePageDTO page) {
+        this.page = page
+        return this
+    }
+
+
+    /**
      * 设置「测试用例」值
      * @param val
      */
     ReviewContentDTO setTestCase(TestCaseDTO testCase) {
         this.testCase = testCase
+        return this
+    }
+
+
+    /**
+     * 设置「项目工作项」值
+     * @param val
+     */
+    ReviewContentDTO setWorkItem(WorkItemDTO workItem) {
+        this.workItem = workItem
         return this
     }
 

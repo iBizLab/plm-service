@@ -1,4 +1,4 @@
-package cn.ibizlab.plm.testmgmt.review.logic
+package cn.ibizlab.plm.wiki.space.logic
 
 import net.ibizsys.central.cloud.core.dataentity.logic.DELogicRuntime
 import net.ibizsys.central.dataentity.logic.IDELogicSession
@@ -8,14 +8,14 @@ import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
 /**
- * 实体[REVIEW]处理逻辑[添加内容]运行时对象
+ * 实体[SPACE]处理逻辑[创建空间流程准则]运行时对象
  * 此代码用户功能扩展代码
  *
- * 规划用例，将用例规划至评审内，生成正反向关联数据
+ * 创建产品后，自动生成产品内的评审规则
  */
-class AddReviewContent extends DELogicRuntime {
+class AutoCreateGuideline extends DELogicRuntime {
 
-    private static final Log log = LogFactory.getLog(AddReviewContent.class)
+    private static final Log log = LogFactory.getLog(AutoCreateGuideline.class)
 
     @Override
 	protected void onInit() throws Exception {
@@ -29,61 +29,57 @@ class AddReviewContent extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM2":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM1":
+                //执行逻辑节点[设置过滤参数]
+                executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
                 break
-            case "BINDPARAM1":
-                //执行逻辑节点[绑定关联列表参数]
-                executeBINDPARAM1(iDELogicSession, iPSDELogicNode)
+            case "DEDATASET1":
+                //执行逻辑节点[查询空间全局流程规则]
+                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
                 break
             case "LOOPSUBCALL1":
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM1":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
-                break
-            case "RENEWPARAM1":
-                //执行逻辑节点[重新建立正向参数]
-                executeRENEWPARAM1(iDELogicSession, iPSDELogicNode)
-                break
-            case "RENEWPARAM2":
-                //执行逻辑节点[重新建立反向参数]
-                executeRENEWPARAM2(iDELogicSession, iPSDELogicNode)
-                break
             case "PREPAREPARAM2":
-                //执行逻辑节点[填充需求属性值]
+                //执行逻辑节点[绑定阶段用于后续循环，设置新建流程准则参数]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
                 break
+            case "LOOPSUBCALL2":
+                //执行逻辑节点[循环子调用]
+                executeLOOPSUBCALL2(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM3":
-                //执行逻辑节点[填充用例属性值]
+                //执行逻辑节点[将阶段数据设置进guideline]
                 executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
                 break
-            case "PREPAREPARAM4":
-                //执行逻辑节点[填充工作项属性值]
-                executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM5":
-                //执行逻辑节点[填充页面属性值]
-                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
+            case "RAWSFCODE1":
+                //执行逻辑节点[拼接guideline_ID]
+                executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
             case "END1":
                 //执行逻辑节点[结束]
                 executeEND1(iDELogicSession, iPSDELogicNode)
                 break
-            case "PREPAREPARAM1":
-                //执行逻辑节点[填充通用属性值]
-                executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM4":
+                //执行逻辑节点[置空阶段的所属ID与ID]
+                executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
                 break
             case "DEACTION1":
-                //执行逻辑节点[生成正向关联数据]
+                //执行逻辑节点[创建属于空间的流程准则]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEACTION2":
-                //执行逻辑节点[生成反向关联数据]
-                executeDEACTION2(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM5":
+                //执行逻辑节点[设置阶段至流程准则]
+                executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
+                break
+            case "RENEWPARAM1":
+                //执行逻辑节点[重新建立参数]
+                executeRENEWPARAM1(iDELogicSession, iPSDELogicNode)
+                break
+            case "RENEWPARAM2":
+                //执行逻辑节点[重新建立参数]
+                executeRENEWPARAM2(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -101,22 +97,22 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * 执行逻辑节点[设置过滤参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEBUGPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**
-     * 执行逻辑节点[绑定关联列表参数]，逻辑类型[BINDPARAM]
+     * 执行逻辑节点[查询空间全局流程规则]，逻辑类型[DEDATASET]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeBINDPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -131,37 +127,7 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEBUGPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[重新建立正向参数]，逻辑类型[RENEWPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeRENEWPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[重新建立反向参数]，逻辑类型[RENEWPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeRENEWPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[填充需求属性值]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[绑定阶段用于后续循环，设置新建流程准则参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
@@ -171,7 +137,17 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[填充用例属性值]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeLOOPSUBCALL2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[将阶段数据设置进guideline]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
@@ -181,22 +157,12 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[填充工作项属性值]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[拼接guideline_ID]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[填充页面属性值]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeRAWSFCODE1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -211,17 +177,17 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[填充通用属性值]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[置空阶段的所属ID与ID]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**
-     * 执行逻辑节点[生成正向关联数据]，逻辑类型[DEACTION]
+     * 执行逻辑节点[创建属于空间的流程准则]，逻辑类型[DEACTION]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
@@ -231,12 +197,32 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[生成反向关联数据]，逻辑类型[DEACTION]
+     * 执行逻辑节点[设置阶段至流程准则]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEACTION2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[重新建立参数]，逻辑类型[RENEWPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRENEWPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[重新建立参数]，逻辑类型[RENEWPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRENEWPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

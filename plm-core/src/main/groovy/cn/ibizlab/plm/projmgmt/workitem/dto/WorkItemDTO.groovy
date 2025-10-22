@@ -187,6 +187,12 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
     @JsonProperty("job_type")
     String jobType
     /**
+     * 「评审结果」
+     * 字典[评审结果]
+     */
+    @JsonProperty("review_result_state")
+    String reviewResultState
+    /**
      * 「测试计划ID」
      */
     @JsonProperty("test_plan_id")
@@ -837,6 +843,17 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
      */
     WorkItemDTO setJobType(String jobType) {
         this.jobType = jobType
+        return this
+    }
+
+
+    /**
+     * 设置「评审结果」值
+     * 字典[评审结果]
+     * @param val
+     */
+    WorkItemDTO setReviewResultState(String reviewResultState) {
+        this.reviewResultState = reviewResultState
         return this
     }
 

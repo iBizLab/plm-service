@@ -135,6 +135,16 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
     }
 
     /**
+     * 行为：复制 实际功能 ProjectCopyDEActionRuntime
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_COPY)
+    def copy(ProjectDTO dto) throws Throwable {
+        return this.execute(ACTION_COPY, dto, ProjectDTO.class)
+    }
+
+    /**
      * 行为：激活 实际功能
      * @param dto
      * @throws Throwable
