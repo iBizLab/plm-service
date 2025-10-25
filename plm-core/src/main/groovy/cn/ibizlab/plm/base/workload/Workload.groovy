@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Workload extends GroovyDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilterDTO> {
+class Workload extends GroovyDynaDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilterDTO> {
 
     public static final String ACTION_CREATE_WORKLOAD = "create_workload"
     public static final String ACTION_FILL_WORKLOAD_DATA = "fill_workload_data"

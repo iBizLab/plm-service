@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Job extends GroovyDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
+class Job extends GroovyDynaDataEntityRuntime<Job,JobDTO,JobFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Job _instance

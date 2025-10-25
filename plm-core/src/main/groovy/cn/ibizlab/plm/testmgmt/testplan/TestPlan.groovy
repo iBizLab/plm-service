@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class TestPlan extends GroovyDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilterDTO> {
+class TestPlan extends GroovyDynaDataEntityRuntime<TestPlan,TestPlanDTO,TestPlanFilterDTO> {
 
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
     public static final String ACTION_END_TEST_PLAN = "end_test_plan"

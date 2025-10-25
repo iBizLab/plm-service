@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Repository extends GroovyDataEntityRuntime<Repository,RepositoryDTO,RepositoryFilterDTO> {
+class Repository extends GroovyDynaDataEntityRuntime<Repository,RepositoryDTO,RepositoryFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Repository _instance

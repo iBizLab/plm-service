@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class TestCaseTemplate extends GroovyDataEntityRuntime<TestCaseTemplate,TestCaseTemplateDTO,TestCaseTemplateFilterDTO> {
+class TestCaseTemplate extends GroovyDynaDataEntityRuntime<TestCaseTemplate,TestCaseTemplateDTO,TestCaseTemplateFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static TestCaseTemplate _instance

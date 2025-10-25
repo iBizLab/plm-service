@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class RunAttachment extends GroovyDataEntityRuntime<RunAttachment,RunAttachmentDTO,RunAttachmentFilterDTO> {
+class RunAttachment extends GroovyDynaDataEntityRuntime<RunAttachment,RunAttachmentDTO,RunAttachmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static RunAttachment _instance

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class AddonApplicationActivity extends GroovyDataEntityRuntime<AddonApplicationActivity,AddonApplicationActivityDTO,AddonApplicationActivityFilterDTO> {
+class AddonApplicationActivity extends GroovyDynaDataEntityRuntime<AddonApplicationActivity,AddonApplicationActivityDTO,AddonApplicationActivityFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static AddonApplicationActivity _instance

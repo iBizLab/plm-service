@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SprintAlteration extends GroovyDataEntityRuntime<SprintAlteration,SprintAlterationDTO,SprintAlterationFilterDTO> {
+class SprintAlteration extends GroovyDynaDataEntityRuntime<SprintAlteration,SprintAlterationDTO,SprintAlterationFilterDTO> {
 
     public static final String ACTION_REP_CHANGE = "rep_change"
     public static final String DATASET_DEFAULT = "DEFAULT"

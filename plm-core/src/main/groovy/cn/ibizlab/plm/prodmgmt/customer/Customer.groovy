@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Customer extends GroovyDataEntityRuntime<Customer,CustomerDTO,CustomerFilterDTO> {
+class Customer extends GroovyDynaDataEntityRuntime<Customer,CustomerDTO,CustomerFilterDTO> {
 
     public static final String ACTION_ADD_CATEGORIES = "add_categories"
     public static final String ACTION_CUSTOMER_CHOOSE_TICKET = "customer_choose_ticket"

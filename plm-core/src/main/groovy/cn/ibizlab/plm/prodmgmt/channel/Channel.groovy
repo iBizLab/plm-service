@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Channel extends GroovyDataEntityRuntime<Channel,ChannelDTO,ChannelFilterDTO> {
+class Channel extends GroovyDynaDataEntityRuntime<Channel,ChannelDTO,ChannelFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Channel _instance

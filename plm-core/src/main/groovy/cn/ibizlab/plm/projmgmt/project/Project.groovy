@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDTO> {
+class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilterDTO> {
 
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
@@ -132,16 +132,6 @@ class Project extends GroovyDataEntityRuntime<Project,ProjectDTO,ProjectFilterDT
     @DEAction(ACTION_SAVE)
     ProjectDTO save(ProjectDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, ProjectDTO.class)
-    }
-
-    /**
-     * 行为：复制 实际功能 ProjectCopyDEActionRuntime
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_COPY)
-    def copy(ProjectDTO dto) throws Throwable {
-        return this.execute(ACTION_COPY, dto, ProjectDTO.class)
     }
 
     /**

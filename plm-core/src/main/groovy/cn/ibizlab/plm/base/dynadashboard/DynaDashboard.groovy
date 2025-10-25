@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DynaDashboard extends GroovyDataEntityRuntime<DynaDashboard,DynaDashboardDTO,DynaDashboardFilterDTO> {
+class DynaDashboard extends GroovyDynaDataEntityRuntime<DynaDashboard,DynaDashboardDTO,DynaDashboardFilterDTO> {
 
     public static final String ACTION_FILL_OTHER_BOARD = "fill_other_board"
     public static final String ACTION_MOVE_ORDER = "move_order"

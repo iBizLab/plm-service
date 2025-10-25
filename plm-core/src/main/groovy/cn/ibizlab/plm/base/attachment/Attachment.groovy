@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Attachment extends GroovyDataEntityRuntime<Attachment,AttachmentDTO,AttachmentFilterDTO> {
+class Attachment extends GroovyDynaDataEntityRuntime<Attachment,AttachmentDTO,AttachmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ATTACHMENTS = "attachments"

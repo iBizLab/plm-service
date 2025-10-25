@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Space extends GroovyDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
+class Space extends GroovyDynaDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
 
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"

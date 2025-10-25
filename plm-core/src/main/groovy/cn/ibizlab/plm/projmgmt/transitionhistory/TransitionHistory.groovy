@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class TransitionHistory extends GroovyDataEntityRuntime<TransitionHistory,TransitionHistoryDTO,TransitionHistoryFilterDTO> {
+class TransitionHistory extends GroovyDynaDataEntityRuntime<TransitionHistory,TransitionHistoryDTO,TransitionHistoryFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static TransitionHistory _instance

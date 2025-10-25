@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DictionaryData extends GroovyDataEntityRuntime<DictionaryData,DictionaryDataDTO,DictionaryDataFilterDTO> {
+class DictionaryData extends GroovyDynaDataEntityRuntime<DictionaryData,DictionaryDataDTO,DictionaryDataFilterDTO> {
 
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"

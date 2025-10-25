@@ -1,3 +1,4 @@
+#Generate code from /{{projectName}}-provider/src/main/resources/application-auto.yml.hbs
 # 示例：兼容spring boot默认配置，自动提取servicehub和devlopsystem，兼容spring datasource、redis、zk的配置
 
 system:
@@ -63,12 +64,11 @@ ibiz:
     master:
       deploysystemid: ${system.name}
       group: /EE/OFFICE
-      runtimeClassName: cn.ibizlab.util.adapter.service.impl.DefaultAdapterSystemRuntime
       settings:
         repo: ${system.repo:}
         branch: ${system.branch:}
         appdatactx:
-          modeldesignpath: https://open.ibizlab.cn/modeldesign/#/psdevslnsys=28F7326A-7C72-4C2D-A497-A16372ABBADC/modelingindex/
+          modeldesignpath: https://open.ibizlab.cn/modeldesign/#/
           modeldesignmode: v9
         sysdbscheme:
           default:
@@ -120,7 +120,6 @@ ibiz:
         accesstokenurl: ${cloud.accesstokenurl:lb://ibizcloud-uaa/v7/login}
         clientid: ${cloud.clientid:aibizhi}
         clientsecret: ${cloud.clientsecret:123456}
-
 
 
 

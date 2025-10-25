@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ScmReview extends GroovyDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReviewFilterDTO> {
+class ScmReview extends GroovyDynaDataEntityRuntime<ScmReview,ScmReviewDTO,ScmReviewFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static ScmReview _instance

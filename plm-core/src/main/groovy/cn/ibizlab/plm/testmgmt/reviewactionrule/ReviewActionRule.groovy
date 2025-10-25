@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ReviewActionRule extends GroovyDataEntityRuntime<ReviewActionRule,ReviewActionRuleDTO,ReviewActionRuleFilterDTO> {
+class ReviewActionRule extends GroovyDynaDataEntityRuntime<ReviewActionRule,ReviewActionRuleDTO,ReviewActionRuleFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static ReviewActionRule _instance

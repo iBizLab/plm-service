@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Objective extends GroovyDataEntityRuntime<Objective,ObjectiveDTO,ObjectiveFilterDTO> {
+class Objective extends GroovyDynaDataEntityRuntime<Objective,ObjectiveDTO,ObjectiveFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Objective _instance

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ProductTag extends GroovyDataEntityRuntime<ProductTag,ProductTagDTO,ProductTagFilterDTO> {
+class ProductTag extends GroovyDynaDataEntityRuntime<ProductTag,ProductTagDTO,ProductTagFilterDTO> {
 
     public static final String ACTION_DELETE_TAG = "delete_tag"
     public static final String ACTION_GET_CON_PRODUCT_TAG = "get_con_product_tag"

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Executor extends GroovyDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilterDTO> {
+class Executor extends GroovyDynaDataEntityRuntime<Executor,ExecutorDTO,ExecutorFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_COMMENT_WORK_ITEM_EXECUTOR = "comment_work_item_executor"

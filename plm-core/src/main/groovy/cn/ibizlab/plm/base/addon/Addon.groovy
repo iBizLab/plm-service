@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Addon extends GroovyDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
+class Addon extends GroovyDynaDataEntityRuntime<Addon,AddonDTO,AddonFilterDTO> {
 
     public static final String ACTION_ADDON_AUTHORITY = "addon_authority"
     public static final String DATASET_DEFAULT = "DEFAULT"

@@ -13,9 +13,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 实体[NOTIFY_SETTING]运行时对象
  * 此代码用户功能扩展代码
  *
- * 该实体存在实体映射，开启RTCode模式会导致映射功能失效
+ * 该实体存在实体映射或者自定义动态扩展对象，开启RTCode模式会导致映射功能失效
  */
-class NotifySetting extends GroovyDataEntityRuntime<NotifySetting,NotifySettingDTO,NotifySettingFilterDTO> {
+class NotifySetting extends GroovyDynaDataEntityRuntime<NotifySetting,NotifySettingDTO,NotifySettingFilterDTO> {
 
     public static final String ACTION_GET_BY_USER = "get_by_user"
     public static final String ACTION_SAVE_SETTING = "save_setting"

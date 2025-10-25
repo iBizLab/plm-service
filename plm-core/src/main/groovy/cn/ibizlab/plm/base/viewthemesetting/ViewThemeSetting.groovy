@@ -13,9 +13,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 实体[VIEW_THEME_SETTING]运行时对象
  * 此代码用户功能扩展代码
  *
- * 该实体存在实体映射，开启RTCode模式会导致映射功能失效
+ * 该实体存在实体映射或者自定义动态扩展对象，开启RTCode模式会导致映射功能失效
  */
-class ViewThemeSetting extends GroovyDataEntityRuntime<ViewThemeSetting,ViewThemeSettingDTO,ViewThemeSettingFilterDTO> {
+class ViewThemeSetting extends GroovyDynaDataEntityRuntime<ViewThemeSetting,ViewThemeSettingDTO,ViewThemeSettingFilterDTO> {
 
     public static final String ACTION_FILL_SEARCH_CONDS = "fill_search_conds"
     public static final String DATASET_DEFAULT = "DEFAULT"

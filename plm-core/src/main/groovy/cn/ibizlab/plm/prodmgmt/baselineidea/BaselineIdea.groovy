@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class BaselineIdea extends GroovyDataEntityRuntime<BaselineIdea,BaselineIdeaDTO,BaselineIdeaFilterDTO> {
+class BaselineIdea extends GroovyDynaDataEntityRuntime<BaselineIdea,BaselineIdeaDTO,BaselineIdeaFilterDTO> {
 
     public static final String ACTION_SHIFT_IN_BASELINE = "shift_in_baseline"
     public static final String ACTION_SHIFT_OUT_BASELINE = "shift_out_baseline"

@@ -76,7 +76,7 @@ class CommitVersion extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPARE_PARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePrepareParam1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -96,7 +96,7 @@ class CommitVersion extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeCOMMIT_VERSION(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeCommitVersion(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

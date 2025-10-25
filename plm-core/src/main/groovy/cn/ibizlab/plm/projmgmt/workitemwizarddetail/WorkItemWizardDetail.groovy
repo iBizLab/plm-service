@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class WorkItemWizardDetail extends GroovyDataEntityRuntime<WorkItemWizardDetail,WorkItemWizardDetailDTO,WorkItemWizardDetailFilterDTO> {
+class WorkItemWizardDetail extends GroovyDynaDataEntityRuntime<WorkItemWizardDetail,WorkItemWizardDetailDTO,WorkItemWizardDetailFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static WorkItemWizardDetail _instance

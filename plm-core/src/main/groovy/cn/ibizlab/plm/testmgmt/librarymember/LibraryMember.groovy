@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class LibraryMember extends GroovyDataEntityRuntime<LibraryMember,LibraryMemberDTO,LibraryMemberFilterDTO> {
+class LibraryMember extends GroovyDynaDataEntityRuntime<LibraryMember,LibraryMemberDTO,LibraryMemberFilterDTO> {
 
     public static final String ACTION_CHANGE_POSITION = "change_position"
     public static final String ACTION_CHANGE_ROLE = "change_role"

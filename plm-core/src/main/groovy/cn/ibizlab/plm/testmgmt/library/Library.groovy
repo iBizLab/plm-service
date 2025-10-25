@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Library extends GroovyDataEntityRuntime<Library,LibraryDTO,LibraryFilterDTO> {
+class Library extends GroovyDynaDataEntityRuntime<Library,LibraryDTO,LibraryFilterDTO> {
 
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"

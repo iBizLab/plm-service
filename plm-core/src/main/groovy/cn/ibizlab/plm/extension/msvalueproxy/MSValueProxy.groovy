@@ -13,9 +13,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 实体[MSVALUEPROXY]运行时对象
  * 此代码用户功能扩展代码
  *
- * 该实体存在实体映射，开启RTCode模式会导致映射功能失效
+ * 该实体存在实体映射或者自定义动态扩展对象，开启RTCode模式会导致映射功能失效
  */
-class MSValueProxy extends GroovyDataEntityRuntime<MSValueProxy,MSValueProxyDTO,MSValueProxyFilterDTO> {
+class MSValueProxy extends GroovyDynaDataEntityRuntime<MSValueProxy,MSValueProxyDTO,MSValueProxyFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static MSValueProxy _instance

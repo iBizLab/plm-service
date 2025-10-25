@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DiscussReply extends GroovyDataEntityRuntime<DiscussReply,DiscussReplyDTO,DiscussReplyFilterDTO> {
+class DiscussReply extends GroovyDynaDataEntityRuntime<DiscussReply,DiscussReplyDTO,DiscussReplyFilterDTO> {
 
     public static final String ACTION_ADD_REPLY = "add_reply"
     public static final String ACTION_DEL_COMMENT = "del_comment"

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Parameter extends GroovyDataEntityRuntime<Parameter,ParameterDTO,ParameterFilterDTO> {
+class Parameter extends GroovyDynaDataEntityRuntime<Parameter,ParameterDTO,ParameterFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Parameter _instance

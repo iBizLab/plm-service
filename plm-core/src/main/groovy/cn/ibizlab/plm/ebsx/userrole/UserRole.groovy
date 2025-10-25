@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class UserRole extends GroovyDataEntityRuntime<UserRole,UserRoleDTO,UserRoleFilterDTO> {
+class UserRole extends GroovyDynaDataEntityRuntime<UserRole,UserRoleDTO,UserRoleFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static UserRole _instance

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SysDepartment extends GroovyDataEntityRuntime<SysDepartment,SysDepartmentDTO,SysDepartmentFilterDTO> {
+class SysDepartment extends GroovyDynaDataEntityRuntime<SysDepartment,SysDepartmentDTO,SysDepartmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static SysDepartment _instance

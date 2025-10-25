@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Relation extends GroovyDataEntityRuntime<Relation,RelationDTO,RelationFilterDTO> {
+class Relation extends GroovyDynaDataEntityRuntime<Relation,RelationDTO,RelationFilterDTO> {
 
     public static final String ACTION_ADD_DEPENDENCY = "add_dependency"
     public static final String ACTION_DEL_RELATION = "del_relation"

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SequenceGenerator extends GroovyDataEntityRuntime<SequenceGenerator,SequenceGeneratorDTO,SequenceGeneratorFilterDTO> {
+class SequenceGenerator extends GroovyDynaDataEntityRuntime<SequenceGenerator,SequenceGeneratorDTO,SequenceGeneratorFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static SequenceGenerator _instance

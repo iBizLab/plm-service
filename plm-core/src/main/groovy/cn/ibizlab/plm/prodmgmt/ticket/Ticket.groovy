@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Ticket extends GroovyDataEntityRuntime<Ticket,TicketDTO,TicketFilterDTO> {
+class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDTO> {
 
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ALLOCATE_PERSON = "allocate_person"

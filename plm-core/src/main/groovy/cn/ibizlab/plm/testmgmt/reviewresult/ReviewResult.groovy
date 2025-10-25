@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ReviewResult extends GroovyDataEntityRuntime<ReviewResult,ReviewResultDTO,ReviewResultFilterDTO> {
+class ReviewResult extends GroovyDynaDataEntityRuntime<ReviewResult,ReviewResultDTO,ReviewResultFilterDTO> {
 
     public static final String ACTION_SET_RESULT = "set_result"
     public static final String DATASET_DEFAULT = "DEFAULT"

@@ -4,7 +4,6 @@ import cn.ibizlab.central.plugin.groovy.dataentity.dto.GroovyDTO
 import net.ibizsys.central.dataentity.action.DEActionPluginRuntimeBase
 import net.ibizsys.central.util.IEntity
 import net.ibizsys.central.util.IEntityDTO
-import net.ibizsys.model.PSModelEnums
 import net.ibizsys.model.dataentity.action.IPSDEAction
 import net.ibizsys.runtime.dataentity.IDataEntityRuntimeContext
 

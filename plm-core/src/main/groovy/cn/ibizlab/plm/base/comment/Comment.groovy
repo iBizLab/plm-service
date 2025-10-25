@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Comment extends GroovyDataEntityRuntime<Comment,CommentDTO,CommentFilterDTO> {
+class Comment extends GroovyDynaDataEntityRuntime<Comment,CommentDTO,CommentFilterDTO> {
 
     public static final String ACTION_DELETE = "delete"
     public static final String ACTION_NO_TOP = "no_top"

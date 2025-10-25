@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ReviewContentIdea extends GroovyDataEntityRuntime<ReviewContentIdea,ReviewContentIdeaDTO,ReviewContentIdeaFilterDTO> {
+class ReviewContentIdea extends GroovyDynaDataEntityRuntime<ReviewContentIdea,ReviewContentIdeaDTO,ReviewContentIdeaFilterDTO> {
 
     public static final String ACTION_REVIEW_CONTENT_TOTAL = "review_content_total"
     public static final String DATASET_DEFAULT = "DEFAULT"

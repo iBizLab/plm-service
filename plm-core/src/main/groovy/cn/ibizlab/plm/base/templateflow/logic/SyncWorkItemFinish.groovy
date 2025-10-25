@@ -60,7 +60,7 @@ class SyncWorkItemFinish extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeBEGIN_01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeBegin01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -70,7 +70,7 @@ class SyncWorkItemFinish extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM_02(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePrepareparam02(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -80,7 +80,7 @@ class SyncWorkItemFinish extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEDATASET_01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDedataset01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -90,7 +90,7 @@ class SyncWorkItemFinish extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeEND_01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeEnd01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -100,7 +100,7 @@ class SyncWorkItemFinish extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM_03(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePrepareparam03(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -110,7 +110,7 @@ class SyncWorkItemFinish extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEACTION_02(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDeaction02(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

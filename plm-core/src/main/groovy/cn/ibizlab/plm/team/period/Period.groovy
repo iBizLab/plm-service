@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Period extends GroovyDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
+class Period extends GroovyDynaDataEntityRuntime<Period,PeriodDTO,PeriodFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Period _instance

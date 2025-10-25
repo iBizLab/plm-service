@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Deliverable extends GroovyDataEntityRuntime<Deliverable,DeliverableDTO,DeliverableFilterDTO> {
+class Deliverable extends GroovyDynaDataEntityRuntime<Deliverable,DeliverableDTO,DeliverableFilterDTO> {
 
     public static final String ACTION_GET_DELIVERY = "get_delivery"
     public static final String DATASET_DEFAULT = "DEFAULT"

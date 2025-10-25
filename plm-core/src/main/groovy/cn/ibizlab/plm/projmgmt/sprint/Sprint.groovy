@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Sprint extends GroovyDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
+class Sprint extends GroovyDynaDataEntityRuntime<Sprint,SprintDTO,SprintFilterDTO> {
 
     public static final String ACTION_CAL_SPRINT_WORK_ITEM_NUM = "cal_sprint_work_item_num"
     public static final String ACTION_DEL_RELATION = "del_relation"

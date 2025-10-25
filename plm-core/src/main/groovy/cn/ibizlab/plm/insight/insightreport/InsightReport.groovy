@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class InsightReport extends GroovyDataEntityRuntime<InsightReport,InsightReportDTO,InsightReportFilterDTO> {
+class InsightReport extends GroovyDynaDataEntityRuntime<InsightReport,InsightReportDTO,InsightReportFilterDTO> {
 
     public static final String ACTION_COPY_REPORT = "copy_report"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"

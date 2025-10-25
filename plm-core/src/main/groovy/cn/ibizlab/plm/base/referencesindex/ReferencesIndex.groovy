@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ReferencesIndex extends GroovyDataEntityRuntime<ReferencesIndex,ReferencesIndexDTO,ReferencesIndexFilterDTO> {
+class ReferencesIndex extends GroovyDynaDataEntityRuntime<ReferencesIndex,ReferencesIndexDTO,ReferencesIndexFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_INDEXDER = "IndexDER"

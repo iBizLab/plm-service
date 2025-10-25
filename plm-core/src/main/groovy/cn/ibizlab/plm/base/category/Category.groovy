@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Category extends GroovyDataEntityRuntime<Category,CategoryDTO,CategoryFilterDTO> {
+class Category extends GroovyDynaDataEntityRuntime<Category,CategoryDTO,CategoryFilterDTO> {
 
     public static final String ACTION_DELETE_CHILD_CATEGORY = "delete_child_category"
     public static final String ACTION_MOVE_ORDER = "move_order"

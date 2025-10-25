@@ -5,13 +5,13 @@ import cn.ibizlab.central.plugin.groovy.dataentity.ds.GroovyFetchPlugin
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.GroovyDTO
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.GroovyFilter
 import net.ibizsys.central.ISystemRuntime
+import net.ibizsys.central.cloud.core.dataentity.DataEntityRuntime
 import net.ibizsys.central.util.IEntity
 import net.ibizsys.central.util.ISearchContextDTO
 import net.ibizsys.runtime.dataentity.action.IDEActionPluginRuntime
 import net.ibizsys.runtime.dataentity.ds.IDEDataSetPluginRuntime
 import net.ibizsys.runtime.util.IAction
 import net.ibizsys.runtime.util.IEntityBase
-import net.ibizsys.central.cloud.core.dataentity.DataEntityRuntime
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 import org.springframework.data.domain.Page
@@ -27,7 +27,6 @@ class GroovyDataEntityRuntime<T extends GroovyDataEntityRuntime,D extends Groovy
     public static final String ACTION_GETDRAFT = "GetDraft"
     public static final String ACTION_CHECKKEY = "CheckKey"
     public static final String ACTION_SAVE = "Save"
-    public static final String ACTION_COPY = "Copy"
 
     void setInstance(T instance) {
 

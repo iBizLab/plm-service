@@ -13,9 +13,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 实体[DEPARTMENT]运行时对象
  * 此代码用户功能扩展代码
  *
- * 该实体存在实体映射，开启RTCode模式会导致映射功能失效
+ * 该实体存在实体映射或者自定义动态扩展对象，开启RTCode模式会导致映射功能失效
  */
-class Department extends GroovyDataEntityRuntime<Department,DepartmentDTO,DepartmentFilterDTO> {
+class Department extends GroovyDynaDataEntityRuntime<Department,DepartmentDTO,DepartmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_DEPT_FILTER = "dept_filter"

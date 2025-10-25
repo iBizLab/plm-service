@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Stencil extends GroovyDataEntityRuntime<Stencil,StencilDTO,StencilFilterDTO> {
+class Stencil extends GroovyDynaDataEntityRuntime<Stencil,StencilDTO,StencilFilterDTO> {
 
     public static final String ACTION_NEW_DRAFT_FORM_STENCIL = "new_draft_form_stencil"
     public static final String DATASET_DEFAULT = "DEFAULT"

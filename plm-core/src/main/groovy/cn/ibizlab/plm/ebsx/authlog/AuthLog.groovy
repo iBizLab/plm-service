@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class AuthLog extends GroovyDataEntityRuntime<AuthLog,AuthLogDTO,AuthLogFilterDTO> {
+class AuthLog extends GroovyDynaDataEntityRuntime<AuthLog,AuthLogDTO,AuthLogFilterDTO> {
 
     public static final String DATASET_CURUSER = "CurUser"
     public static final String DATASET_DEFAULT = "DEFAULT"

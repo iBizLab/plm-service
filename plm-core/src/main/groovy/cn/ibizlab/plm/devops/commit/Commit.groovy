@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Commit extends GroovyDataEntityRuntime<Commit,CommitDTO,CommitFilterDTO> {
+class Commit extends GroovyDynaDataEntityRuntime<Commit,CommitDTO,CommitFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Commit _instance

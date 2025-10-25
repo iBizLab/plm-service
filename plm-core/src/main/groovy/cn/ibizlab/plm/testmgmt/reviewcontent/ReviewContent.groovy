@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ReviewContent extends GroovyDataEntityRuntime<ReviewContent,ReviewContentDTO,ReviewContentFilterDTO> {
+class ReviewContent extends GroovyDynaDataEntityRuntime<ReviewContent,ReviewContentDTO,ReviewContentFilterDTO> {
 
     public static final String ACTION_ADD_REVIEW_CONTENT = "add_review_content"
     public static final String ACTION_COMPLETE_REVIEW = "complete_review"

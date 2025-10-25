@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class KeyResult extends GroovyDataEntityRuntime<KeyResult,KeyResultDTO,KeyResultFilterDTO> {
+class KeyResult extends GroovyDynaDataEntityRuntime<KeyResult,KeyResultDTO,KeyResultFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static KeyResult _instance

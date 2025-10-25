@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class UpdateRecord extends GroovyDataEntityRuntime<UpdateRecord,UpdateRecordDTO,UpdateRecordFilterDTO> {
+class UpdateRecord extends GroovyDynaDataEntityRuntime<UpdateRecord,UpdateRecordDTO,UpdateRecordFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static UpdateRecord _instance

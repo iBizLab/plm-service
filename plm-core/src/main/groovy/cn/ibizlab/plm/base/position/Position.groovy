@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Position extends GroovyDataEntityRuntime<Position,PositionDTO,PositionFilterDTO> {
+class Position extends GroovyDynaDataEntityRuntime<Position,PositionDTO,PositionFilterDTO> {
 
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class PageVersion extends GroovyDataEntityRuntime<PageVersion,PageVersionDTO,PageVersionFilterDTO> {
+class PageVersion extends GroovyDynaDataEntityRuntime<PageVersion,PageVersionDTO,PageVersionFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static PageVersion _instance

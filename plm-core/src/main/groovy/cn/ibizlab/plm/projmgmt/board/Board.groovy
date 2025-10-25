@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
+class Board extends GroovyDynaDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
 
     public static final String ACTION_CHECK_BOARD_IS_DELETED = "check_board_is_deleted"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -97,16 +97,6 @@ class Board extends GroovyDataEntityRuntime<Board,BoardDTO,BoardFilterDTO> {
     @DEAction(ACTION_SAVE)
     BoardDTO save(BoardDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, BoardDTO.class)
-    }
-
-    /**
-     * 行为：拷贝 实际功能 BoardCopyDEActionRuntime
-     * @param dto
-     * @throws Throwable
-     */
-    @DEAction(ACTION_COPY)
-    def copy(BoardDTO dto) throws Throwable {
-        this.execute(ACTION_COPY, dto, BoardDTO.class)
     }
 
     /**

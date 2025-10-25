@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DiscussPost extends GroovyDataEntityRuntime<DiscussPost,DiscussPostDTO,DiscussPostFilterDTO> {
+class DiscussPost extends GroovyDynaDataEntityRuntime<DiscussPost,DiscussPostDTO,DiscussPostFilterDTO> {
 
     public static final String ACTION_CLOSE = "close"
     public static final String ACTION_DEL_COMMENT = "del_comment"

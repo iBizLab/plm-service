@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class InsightMember extends GroovyDataEntityRuntime<InsightMember,InsightMemberDTO,InsightMemberFilterDTO> {
+class InsightMember extends GroovyDynaDataEntityRuntime<InsightMember,InsightMemberDTO,InsightMemberFilterDTO> {
 
     public static final String ACTION_CHANGE_ROLE = "change_role"
     public static final String ACTION_CHOOSE_POSITION = "choose_position"

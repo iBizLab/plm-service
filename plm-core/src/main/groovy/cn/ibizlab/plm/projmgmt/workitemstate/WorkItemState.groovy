@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class WorkItemState extends GroovyDataEntityRuntime<WorkItemState,WorkItemStateDTO,WorkItemStateFilterDTO> {
+class WorkItemState extends GroovyDynaDataEntityRuntime<WorkItemState,WorkItemStateDTO,WorkItemStateFilterDTO> {
 
     public static final String DATASET_BI_FORM = "BI_FORM"
     public static final String DATASET_DEFAULT = "DEFAULT"

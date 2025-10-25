@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class NotifyEvent extends GroovyDataEntityRuntime<NotifyEvent,NotifyEventDTO,NotifyEventFilterDTO> {
+class NotifyEvent extends GroovyDynaDataEntityRuntime<NotifyEvent,NotifyEventDTO,NotifyEventFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static NotifyEvent _instance

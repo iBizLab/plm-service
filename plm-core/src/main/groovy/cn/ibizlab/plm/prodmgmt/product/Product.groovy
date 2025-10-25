@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Product extends GroovyDataEntityRuntime<Product,ProductDTO,ProductFilterDTO> {
+class Product extends GroovyDynaDataEntityRuntime<Product,ProductDTO,ProductFilterDTO> {
 
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"

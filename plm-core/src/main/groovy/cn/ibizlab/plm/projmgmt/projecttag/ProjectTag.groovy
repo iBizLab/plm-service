@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ProjectTag extends GroovyDataEntityRuntime<ProjectTag,ProjectTagDTO,ProjectTagFilterDTO> {
+class ProjectTag extends GroovyDynaDataEntityRuntime<ProjectTag,ProjectTagDTO,ProjectTagFilterDTO> {
 
     public static final String ACTION_DELETE_TAG = "delete_tag"
     public static final String ACTION_GET_CON_PROJECT_TAG = "get_con_project_tag"

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class CaseHistory extends GroovyDataEntityRuntime<CaseHistory,CaseHistoryDTO,CaseHistoryFilterDTO> {
+class CaseHistory extends GroovyDynaDataEntityRuntime<CaseHistory,CaseHistoryDTO,CaseHistoryFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static CaseHistory _instance

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ArticlePage extends GroovyDataEntityRuntime<ArticlePage,ArticlePageDTO,ArticlePageFilterDTO> {
+class ArticlePage extends GroovyDynaDataEntityRuntime<ArticlePage,ArticlePageDTO,ArticlePageFilterDTO> {
 
     public static final String ACTION_CHECK_ACCESS_PASSWORD = "check_access_password"
     public static final String ACTION_CHECK_SHARED = "check_shared"

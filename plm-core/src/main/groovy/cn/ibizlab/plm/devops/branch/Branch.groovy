@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Branch extends GroovyDataEntityRuntime<Branch,BranchDTO,BranchFilterDTO> {
+class Branch extends GroovyDynaDataEntityRuntime<Branch,BranchDTO,BranchFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Branch _instance

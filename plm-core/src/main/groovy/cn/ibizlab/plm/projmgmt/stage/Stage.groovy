@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Stage extends GroovyDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
+class Stage extends GroovyDynaDataEntityRuntime<Stage,StageDTO,StageFilterDTO> {
 
     public static final String ACTION_ADD_ADD_PREDEFINED = "add_add_predefined"
     public static final String ACTION_DEL = "del"

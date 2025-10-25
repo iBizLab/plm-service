@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ResourceMember extends GroovyDataEntityRuntime<ResourceMember,ResourceMemberDTO,ResourceMemberFilterDTO> {
+class ResourceMember extends GroovyDynaDataEntityRuntime<ResourceMember,ResourceMemberDTO,ResourceMemberFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static ResourceMember _instance

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SysOrganization extends GroovyDataEntityRuntime<SysOrganization,SysOrganizationDTO,SysOrganizationFilterDTO> {
+class SysOrganization extends GroovyDynaDataEntityRuntime<SysOrganization,SysOrganizationDTO,SysOrganizationFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_NAV = "Nav"

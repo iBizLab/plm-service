@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ReviewWizard extends GroovyDataEntityRuntime<ReviewWizard,ReviewWizardDTO,ReviewWizardFilterDTO> {
+class ReviewWizard extends GroovyDynaDataEntityRuntime<ReviewWizard,ReviewWizardDTO,ReviewWizardFilterDTO> {
 
     public static final String ACTION_FILL_GUIDELINE = "fill_guideline"
     public static final String DATASET_DEFAULT = "DEFAULT"

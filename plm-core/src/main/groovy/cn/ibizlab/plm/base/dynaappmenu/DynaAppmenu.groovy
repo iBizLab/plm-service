@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DynaAppmenu extends GroovyDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,DynaAppmenuFilterDTO> {
+class DynaAppmenu extends GroovyDynaDataEntityRuntime<DynaAppmenu,DynaAppmenuDTO,DynaAppmenuFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static DynaAppmenu _instance

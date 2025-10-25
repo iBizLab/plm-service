@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Team extends GroovyDataEntityRuntime<Team,TeamDTO,TeamFilterDTO> {
+class Team extends GroovyDynaDataEntityRuntime<Team,TeamDTO,TeamFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Team _instance

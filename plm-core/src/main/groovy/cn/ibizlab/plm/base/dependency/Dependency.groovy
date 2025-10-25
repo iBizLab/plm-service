@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Dependency extends GroovyDataEntityRuntime<Dependency,DependencyDTO,DependencyFilterDTO> {
+class Dependency extends GroovyDynaDataEntityRuntime<Dependency,DependencyDTO,DependencyFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_DEPENDENCY_WORK_ITEMS = "dependency_work_items"

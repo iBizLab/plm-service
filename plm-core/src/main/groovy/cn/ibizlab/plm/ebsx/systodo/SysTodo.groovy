@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SysTodo extends GroovyDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDTO> {
+class SysTodo extends GroovyDynaDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDTO> {
 
     public static final String ACTION_GETLINKURL = "GetLinkUrl"
     public static final String DATASET_CURUSER = "CurUser"

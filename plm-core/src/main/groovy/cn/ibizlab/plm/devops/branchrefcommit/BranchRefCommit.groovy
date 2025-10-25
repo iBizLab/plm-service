@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class BranchRefCommit extends GroovyDataEntityRuntime<BranchRefCommit,BranchRefCommitDTO,BranchRefCommitFilterDTO> {
+class BranchRefCommit extends GroovyDynaDataEntityRuntime<BranchRefCommit,BranchRefCommitDTO,BranchRefCommitFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static BranchRefCommit _instance

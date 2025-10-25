@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class TestCase extends GroovyDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilterDTO> {
+class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCaseFilterDTO> {
 
     public static final String ACTION_CASE_MOVE_PLAN = "case_move_plan"
     public static final String ACTION_CHOOSE_CASE_TEMPLATE = "choose_case_template"

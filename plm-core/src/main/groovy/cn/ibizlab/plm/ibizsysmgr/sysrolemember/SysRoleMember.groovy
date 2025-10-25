@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SysRoleMember extends GroovyDataEntityRuntime<SysRoleMember,SysRoleMemberDTO,SysRoleMemberFilterDTO> {
+class SysRoleMember extends GroovyDynaDataEntityRuntime<SysRoleMember,SysRoleMemberDTO,SysRoleMemberFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static SysRoleMember _instance

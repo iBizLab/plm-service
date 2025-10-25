@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ProductPlan extends GroovyDataEntityRuntime<ProductPlan,ProductPlanDTO,ProductPlanFilterDTO> {
+class ProductPlan extends GroovyDynaDataEntityRuntime<ProductPlan,ProductPlanDTO,ProductPlanFilterDTO> {
 
     public static final String ACTION_DELETE = "delete"
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"

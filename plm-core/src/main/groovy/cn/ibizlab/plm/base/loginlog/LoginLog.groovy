@@ -13,9 +13,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 实体[LOGIN_LOG]运行时对象
  * 此代码用户功能扩展代码
  *
- * 该实体存在实体映射，开启RTCode模式会导致映射功能失效
+ * 该实体存在实体映射或者自定义动态扩展对象，开启RTCode模式会导致映射功能失效
  */
-class LoginLog extends GroovyDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilterDTO> {
+class LoginLog extends GroovyDynaDataEntityRuntime<LoginLog,LoginLogDTO,LoginLogFilterDTO> {
 
     public static final String ACTION_ACTIVE_MEMBER = "active_member"
     public static final String DATASET_DEFAULT = "DEFAULT"

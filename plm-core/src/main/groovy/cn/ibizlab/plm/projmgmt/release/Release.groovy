@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Release extends GroovyDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDTO> {
+class Release extends GroovyDynaDataEntityRuntime<Release,ReleaseDTO,ReleaseFilterDTO> {
 
     public static final String ACTION_CAL_RELEASE_WORK_ITEM_NUM = "cal_release_work_item_num"
     public static final String ACTION_CHANGE_DRAFT = "change_draft"

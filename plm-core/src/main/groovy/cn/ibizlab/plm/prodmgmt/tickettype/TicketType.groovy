@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class TicketType extends GroovyDataEntityRuntime<TicketType,TicketTypeDTO,TicketTypeFilterDTO> {
+class TicketType extends GroovyDynaDataEntityRuntime<TicketType,TicketTypeDTO,TicketTypeFilterDTO> {
 
     public static final String ACTION_GET_CON_TICKET = "get_con_ticket"
     public static final String DATASET_DEFAULT = "DEFAULT"

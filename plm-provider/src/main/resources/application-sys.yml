@@ -1,3 +1,4 @@
+#Generate code from /{{projectName}}-provider/src/main/resources/application-sys.yml.hbs
 spring:
   jackson:
     time-zone: GMT+8

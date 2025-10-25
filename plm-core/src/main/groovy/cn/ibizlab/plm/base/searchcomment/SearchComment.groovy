@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SearchComment extends GroovyDataEntityRuntime<SearchComment,SearchCommentDTO,SearchCommentFilterDTO> {
+class SearchComment extends GroovyDynaDataEntityRuntime<SearchComment,SearchCommentDTO,SearchCommentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"

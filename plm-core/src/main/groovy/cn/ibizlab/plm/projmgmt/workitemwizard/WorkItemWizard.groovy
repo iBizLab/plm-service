@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class WorkItemWizard extends GroovyDataEntityRuntime<WorkItemWizard,WorkItemWizardDTO,WorkItemWizardFilterDTO> {
+class WorkItemWizard extends GroovyDynaDataEntityRuntime<WorkItemWizard,WorkItemWizardDTO,WorkItemWizardFilterDTO> {
 
     public static final String ACTION_CHANGE = "change"
     public static final String ACTION_FILL_DETAILS = "fill_details"

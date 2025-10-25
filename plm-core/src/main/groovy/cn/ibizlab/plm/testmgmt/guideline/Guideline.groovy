@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Guideline extends GroovyDataEntityRuntime<Guideline,GuidelineDTO,GuidelineFilterDTO> {
+class Guideline extends GroovyDynaDataEntityRuntime<Guideline,GuidelineDTO,GuidelineFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_BASE = "base"

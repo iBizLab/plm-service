@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Activity extends GroovyDataEntityRuntime<Activity,ActivityDTO,ActivityFilterDTO> {
+class Activity extends GroovyDynaDataEntityRuntime<Activity,ActivityDTO,ActivityFilterDTO> {
 
     public static final String ACTION_GET_ACTIVITY_OBJ_DETAIL = "get_activity_obj_detail"
     public static final String DATASET_ALL = "ALL"

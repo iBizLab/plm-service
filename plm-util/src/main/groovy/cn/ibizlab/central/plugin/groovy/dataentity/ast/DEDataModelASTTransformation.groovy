@@ -1,21 +1,17 @@
 package cn.ibizlab.central.plugin.groovy.dataentity.ast
 
 import cn.ibizlab.central.plugin.groovy.annotation.DEDataModel
+import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.CompileStatic
 import org.codehaus.groovy.ast.*
-import org.codehaus.groovy.ast.expr.ArgumentListExpression
-import org.codehaus.groovy.ast.expr.ClassExpression
-import org.codehaus.groovy.ast.expr.ConstantExpression
-import org.codehaus.groovy.ast.expr.MethodCallExpression
-import org.codehaus.groovy.ast.expr.PropertyExpression
-import org.codehaus.groovy.ast.expr.VariableExpression
+import org.codehaus.groovy.ast.expr.*
 import org.codehaus.groovy.ast.stmt.BlockStatement
 import org.codehaus.groovy.ast.stmt.ExpressionStatement
 import org.codehaus.groovy.ast.stmt.ReturnStatement
 import org.codehaus.groovy.control.CompilePhase
 import org.codehaus.groovy.control.SourceUnit
-import org.codehaus.groovy.transform.*
-import com.fasterxml.jackson.annotation.JsonProperty
+import org.codehaus.groovy.transform.AbstractASTTransformation
+import org.codehaus.groovy.transform.GroovyASTTransformation
 
 import java.lang.reflect.Modifier
 

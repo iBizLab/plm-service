@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Portfolio extends GroovyDataEntityRuntime<Portfolio,PortfolioDTO,PortfolioFilterDTO> {
+class Portfolio extends GroovyDynaDataEntityRuntime<Portfolio,PortfolioDTO,PortfolioFilterDTO> {
 
     public static final String ACTION_DELETE_PROJECT_SET = "delete_project_set"
     public static final String ACTION_FAVORITE = "favorite"

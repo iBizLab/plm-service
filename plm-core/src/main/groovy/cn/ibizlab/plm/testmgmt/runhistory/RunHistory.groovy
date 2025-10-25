@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class RunHistory extends GroovyDataEntityRuntime<RunHistory,RunHistoryDTO,RunHistoryFilterDTO> {
+class RunHistory extends GroovyDynaDataEntityRuntime<RunHistory,RunHistoryDTO,RunHistoryFilterDTO> {
 
     public static final String ACTION_RUN_HISTORY_GET = "run_history_get"
     public static final String DATASET_DEFAULT = "DEFAULT"

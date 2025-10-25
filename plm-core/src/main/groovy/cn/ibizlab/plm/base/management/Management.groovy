@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Management extends GroovyDataEntityRuntime<Management,ManagementDTO,ManagementFilterDTO> {
+class Management extends GroovyDynaDataEntityRuntime<Management,ManagementDTO,ManagementFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Management _instance

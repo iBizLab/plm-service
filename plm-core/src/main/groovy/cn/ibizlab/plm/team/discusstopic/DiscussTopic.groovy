@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DiscussTopic extends GroovyDataEntityRuntime<DiscussTopic,DiscussTopicDTO,DiscussTopicFilterDTO> {
+class DiscussTopic extends GroovyDynaDataEntityRuntime<DiscussTopic,DiscussTopicDTO,DiscussTopicFilterDTO> {
 
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"

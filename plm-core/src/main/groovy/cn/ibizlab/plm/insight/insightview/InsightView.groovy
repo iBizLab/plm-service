@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class InsightView extends GroovyDataEntityRuntime<InsightView,InsightViewDTO,InsightViewFilterDTO> {
+class InsightView extends GroovyDynaDataEntityRuntime<InsightView,InsightViewDTO,InsightViewFilterDTO> {
 
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
     public static final String ACTION_DELETE = "delete"

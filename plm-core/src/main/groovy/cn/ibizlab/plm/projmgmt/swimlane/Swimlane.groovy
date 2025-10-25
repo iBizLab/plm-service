@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Swimlane extends GroovyDataEntityRuntime<Swimlane,SwimlaneDTO,SwimlaneFilterDTO> {
+class Swimlane extends GroovyDynaDataEntityRuntime<Swimlane,SwimlaneDTO,SwimlaneFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Swimlane _instance

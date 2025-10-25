@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class DiscussMember extends GroovyDataEntityRuntime<DiscussMember,DiscussMemberDTO,DiscussMemberFilterDTO> {
+class DiscussMember extends GroovyDynaDataEntityRuntime<DiscussMember,DiscussMemberDTO,DiscussMemberFilterDTO> {
 
     public static final String ACTION_RESTART = "Restart"
     public static final String ACTION_STOP = "Stop"

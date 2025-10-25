@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Progress extends GroovyDataEntityRuntime<Progress,ProgressDTO,ProgressFilterDTO> {
+class Progress extends GroovyDynaDataEntityRuntime<Progress,ProgressDTO,ProgressFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Progress _instance

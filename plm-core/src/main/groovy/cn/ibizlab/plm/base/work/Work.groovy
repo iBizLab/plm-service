@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Work extends GroovyDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
+class Work extends GroovyDynaDataEntityRuntime<Work,WorkDTO,WorkFilterDTO> {
 
     public static final String ACTION_ADD_PROJECT = "add_project"
     public static final String ACTION_ADD_PROJECT_PORTFOLIO = "add_project_portfolio"

@@ -5,7 +5,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.ds.GroovyFetchPlugin
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.GroovyDTO
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.GroovyFilter
 import net.ibizsys.central.ISystemRuntime
-import net.ibizsys.central.plugin.extension.dataentity.PSModelDataEntityRuntime
+import net.ibizsys.central.plugin.util.dataentity.DynaDataEntityRuntime
 import net.ibizsys.central.util.IEntity
 import net.ibizsys.central.util.ISearchContextDTO
 import net.ibizsys.runtime.dataentity.action.IDEActionPluginRuntime
@@ -17,9 +17,9 @@ import org.apache.commons.logging.LogFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageImpl
 
-class GroovyPSModelDERuntime <T extends GroovyPSModelDERuntime,D extends GroovyDTO,F extends GroovyFilter> extends PSModelDataEntityRuntime{
+class GroovyDynaDataEntityRuntime<T extends GroovyDynaDataEntityRuntime,D extends GroovyDTO,F extends GroovyFilter> extends DynaDataEntityRuntime{
 
-    public static final Log log = LogFactory.getLog(GroovyPSModelDERuntime.class)
+    public static final Log log = LogFactory.getLog(GroovyDynaDataEntityRuntime.class)
     public static final String ACTION_CREATE = "Create"
     public static final String ACTION_UPDATE = "Update"
     public static final String ACTION_REMOVE = "Remove"

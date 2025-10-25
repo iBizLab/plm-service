@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class PullRequest extends GroovyDataEntityRuntime<PullRequest,PullRequestDTO,PullRequestFilterDTO> {
+class PullRequest extends GroovyDynaDataEntityRuntime<PullRequest,PullRequestDTO,PullRequestFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static PullRequest _instance

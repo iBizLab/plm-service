@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Run extends GroovyDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
+class Run extends GroovyDynaDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
 
     public static final String ACTION_ADD_PLAN_RUN = "add_plan_run"
     public static final String ACTION_BATCH_SAVE_RUN_HISTORY = "batch_save_run_history"

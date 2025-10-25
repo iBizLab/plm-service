@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class ProjectState extends GroovyDataEntityRuntime<ProjectState,ProjectStateDTO,ProjectStateFilterDTO> {
+class ProjectState extends GroovyDynaDataEntityRuntime<ProjectState,ProjectStateDTO,ProjectStateFilterDTO> {
 
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"

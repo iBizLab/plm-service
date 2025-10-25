@@ -62,7 +62,7 @@ class PublishName extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM_01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePrepareparam01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -72,7 +72,7 @@ class PublishName extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEACTION_01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDeaction01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -82,7 +82,7 @@ class PublishName extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeEND_01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeEnd01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class TemplateFlow extends GroovyDataEntityRuntime<TemplateFlow,TemplateFlowDTO,TemplateFlowFilterDTO> {
+class TemplateFlow extends GroovyDynaDataEntityRuntime<TemplateFlow,TemplateFlowDTO,TemplateFlowFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static TemplateFlow _instance

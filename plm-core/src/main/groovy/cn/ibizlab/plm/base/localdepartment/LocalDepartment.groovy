@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class LocalDepartment extends GroovyDataEntityRuntime<LocalDepartment,LocalDepartmentDTO,LocalDepartmentFilterDTO> {
+class LocalDepartment extends GroovyDynaDataEntityRuntime<LocalDepartment,LocalDepartmentDTO,LocalDepartmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static LocalDepartment _instance

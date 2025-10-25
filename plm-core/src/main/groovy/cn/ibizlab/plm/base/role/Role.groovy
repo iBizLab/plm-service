@@ -13,9 +13,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 实体[ROLE]运行时对象
  * 此代码用户功能扩展代码
  *
- * 该实体存在实体映射，开启RTCode模式会导致映射功能失效
+ * 该实体存在实体映射或者自定义动态扩展对象，开启RTCode模式会导致映射功能失效
  */
-class Role extends GroovyDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
+class Role extends GroovyDynaDataEntityRuntime<Role,RoleDTO,RoleFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Role _instance

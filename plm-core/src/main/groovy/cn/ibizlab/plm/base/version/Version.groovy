@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Version extends GroovyDataEntityRuntime<Version,VersionDTO,VersionFilterDTO> {
+class Version extends GroovyDynaDataEntityRuntime<Version,VersionDTO,VersionFilterDTO> {
 
     public static final String ACTION_COMMIT = "COMMIT"
     public static final String ACTION_RESTORE = "RESTORE"

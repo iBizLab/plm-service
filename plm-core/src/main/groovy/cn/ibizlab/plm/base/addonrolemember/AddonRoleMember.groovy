@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class AddonRoleMember extends GroovyDataEntityRuntime<AddonRoleMember,AddonRoleMemberDTO,AddonRoleMemberFilterDTO> {
+class AddonRoleMember extends GroovyDynaDataEntityRuntime<AddonRoleMember,AddonRoleMemberDTO,AddonRoleMemberFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static AddonRoleMember _instance

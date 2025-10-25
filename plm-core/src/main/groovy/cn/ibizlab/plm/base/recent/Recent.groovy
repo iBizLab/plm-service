@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Recent extends GroovyDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
+class Recent extends GroovyDynaDataEntityRuntime<Recent,RecentDTO,RecentFilterDTO> {
 
     public static final String ACTION_MY_CHARGE_ENTRY = "my_charge_entry"
     public static final String ACTION_MY_CREATED_ENTRY = "my_created_entry"

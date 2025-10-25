@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Build extends GroovyDataEntityRuntime<Build,BuildDTO,BuildFilterDTO> {
+class Build extends GroovyDynaDataEntityRuntime<Build,BuildDTO,BuildFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Build _instance

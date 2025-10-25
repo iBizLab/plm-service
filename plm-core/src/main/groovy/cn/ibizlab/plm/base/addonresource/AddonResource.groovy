@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class AddonResource extends GroovyDataEntityRuntime<AddonResource,AddonResourceDTO,AddonResourceFilterDTO> {
+class AddonResource extends GroovyDynaDataEntityRuntime<AddonResource,AddonResourceDTO,AddonResourceFilterDTO> {
 
     public static final String ACTION_CHECK_RESOURCE_IS_DELETED = "check_resource_is_deleted"
     public static final String DATASET_DEFAULT = "DEFAULT"

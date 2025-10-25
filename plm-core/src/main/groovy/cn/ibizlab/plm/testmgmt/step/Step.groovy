@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Step extends GroovyDataEntityRuntime<Step,StepDTO,StepFilterDTO> {
+class Step extends GroovyDynaDataEntityRuntime<Step,StepDTO,StepFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static Step _instance

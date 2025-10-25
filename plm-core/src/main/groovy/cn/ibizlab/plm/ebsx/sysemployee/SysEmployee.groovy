@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SysEmployee extends GroovyDataEntityRuntime<SysEmployee,SysEmployeeDTO,SysEmployeeFilterDTO> {
+class SysEmployee extends GroovyDynaDataEntityRuntime<SysEmployee,SysEmployeeDTO,SysEmployeeFilterDTO> {
 
     public static final String ACTION_CHANGEPWD = "ChangePwd"
     public static final String ACTION_INITPWD = "InitPwd"

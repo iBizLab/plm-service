@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Baseline extends GroovyDataEntityRuntime<Baseline,BaselineDTO,BaselineFilterDTO> {
+class Baseline extends GroovyDynaDataEntityRuntime<Baseline,BaselineDTO,BaselineFilterDTO> {
 
     public static final String ACTION_DELETE_CATEGORIES = "delete_categories"
     public static final String ACTION_PLAN_SNAPSHOT = "plan_snapshot"

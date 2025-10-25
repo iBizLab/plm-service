@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Member extends GroovyDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
+class Member extends GroovyDynaDataEntityRuntime<Member,MemberDTO,MemberFilterDTO> {
 
     public static final String ACTION_ADD_MEMBER_POSITION = "add_member_position"
     public static final String ACTION_ADD_SHARED_PAGE_MEMBER = "add_shared_page_member"

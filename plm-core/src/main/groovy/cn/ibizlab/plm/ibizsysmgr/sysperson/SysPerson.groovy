@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SysPerson extends GroovyDataEntityRuntime<SysPerson,SysPersonDTO,SysPersonFilterDTO> {
+class SysPerson extends GroovyDynaDataEntityRuntime<SysPerson,SysPersonDTO,SysPersonFilterDTO> {
 
     public static final String ACTION_GETSIMPLE = "GetSimple"
     public static final String ACTION_RESETPASSWORD = "ResetPassword"

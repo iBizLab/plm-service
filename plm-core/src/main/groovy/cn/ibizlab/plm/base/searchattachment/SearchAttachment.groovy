@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SearchAttachment extends GroovyDataEntityRuntime<SearchAttachment,SearchAttachmentDTO,SearchAttachmentFilterDTO> {
+class SearchAttachment extends GroovyDynaDataEntityRuntime<SearchAttachment,SearchAttachmentDTO,SearchAttachmentFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"

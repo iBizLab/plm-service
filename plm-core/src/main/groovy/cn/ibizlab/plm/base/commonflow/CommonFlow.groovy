@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class CommonFlow extends GroovyDataEntityRuntime<CommonFlow,CommonFlowDTO,CommonFlowFilterDTO> {
+class CommonFlow extends GroovyDynaDataEntityRuntime<CommonFlow,CommonFlowDTO,CommonFlowFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static CommonFlow _instance

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class Favorite extends GroovyDataEntityRuntime<Favorite,FavoriteDTO,FavoriteFilterDTO> {
+class Favorite extends GroovyDynaDataEntityRuntime<Favorite,FavoriteDTO,FavoriteFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_MY_FAVORITE = "my_favorite"

@@ -14,7 +14,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  * 此代码用户功能扩展代码
  *
  */
-class SearchHub extends GroovyDataEntityRuntime<SearchHub,SearchHubDTO,SearchHubFilterDTO> {
+class SearchHub extends GroovyDynaDataEntityRuntime<SearchHub,SearchHubDTO,SearchHubFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static SearchHub _instance
