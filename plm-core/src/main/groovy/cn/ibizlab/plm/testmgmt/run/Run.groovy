@@ -160,7 +160,7 @@ class Run extends GroovyDynaDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
      */
     @DEAction(ACTION_OTHER_RELATION_RUN)
     def otherRelationRun(RunDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RELATION_RUN, dto, RunDTO.class)
+        return this.execute(ACTION_OTHER_RELATION_RUN, dto, RunDTO.class)
     }
 
     /**

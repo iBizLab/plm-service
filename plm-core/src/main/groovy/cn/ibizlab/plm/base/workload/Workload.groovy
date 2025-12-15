@@ -16,6 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class Workload extends GroovyDynaDataEntityRuntime<Workload,WorkloadDTO,WorkloadFilterDTO> {
 
+    public static final String ACTION_AI_ADD_ESTIMATED_WORKLOAD = "ai_add_estimated_workload"
+    public static final String ACTION_AI_SAVE_WORKLOAD = "ai_save_workload"
     public static final String ACTION_CREATE_WORKLOAD = "create_workload"
     public static final String ACTION_FILL_WORKLOAD_DATA = "fill_workload_data"
     public static final String ACTION_GET_REDIRECT_DATA = "get_redirect_data"
@@ -128,6 +130,26 @@ class Workload extends GroovyDynaDataEntityRuntime<Workload,WorkloadDTO,Workload
     @DEAction(ACTION_SAVE)
     WorkloadDTO save(WorkloadDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, WorkloadDTO.class)
+    }
+
+    /**
+     * 行为：AI登记预估工时 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_AI_ADD_ESTIMATED_WORKLOAD)
+    def aiAddEstimatedWorkload(WorkloadDTO dto) throws Throwable {
+        return this.execute(ACTION_AI_ADD_ESTIMATED_WORKLOAD, dto, WorkloadDTO.class)
+    }
+
+    /**
+     * 行为：AI登记工时并更新剩余工时 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_AI_SAVE_WORKLOAD)
+    def aiSaveWorkload(WorkloadDTO dto) throws Throwable {
+        return this.execute(ACTION_AI_SAVE_WORKLOAD, dto, WorkloadDTO.class)
     }
 
     /**

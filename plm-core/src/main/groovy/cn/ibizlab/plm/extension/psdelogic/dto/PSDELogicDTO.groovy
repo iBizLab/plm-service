@@ -126,6 +126,16 @@ class PSDELogicDTO extends GroovyDTO<PSDELogicDTO> {
     @JsonProperty("failure_rate")
     BigDecimal failureRate
     /**
+     * 「MCP服务标识」
+     */
+    @JsonProperty("mcpserverid")
+    String mcpServerId
+    /**
+     * 「MCP工具规格说明」
+     */
+    @JsonProperty("toolspecification")
+    String toolSpecification
+    /**
      * 「代码标识」
      */
     @JsonProperty("codename")
@@ -471,6 +481,26 @@ class PSDELogicDTO extends GroovyDTO<PSDELogicDTO> {
      */
     PSDELogicDTO setFailureRate(BigDecimal failureRate) {
         this.failureRate = failureRate
+        return this
+    }
+
+
+    /**
+     * 设置「MCP服务标识」值
+     * @param val
+     */
+    PSDELogicDTO setMcpServerId(String mcpServerId) {
+        this.mcpServerId = mcpServerId
+        return this
+    }
+
+
+    /**
+     * 设置「MCP工具规格说明」值
+     * @param val
+     */
+    PSDELogicDTO setToolSpecification(String toolSpecification) {
+        this.toolSpecification = toolSpecification
         return this
     }
 

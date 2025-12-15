@@ -25,6 +25,7 @@ class SysTodoDTO extends GroovyDTO<SysTodoDTO> {
     String bizKey
     /**
      * 「业务对象」
+     * 字典[工作流类型]
      */
     @JsonProperty("biztype")
     String bizType
@@ -215,6 +216,7 @@ class SysTodoDTO extends GroovyDTO<SysTodoDTO> {
 
     /**
      * 设置「业务对象」值
+     * 字典[工作流类型]
      * @param val
      */
     SysTodoDTO setBizType(String bizType) {

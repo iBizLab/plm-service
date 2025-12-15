@@ -35,6 +35,11 @@ class DictionaryDataDTO extends GroovyDTO<DictionaryDataDTO> {
     @JsonProperty("color")
     String color
     /**
+     * 「描述」
+     */
+    @JsonProperty("description")
+    String description
+    /**
      * 「是否系统默认」
      * 字典[是否]
      */
@@ -52,6 +57,11 @@ class DictionaryDataDTO extends GroovyDTO<DictionaryDataDTO> {
      */
     @JsonProperty("catalog")
     String catalog
+    /**
+     * 「图标」
+     */
+    @JsonProperty("icon")
+    String icon
     /**
      * 「建立人」
      * 字典[云系统操作者]
@@ -127,6 +137,16 @@ class DictionaryDataDTO extends GroovyDTO<DictionaryDataDTO> {
 
 
     /**
+     * 设置「描述」值
+     * @param val
+     */
+    DictionaryDataDTO setDescription(String description) {
+        this.description = description
+        return this
+    }
+
+
+    /**
      * 设置「是否系统默认」值
      * 字典[是否]
      * @param val
@@ -155,6 +175,16 @@ class DictionaryDataDTO extends GroovyDTO<DictionaryDataDTO> {
      */
     DictionaryDataDTO setCatalog(String catalog) {
         this.catalog = catalog
+        return this
+    }
+
+
+    /**
+     * 设置「图标」值
+     * @param val
+     */
+    DictionaryDataDTO setIcon(String icon) {
+        this.icon = icon
         return this
     }
 

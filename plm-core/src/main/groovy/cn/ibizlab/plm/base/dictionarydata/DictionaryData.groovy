@@ -23,6 +23,7 @@ class DictionaryData extends GroovyDynaDataEntityRuntime<DictionaryData,Dictiona
     public static final String DATASET_IDEA_SOURCE = "idea_source"
     public static final String DATASET_IDEA_STATE = "idea_state"
     public static final String DATASET_IDEA_TYPE = "idea_type"
+    public static final String DATASET_PROJECT_TYPE = "project_type"
     public static final String DATASET_RELEASE_STAGE = "release_stage"
     public static final String DATASET_TEST_CASE = "test_case"
     public static final String DATASET_TEST_CASE_IMPORTANCE_LEVEL = "test_case_importance_level"
@@ -185,6 +186,16 @@ class DictionaryData extends GroovyDynaDataEntityRuntime<DictionaryData,Dictiona
     @DEDataSet(DATASET_IDEA_TYPE)
     Page<DictionaryDataDTO> fetchIdeaType(DictionaryDataFilterDTO context) throws Throwable {
         return this.fetch(DATASET_IDEA_TYPE, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：项目类型 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_PROJECT_TYPE)
+    Page<DictionaryDataDTO> fetchProjectType(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_TYPE, context, DictionaryDataDTO.class)
     }
 
     /**

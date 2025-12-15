@@ -53,7 +53,11 @@ logging:
 
 ### 启用Gzip压缩
 server:
- compression:
-   enabled: true
-   mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
-   min-response-size: 10240
+  max-http-header-size: 100KB
+  compression:
+    enabled: true
+    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+    min-response-size: 10240
+
+
+

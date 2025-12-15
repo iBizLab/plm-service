@@ -38,6 +38,12 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
     @JsonProperty("priority")
     String priority
     /**
+     * 「内容格式」
+     * 字典[报表输出格式]
+     */
+    @JsonProperty("format_type")
+    String formatType
+    /**
      * 「模块」
      */
     @JsonProperty("suite")
@@ -372,6 +378,17 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
      */
     IdeaDTO setPriority(String priority) {
         this.priority = priority
+        return this
+    }
+
+
+    /**
+     * 设置「内容格式」值
+     * 字典[报表输出格式]
+     * @param val
+     */
+    IdeaDTO setFormatType(String formatType) {
+        this.formatType = formatType
         return this
     }
 

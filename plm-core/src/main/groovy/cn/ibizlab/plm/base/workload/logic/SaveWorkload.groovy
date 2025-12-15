@@ -69,6 +69,10 @@ class SaveWorkload extends DELogicRuntime {
                 //执行逻辑节点[更新剩余工时]
                 executeDEACTION6(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM6":
+                //执行逻辑节点[工时为0时置为NULL]
+                executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
+                break
             case "RAWSQLCALL1":
                 //执行逻辑节点[合计已登记工时]
                 executeRAWSQLCALL1(iDELogicSession, iPSDELogicNode)
@@ -84,10 +88,6 @@ class SaveWorkload extends DELogicRuntime {
             case "DELOGIC1":
                 //执行逻辑节点[自动计算父工时]
                 executeDELOGIC1(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM6":
-                //执行逻辑节点[工时为0时置为NULL]
-                executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -205,6 +205,16 @@ class SaveWorkload extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[工时为0时置为NULL]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[合计已登记工时]，逻辑类型[RAWSQLCALL]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -241,16 +251,6 @@ class SaveWorkload extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDELOGIC1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[工时为0时置为NULL]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

@@ -168,7 +168,7 @@ class Release extends GroovyDynaDataEntityRuntime<Release,ReleaseDTO,ReleaseFilt
      */
     @DEAction(ACTION_PLAN_WORK_ITEM)
     def planWorkItem(ReleaseDTO dto) throws Throwable {
-        this.execute(ACTION_PLAN_WORK_ITEM, dto, ReleaseDTO.class)
+        return this.execute(ACTION_PLAN_WORK_ITEM, dto, ReleaseDTO.class)
     }
 
     /**

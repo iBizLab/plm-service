@@ -20,6 +20,26 @@ class PSDEFieldDTO extends GroovyDTO<PSDEFieldDTO> {
     @JsonProperty("dynamodelflag")
     Integer dynaModelFlag
     /**
+     * 「系统建立模式」
+     */
+    @JsonProperty("systemflag")
+    BigDecimal systemFlag
+    /**
+     * 「备注」
+     */
+    @JsonProperty("memo")
+    String memo
+    /**
+     * 「代码表」
+     */
+    @JsonProperty("pscodelistid")
+    String pscodelistid
+    /**
+     * 「排序」
+     */
+    @JsonProperty("ordervalue")
+    BigDecimal ordervalue
+    /**
      * 「允许空值」
      * 字典[是否]
      */
@@ -163,6 +183,46 @@ class PSDEFieldDTO extends GroovyDTO<PSDEFieldDTO> {
      */
     PSDEFieldDTO setDynaModelFlag(Integer dynaModelFlag) {
         this.dynaModelFlag = dynaModelFlag
+        return this
+    }
+
+
+    /**
+     * 设置「系统建立模式」值
+     * @param val
+     */
+    PSDEFieldDTO setSystemFlag(BigDecimal systemFlag) {
+        this.systemFlag = systemFlag
+        return this
+    }
+
+
+    /**
+     * 设置「备注」值
+     * @param val
+     */
+    PSDEFieldDTO setMemo(String memo) {
+        this.memo = memo
+        return this
+    }
+
+
+    /**
+     * 设置「代码表」值
+     * @param val
+     */
+    PSDEFieldDTO setPscodelistid(String pscodelistid) {
+        this.pscodelistid = pscodelistid
+        return this
+    }
+
+
+    /**
+     * 设置「排序」值
+     * @param val
+     */
+    PSDEFieldDTO setOrdervalue(BigDecimal ordervalue) {
+        this.ordervalue = ordervalue
         return this
     }
 

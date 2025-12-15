@@ -37,10 +37,6 @@ class OtherReProject extends DELogicRuntime {
                 //执行逻辑节点[生成反向关联数据]
                 executeDEACTION2(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM1":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
-                break
             case "DEACTION1":
                 //执行逻辑节点[生成正向关联数据]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
@@ -85,16 +81,6 @@ class OtherReProject extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEACTION2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEBUGPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

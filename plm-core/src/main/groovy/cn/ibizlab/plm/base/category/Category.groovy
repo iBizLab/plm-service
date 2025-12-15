@@ -30,6 +30,7 @@ class Category extends GroovyDynaDataEntityRuntime<Category,CategoryDTO,Category
     public static final String DATASET_PRODUCT_PLAN = "product_plan"
     public static final String DATASET_SPACE_CATEGORY = "space_category"
     public static final String DATASET_SPACE_CATEGORY_TOP = "space_category_top"
+    public static final String DATASET_WF_CATEGORY = "wf_category"
     private static Category _instance
     void setInstance(Category instance) {
         _instance = instance
@@ -246,6 +247,16 @@ class Category extends GroovyDynaDataEntityRuntime<Category,CategoryDTO,Category
     @DEDataSet(DATASET_SPACE_CATEGORY_TOP)
     Page<CategoryDTO> fetchSpaceCategoryTop(CategoryFilterDTO context) throws Throwable {
         return this.fetch(DATASET_SPACE_CATEGORY_TOP, context, CategoryDTO.class)
+    }
+
+    /**
+     * 数据集：工作流类别 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WF_CATEGORY)
+    Page<CategoryDTO> fetchWfCategory(CategoryFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WF_CATEGORY, context, CategoryDTO.class)
     }
 
 }

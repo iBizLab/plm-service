@@ -41,6 +41,14 @@ class CreateResult extends DELogicRuntime {
                 //执行逻辑节点[执行结果数据准备]
                 executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEACTION6":
+                //执行逻辑节点[创建执行结果]
+                executeDEACTION6(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEDATASET2":
+                //执行逻辑节点[实体数据集]
+                executeDEDATASET2(iDELogicSession, iPSDELogicNode)
+                break
             case "END2":
                 //执行逻辑节点[结束]
                 executeEND2(iDELogicSession, iPSDELogicNode)
@@ -52,6 +60,10 @@ class CreateResult extends DELogicRuntime {
             case "DEACTION8":
                 //执行逻辑节点[反向关联]
                 executeDEACTION8(iDELogicSession, iPSDELogicNode)
+                break
+            case "LOOPSUBCALL3":
+                //执行逻辑节点[循环子调用]
+                executeLOOPSUBCALL3(iDELogicSession, iPSDELogicNode)
                 break
             case "DEACTION5":
                 //执行逻辑节点[正向关联]
@@ -81,53 +93,41 @@ class CreateResult extends DELogicRuntime {
                 //执行逻辑节点[准备参数]
                 executePREPAREPARAM12(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEACTION3":
-                //执行逻辑节点[获取测试计划]
-                executeDEACTION3(iDELogicSession, iPSDELogicNode)
-                break
             case "LOOPSUBCALL2":
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL2(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM11":
-                //执行逻辑节点[准备参数]
-                executePREPAREPARAM11(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEACTION6":
-                //执行逻辑节点[创建执行结果]
-                executeDEACTION6(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM6":
                 //执行逻辑节点[执行用例数据准备]
                 executePREPAREPARAM6(iDELogicSession, iPSDELogicNode)
                 break
-            case "PREPAREPARAM7":
-                //执行逻辑节点[准备参数]
-                executePREPAREPARAM7(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEDATASET2":
-                //执行逻辑节点[实体数据集]
-                executeDEDATASET2(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM13":
-                //执行逻辑节点[准备系统参数]
-                executePREPAREPARAM13(iDELogicSession, iPSDELogicNode)
+            case "DEACTION3":
+                //执行逻辑节点[获取测试计划]
+                executeDEACTION3(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSFCODE1":
                 //执行逻辑节点[拼接描述字段]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM7":
+                //执行逻辑节点[准备参数]
+                executePREPAREPARAM7(iDELogicSession, iPSDELogicNode)
+                break
             case "DEDATASET1":
                 //执行逻辑节点[工作项类型数据集]
                 executeDEDATASET1(iDELogicSession, iPSDELogicNode)
                 break
-            case "LOOPSUBCALL3":
-                //执行逻辑节点[循环子调用]
-                executeLOOPSUBCALL3(iDELogicSession, iPSDELogicNode)
-                break
             case "LOOPSUBCALL1":
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM11":
+                //执行逻辑节点[准备参数]
+                executePREPAREPARAM11(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM13":
+                //执行逻辑节点[准备系统参数]
+                executePREPAREPARAM13(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM8":
                 //执行逻辑节点[准备参数]
@@ -179,6 +179,26 @@ class CreateResult extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[创建执行结果]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[实体数据集]，逻辑类型[DEDATASET]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEDATASET2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[结束]，逻辑类型[END]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -205,6 +225,16 @@ class CreateResult extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEACTION8(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeLOOPSUBCALL3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -279,42 +309,12 @@ class CreateResult extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[获取测试计划]，逻辑类型[DEACTION]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEACTION3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeLOOPSUBCALL2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM11(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[创建执行结果]，逻辑类型[DEACTION]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEACTION6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -329,32 +329,12 @@ class CreateResult extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
+     * 执行逻辑节点[获取测试计划]，逻辑类型[DEACTION]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executePREPAREPARAM7(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[实体数据集]，逻辑类型[DEDATASET]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEDATASET2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[准备系统参数]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM13(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDEACTION3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -431,6 +411,16 @@ class CreateResult extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM7(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[工作项类型数据集]，逻辑类型[DEDATASET]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -446,17 +436,27 @@ class CreateResult extends DELogicRuntime {
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeLOOPSUBCALL3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**
-     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePREPAREPARAM11(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[准备系统参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM13(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

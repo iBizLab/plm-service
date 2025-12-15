@@ -39,16 +39,56 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
     @JsonProperty("ordervalue")
     Integer orderValue
     /**
+     * 「智能体标识」
+     */
+    @JsonProperty("aiagenttag")
+    String aiagenttag
+    /**
      * 「代码名称」
      */
     @JsonProperty("codename")
     String codeName
+    /**
+     * 「操作参数」
+     */
+    @JsonProperty("dstpsdlparamid")
+    String dstPSDLParamId
+    /**
+     * 「操作参数」
+     */
+    @JsonProperty("dstpsdlparamname")
+    String dstPSDLParamName
+    /**
+     * 「输入流参数」
+     */
+    @JsonProperty("ispsdlparamid")
+    String iSPSDLParamId
+    /**
+     * 「输入流参数」
+     */
+    @JsonProperty("ispsdlparamname")
+    String iSPSDLParamName
+    /**
+     * 「逻辑节点子类型」
+     */
+    @JsonProperty("logicnodesubtype")
+    String logicNodeSubType
     /**
      * 「逻辑节点类型」
      * 字典[实体逻辑处理节点类型(设计)3]
      */
     @JsonProperty("logicnodetype")
     String logicNodeType
+    /**
+     * 「输出流参数」
+     */
+    @JsonProperty("ospsdlparamid")
+    String oSPSDLParamId
+    /**
+     * 「输出流参数」
+     */
+    @JsonProperty("ospsdlparamname")
+    String oSPSDLParamName
     /**
      * 「实体处理逻辑」
      */
@@ -69,6 +109,36 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
      */
     @JsonProperty("psdelogicnodename")
     String pSDELogicNodeName
+    /**
+     * 「系统AI交谈代理标识」
+     */
+    @JsonProperty("pssysaichatagentid")
+    String pSSysAIChatAgentId
+    /**
+     * 「系统AI交谈代理名称」
+     */
+    @JsonProperty("pssysaichatagentname")
+    String pSSysAIChatAgentName
+    /**
+     * 「系统AI工厂标识」
+     */
+    @JsonProperty("pssysaifactoryid")
+    String pSSysAIFactoryId
+    /**
+     * 「系统AI工厂」
+     */
+    @JsonProperty("pssysaifactoryname")
+    String pSSysAIFactoryName
+    /**
+     * 「消息模板」
+     */
+    @JsonProperty("pssysmsgtemplid")
+    String pSSysMsgTemplId
+    /**
+     * 「消息模板」
+     */
+    @JsonProperty("pssysmsgtemplname")
+    String pSSysMsgTemplName
     /**
      * 「循环后续处理」
      * 字典[是否]
@@ -102,6 +172,11 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
     @JsonProperty("param13")
     String param13
     /**
+     * 「参数4」
+     */
+    @JsonProperty("param4")
+    String param4
+    /**
      * 「参数7」
      */
     @JsonProperty("param7")
@@ -117,6 +192,26 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
      */
     @JsonProperty("param9")
     Integer param9
+    /**
+     * 「返回绑定参数」
+     */
+    @JsonProperty("retpsdlparamid")
+    String retPSDLParamId
+    /**
+     * 「返回绑定参数」
+     */
+    @JsonProperty("retpsdlparamname")
+    String retPSDLParamName
+    /**
+     * 「源参数」
+     */
+    @JsonProperty("srcpsdlparamid")
+    String srcPSDLParamId
+    /**
+     * 「源参数」
+     */
+    @JsonProperty("srcpsdlparamname")
+    String srcPSDLParamName
     /**
      * 「项目标识」
      */
@@ -179,11 +274,71 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
 
 
     /**
+     * 设置「智能体标识」值
+     * @param val
+     */
+    PSDELogicNodeDTO setAiagenttag(String aiagenttag) {
+        this.aiagenttag = aiagenttag
+        return this
+    }
+
+
+    /**
      * 设置「代码名称」值
      * @param val
      */
     PSDELogicNodeDTO setCodeName(String codeName) {
         this.codeName = codeName
+        return this
+    }
+
+
+    /**
+     * 设置「操作参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setDstPSDLParamId(String dstPSDLParamId) {
+        this.dstPSDLParamId = dstPSDLParamId
+        return this
+    }
+
+
+    /**
+     * 设置「操作参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setDstPSDLParamName(String dstPSDLParamName) {
+        this.dstPSDLParamName = dstPSDLParamName
+        return this
+    }
+
+
+    /**
+     * 设置「输入流参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setISPSDLParamId(String iSPSDLParamId) {
+        this.iSPSDLParamId = iSPSDLParamId
+        return this
+    }
+
+
+    /**
+     * 设置「输入流参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setISPSDLParamName(String iSPSDLParamName) {
+        this.iSPSDLParamName = iSPSDLParamName
+        return this
+    }
+
+
+    /**
+     * 设置「逻辑节点子类型」值
+     * @param val
+     */
+    PSDELogicNodeDTO setLogicNodeSubType(String logicNodeSubType) {
+        this.logicNodeSubType = logicNodeSubType
         return this
     }
 
@@ -195,6 +350,26 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
      */
     PSDELogicNodeDTO setLogicNodeType(String logicNodeType) {
         this.logicNodeType = logicNodeType
+        return this
+    }
+
+
+    /**
+     * 设置「输出流参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setOSPSDLParamId(String oSPSDLParamId) {
+        this.oSPSDLParamId = oSPSDLParamId
+        return this
+    }
+
+
+    /**
+     * 设置「输出流参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setOSPSDLParamName(String oSPSDLParamName) {
+        this.oSPSDLParamName = oSPSDLParamName
         return this
     }
 
@@ -235,6 +410,66 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
      */
     PSDELogicNodeDTO setPSDELogicNodeName(String pSDELogicNodeName) {
         this.pSDELogicNodeName = pSDELogicNodeName
+        return this
+    }
+
+
+    /**
+     * 设置「系统AI交谈代理标识」值
+     * @param val
+     */
+    PSDELogicNodeDTO setPSSysAIChatAgentId(String pSSysAIChatAgentId) {
+        this.pSSysAIChatAgentId = pSSysAIChatAgentId
+        return this
+    }
+
+
+    /**
+     * 设置「系统AI交谈代理名称」值
+     * @param val
+     */
+    PSDELogicNodeDTO setPSSysAIChatAgentName(String pSSysAIChatAgentName) {
+        this.pSSysAIChatAgentName = pSSysAIChatAgentName
+        return this
+    }
+
+
+    /**
+     * 设置「系统AI工厂标识」值
+     * @param val
+     */
+    PSDELogicNodeDTO setPSSysAIFactoryId(String pSSysAIFactoryId) {
+        this.pSSysAIFactoryId = pSSysAIFactoryId
+        return this
+    }
+
+
+    /**
+     * 设置「系统AI工厂」值
+     * @param val
+     */
+    PSDELogicNodeDTO setPSSysAIFactoryName(String pSSysAIFactoryName) {
+        this.pSSysAIFactoryName = pSSysAIFactoryName
+        return this
+    }
+
+
+    /**
+     * 设置「消息模板」值
+     * @param val
+     */
+    PSDELogicNodeDTO setPSSysMsgTemplId(String pSSysMsgTemplId) {
+        this.pSSysMsgTemplId = pSSysMsgTemplId
+        return this
+    }
+
+
+    /**
+     * 设置「消息模板」值
+     * @param val
+     */
+    PSDELogicNodeDTO setPSSysMsgTemplName(String pSSysMsgTemplName) {
+        this.pSSysMsgTemplName = pSSysMsgTemplName
         return this
     }
 
@@ -302,6 +537,16 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
 
 
     /**
+     * 设置「参数4」值
+     * @param val
+     */
+    PSDELogicNodeDTO setParam4(String param4) {
+        this.param4 = param4
+        return this
+    }
+
+
+    /**
      * 设置「参数7」值
      * @param val
      */
@@ -328,6 +573,46 @@ class PSDELogicNodeDTO extends GroovyDTO<PSDELogicNodeDTO> {
      */
     PSDELogicNodeDTO setParam9(Integer param9) {
         this.param9 = param9
+        return this
+    }
+
+
+    /**
+     * 设置「返回绑定参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setRetPSDLParamId(String retPSDLParamId) {
+        this.retPSDLParamId = retPSDLParamId
+        return this
+    }
+
+
+    /**
+     * 设置「返回绑定参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setRetPSDLParamName(String retPSDLParamName) {
+        this.retPSDLParamName = retPSDLParamName
+        return this
+    }
+
+
+    /**
+     * 设置「源参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setSrcPSDLParamId(String srcPSDLParamId) {
+        this.srcPSDLParamId = srcPSDLParamId
+        return this
+    }
+
+
+    /**
+     * 设置「源参数」值
+     * @param val
+     */
+    PSDELogicNodeDTO setSrcPSDLParamName(String srcPSDLParamName) {
+        this.srcPSDLParamName = srcPSDLParamName
         return this
     }
 

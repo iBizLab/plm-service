@@ -126,7 +126,7 @@ class Customer extends GroovyDynaDataEntityRuntime<Customer,CustomerDTO,Customer
      */
     @DEAction(ACTION_CUSTOMER_CHOOSE_TICKET)
     def customerChooseTicket(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_CUSTOMER_CHOOSE_TICKET, dto, CustomerDTO.class)
+        return this.execute(ACTION_CUSTOMER_CHOOSE_TICKET, dto, CustomerDTO.class)
     }
 
     /**
@@ -176,7 +176,7 @@ class Customer extends GroovyDynaDataEntityRuntime<Customer,CustomerDTO,Customer
      */
     @DEAction(ACTION_OTHERS_RELATION_CUSTOMER)
     def othersRelationCustomer(CustomerDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_CUSTOMER, dto, CustomerDTO.class)
+        return this.execute(ACTION_OTHERS_RELATION_CUSTOMER, dto, CustomerDTO.class)
     }
 
     /**

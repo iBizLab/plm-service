@@ -63,6 +63,11 @@ class InsightReportDTO extends GroovyDTO<InsightReportDTO> {
     @JsonProperty("ctrl_id")
     String ctrlId
     /**
+     * 「应用标记」
+     */
+    @JsonProperty("app_tag")
+    String appTag
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -195,6 +200,16 @@ class InsightReportDTO extends GroovyDTO<InsightReportDTO> {
      */
     InsightReportDTO setCtrlId(String ctrlId) {
         this.ctrlId = ctrlId
+        return this
+    }
+
+
+    /**
+     * 设置「应用标记」值
+     * @param val
+     */
+    InsightReportDTO setAppTag(String appTag) {
+        this.appTag = appTag
         return this
     }
 

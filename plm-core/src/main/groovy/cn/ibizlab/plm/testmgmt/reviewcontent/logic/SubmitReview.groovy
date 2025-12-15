@@ -37,6 +37,10 @@ class SubmitReview extends DELogicRuntime {
                 //执行逻辑节点[获取评审详情]
                 executeDEACTION4(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM3":
+                //执行逻辑节点[设置关系过滤器参数]
+                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
+                break
             case "RAWSFCODE1":
                 //执行逻辑节点[设置提交时间]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
@@ -45,13 +49,13 @@ class SubmitReview extends DELogicRuntime {
                 //执行逻辑节点[调试逻辑参数]
                 executeDEBUGPARAM3(iDELogicSession, iPSDELogicNode)
                 break
+            case "DENOTIFY2":
+                //执行逻辑节点[通知第一评审人（测试用例）]
+                executeDENOTIFY2(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM1":
                 //执行逻辑节点[设置提交人、状态]
                 executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM3":
-                //执行逻辑节点[设置关系过滤器参数]
-                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
                 break
             case "DENOTIFY3":
                 //执行逻辑节点[通知第一评审人（项目工作项）]
@@ -84,10 +88,6 @@ class SubmitReview extends DELogicRuntime {
             case "LOOPSUBCALL2":
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL2(iDELogicSession, iPSDELogicNode)
-                break
-            case "DENOTIFY2":
-                //执行逻辑节点[通知第一评审人（测试用例）]
-                executeDENOTIFY2(iDELogicSession, iPSDELogicNode)
                 break
             case "DEACTION1":
                 //执行逻辑节点[更新评审]
@@ -229,6 +229,16 @@ class SubmitReview extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[设置关系过滤器参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[设置提交时间]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -249,22 +259,22 @@ class SubmitReview extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[通知第一评审人（测试用例）]，逻辑类型[DENOTIFY]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDENOTIFY2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[设置提交人、状态]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executePREPAREPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[设置关系过滤器参数]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -345,16 +355,6 @@ class SubmitReview extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeLOOPSUBCALL2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[通知第一评审人（测试用例）]，逻辑类型[DENOTIFY]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDENOTIFY2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

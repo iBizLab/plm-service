@@ -33,9 +33,17 @@ class ChangeState extends DELogicRuntime {
                 //执行逻辑节点[绑定选择数据对象]
                 executeBINDPARAM1(iDELogicSession, iPSDELogicNode)
                 break
-            case "RAWSFCODE1":
-                //执行逻辑节点[设置工作项类型id]
-                executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
+            case "RAWSFCODE_01":
+                //执行逻辑节点[设置工作项类型ID]
+                executeRawsfcode01(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM_01":
+                //执行逻辑节点[清除工作项类型]
+                executePrepareparam01(iDELogicSession, iPSDELogicNode)
+                break
+            case "PREPAREPARAM2":
+                //执行逻辑节点[设置状态]
+                executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
                 break
             case "DEACTION1":
                 //执行逻辑节点[变更状态]
@@ -44,10 +52,6 @@ class ChangeState extends DELogicRuntime {
             case "LOOPSUBCALL1":
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM2":
-                //执行逻辑节点[设置状态]
-                executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -75,12 +79,50 @@ class ChangeState extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[设置工作项类型id]，逻辑类型[RAWSFCODE]
+     * 执行逻辑节点[设置工作项类型ID]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeRAWSFCODE1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeRawsfcode01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        // 执行Groovy脚本代码
+        def objRet = { sys,logic ->
+            def _default = logic.param("default").getReal()
+			
+			def old_work_item_type_id = _default?.get("work_item_type_id")
+			
+			if (old_work_item_type_id) {
+			    def first_value = old_work_item_type_id.split(',')[0]
+			
+			    _default?.set("work_item_type_id", first_value)
+			}
+        }.call(iDELogicSession.getDELogicRuntime().getSystemRuntime(), iDELogicSession.getDELogicRuntime())
+        //设置返回值
+        iDELogicSession.setLastReturn(objRet);
+        if(iPSDELogicNode.getRetPSDELogicParam() != null) {
+            def retDELogicParamRuntime = this.getDELogicParamRuntime(iPSDELogicNode.getRetPSDELogicParam().getCodeName(), false);
+            retDELogicParamRuntime.bind(iDELogicSession, objRet);
+        }
+        //super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[清除工作项类型]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePrepareparam01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[设置状态]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -101,16 +143,6 @@ class ChangeState extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[设置状态]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

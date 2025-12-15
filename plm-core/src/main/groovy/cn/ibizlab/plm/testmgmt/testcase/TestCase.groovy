@@ -35,6 +35,7 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
     public static final String DATASET_IMPLEMENTATIONRESULTS = "ImplementationResults"
     public static final String DATASET_PERSONDISTRIBUTIONS = "PersonDistributions"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ASSESSMENTRESULT = "assessmentResult"
     public static final String DATASET_BASELINE_CHOOSE_CASE = "baseline_choose_case"
     public static final String DATASET_BASELINE_PLAN_CASE = "baseline_plan_case"
@@ -60,6 +61,7 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
     public static final String DATASET_MY_SUMMARY_CASE = "my_summary_case"
     public static final String DATASET_NORMAL = "normal"
     public static final String DATASET_NOSUITE_TEST_CASE = "nosuite_test_case"
+    public static final String DATASET_NOT_ADD = "not_add"
     public static final String DATASET_NOT_ADD_CASE = "not_add_case"
     public static final String DATASET_NOT_EXSISTS_RELATION = "not_exsists_relation"
     public static final String DATASET_NOTIFY_ASSIGNEE = "notify_assignee"
@@ -73,6 +75,7 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
     public static final String DATASET_TEST_CASE_MANEUVER_CONTEXT = "test_case_maneuver_context"
     public static final String DATASET_TEST_PLAN_TEST_CASE = "test_plan_test_case"
     public static final String DATASET_WORK_ITEM_RELATION_TEST_CASE = "work_item_relation_test_case"
+    public static final String DATASET_WORKLOAD_CASE = "workload_case"
     private static TestCase _instance
     void setInstance(TestCase instance) {
         _instance = instance
@@ -238,7 +241,7 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
      */
     @DEAction(ACTION_OTHERS_RELATION_CASE)
     def othersRelationCase(TestCaseDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_CASE, dto, TestCaseDTO.class)
+        return this.execute(ACTION_OTHERS_RELATION_CASE, dto, TestCaseDTO.class)
     }
 
     /**
@@ -339,6 +342,16 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
     @DEDataSet(DATASET_ADVANCED_SEARCH)
     Page<TestCaseDTO> fetchAdvancedSearch(TestCaseFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ADVANCED_SEARCH, context, TestCaseDTO.class)
+    }
+
+    /**
+     * 数据集：查询用例信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<TestCaseAiInfoDTO> fetchAiInfo(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, TestCaseAiInfoDTO.class)
     }
 
     /**
@@ -592,6 +605,16 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
     }
 
     /**
+     * 数据集：未添加用例（评审） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_NOT_ADD)
+    Page<TestCaseDTO> fetchNotAdd(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_ADD, context, TestCaseDTO.class)
+    }
+
+    /**
      * 数据集：未添加过的用例 实际功能
      * @param dto
      * @throws Throwable
@@ -719,6 +742,16 @@ class TestCase extends GroovyDynaDataEntityRuntime<TestCase,TestCaseDTO,TestCase
     @DEDataSet(DATASET_WORK_ITEM_RELATION_TEST_CASE)
     Page<TestCaseDTO> fetchWorkItemRelationTestCase(TestCaseFilterDTO context) throws Throwable {
         return this.fetch(DATASET_WORK_ITEM_RELATION_TEST_CASE, context, TestCaseDTO.class)
+    }
+
+    /**
+     * 数据集：工时登记用例 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORKLOAD_CASE)
+    Page<TestCaseDTO> fetchWorkloadCase(TestCaseFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORKLOAD_CASE, context, TestCaseDTO.class)
     }
 
 }

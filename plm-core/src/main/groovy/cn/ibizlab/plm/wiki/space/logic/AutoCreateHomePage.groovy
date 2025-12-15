@@ -29,10 +29,6 @@ class AutoCreateHomePage extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
-            case "END1":
-                //执行逻辑节点[结束]
-                executeEND1(iDELogicSession, iPSDELogicNode)
-                break
             case "PREPAREPARAM1":
                 //执行逻辑节点[设置主页相关参数]
                 executePREPAREPARAM1(iDELogicSession, iPSDELogicNode)
@@ -40,6 +36,10 @@ class AutoCreateHomePage extends DELogicRuntime {
             case "DEACTION1":
                 //执行逻辑节点[创建主页]
                 executeDEACTION1(iDELogicSession, iPSDELogicNode)
+                break
+            case "END1":
+                //执行逻辑节点[结束]
+                executeEND1(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSFCODE3":
                 //执行逻辑节点[设置发布时间]
@@ -49,9 +49,9 @@ class AutoCreateHomePage extends DELogicRuntime {
                 //执行逻辑节点[设置主页内容（content）]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
-            case "RAWSFCODE2":
-                //执行逻辑节点[设置主页发布内容（publish_content）]
-                executeRAWSFCODE2(iDELogicSession, iPSDELogicNode)
+            case "PREPAREPARAM_01":
+                //执行逻辑节点[设置发布内容]
+                executePrepareparam01(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -65,16 +65,6 @@ class AutoCreateHomePage extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeBegin(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[结束]，逻辑类型[END]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeEND1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -99,6 +89,16 @@ class AutoCreateHomePage extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[结束]，逻辑类型[END]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeEND1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[设置发布时间]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -119,12 +119,12 @@ class AutoCreateHomePage extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[设置主页发布内容（publish_content）]，逻辑类型[RAWSFCODE]
+     * 执行逻辑节点[设置发布内容]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeRAWSFCODE2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executePrepareparam01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }

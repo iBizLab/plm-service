@@ -57,6 +57,10 @@ class CalcActiveChartDatas extends DELogicRuntime {
                 //执行逻辑节点[计算图表所需数据]
                 executeRAWSFCODE2(iDELogicSession, iPSDELogicNode)
                 break
+            case "RAWSFCODE_01":
+                //执行逻辑节点[计算图表数据]
+                executeRawsfcode01(iDELogicSession, iPSDELogicNode)
+                break
             case "END1":
                 //执行逻辑节点[结束]
                 executeEND1(iDELogicSession, iPSDELogicNode)
@@ -144,6 +148,40 @@ class CalcActiveChartDatas extends DELogicRuntime {
      */
     private void executeRAWSFCODE2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[计算图表数据]，逻辑类型[RAWSFCODE]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRawsfcode01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        // 执行Groovy脚本代码
+        def objRet = { sys,logic ->
+            // 从逻辑参数获取数据集
+			def echart_page = logic.param('echart_page').getReal()
+			
+			// 活跃总人数
+			def user_total = logic.param('user_total').getReal()
+			def total = user_total.get('total')
+			
+			echart_page.eachWithIndex { currentRow, i ->
+			     // 计算活跃率
+			    def active_members = currentRow.get('active_members') ?: 0 
+			    def active_rate = total > 0 ?  (active_members.toDouble() / total.toDouble() * 100).round(2) :  "0.00"
+			    currentRow.set("active_rate", active_rate)  
+			}
+			
+			 
+        }.call(iDELogicSession.getDELogicRuntime().getSystemRuntime(), iDELogicSession.getDELogicRuntime())
+        //设置返回值
+        iDELogicSession.setLastReturn(objRet);
+        if(iPSDELogicNode.getRetPSDELogicParam() != null) {
+            def retDELogicParamRuntime = this.getDELogicParamRuntime(iPSDELogicNode.getRetPSDELogicParam().getCodeName(), false);
+            retDELogicParamRuntime.bind(iDELogicSession, objRet);
+        }
+        //super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**

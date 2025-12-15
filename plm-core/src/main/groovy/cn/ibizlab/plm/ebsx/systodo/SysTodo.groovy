@@ -16,6 +16,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class SysTodo extends GroovyDynaDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilterDTO> {
 
+    public static final String ACTION_DELUNDO = "DelUndo"
     public static final String ACTION_GETLINKURL = "GetLinkUrl"
     public static final String DATASET_CURUSER = "CurUser"
     public static final String DATASET_DEFAULT = "DEFAULT"
@@ -95,6 +96,16 @@ class SysTodo extends GroovyDynaDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilt
     @DEAction(ACTION_SAVE)
     SysTodoDTO save(SysTodoDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, SysTodoDTO.class)
+    }
+
+    /**
+     * 行为：删除草稿 实际功能
+     * @param dtos
+     * @throws Throwable
+     */
+    @DEAction(ACTION_DELUNDO)
+    def delUndo(List<SysTodoDTO> dtos) throws Throwable {
+        this.execute(ACTION_DELUNDO, dtos, List<SysTodoDTO>.class)
     }
 
     /**

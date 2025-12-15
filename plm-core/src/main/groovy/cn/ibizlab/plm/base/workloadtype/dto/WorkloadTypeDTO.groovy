@@ -19,6 +19,12 @@ class WorkloadTypeDTO extends GroovyDTO<WorkloadTypeDTO> {
     @JsonProperty("sequence")
     BigDecimal sequence
     /**
+     * 「是否系统默认」
+     * 字典[是否]
+     */
+    @JsonProperty("is_system")
+    Integer isSystem
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -57,6 +63,17 @@ class WorkloadTypeDTO extends GroovyDTO<WorkloadTypeDTO> {
      */
     WorkloadTypeDTO setSequence(BigDecimal sequence) {
         this.sequence = sequence
+        return this
+    }
+
+
+    /**
+     * 设置「是否系统默认」值
+     * 字典[是否]
+     * @param val
+     */
+    WorkloadTypeDTO setIsSystem(Integer isSystem) {
+        this.isSystem = isSystem
         return this
     }
 

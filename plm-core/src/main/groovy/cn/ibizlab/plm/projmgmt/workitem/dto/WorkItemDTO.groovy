@@ -29,6 +29,12 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
     @JsonProperty("identifier")
     String identifier
     /**
+     * 「内容格式」
+     * 字典[报表输出格式]
+     */
+    @JsonProperty("format_type")
+    String formatType
+    /**
      * 「是否已归档」
      * 字典[是否]
      */
@@ -523,6 +529,16 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
      */
     @JsonProperty("work_item_type_name")
     String workItemTypeName
+    /**
+     * 「用户标记」
+     */
+    @JsonProperty("user_tag")
+    String userTag
+    /**
+     * 「用户标记2」
+     */
+    @JsonProperty("user_tag2")
+    String userTag2
 
     /**
      * 设置「编号」值
@@ -540,6 +556,17 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
      */
     WorkItemDTO setIdentifier(String identifier) {
         this.identifier = identifier
+        return this
+    }
+
+
+    /**
+     * 设置「内容格式」值
+     * 字典[报表输出格式]
+     * @param val
+     */
+    WorkItemDTO setFormatType(String formatType) {
+        this.formatType = formatType
         return this
     }
 
@@ -1505,6 +1532,26 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
      */
     WorkItemDTO setWorkItemTypeName(String workItemTypeName) {
         this.workItemTypeName = workItemTypeName
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记」值
+     * @param val
+     */
+    WorkItemDTO setUserTag(String userTag) {
+        this.userTag = userTag
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记2」值
+     * @param val
+     */
+    WorkItemDTO setUserTag2(String userTag2) {
+        this.userTag2 = userTag2
         return this
     }
 

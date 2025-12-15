@@ -144,7 +144,7 @@ class ReviewContent extends GroovyDynaDataEntityRuntime<ReviewContent,ReviewCont
      */
     @DEAction(ACTION_PROGRAM_TEST_CASE)
     def programTestCase(ReviewContentDTO dto) throws Throwable {
-        this.execute(ACTION_PROGRAM_TEST_CASE, dto, ReviewContentDTO.class)
+        return this.execute(ACTION_PROGRAM_TEST_CASE, dto, ReviewContentDTO.class)
     }
 
     /**

@@ -126,7 +126,7 @@ class ProductPlan extends GroovyDynaDataEntityRuntime<ProductPlan,ProductPlanDTO
      */
     @DEAction(ACTION_PRODUCT_PLAN_RELATION_IDEA)
     def productPlanRelationIdea(ProductPlanDTO dto) throws Throwable {
-        this.execute(ACTION_PRODUCT_PLAN_RELATION_IDEA, dto, ProductPlanDTO.class)
+        return this.execute(ACTION_PRODUCT_PLAN_RELATION_IDEA, dto, ProductPlanDTO.class)
     }
 
     /**

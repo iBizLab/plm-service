@@ -41,10 +41,6 @@ class SubmitReview extends DELogicRuntime {
                 //执行逻辑节点[绑定参数]
                 executeBINDPARAM1(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEACTION1":
-                //执行逻辑节点[更新评审]
-                executeDEACTION1(iDELogicSession, iPSDELogicNode)
-                break
             case "DEBUGPARAM2":
                 //执行逻辑节点[调试逻辑参数]
                 executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
@@ -64,6 +60,10 @@ class SubmitReview extends DELogicRuntime {
             case "PREPAREPARAM2":
                 //执行逻辑节点[设置阶段的状态]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEACTION1":
+                //执行逻辑节点[更新评审]
+                executeDEACTION1(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM3":
                 //执行逻辑节点[设置关系过滤参数]
@@ -231,16 +231,6 @@ class SubmitReview extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[更新评审]，逻辑类型[DEACTION]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEACTION1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -287,6 +277,16 @@ class SubmitReview extends DELogicRuntime {
      * @throws Throwable
      */
     private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[更新评审]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

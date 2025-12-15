@@ -3,6 +3,10 @@
 
 system:
   name: ${spring.application.name}
+  market: https://code.ibizlab.cn/api/v4
+  shop: plm_addons/public
+  group: /EE/OFFICE
+  product: ${system.name}
 #  #repo必须以.git或者.git结尾
 #  repo: ''
 #  #zip模式下不可以配置branch,必须为空
@@ -53,9 +57,9 @@ ibiz:
           #系统插件配置
           hubextension:
             productmarket:
-              serviceurl: https://code.ibizlab.cn/api/v4
+              serviceurl: ${system.market}
               mode: V2
-              projectid: plm_addons/public
+              projectid: ${system.shop}
         sysdbscheme:
           #数据源default配置
           default:
@@ -63,10 +67,11 @@ ibiz:
 
     master:
       deploysystemid: ${system.name}
-      group: /EE/OFFICE
       settings:
         repo: ${system.repo:}
         branch: ${system.branch:}
+        product: ${system.product}
+        group: ${system.group}
         appdatactx:
           modeldesignpath: https://open.ibizlab.cn/modeldesign/#/
           modeldesignmode: v9
@@ -100,6 +105,7 @@ ibiz:
     initmode: auto
     # 本地配置优先启动模式 localmode true：本地配置优先，false：远程nacos配置优先（默认）
     localmode: false
+    monitordebugmodelpathstimer: ${system.reloadMonitorInterval:-1}
     deploysystems:
       - gateway
       - ${system.name}

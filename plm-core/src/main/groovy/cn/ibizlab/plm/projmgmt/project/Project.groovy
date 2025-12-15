@@ -37,6 +37,7 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_VIEW = "VIEW"
     public static final String DATASET_ADMIN = "admin"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_BI_DETAIL = "bi_detail"
     public static final String DATASET_BI_SEARCH = "bi_search"
@@ -46,9 +47,11 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     public static final String DATASET_FAVORITE = "favorite"
     public static final String DATASET_MAIN = "main"
     public static final String DATASET_MOB_MAIN = "mob_main"
+    public static final String DATASET_MY_VISIBLE = "my_visible"
     public static final String DATASET_NO_RELATION = "no_relation"
     public static final String DATASET_NORMAL = "normal"
     public static final String DATASET_PRODUCT_RE_PROJECT = "product_re_project"
+    public static final String DATASET_PROJECT_TYPE = "project_type"
     public static final String DATASET_QUICK = "quick"
     public static final String DATASET_QUICK_USER = "quick_user"
     public static final String DATASET_READER = "reader"
@@ -215,13 +218,13 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     }
 
     /**
-     * 行为：关联项目 实际功能
+     * 行为：其他实体关联项目 实际功能
      * @param dto
      * @throws Throwable
      */
     @DEAction(ACTION_OTHER_RE_PROJECT)
     def otherReProject(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_PROJECT, dto, ProjectDTO.class)
+        return this.execute(ACTION_OTHER_RE_PROJECT, dto, ProjectDTO.class)
     }
 
     /**
@@ -231,7 +234,7 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
      */
     @DEAction(ACTION_OTHER_RE_SPACE)
     def otherReSpace(ProjectDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_SPACE, dto, ProjectDTO.class)
+        return this.execute(ACTION_OTHER_RE_SPACE, dto, ProjectDTO.class)
     }
 
     /**
@@ -345,6 +348,16 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     }
 
     /**
+     * 数据集：查询项目信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<ProjectAiInfoDTO> fetchAiInfo(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, ProjectAiInfoDTO.class)
+    }
+
+    /**
      * 数据集：已归档 实际功能
      * @param dto
      * @throws Throwable
@@ -435,6 +448,16 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     }
 
     /**
+     * 数据集：我的可见项目 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_MY_VISIBLE)
+    Page<ProjectExtendDefGroupDTO> fetchMyVisible(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_VISIBLE, context, ProjectExtendDefGroupDTO.class)
+    }
+
+    /**
      * 数据集：未关联的项目 实际功能
      * @param dto
      * @throws Throwable
@@ -462,6 +485,16 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     @DEDataSet(DATASET_PRODUCT_RE_PROJECT)
     Page<ProjectDTO> fetchProductReProject(ProjectFilterDTO context) throws Throwable {
         return this.fetch(DATASET_PRODUCT_RE_PROJECT, context, ProjectDTO.class)
+    }
+
+    /**
+     * 数据集：项目类型 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_PROJECT_TYPE)
+    Page<ProjectDTO> fetchProjectType(ProjectFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_PROJECT_TYPE, context, ProjectDTO.class)
     }
 
     /**

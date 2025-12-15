@@ -41,6 +41,10 @@ class RunDelRelationBug extends DELogicRuntime {
                 //执行逻辑节点[删除反向关联]
                 executeDEACTION3(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEACTION6":
+                //执行逻辑节点[获取执行用例]
+                executeDEACTION6(iDELogicSession, iPSDELogicNode)
+                break
             case "DEBUGPARAM1":
                 //执行逻辑节点[调试逻辑参数]
                 executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
@@ -49,9 +53,13 @@ class RunDelRelationBug extends DELogicRuntime {
                 //执行逻辑节点[准备执行用例参数]
                 executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEACTION6":
-                //执行逻辑节点[获取执行用例]
-                executeDEACTION6(iDELogicSession, iPSDELogicNode)
+            case "DEDATASET1":
+                //执行逻辑节点[对应测试用例关联缺陷]
+                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
+                break
+            case "LOOPSUBCALL1":
+                //执行逻辑节点[循环子调用]
+                executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
                 break
             case "PREPAREPARAM1":
                 //执行逻辑节点[填充正反关联对象的主要关联属性]
@@ -60,14 +68,6 @@ class RunDelRelationBug extends DELogicRuntime {
             case "PREPAREPARAM2":
                 //执行逻辑节点[准备关联数据过滤参数]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEDATASET1":
-                //执行逻辑节点[对应测试用例关联缺陷]
-                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
-                break
-            case "LOOPSUBCALL1":
-                //执行逻辑节点[循环子调用]
-                executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSFCODE2":
                 //执行逻辑节点[填充主键]
@@ -127,6 +127,16 @@ class RunDelRelationBug extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[获取执行用例]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -147,12 +157,22 @@ class RunDelRelationBug extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[获取执行用例]，逻辑类型[DEACTION]
+     * 执行逻辑节点[对应测试用例关联缺陷]，逻辑类型[DEDATASET]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
-    private void executeDEACTION6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -173,26 +193,6 @@ class RunDelRelationBug extends DELogicRuntime {
      * @throws Throwable
      */
     private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[对应测试用例关联缺陷]，逻辑类型[DEDATASET]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

@@ -29,10 +29,6 @@ class AddReviewContent extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
-            case "DEBUGPARAM2":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM2(iDELogicSession, iPSDELogicNode)
-                break
             case "BINDPARAM1":
                 //执行逻辑节点[绑定关联列表参数]
                 executeBINDPARAM1(iDELogicSession, iPSDELogicNode)
@@ -40,10 +36,6 @@ class AddReviewContent extends DELogicRuntime {
             case "LOOPSUBCALL1":
                 //执行逻辑节点[循环子调用]
                 executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
-                break
-            case "DEBUGPARAM1":
-                //执行逻辑节点[调试逻辑参数]
-                executeDEBUGPARAM1(iDELogicSession, iPSDELogicNode)
                 break
             case "RENEWPARAM1":
                 //执行逻辑节点[重新建立正向参数]
@@ -101,16 +93,6 @@ class AddReviewContent extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEBUGPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[绑定关联列表参数]，逻辑类型[BINDPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -127,16 +109,6 @@ class AddReviewContent extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeDEBUGPARAM1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

@@ -104,7 +104,7 @@ class Activity extends GroovyDynaDataEntityRuntime<Activity,ActivityDTO,Activity
      */
     @DEAction(ACTION_GET_ACTIVITY_OBJ_DETAIL)
     def getActivityObjDetail(ActivityDTO dto) throws Throwable {
-        this.execute(ACTION_GET_ACTIVITY_OBJ_DETAIL, dto, ActivityDTO.class)
+        return this.execute(ACTION_GET_ACTIVITY_OBJ_DETAIL, dto, ActivityDTO.class)
     }
 
     /**

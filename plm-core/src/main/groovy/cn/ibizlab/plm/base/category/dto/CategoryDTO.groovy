@@ -30,6 +30,7 @@ class CategoryDTO extends GroovyDTO<CategoryDTO> {
     String ownerType
     /**
      * 「所属对象子类型」
+     * 字典[工作流类型]
      */
     @JsonProperty("owner_subtype")
     String ownerSubtype
@@ -61,6 +62,17 @@ class CategoryDTO extends GroovyDTO<CategoryDTO> {
      */
     @JsonProperty("is_leaf3")
     Integer isLeaf3
+    /**
+     * 「工作流版本」
+     */
+    @JsonProperty("wf_version_id")
+    String wfVersionId
+    /**
+     * 「是否删除」
+     * 字典[是否]
+     */
+    @JsonProperty("is_deleted")
+    Integer isDeleted
     /**
      * 「建立人」
      * 字典[云系统操作者]
@@ -151,6 +163,7 @@ class CategoryDTO extends GroovyDTO<CategoryDTO> {
 
     /**
      * 设置「所属对象子类型」值
+     * 字典[工作流类型]
      * @param val
      */
     CategoryDTO setOwnerSubtype(String ownerSubtype) {
@@ -208,6 +221,27 @@ class CategoryDTO extends GroovyDTO<CategoryDTO> {
      */
     CategoryDTO setIsLeaf3(Integer isLeaf3) {
         this.isLeaf3 = isLeaf3
+        return this
+    }
+
+
+    /**
+     * 设置「工作流版本」值
+     * @param val
+     */
+    CategoryDTO setWfVersionId(String wfVersionId) {
+        this.wfVersionId = wfVersionId
+        return this
+    }
+
+
+    /**
+     * 设置「是否删除」值
+     * 字典[是否]
+     * @param val
+     */
+    CategoryDTO setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted
         return this
     }
 

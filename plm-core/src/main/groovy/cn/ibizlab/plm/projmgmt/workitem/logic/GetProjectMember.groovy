@@ -8,7 +8,7 @@ import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
 /**
- * 实体[WORK_ITEM]处理逻辑[获取项目成员]运行时对象
+ * 实体[WORK_ITEM]处理逻辑[获取项目成员及权限]运行时对象
  * 此代码用户功能扩展代码
  *
  * 获取项目成员信息，用于判断当前用户权限
@@ -29,6 +29,10 @@ class GetProjectMember extends DELogicRuntime {
                 //执行逻辑节点[开始]
                 executeBegin(iDELogicSession, iPSDELogicNode)
                 break
+            case "DEBUGPARAM_01":
+                //执行逻辑节点[调试逻辑参数]
+                executeDebugparam01(iDELogicSession, iPSDELogicNode)
+                break
             case "RAWSFCODE3":
                 //执行逻辑节点[判断系统管理员身份]
                 executeRAWSFCODE3(iDELogicSession, iPSDELogicNode)
@@ -45,6 +49,10 @@ class GetProjectMember extends DELogicRuntime {
                 //执行逻辑节点[查询当前用户是否为项目成员]
                 executeDEDATASET3(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM3":
+                //执行逻辑节点[空]
+                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM5":
                 //执行逻辑节点[绑定用户数据到for_obj]
                 executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
@@ -53,17 +61,13 @@ class GetProjectMember extends DELogicRuntime {
                 //执行逻辑节点[只读权限]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
                 break
-            case "END6":
-                //执行逻辑节点[结束]
-                executeEND6(iDELogicSession, iPSDELogicNode)
-                break
-            case "PREPAREPARAM3":
-                //执行逻辑节点[空]
-                executePREPAREPARAM3(iDELogicSession, iPSDELogicNode)
-                break
             case "RAWSFCODE2":
                 //执行逻辑节点[非只读权限]
                 executeRAWSFCODE2(iDELogicSession, iPSDELogicNode)
+                break
+            case "END6":
+                //执行逻辑节点[结束]
+                executeEND6(iDELogicSession, iPSDELogicNode)
                 break
             case "RAWSFCODE4":
                 //执行逻辑节点[只读权限]
@@ -81,6 +85,16 @@ class GetProjectMember extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeBegin(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[调试逻辑参数]，逻辑类型[DEBUGPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDebugparam01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
@@ -140,6 +154,16 @@ class GetProjectMember extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[空]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[绑定用户数据到for_obj]，逻辑类型[PREPAREPARAM]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -160,32 +184,22 @@ class GetProjectMember extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[结束]，逻辑类型[END]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeEND6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
-     * 执行逻辑节点[空]，逻辑类型[PREPAREPARAM]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executePREPAREPARAM3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[非只读权限]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeRAWSFCODE2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[结束]，逻辑类型[END]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeEND6(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

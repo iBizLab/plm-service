@@ -49,6 +49,10 @@ class PublishPage extends DELogicRuntime {
                 //执行逻辑节点[重置ID]
                 executePREPAREPARAM4(iDELogicSession, iPSDELogicNode)
                 break
+            case "RAWSFCODE_01":
+                //执行逻辑节点[设置默认排序值]
+                executeRawsfcode01(iDELogicSession, iPSDELogicNode)
+                break
             case "PREPAREPARAM2":
                 //执行逻辑节点[设置发布状态]
                 executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
@@ -124,6 +128,33 @@ class PublishPage extends DELogicRuntime {
      */
     private void executePREPAREPARAM4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[设置默认排序值]，逻辑类型[RAWSFCODE]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRawsfcode01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        // 执行Groovy脚本代码
+        def objRet = { sys,logic ->
+            def _default = logic.param('Default').getReal() 
+			def _identifier= _default.get('identifier')
+			
+			try{
+			    _default.set('sequence', _identifier.toInteger()*100)
+			} catch (Exception e)  {
+			    _default.set('sequence', 1)
+			}
+        }.call(iDELogicSession.getDELogicRuntime().getSystemRuntime(), iDELogicSession.getDELogicRuntime())
+        //设置返回值
+        iDELogicSession.setLastReturn(objRet);
+        if(iPSDELogicNode.getRetPSDELogicParam() != null) {
+            def retDELogicParamRuntime = this.getDELogicParamRuntime(iPSDELogicNode.getRetPSDELogicParam().getCodeName(), false);
+            retDELogicParamRuntime.bind(iDELogicSession, objRet);
+        }
+        //super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 
     /**

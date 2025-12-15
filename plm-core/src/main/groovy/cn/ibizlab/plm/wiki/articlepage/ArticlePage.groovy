@@ -16,6 +16,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ArticlePage extends GroovyDynaDataEntityRuntime<ArticlePage,ArticlePageDTO,ArticlePageFilterDTO> {
 
+    public static final String ACTION_AI_CREATE_PAGE = "ai_create_page"
     public static final String ACTION_CHECK_ACCESS_PASSWORD = "check_access_password"
     public static final String ACTION_CHECK_SHARED = "check_shared"
     public static final String ACTION_CLOSED_SHARED = "closed_shared"
@@ -43,6 +44,7 @@ class ArticlePage extends GroovyDynaDataEntityRuntime<ArticlePage,ArticlePageDTO
     public static final String ACTION_UNLOCK_PAGE = "unlock_page"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ALL_SHARED_PAGES = "all_shared_pages"
     public static final String DATASET_BASELINE_CHOOSE_PAGE = "baseline_choose_page"
     public static final String DATASET_BASELINE_PLAN_PAGE = "baseline_plan_page"
@@ -143,6 +145,16 @@ class ArticlePage extends GroovyDynaDataEntityRuntime<ArticlePage,ArticlePageDTO
     @DEAction(ACTION_SAVE)
     ArticlePageDTO save(ArticlePageDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, ArticlePageDTO.class)
+    }
+
+    /**
+     * 行为：AI创建页面 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_AI_CREATE_PAGE)
+    def aiCreatePage(ArticlePageDTO dto) throws Throwable {
+        return this.execute(ACTION_AI_CREATE_PAGE, dto, ArticlePageDTO.class)
     }
 
     /**
@@ -413,6 +425,16 @@ class ArticlePage extends GroovyDynaDataEntityRuntime<ArticlePage,ArticlePageDTO
     @DEDataSet(DATASET_ADVANCED_SEARCH)
     Page<ArticlePageDTO> fetchAdvancedSearch(ArticlePageFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ADVANCED_SEARCH, context, ArticlePageDTO.class)
+    }
+
+    /**
+     * 数据集：查询知识空间的页面信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<ArticlePageAiInfoDTO> fetchAiInfo(ArticlePageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, ArticlePageAiInfoDTO.class)
     }
 
     /**

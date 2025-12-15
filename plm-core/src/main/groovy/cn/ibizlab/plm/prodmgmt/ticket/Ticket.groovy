@@ -32,6 +32,7 @@ class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDT
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADMIN = "admin"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_BI_DETAIL = "bi_detail"
     public static final String DATASET_BI_SEARCH = "bi_search"
@@ -49,6 +50,7 @@ class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDT
     public static final String DATASET_MY_ATTENTION = "my_attention"
     public static final String DATASET_MY_CREATED = "my_created"
     public static final String DATASET_MY_FILTER = "my_filter"
+    public static final String DATASET_MY_SUBMIT = "my_submit"
     public static final String DATASET_MY_SUMMARY_TICKET = "my_summary_ticket"
     public static final String DATASET_NORMAL = "normal"
     public static final String DATASET_NOT_EXSISTS_RELATION = "not_exsists_relation"
@@ -186,7 +188,7 @@ class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDT
      */
     @DEAction(ACTION_CUSTOMER_CHOOSE_TICKET)
     def customerChooseTicket(TicketDTO dto) throws Throwable {
-        this.execute(ACTION_CUSTOMER_CHOOSE_TICKET, dto, TicketDTO.class)
+        return this.execute(ACTION_CUSTOMER_CHOOSE_TICKET, dto, TicketDTO.class)
     }
 
     /**
@@ -226,7 +228,7 @@ class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDT
      */
     @DEAction(ACTION_OTHERS_RELATION_TICKET)
     def othersRelationTicket(TicketDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_TICKET, dto, TicketDTO.class)
+        return this.execute(ACTION_OTHERS_RELATION_TICKET, dto, TicketDTO.class)
     }
 
     /**
@@ -297,6 +299,16 @@ class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDT
     @DEDataSet(DATASET_ADVANCED_SEARCH)
     Page<TicketAdvancedSearchDTO> fetchAdvancedSearch(TicketFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ADVANCED_SEARCH, context, TicketAdvancedSearchDTO.class)
+    }
+
+    /**
+     * 数据集：查询工单信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<TicketAiInfoDTO> fetchAiInfo(TicketFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, TicketAiInfoDTO.class)
     }
 
     /**
@@ -467,6 +479,16 @@ class Ticket extends GroovyDynaDataEntityRuntime<Ticket,TicketDTO,TicketFilterDT
     @DEDataSet(DATASET_MY_FILTER)
     Page<TicketDTO> fetchMyFilter(TicketFilterDTO context) throws Throwable {
         return this.fetch(DATASET_MY_FILTER, context, TicketDTO.class)
+    }
+
+    /**
+     * 数据集：我提交的工单 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_MY_SUBMIT)
+    Page<TicketDTO> fetchMySubmit(TicketFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_MY_SUBMIT, context, TicketDTO.class)
     }
 
     /**

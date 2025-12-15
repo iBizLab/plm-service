@@ -51,6 +51,11 @@ class CommentDTO extends GroovyDTO<CommentDTO> {
     @JsonProperty("pcreate_man")
     String pcreateMan
     /**
+     * 「内容格式」
+     */
+    @JsonProperty("format_type")
+    String formatType
+    /**
      * 「是否置顶」
      * 字典[是否]
      */
@@ -162,6 +167,16 @@ class CommentDTO extends GroovyDTO<CommentDTO> {
      */
     CommentDTO setPcreateMan(String pcreateMan) {
         this.pcreateMan = pcreateMan
+        return this
+    }
+
+
+    /**
+     * 设置「内容格式」值
+     * @param val
+     */
+    CommentDTO setFormatType(String formatType) {
+        this.formatType = formatType
         return this
     }
 

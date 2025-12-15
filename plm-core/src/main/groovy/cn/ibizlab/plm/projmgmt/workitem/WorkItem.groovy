@@ -55,6 +55,7 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
     public static final String ACTION_WORK_ITEM_TYPE_ID = "work_item_type_id"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_BACKLOG_ACCUMULATE_FLOW = "backlog_accumulate_flow"
     public static final String DATASET_BACKLOG_AGE_REPORT = "backlog_age_report"
@@ -135,6 +136,7 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
     public static final String DATASET_UNDER_WORK_RESOURCE = "under_work_resource"
     public static final String DATASET_WORK_ITEM_DISTRIBUTION = "work_item_distribution"
     public static final String DATASET_WORK_ITEM_TYPE = "work_item_type"
+    public static final String DATASET_WORKLOAD_WORK_ITEM = "workload_work_item"
     private static WorkItem _instance
     void setInstance(WorkItem instance) {
         _instance = instance
@@ -300,7 +302,7 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
      */
     @DEAction(ACTION_CHOOSE_CHILD)
     def chooseChild(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_CHOOSE_CHILD, dto, WorkItemDTO.class)
+        return this.execute(ACTION_CHOOSE_CHILD, dto, WorkItemDTO.class)
     }
 
     /**
@@ -420,7 +422,7 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
      */
     @DEAction(ACTION_OTHERS_RELATION_WORK_ITEM)
     def othersRelationWorkItem(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_WORK_ITEM, dto, WorkItemDTO.class)
+        return this.execute(ACTION_OTHERS_RELATION_WORK_ITEM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -430,7 +432,7 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
      */
     @DEAction(ACTION_PLAN_WORK_ITEM)
     def planWorkItem(WorkItemDTO dto) throws Throwable {
-        this.execute(ACTION_PLAN_WORK_ITEM, dto, WorkItemDTO.class)
+        return this.execute(ACTION_PLAN_WORK_ITEM, dto, WorkItemDTO.class)
     }
 
     /**
@@ -601,6 +603,16 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
     @DEDataSet(DATASET_ADVANCED_SEARCH)
     Page<WorkItemDTO> fetchAdvancedSearch(WorkItemFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ADVANCED_SEARCH, context, WorkItemDTO.class)
+    }
+
+    /**
+     * 数据集：查询工作项信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<WorkItemAiInfoDTO> fetchAiInfo(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, WorkItemAiInfoDTO.class)
     }
 
     /**
@@ -1401,6 +1413,16 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
     @DEDataSet(DATASET_WORK_ITEM_TYPE)
     Page<WorkItemWorkItemTypeIdDTO> fetchWorkItemType(WorkItemFilterDTO context) throws Throwable {
         return this.fetch(DATASET_WORK_ITEM_TYPE, context, WorkItemWorkItemTypeIdDTO.class)
+    }
+
+    /**
+     * 数据集：工时登记工作项 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORKLOAD_WORK_ITEM)
+    Page<WorkItemUsuallyDTO> fetchWorkloadWorkItem(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORKLOAD_WORK_ITEM, context, WorkItemUsuallyDTO.class)
     }
 
 }

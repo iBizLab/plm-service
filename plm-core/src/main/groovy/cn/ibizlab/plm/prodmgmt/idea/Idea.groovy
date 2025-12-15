@@ -39,6 +39,7 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADMIN = "admin"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_BASELINE_CHOOSE_IDEA = "baseline_choose_idea"
     public static final String DATASET_BASELINE_IDEA = "baseline_idea"
@@ -59,6 +60,7 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_MY_FILTER = "my_filter"
     public static final String DATASET_MY_SUMMARY_IDEA = "my_summary_idea"
     public static final String DATASET_NORMAL = "normal"
+    public static final String DATASET_NOT_ADD_IDEA = "not_add_idea"
     public static final String DATASET_NOT_EXSISTS_RELATION = "not_exsists_relation"
     public static final String DATASET_NOTIFY_ASSIGNEE = "notify_assignee"
     public static final String DATASET_PLAN_RELATION_IDEA = "plan_relation_idea"
@@ -68,6 +70,7 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     public static final String DATASET_RELATION_IDEA = "relation_idea"
     public static final String DATASET_REVIEW_DATA = "review_data"
     public static final String DATASET_USER = "user"
+    public static final String DATASET_WORKLOAD_IDEA = "workload_idea"
     private static Idea _instance
     void setInstance(Idea instance) {
         _instance = instance
@@ -303,7 +306,7 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
      */
     @DEAction(ACTION_OTHERS_RELATION_IDEA)
     def othersRelationIdea(IdeaDTO dto) throws Throwable {
-        this.execute(ACTION_OTHERS_RELATION_IDEA, dto, IdeaDTO.class)
+        return this.execute(ACTION_OTHERS_RELATION_IDEA, dto, IdeaDTO.class)
     }
 
     /**
@@ -374,6 +377,16 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     @DEDataSet(DATASET_ADVANCED_SEARCH)
     Page<IdeaAdvancedSearchDTO> fetchAdvancedSearch(IdeaFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ADVANCED_SEARCH, context, IdeaAdvancedSearchDTO.class)
+    }
+
+    /**
+     * 数据集：查询产品需求信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<IdeaAiInfoDTO> fetchAiInfo(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, IdeaAiInfoDTO.class)
     }
 
     /**
@@ -577,6 +590,16 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     }
 
     /**
+     * 数据集：未添加的需求 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_NOT_ADD_IDEA)
+    Page<IdeaDTO> fetchNotAddIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_NOT_ADD_IDEA, context, IdeaDTO.class)
+    }
+
+    /**
      * 数据集：未关联的需求 实际功能
      * @param dto
      * @throws Throwable
@@ -664,6 +687,16 @@ class Idea extends GroovyDynaDataEntityRuntime<Idea,IdeaDTO,IdeaFilterDTO> {
     @DEDataSet(DATASET_USER)
     Page<IdeaDTO> fetchUser(IdeaFilterDTO context) throws Throwable {
         return this.fetch(DATASET_USER, context, IdeaDTO.class)
+    }
+
+    /**
+     * 数据集：工时登记需求 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_WORKLOAD_IDEA)
+    Page<IdeaDTO> fetchWorkloadIdea(IdeaFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_WORKLOAD_IDEA, context, IdeaDTO.class)
     }
 
 }

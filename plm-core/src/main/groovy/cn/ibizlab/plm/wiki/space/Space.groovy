@@ -22,6 +22,7 @@ class Space extends GroovyDynaDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
     public static final String ACTION_DEL_RELATION = "del_relation"
     public static final String ACTION_DELETE = "delete"
     public static final String ACTION_FAVORITE = "favorite"
+    public static final String ACTION_MARK_MAIN_SPACE = "mark_main_space"
     public static final String ACTION_MOVE_OUT_CATEGORY = "move_out_category"
     public static final String ACTION_MOVE_SPACE = "move_space"
     public static final String ACTION_OPEN_SHARED = "open_shared"
@@ -186,6 +187,16 @@ class Space extends GroovyDynaDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
     }
 
     /**
+     * 行为：标记主空间 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_MARK_MAIN_SPACE)
+    def markMainSpace(SpaceDTO dto) throws Throwable {
+        return this.execute(ACTION_MARK_MAIN_SPACE, dto, SpaceDTO.class)
+    }
+
+    /**
      * 行为：移出分类 实际功能
      * @param dto
      * @throws Throwable
@@ -222,7 +233,7 @@ class Space extends GroovyDynaDataEntityRuntime<Space,SpaceDTO,SpaceFilterDTO> {
      */
     @DEAction(ACTION_OTHER_RE_SPACE)
     def otherReSpace(SpaceDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_SPACE, dto, SpaceDTO.class)
+        return this.execute(ACTION_OTHER_RE_SPACE, dto, SpaceDTO.class)
     }
 
     /**

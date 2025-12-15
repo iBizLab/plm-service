@@ -31,6 +31,7 @@ class Product extends GroovyDynaDataEntityRuntime<Product,ProductDTO,ProductFilt
     public static final String ACTION_UN_FAVORITE = "un_favorite"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADMIN = "admin"
+    public static final String DATASET_AI_INFO = "ai_info"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_CUR_PRODUCT = "cur_product"
     public static final String DATASET_CUSTOMER_USER = "customer_user"
@@ -173,13 +174,13 @@ class Product extends GroovyDynaDataEntityRuntime<Product,ProductDTO,ProductFilt
     }
 
     /**
-     * 行为：关联产品 实际功能
+     * 行为：其他实体关联产品 实际功能
      * @param dto
      * @throws Throwable
      */
     @DEAction(ACTION_OTHER_RE_PRODUCT)
     def otherReProduct(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_PRODUCT, dto, ProductDTO.class)
+        return this.execute(ACTION_OTHER_RE_PRODUCT, dto, ProductDTO.class)
     }
 
     /**
@@ -189,7 +190,7 @@ class Product extends GroovyDynaDataEntityRuntime<Product,ProductDTO,ProductFilt
      */
     @DEAction(ACTION_OTHER_RE_SPACE)
     def otherReSpace(ProductDTO dto) throws Throwable {
-        this.execute(ACTION_OTHER_RE_SPACE, dto, ProductDTO.class)
+        return this.execute(ACTION_OTHER_RE_SPACE, dto, ProductDTO.class)
     }
 
     /**
@@ -270,6 +271,16 @@ class Product extends GroovyDynaDataEntityRuntime<Product,ProductDTO,ProductFilt
     @DEDataSet(DATASET_ADMIN)
     Page<ProductDTO> fetchAdmin(ProductFilterDTO context) throws Throwable {
         return this.fetch(DATASET_ADMIN, context, ProductDTO.class)
+    }
+
+    /**
+     * 数据集：查询产品信息（AI调用） 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_INFO)
+    Page<ProductAiInfoDTO> fetchAiInfo(ProductFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_INFO, context, ProductAiInfoDTO.class)
     }
 
     /**
