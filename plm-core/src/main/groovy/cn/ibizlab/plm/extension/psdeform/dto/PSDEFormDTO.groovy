@@ -36,6 +36,11 @@ class PSDEFormDTO extends GroovyDTO<PSDEFormDTO> {
     @JsonProperty("createman")
     String createMan
     /**
+     * 「表单数据类型」
+     */
+    @JsonProperty("datatype")
+    String dataType
+    /**
      * 「表单类型」
      */
     @JsonProperty("formtype")
@@ -130,6 +135,16 @@ class PSDEFormDTO extends GroovyDTO<PSDEFormDTO> {
      */
     PSDEFormDTO setCreateMan(String createMan) {
         this.createMan = createMan
+        return this
+    }
+
+
+    /**
+     * 设置「表单数据类型」值
+     * @param val
+     */
+    PSDEFormDTO setDataType(String dataType) {
+        this.dataType = dataType
         return this
     }
 

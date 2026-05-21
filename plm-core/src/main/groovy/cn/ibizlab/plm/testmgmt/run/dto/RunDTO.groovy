@@ -11,6 +11,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
 import cn.ibizlab.plm.testmgmt.step.dto.StepDTO
 import cn.ibizlab.plm.base.attention.dto.AttentionDTO
 import cn.ibizlab.plm.testmgmt.runattachment.dto.RunAttachmentDTO
+import cn.ibizlab.plm.base.executor.dto.ExecutorDTO
 
 @DEDataModel
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -229,6 +230,11 @@ class RunDTO extends GroovyDTO<RunDTO> {
     @JsonProperty("review_result_state")
     String reviewResultState
     /**
+     * 「执行人」
+     */
+    @JsonProperty("executors")
+    List<ExecutorDTO> executors
+    /**
      * 「关注人」
      */
     @JsonProperty("attentions_imp")
@@ -238,6 +244,12 @@ class RunDTO extends GroovyDTO<RunDTO> {
      */
     @JsonProperty("recent_create_days")
     Integer recentCreateDays
+    /**
+     * 「多人任务」
+     * 字典[是否]
+     */
+    @JsonProperty("multiple_people")
+    Integer multiplePeople
     /**
      * 「测试用例标识」
      */
@@ -699,6 +711,16 @@ class RunDTO extends GroovyDTO<RunDTO> {
 
 
     /**
+     * 设置「执行人」值
+     * @param val
+     */
+    RunDTO setExecutors(List<ExecutorDTO> executors) {
+        this.executors = executors
+        return this
+    }
+
+
+    /**
      * 设置「关注人」值
      * @param val
      */
@@ -714,6 +736,17 @@ class RunDTO extends GroovyDTO<RunDTO> {
      */
     RunDTO setRecentCreateDays(Integer recentCreateDays) {
         this.recentCreateDays = recentCreateDays
+        return this
+    }
+
+
+    /**
+     * 设置「多人任务」值
+     * 字典[是否]
+     * @param val
+     */
+    RunDTO setMultiplePeople(Integer multiplePeople) {
+        this.multiplePeople = multiplePeople
         return this
     }
 

@@ -99,16 +99,6 @@ class SysTodo extends GroovyDynaDataEntityRuntime<SysTodo,SysTodoDTO,SysTodoFilt
     }
 
     /**
-     * 行为：删除草稿 实际功能
-     * @param dtos
-     * @throws Throwable
-     */
-    @DEAction(ACTION_DELUNDO)
-    def delUndo(List<SysTodoDTO> dtos) throws Throwable {
-        this.execute(ACTION_DELUNDO, dtos, List<SysTodoDTO>.class)
-    }
-
-    /**
      * 行为：GetLinkUrl 实际功能
      * @param key
      * @throws Throwable

@@ -46,6 +46,17 @@ class AiAgentToolRelDTO extends GroovyDTO<AiAgentToolRelDTO> {
     @JsonProperty("update_time")
     Timestamp updateTime
     /**
+     * 「工具标识」
+     */
+    @JsonProperty("tool_tag")
+    String toolTag
+    /**
+     * 「工具类型」
+     * 字典[Tool类型]
+     */
+    @JsonProperty("tool_type")
+    String toolType
+    /**
      * 「智能体标识」
      */
     @JsonProperty("ai_agent_id")
@@ -124,6 +135,27 @@ class AiAgentToolRelDTO extends GroovyDTO<AiAgentToolRelDTO> {
      */
     AiAgentToolRelDTO setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime
+        return this
+    }
+
+
+    /**
+     * 设置「工具标识」值
+     * @param val
+     */
+    AiAgentToolRelDTO setToolTag(String toolTag) {
+        this.toolTag = toolTag
+        return this
+    }
+
+
+    /**
+     * 设置「工具类型」值
+     * 字典[Tool类型]
+     * @param val
+     */
+    AiAgentToolRelDTO setToolType(String toolType) {
+        this.toolType = toolType
         return this
     }
 

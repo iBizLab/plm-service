@@ -17,6 +17,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
 class ExtendSchedule extends GroovyDynaDataEntityRuntime<ExtendSchedule,ExtendScheduleDTO,ExtendScheduleFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_VALID = "VALID"
     private static ExtendSchedule _instance
     void setInstance(ExtendSchedule instance) {
         _instance = instance
@@ -103,6 +104,16 @@ class ExtendSchedule extends GroovyDynaDataEntityRuntime<ExtendSchedule,ExtendSc
     @DEDataSet(DATASET_DEFAULT)
     Page<ExtendScheduleDTO> fetchDefault(ExtendScheduleFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, ExtendScheduleDTO.class)
+    }
+
+    /**
+     * 数据集：启用 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_VALID)
+    Page<ExtendScheduleDTO> fetchValid(ExtendScheduleFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_VALID, context, ExtendScheduleDTO.class)
     }
 
 }

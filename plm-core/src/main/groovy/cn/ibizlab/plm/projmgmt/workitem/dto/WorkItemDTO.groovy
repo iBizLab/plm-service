@@ -30,7 +30,7 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
     String identifier
     /**
      * 「内容格式」
-     * 字典[报表输出格式]
+     * 字典[内容格式查看]
      */
     @JsonProperty("format_type")
     String formatType
@@ -562,7 +562,7 @@ class WorkItemDTO extends GroovyDTO<WorkItemDTO> {
 
     /**
      * 设置「内容格式」值
-     * 字典[报表输出格式]
+     * 字典[内容格式查看]
      * @param val
      */
     WorkItemDTO setFormatType(String formatType) {

@@ -79,6 +79,16 @@ class AiAgentMessageDTO extends GroovyDTO<AiAgentMessageDTO> {
     @JsonProperty("status")
     String status
     /**
+     * 「外部会话标识」
+     */
+    @JsonProperty("session_id")
+    String sessionId
+    /**
+     * 「用户ID」
+     */
+    @JsonProperty("user_id")
+    String userId
+    /**
      * 「消息内容」
      */
     @JsonProperty("content")
@@ -256,6 +266,26 @@ class AiAgentMessageDTO extends GroovyDTO<AiAgentMessageDTO> {
      */
     AiAgentMessageDTO setStatus(String status) {
         this.status = status
+        return this
+    }
+
+
+    /**
+     * 设置「外部会话标识」值
+     * @param val
+     */
+    AiAgentMessageDTO setSessionId(String sessionId) {
+        this.sessionId = sessionId
+        return this
+    }
+
+
+    /**
+     * 设置「用户ID」值
+     * @param val
+     */
+    AiAgentMessageDTO setUserId(String userId) {
+        this.userId = userId
         return this
     }
 

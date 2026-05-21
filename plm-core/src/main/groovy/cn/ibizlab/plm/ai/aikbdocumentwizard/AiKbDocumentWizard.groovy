@@ -17,6 +17,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
 class AiKbDocumentWizard extends GroovyDynaDataEntityRuntime<AiKbDocumentWizard,AiKbDocumentWizardDTO,AiKbDocumentWizardFilterDTO> {
 
     public static final String ACTION_CREATE_AI_KB_DOC = "create_ai_kb_doc"
+    public static final String ACTION_FILL_KB_CHUNK = "fill_kb_chunk"
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static AiKbDocumentWizard _instance
     void setInstance(AiKbDocumentWizard instance) {
@@ -104,6 +105,16 @@ class AiKbDocumentWizard extends GroovyDynaDataEntityRuntime<AiKbDocumentWizard,
     @DEAction(ACTION_CREATE_AI_KB_DOC)
     def createAiKbDoc(AiKbDocumentWizardDTO dto) throws Throwable {
         this.execute(ACTION_CREATE_AI_KB_DOC, dto, AiKbDocumentWizardDTO.class)
+    }
+
+    /**
+     * 行为：填充知识库切片策略 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_FILL_KB_CHUNK)
+    def fillKbChunk(AiKbDocumentWizardDTO dto) throws Throwable {
+        this.execute(ACTION_FILL_KB_CHUNK, dto, AiKbDocumentWizardDTO.class)
     }
 
     /**

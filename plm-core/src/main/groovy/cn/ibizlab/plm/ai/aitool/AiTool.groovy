@@ -17,6 +17,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
 class AiTool extends GroovyDynaDataEntityRuntime<AiTool,AiToolDTO,AiToolFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_EXTENSION_MCP_SERVER = "extension_mcp_server"
     private static AiTool _instance
     void setInstance(AiTool instance) {
         _instance = instance
@@ -103,6 +104,16 @@ class AiTool extends GroovyDynaDataEntityRuntime<AiTool,AiToolDTO,AiToolFilterDT
     @DEDataSet(DATASET_DEFAULT)
     Page<AiToolDTO> fetchDefault(AiToolFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, AiToolDTO.class)
+    }
+
+    /**
+     * 数据集：内置扩展mcp服务 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_EXTENSION_MCP_SERVER)
+    Page<AiToolDTO> fetchExtensionMcpServer(AiToolFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_EXTENSION_MCP_SERVER, context, AiToolDTO.class)
     }
 
 }

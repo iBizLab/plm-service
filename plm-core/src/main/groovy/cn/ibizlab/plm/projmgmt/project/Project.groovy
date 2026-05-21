@@ -19,6 +19,8 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     public static final String ACTION_ACTIVATE = "activate"
     public static final String ACTION_ARCHIVE = "archive"
     public static final String ACTION_CHANGE_ADMIN_ROLE = "change_admin_role"
+    public static final String ACTION_COPY_PROJECT_INFO = "copy_project_info"
+    public static final String ACTION_CREATE_FROM_TEMPLATE = "create_from_template"
     public static final String ACTION_DELETE = "delete"
     public static final String ACTION_FAVORITE = "favorite"
     public static final String ACTION_GET_MAJOR_DATA = "get_major_data"
@@ -165,6 +167,26 @@ class Project extends GroovyDynaDataEntityRuntime<Project,ProjectDTO,ProjectFilt
     @DEAction(ACTION_CHANGE_ADMIN_ROLE)
     def changeAdminRole(ProjectDTO dto) throws Throwable {
         this.execute(ACTION_CHANGE_ADMIN_ROLE, dto, ProjectDTO.class)
+    }
+
+    /**
+     * 行为：copy_project_info 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_COPY_PROJECT_INFO)
+    def copyProjectInfo(ProjectDTO dto) throws Throwable {
+        this.execute(ACTION_COPY_PROJECT_INFO, dto, ProjectDTO.class)
+    }
+
+    /**
+     * 行为：使用模板创建项目 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CREATE_FROM_TEMPLATE)
+    def createFromTemplate(ProjectDTO dto) throws Throwable {
+        this.execute(ACTION_CREATE_FROM_TEMPLATE, dto, ProjectDTO.class)
     }
 
     /**

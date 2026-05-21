@@ -45,6 +45,26 @@ class DelRelation extends DELogicRuntime {
                 //执行逻辑节点[删除反向关联]
                 executeDEACTION3(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM2":
+                //执行逻辑节点[准备参数]
+                executePREPAREPARAM2(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEDATASET1":
+                //执行逻辑节点[实体数据集]
+                executeDEDATASET1(iDELogicSession, iPSDELogicNode)
+                break
+            case "LOOPSUBCALL1":
+                //执行逻辑节点[循环子调用]
+                executeLOOPSUBCALL1(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEACTION5":
+                //执行逻辑节点[删除当前关联]
+                executeDEACTION5(iDELogicSession, iPSDELogicNode)
+                break
+            case "DEACTION4":
+                //执行逻辑节点[删除关联]
+                executeDEACTION4(iDELogicSession, iPSDELogicNode)
+                break
             case "END1":
                 //执行逻辑节点[结束]
                 executeEND1(iDELogicSession, iPSDELogicNode)
@@ -101,6 +121,56 @@ class DelRelation extends DELogicRuntime {
      * @throws Throwable
      */
     private void executeDEACTION3(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[准备参数]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePREPAREPARAM2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[实体数据集]，逻辑类型[DEDATASET]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEDATASET1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[循环子调用]，逻辑类型[LOOPSUBCALL]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeLOOPSUBCALL1(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[删除当前关联]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION5(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[删除关联]，逻辑类型[DEACTION]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeDEACTION4(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

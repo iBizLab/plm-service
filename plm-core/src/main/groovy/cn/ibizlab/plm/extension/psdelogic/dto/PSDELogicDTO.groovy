@@ -8,8 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import net.ibizsys.central.util.*
 import cn.ibizlab.central.plugin.groovy.annotation.DEDataModel
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
-import cn.ibizlab.plm.extension.psdelogicnode.dto.PSDELogicNodeDTO
-import cn.ibizlab.plm.extension.psdelogiclink.dto.PSDELogicLinkDTO
 
 @DEDataModel
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -94,12 +92,12 @@ class PSDELogicDTO extends GroovyDTO<PSDELogicDTO> {
      * 「逻辑节点」
      */
     @JsonProperty("psdelogicnodes")
-    List<PSDELogicNodeDTO> pSDELogicNodes
+    List<IEntity> pSDELogicNodes
     /**
      * 「逻辑连接」
      */
     @JsonProperty("psdelogiclinks")
-    List<PSDELogicLinkDTO> pSDELogicLinks
+    List<IEntity> pSDELogicLinks
     /**
      * 「WebHook地址」
      */
@@ -419,7 +417,7 @@ class PSDELogicDTO extends GroovyDTO<PSDELogicDTO> {
      * 设置「逻辑节点」值
      * @param val
      */
-    PSDELogicDTO setPSDELogicNodes(List<PSDELogicNodeDTO> pSDELogicNodes) {
+    PSDELogicDTO setPSDELogicNodes(List<IEntity> pSDELogicNodes) {
         this.pSDELogicNodes = pSDELogicNodes
         return this
     }
@@ -429,7 +427,7 @@ class PSDELogicDTO extends GroovyDTO<PSDELogicDTO> {
      * 设置「逻辑连接」值
      * @param val
      */
-    PSDELogicDTO setPSDELogicLinks(List<PSDELogicLinkDTO> pSDELogicLinks) {
+    PSDELogicDTO setPSDELogicLinks(List<IEntity> pSDELogicLinks) {
         this.pSDELogicLinks = pSDELogicLinks
         return this
     }

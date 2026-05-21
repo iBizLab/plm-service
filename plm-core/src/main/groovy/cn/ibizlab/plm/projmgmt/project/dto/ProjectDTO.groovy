@@ -160,6 +160,22 @@ class ProjectDTO extends GroovyDTO<ProjectDTO> {
     @JsonProperty("state_type")
     String stateType
     /**
+     * 「是否模板」
+     * 字典[是否]
+     */
+    @JsonProperty("is_template")
+    Integer isTemplate
+    /**
+     * 「项目模板名称」
+     */
+    @JsonProperty("project_template_name")
+    String projectTemplateName
+    /**
+     * 「项目模板标识」
+     */
+    @JsonProperty("project_template_id")
+    String projectTemplateId
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -468,6 +484,37 @@ class ProjectDTO extends GroovyDTO<ProjectDTO> {
      */
     ProjectDTO setStateType(String stateType) {
         this.stateType = stateType
+        return this
+    }
+
+
+    /**
+     * 设置「是否模板」值
+     * 字典[是否]
+     * @param val
+     */
+    ProjectDTO setIsTemplate(Integer isTemplate) {
+        this.isTemplate = isTemplate
+        return this
+    }
+
+
+    /**
+     * 设置「项目模板名称」值
+     * @param val
+     */
+    ProjectDTO setProjectTemplateName(String projectTemplateName) {
+        this.projectTemplateName = projectTemplateName
+        return this
+    }
+
+
+    /**
+     * 设置「项目模板标识」值
+     * @param val
+     */
+    ProjectDTO setProjectTemplateId(String projectTemplateId) {
+        this.projectTemplateId = projectTemplateId
         return this
     }
 

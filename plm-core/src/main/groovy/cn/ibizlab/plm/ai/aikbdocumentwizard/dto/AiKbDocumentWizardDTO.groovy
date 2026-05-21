@@ -79,6 +79,11 @@ class AiKbDocumentWizardDTO extends GroovyDTO<AiKbDocumentWizardDTO> {
     @JsonProperty("selection_page_ids")
     String selectionPageIds
     /**
+     * 「选择页面名称」
+     */
+    @JsonProperty("selection_page_names")
+    String selectionPageNames
+    /**
      * 「选择空间」
      * 字典[空间列表]
      */
@@ -99,6 +104,12 @@ class AiKbDocumentWizardDTO extends GroovyDTO<AiKbDocumentWizardDTO> {
      */
     @JsonProperty("selected_page_name")
     List<IEntity> selectedPageName
+    /**
+     * 「是否立即解析」
+     * 字典[是否]
+     */
+    @JsonProperty("is_parse_now")
+    Integer isParseNow
     /**
      * 「自定义切片」
      * 字典[自定义切片]
@@ -237,6 +248,16 @@ class AiKbDocumentWizardDTO extends GroovyDTO<AiKbDocumentWizardDTO> {
 
 
     /**
+     * 设置「选择页面名称」值
+     * @param val
+     */
+    AiKbDocumentWizardDTO setSelectionPageNames(String selectionPageNames) {
+        this.selectionPageNames = selectionPageNames
+        return this
+    }
+
+
+    /**
      * 设置「选择空间」值
      * 字典[空间列表]
      * @param val
@@ -273,6 +294,17 @@ class AiKbDocumentWizardDTO extends GroovyDTO<AiKbDocumentWizardDTO> {
      */
     AiKbDocumentWizardDTO setSelectedPageName(List<IEntity> selectedPageName) {
         this.selectedPageName = selectedPageName
+        return this
+    }
+
+
+    /**
+     * 设置「是否立即解析」值
+     * 字典[是否]
+     * @param val
+     */
+    AiKbDocumentWizardDTO setIsParseNow(Integer isParseNow) {
+        this.isParseNow = isParseNow
         return this
     }
 

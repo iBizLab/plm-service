@@ -21,7 +21,7 @@ class Recent extends GroovyDynaDataEntityRuntime<Recent,RecentDTO,RecentFilterDT
     public static final String ACTION_MY_SUMMARY = "my_summary"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_MOB_HOME_RECENT_ACCESS = "mob_home_recent_access"
-    public static final String DATASET_ONLY_TEN_ACCESS_USE = "only_ten_access_use"
+    public static final String DATASET_ONLY_EIGHT_ACCESS_USE = "only_eight_access_use"
     public static final String DATASET_RECENT_ACCESS = "recent_access"
     public static final String DATASET_RECENT_ACCESS_LOGIC = "recent_access_logic"
     public static final String DATASET_RECENT_CURPRODUCT_TICKET = "recent_curproduct_ticket"
@@ -172,9 +172,9 @@ class Recent extends GroovyDynaDataEntityRuntime<Recent,RecentDTO,RecentFilterDT
      * @param dto
      * @throws Throwable
      */
-    @DEDataSet(DATASET_ONLY_TEN_ACCESS_USE)
-    Page<RecentDTO> fetchOnlyTenAccessUse(RecentFilterDTO context) throws Throwable {
-        return this.fetch(DATASET_ONLY_TEN_ACCESS_USE, context, RecentDTO.class)
+    @DEDataSet(DATASET_ONLY_EIGHT_ACCESS_USE)
+    Page<RecentDTO> fetchOnlyEightAccessUse(RecentFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ONLY_EIGHT_ACCESS_USE, context, RecentDTO.class)
     }
 
     /**

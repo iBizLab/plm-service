@@ -16,6 +16,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class WorkItemType extends GroovyDynaDataEntityRuntime<WorkItemType,WorkItemTypeDTO,WorkItemTypeFilterDTO> {
 
+    public static final String ACTION_MOVE = "move"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_CHOOSE_TARGET_TYPE = "choose_target_type"
     public static final String DATASET_CUR_PROJECT_TYPE = "cur_project_type"
@@ -98,6 +99,16 @@ class WorkItemType extends GroovyDynaDataEntityRuntime<WorkItemType,WorkItemType
     @DEAction(ACTION_SAVE)
     WorkItemTypeDTO save(WorkItemTypeDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, WorkItemTypeDTO.class)
+    }
+
+    /**
+     * 行为：移动 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_MOVE)
+    def move(WorkItemTypeDTO dto) throws Throwable {
+        return this.executeForList(ACTION_MOVE, dto, WorkItemTypeDTO.class)
     }
 
     /**

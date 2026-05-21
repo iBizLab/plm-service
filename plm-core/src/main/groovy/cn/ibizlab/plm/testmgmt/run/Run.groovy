@@ -18,6 +18,7 @@ class Run extends GroovyDynaDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
 
     public static final String ACTION_ADD_PLAN_RUN = "add_plan_run"
     public static final String ACTION_BATCH_SAVE_RUN_HISTORY = "batch_save_run_history"
+    public static final String ACTION_CUSTOM_DRAFT = "custom_draft"
     public static final String ACTION_GET_ACTUAL_WORKLOAD = "get_actual_workload"
     public static final String ACTION_OTHER_RELATION_RUN = "other_relation_run"
     public static final String ACTION_PROGRAM_PLAN = "program_plan"
@@ -141,6 +142,16 @@ class Run extends GroovyDynaDataEntityRuntime<Run,RunDTO,RunFilterDTO> {
     @DEAction(ACTION_BATCH_SAVE_RUN_HISTORY)
     def batchSaveRunHistory(RunDTO dto) throws Throwable {
         this.execute(ACTION_BATCH_SAVE_RUN_HISTORY, dto, RunDTO.class)
+    }
+
+    /**
+     * 行为：自定义draft 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CUSTOM_DRAFT)
+    def customDraft(RunDTO dto) throws Throwable {
+        return this.execute(ACTION_CUSTOM_DRAFT, dto, RunDTO.class)
     }
 
     /**

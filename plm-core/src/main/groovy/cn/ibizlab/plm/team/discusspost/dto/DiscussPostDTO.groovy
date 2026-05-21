@@ -100,7 +100,7 @@ class DiscussPostDTO extends GroovyDTO<DiscussPostDTO> {
     @JsonProperty("id")
     String id
     /**
-     * 「讨论名称」
+     * 「标题」
      */
     @JsonProperty("name")
     String name
@@ -290,7 +290,7 @@ class DiscussPostDTO extends GroovyDTO<DiscussPostDTO> {
 
 
     /**
-     * 设置「讨论名称」值
+     * 设置「标题」值
      * @param val
      */
     DiscussPostDTO setName(String name) {

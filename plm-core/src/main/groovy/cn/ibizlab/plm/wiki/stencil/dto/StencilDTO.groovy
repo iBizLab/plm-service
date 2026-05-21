@@ -16,7 +16,7 @@ class StencilDTO extends GroovyDTO<StencilDTO> {
 
     /**
      * 「正文格式」
-     * 字典[报表输出格式]
+     * 字典[内容输出格式]
      */
     @JsonProperty("format_type")
     String formatType
@@ -81,7 +81,7 @@ class StencilDTO extends GroovyDTO<StencilDTO> {
 
     /**
      * 设置「正文格式」值
-     * 字典[报表输出格式]
+     * 字典[内容输出格式]
      * @param val
      */
     StencilDTO setFormatType(String formatType) {

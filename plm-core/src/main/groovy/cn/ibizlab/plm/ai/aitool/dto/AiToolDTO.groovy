@@ -46,10 +46,21 @@ class AiToolDTO extends GroovyDTO<AiToolDTO> {
     @JsonProperty("update_time")
     Timestamp updateTime
     /**
+     * 「启用」
+     * 字典[是否]
+     */
+    @JsonProperty("active")
+    Integer active
+    /**
      * 「api密钥」
      */
     @JsonProperty("api_key")
     String apiKey
+    /**
+     * 「过期时间」
+     */
+    @JsonProperty("expiration_date")
+    Timestamp expirationDate
     /**
      * 「工具标记」
      */
@@ -187,11 +198,32 @@ class AiToolDTO extends GroovyDTO<AiToolDTO> {
 
 
     /**
+     * 设置「启用」值
+     * 字典[是否]
+     * @param val
+     */
+    AiToolDTO setActive(Integer active) {
+        this.active = active
+        return this
+    }
+
+
+    /**
      * 设置「api密钥」值
      * @param val
      */
     AiToolDTO setApiKey(String apiKey) {
         this.apiKey = apiKey
+        return this
+    }
+
+
+    /**
+     * 设置「过期时间」值
+     * @param val
+     */
+    AiToolDTO setExpirationDate(Timestamp expirationDate) {
+        this.expirationDate = expirationDate
         return this
     }
 

@@ -33,13 +33,13 @@ class WorkItemReCounters extends DELogicRuntime {
                 //执行逻辑节点[合并查询计数器]
                 executeRAWSQLCALL12(iDELogicSession, iPSDELogicNode)
                 break
-            case "END2":
-                //执行逻辑节点[结束]
-                executeEND2(iDELogicSession, iPSDELogicNode)
-                break
             case "RAWSQLCALL13":
                 //执行逻辑节点[工作项依赖]
                 executeRAWSQLCALL13(iDELogicSession, iPSDELogicNode)
+                break
+            case "END2":
+                //执行逻辑节点[结束]
+                executeEND2(iDELogicSession, iPSDELogicNode)
                 break
             case "DEACTION1":
                 //执行逻辑节点[获取工作项当前版本]
@@ -103,22 +103,22 @@ class WorkItemReCounters extends DELogicRuntime {
     }
 
     /**
-     * 执行逻辑节点[结束]，逻辑类型[END]
-     * @param iDELogicSession
-     * @param iPSDELogicNode
-     * @throws Throwable
-     */
-    private void executeEND2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
-        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
-    }
-
-    /**
      * 执行逻辑节点[工作项依赖]，逻辑类型[RAWSQLCALL]
      * @param iDELogicSession
      * @param iPSDELogicNode
      * @throws Throwable
      */
     private void executeRAWSQLCALL13(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[结束]，逻辑类型[END]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeEND2(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
         super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 

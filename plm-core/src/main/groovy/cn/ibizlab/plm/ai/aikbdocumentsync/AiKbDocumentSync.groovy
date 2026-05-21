@@ -16,6 +16,8 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class AiKbDocumentSync extends GroovyDynaDataEntityRuntime<AiKbDocumentSync,AiKbDocumentSyncDTO,AiKbDocumentSyncFilterDTO> {
 
+    public static final String ACTION_ASYNC_SPACE_PARSE = "Async_space_parse"
+    public static final String ACTION_SPACE_PARSE = "space_parse"
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static AiKbDocumentSync _instance
     void setInstance(AiKbDocumentSync instance) {
@@ -93,6 +95,26 @@ class AiKbDocumentSync extends GroovyDynaDataEntityRuntime<AiKbDocumentSync,AiKb
     @DEAction(ACTION_SAVE)
     AiKbDocumentSyncDTO save(AiKbDocumentSyncDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, AiKbDocumentSyncDTO.class)
+    }
+
+    /**
+     * 行为：异步空间文档解析处理 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_ASYNC_SPACE_PARSE)
+    def asyncSpaceParse(AiKbDocumentSyncDTO dto) throws Throwable {
+        return this.execute(ACTION_ASYNC_SPACE_PARSE, dto, Object.class)
+    }
+
+    /**
+     * 行为：空间文档解析处理 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SPACE_PARSE)
+    def spaceParse(AiKbDocumentSyncDTO dto) throws Throwable {
+        this.execute(ACTION_SPACE_PARSE, dto, AiKbDocumentSyncDTO.class)
     }
 
     /**

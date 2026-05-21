@@ -16,7 +16,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class AiAgentMessage extends GroovyDynaDataEntityRuntime<AiAgentMessage,AiAgentMessageDTO,AiAgentMessageFilterDTO> {
 
+    public static final String ACTION_CANCEL_FEEDBACK = "cancel_feedback"
+    public static final String ACTION_DISLIKE = "dislike"
+    public static final String ACTION_LIKE = "like"
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_ALL = "all"
     private static AiAgentMessage _instance
     void setInstance(AiAgentMessage instance) {
         _instance = instance
@@ -96,6 +100,36 @@ class AiAgentMessage extends GroovyDynaDataEntityRuntime<AiAgentMessage,AiAgentM
     }
 
     /**
+     * 行为：取消点赞或点踩 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CANCEL_FEEDBACK)
+    def cancelFeedback(AiAgentMessageDTO dto) throws Throwable {
+        this.execute(ACTION_CANCEL_FEEDBACK, dto, AiAgentMessageDTO.class)
+    }
+
+    /**
+     * 行为：点踩 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_DISLIKE)
+    def dislike(AiAgentMessageDTO dto) throws Throwable {
+        this.execute(ACTION_DISLIKE, dto, AiAgentMessageDTO.class)
+    }
+
+    /**
+     * 行为：点赞 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_LIKE)
+    def like(AiAgentMessageDTO dto) throws Throwable {
+        this.execute(ACTION_LIKE, dto, AiAgentMessageDTO.class)
+    }
+
+    /**
      * 数据集：DEFAULT 实际功能
      * @param dto
      * @throws Throwable
@@ -103,6 +137,16 @@ class AiAgentMessage extends GroovyDynaDataEntityRuntime<AiAgentMessage,AiAgentM
     @DEDataSet(DATASET_DEFAULT)
     Page<AiAgentMessageDTO> fetchDefault(AiAgentMessageFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, AiAgentMessageDTO.class)
+    }
+
+    /**
+     * 数据集：全部消息 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_ALL)
+    Page<AiAgentMessageDTO> fetchAll(AiAgentMessageFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL, context, AiAgentMessageDTO.class)
     }
 
 }

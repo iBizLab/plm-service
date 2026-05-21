@@ -57,6 +57,11 @@ class WorkItemTypeDTO extends GroovyDTO<WorkItemTypeDTO> {
     @JsonProperty("orgin_state")
     String orginState
     /**
+     * 「图标（显示）」
+     */
+    @JsonProperty("icon_disp")
+    String iconDisp
+    /**
      * 「建立人」
      * 字典[云系统操作者]
      */
@@ -173,6 +178,16 @@ class WorkItemTypeDTO extends GroovyDTO<WorkItemTypeDTO> {
      */
     WorkItemTypeDTO setOrginState(String orginState) {
         this.orginState = orginState
+        return this
+    }
+
+
+    /**
+     * 设置「图标（显示）」值
+     * @param val
+     */
+    WorkItemTypeDTO setIconDisp(String iconDisp) {
+        this.iconDisp = iconDisp
         return this
     }
 

@@ -45,6 +45,10 @@ class GetSpaceMemberOne extends DELogicRuntime {
                 //执行逻辑节点[绑定用户数据到for_obj]
                 executePREPAREPARAM5(iDELogicSession, iPSDELogicNode)
                 break
+            case "PREPAREPARAM_01":
+                //执行逻辑节点[空]
+                executePrepareparam01(iDELogicSession, iPSDELogicNode)
+                break
             case "RAWSFCODE1":
                 //执行逻辑节点[只读权限]
                 executeRAWSFCODE1(iDELogicSession, iPSDELogicNode)
@@ -60,6 +64,10 @@ class GetSpaceMemberOne extends DELogicRuntime {
             case "RAWSFCODE3":
                 //执行逻辑节点[判断系统管理员身份]
                 executeRAWSFCODE3(iDELogicSession, iPSDELogicNode)
+                break
+            case "RAWSFCODE_01":
+                //执行逻辑节点[已删除归档只读]
+                executeRawsfcode01(iDELogicSession, iPSDELogicNode)
                 break
             default:
                 super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode)
@@ -117,6 +125,16 @@ class GetSpaceMemberOne extends DELogicRuntime {
     }
 
     /**
+     * 执行逻辑节点[空]，逻辑类型[PREPAREPARAM]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executePrepareparam01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
      * 执行逻辑节点[只读权限]，逻辑类型[RAWSFCODE]
      * @param iDELogicSession
      * @param iPSDELogicNode
@@ -169,6 +187,16 @@ class GetSpaceMemberOne extends DELogicRuntime {
             retDELogicParamRuntime.bind(iDELogicSession, objRet);
         }
         //super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
+    }
+
+    /**
+     * 执行逻辑节点[已删除归档只读]，逻辑类型[RAWSFCODE]
+     * @param iDELogicSession
+     * @param iPSDELogicNode
+     * @throws Throwable
+     */
+    private void executeRawsfcode01(IDELogicSession iDELogicSession, IPSDELogicNode iPSDELogicNode) throws Throwable {
+        super.onExecutePSDELogicNode(iDELogicSession, iPSDELogicNode, true)
     }
 }
 

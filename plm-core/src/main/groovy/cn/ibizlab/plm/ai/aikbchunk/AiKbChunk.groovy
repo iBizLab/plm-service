@@ -17,6 +17,9 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
 class AiKbChunk extends GroovyDynaDataEntityRuntime<AiKbChunk,AiKbChunkDTO,AiKbChunkFilterDTO> {
 
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_RETRIEVAL_TEST = "retrieval_test"
+    public static final String DATASET_TREE = "tree"
+    public static final String DATASET_VALID = "VALID"
     private static AiKbChunk _instance
     void setInstance(AiKbChunk instance) {
         _instance = instance
@@ -103,6 +106,36 @@ class AiKbChunk extends GroovyDynaDataEntityRuntime<AiKbChunk,AiKbChunkDTO,AiKbC
     @DEDataSet(DATASET_DEFAULT)
     Page<AiKbChunkDTO> fetchDefault(AiKbChunkFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, AiKbChunkDTO.class)
+    }
+
+    /**
+     * 数据集：检索测试 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_RETRIEVAL_TEST)
+    Page<AiKbChunkDTO> fetchRetrievalTest(AiKbChunkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_RETRIEVAL_TEST, context, AiKbChunkDTO.class)
+    }
+
+    /**
+     * 数据集：树表数据集合 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_TREE)
+    Page<AiKbChunkUsuallyDTO> fetchTree(AiKbChunkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_TREE, context, AiKbChunkUsuallyDTO.class)
+    }
+
+    /**
+     * 数据集：启用 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_VALID)
+    Page<AiKbChunkDTO> fetchValid(AiKbChunkFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_VALID, context, AiKbChunkDTO.class)
     }
 
 }

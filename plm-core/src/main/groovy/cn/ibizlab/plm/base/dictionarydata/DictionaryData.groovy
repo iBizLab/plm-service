@@ -18,6 +18,7 @@ class DictionaryData extends GroovyDynaDataEntityRuntime<DictionaryData,Dictiona
 
     public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_AI_KB_DOC_IMPORT_METHOD = "ai_kb_doc_import_method"
     public static final String DATASET_IDEA = "idea"
     public static final String DATASET_IDEA_PRIORITY = "idea_priority"
     public static final String DATASET_IDEA_SOURCE = "idea_source"
@@ -136,6 +137,16 @@ class DictionaryData extends GroovyDynaDataEntityRuntime<DictionaryData,Dictiona
     @DEDataSet(DATASET_DEFAULT)
     Page<DictionaryDataDTO> fetchDefault(DictionaryDataFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, DictionaryDataDTO.class)
+    }
+
+    /**
+     * 数据集：知识库文档导入方式 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_AI_KB_DOC_IMPORT_METHOD)
+    Page<DictionaryDataDTO> fetchAiKbDocImportMethod(DictionaryDataFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_AI_KB_DOC_IMPORT_METHOD, context, DictionaryDataDTO.class)
     }
 
     /**

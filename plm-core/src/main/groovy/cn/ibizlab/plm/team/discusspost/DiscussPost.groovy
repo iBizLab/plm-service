@@ -132,7 +132,7 @@ class DiscussPost extends GroovyDynaDataEntityRuntime<DiscussPost,DiscussPostDTO
      */
     @DEAction(ACTION_DEL_COMMENT)
     def delComment(DiscussPostDTO dto) throws Throwable {
-        this.execute(ACTION_DEL_COMMENT, dto, DiscussPostDTO.class)
+        return this.execute(ACTION_DEL_COMMENT, dto, DiscussPostDTO.class)
     }
 
     /**

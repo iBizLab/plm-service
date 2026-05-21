@@ -56,6 +56,7 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_ADVANCED_SEARCH = "advanced_search"
     public static final String DATASET_AI_INFO = "ai_info"
+    public static final String DATASET_ALL = "all"
     public static final String DATASET_ARCHIVED = "archived"
     public static final String DATASET_BACKLOG_ACCUMULATE_FLOW = "backlog_accumulate_flow"
     public static final String DATASET_BACKLOG_AGE_REPORT = "backlog_age_report"
@@ -613,6 +614,16 @@ class WorkItem extends GroovyDynaDataEntityRuntime<WorkItem,WorkItemDTO,WorkItem
     @DEDataSet(DATASET_AI_INFO)
     Page<WorkItemAiInfoDTO> fetchAiInfo(WorkItemFilterDTO context) throws Throwable {
         return this.fetch(DATASET_AI_INFO, context, WorkItemAiInfoDTO.class)
+    }
+
+    /**
+     * 数据集：所有工作项 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_ALL)
+    Page<WorkItemUsuallyDTO> fetchAll(WorkItemFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_ALL, context, WorkItemUsuallyDTO.class)
     }
 
     /**

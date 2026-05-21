@@ -1,0 +1,119 @@
+package cn.ibizlab.plm.ai.aikbsearchresult
+
+import java.util.List
+import org.springframework.data.domain.Page
+
+import cn.ibizlab.plm.ai.aikbsearchresult.dto.*
+
+import net.ibizsys.central.util.annotation.DEDataSet
+import net.ibizsys.central.util.annotation.DEAction
+import cn.ibizlab.central.plugin.groovy.dataentity.*
+
+/**
+ * 实体[AI_KB_SEARCH_RESULT]运行时对象
+ * 此代码用户功能扩展代码
+ *
+ */
+class AiKbSearchResult extends GroovyDynaDataEntityRuntime<AiKbSearchResult,AiKbSearchResultDTO,AiKbSearchResultFilterDTO> {
+
+    public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_CUR_QUERY = "cur_query"
+    private static AiKbSearchResult _instance
+    void setInstance(AiKbSearchResult instance) {
+        _instance = instance
+    }
+    static AiKbSearchResult getInstance() {
+        return _instance
+    }
+
+    /**
+     * 行为：Create 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CREATE)
+    AiKbSearchResultDTO create(AiKbSearchResultDTO dto) throws Throwable {
+        return this.execute(ACTION_CREATE, dto, AiKbSearchResultDTO.class)
+    }
+
+    /**
+     * 行为：Update 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_UPDATE)
+    AiKbSearchResultDTO update(AiKbSearchResultDTO dto) throws Throwable {
+        return this.execute(ACTION_UPDATE, dto, AiKbSearchResultDTO.class)
+    }
+
+    /**
+     * 行为：Remove 实际功能
+     * @param keys
+     * @throws Throwable
+     */
+    @DEAction(ACTION_REMOVE)
+    void remove(String key) throws Throwable {
+        this.execute(ACTION_REMOVE, key, Void.class)
+    }
+
+    /**
+     * 行为：Get 实际功能
+     * @param key
+     * @throws Throwable
+     */
+    @DEAction(ACTION_GET)
+    AiKbSearchResultDTO get(String key) throws Throwable {
+        return this.execute(ACTION_GET, key, AiKbSearchResultDTO.class)
+    }
+
+    /**
+     * 行为：GetDraft 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_GETDRAFT)
+    AiKbSearchResultDTO getDraft(AiKbSearchResultDTO dto) throws Throwable {
+        return this.execute(ACTION_GETDRAFT, dto, AiKbSearchResultDTO.class)
+    }
+
+    /**
+     * 行为：CheckKey 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_CHECKKEY)
+    int checkKey(AiKbSearchResultDTO dto) throws Throwable {
+        return super.checkKeyState(dto)
+    }
+
+    /**
+     * 行为：Save 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_SAVE)
+    AiKbSearchResultDTO save(AiKbSearchResultDTO dto) throws Throwable {
+        return this.execute(ACTION_SAVE, dto, AiKbSearchResultDTO.class)
+    }
+
+    /**
+     * 数据集：DEFAULT 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_DEFAULT)
+    Page<AiKbSearchResultDTO> fetchDefault(AiKbSearchResultFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_DEFAULT, context, AiKbSearchResultDTO.class)
+    }
+
+    /**
+     * 数据集：当前记录 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_CUR_QUERY)
+    Page<AiKbSearchResultDTO> fetchCurQuery(AiKbSearchResultFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_CUR_QUERY, context, AiKbSearchResultDTO.class)
+    }
+
+}

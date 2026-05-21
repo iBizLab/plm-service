@@ -16,6 +16,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class WorkItemState extends GroovyDynaDataEntityRuntime<WorkItemState,WorkItemStateDTO,WorkItemStateFilterDTO> {
 
+    public static final String ACTION_MOVE_ORDER = "move_order"
     public static final String DATASET_BI_FORM = "BI_FORM"
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static WorkItemState _instance
@@ -94,6 +95,16 @@ class WorkItemState extends GroovyDynaDataEntityRuntime<WorkItemState,WorkItemSt
     @DEAction(ACTION_SAVE)
     WorkItemStateDTO save(WorkItemStateDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, WorkItemStateDTO.class)
+    }
+
+    /**
+     * 行为：移动排序 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_MOVE_ORDER)
+    def moveOrder(WorkItemStateDTO dto) throws Throwable {
+        return this.executeForList(ACTION_MOVE_ORDER, dto, WorkItemStateDTO.class)
     }
 
     /**

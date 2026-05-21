@@ -16,10 +16,12 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class PSCorePrdFunc extends GroovyPSModelDERuntime<PSCorePrdFunc,PSCorePrdFuncDTO,PSCorePrdFuncFilterDTO> {
 
+    public static final String ACTION_INSTALLSPECVER = "INSTALLSPECVER"
     public static final String ACTION_INSTALL = "INSTALL"
     public static final String ACTION_RELOAD = "RELOAD"
     public static final String ACTION_UNINSTALL = "UNINSTALL"
     public static final String DATASET_DEFAULT = "DEFAULT"
+    public static final String DATASET_VERSIONS = "versions"
     private static PSCorePrdFunc _instance
     void setInstance(PSCorePrdFunc instance) {
         _instance = instance
@@ -99,6 +101,16 @@ class PSCorePrdFunc extends GroovyPSModelDERuntime<PSCorePrdFunc,PSCorePrdFuncDT
     }
 
     /**
+     * 行为：安装特定版本 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_INSTALLSPECVER)
+    def installSpecVer(PSCorePrdFuncDTO dto) throws Throwable {
+        this.execute(ACTION_INSTALLSPECVER, dto, PSCorePrdFuncDTO.class)
+    }
+
+    /**
      * 行为：安装 实际功能
      * @param dto
      * @throws Throwable
@@ -136,6 +148,16 @@ class PSCorePrdFunc extends GroovyPSModelDERuntime<PSCorePrdFunc,PSCorePrdFuncDT
     @DEDataSet(DATASET_DEFAULT)
     Page<PSCorePrdFuncDTO> fetchDefault(PSCorePrdFuncFilterDTO context) throws Throwable {
         return this.fetch(DATASET_DEFAULT, context, PSCorePrdFuncDTO.class)
+    }
+
+    /**
+     * 数据集：versions 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEDataSet(DATASET_VERSIONS)
+    Page<PSCorePrdFuncDTO> fetchVersions(PSCorePrdFuncFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_VERSIONS, context, PSCorePrdFuncDTO.class)
     }
 
 }

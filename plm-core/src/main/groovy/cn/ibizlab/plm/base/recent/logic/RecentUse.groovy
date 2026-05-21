@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory
  * 实体[RECENT]处理逻辑[最近使用]运行时对象
  * 此代码用户功能扩展代码
  *
- * 查询最近使用数据(项目/产品/空间)，仅查询10条
+ * 查询最近使用数据(项目/产品/空间)，仅查询8条
  */
 class RecentUse extends DELogicRuntime {
 

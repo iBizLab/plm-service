@@ -62,6 +62,11 @@ class AiAgentFeedbackDTO extends GroovyDTO<AiAgentFeedbackDTO> {
     @JsonProperty("user_id")
     String userId
     /**
+     * 「会话标识」
+     */
+    @JsonProperty("conversation_id")
+    String conversationId
+    /**
      * 「消息标识」
      */
     @JsonProperty("message_id")
@@ -156,6 +161,16 @@ class AiAgentFeedbackDTO extends GroovyDTO<AiAgentFeedbackDTO> {
      */
     AiAgentFeedbackDTO setUserId(String userId) {
         this.userId = userId
+        return this
+    }
+
+
+    /**
+     * 设置「会话标识」值
+     * @param val
+     */
+    AiAgentFeedbackDTO setConversationId(String conversationId) {
+        this.conversationId = conversationId
         return this
     }
 

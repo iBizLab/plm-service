@@ -46,11 +46,6 @@ class AiAgentConversationDTO extends GroovyDTO<AiAgentConversationDTO> {
     @JsonProperty("update_time")
     Timestamp updateTime
     /**
-     * 「智能体名称」
-     */
-    @JsonProperty("ai_agent_name")
-    String aiAgentName
-    /**
      * 「会话类型」
      * 字典[会话类型]
      */
@@ -67,16 +62,6 @@ class AiAgentConversationDTO extends GroovyDTO<AiAgentConversationDTO> {
      */
     @JsonProperty("ai_agent_context_id")
     String aiAgentContextId
-    /**
-     * 「智能体业务上下文名称」
-     */
-    @JsonProperty("ai_agent_context_name")
-    String aiAgentContextName
-    /**
-     * 「智能体标识」
-     */
-    @JsonProperty("ai_agent_id")
-    String aiAgentId
     /**
      * 「序号」
      */
@@ -167,16 +152,6 @@ class AiAgentConversationDTO extends GroovyDTO<AiAgentConversationDTO> {
 
 
     /**
-     * 设置「智能体名称」值
-     * @param val
-     */
-    AiAgentConversationDTO setAiAgentName(String aiAgentName) {
-        this.aiAgentName = aiAgentName
-        return this
-    }
-
-
-    /**
      * 设置「会话类型」值
      * 字典[会话类型]
      * @param val
@@ -204,26 +179,6 @@ class AiAgentConversationDTO extends GroovyDTO<AiAgentConversationDTO> {
      */
     AiAgentConversationDTO setAiAgentContextId(String aiAgentContextId) {
         this.aiAgentContextId = aiAgentContextId
-        return this
-    }
-
-
-    /**
-     * 设置「智能体业务上下文名称」值
-     * @param val
-     */
-    AiAgentConversationDTO setAiAgentContextName(String aiAgentContextName) {
-        this.aiAgentContextName = aiAgentContextName
-        return this
-    }
-
-
-    /**
-     * 设置「智能体标识」值
-     * @param val
-     */
-    AiAgentConversationDTO setAiAgentId(String aiAgentId) {
-        this.aiAgentId = aiAgentId
         return this
     }
 

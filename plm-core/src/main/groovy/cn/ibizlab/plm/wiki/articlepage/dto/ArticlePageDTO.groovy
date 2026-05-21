@@ -38,7 +38,7 @@ class ArticlePageDTO extends GroovyDTO<ArticlePageDTO> {
     String accessPassword
     /**
      * 「正文格式」
-     * 字典[报表输出格式]
+     * 字典[内容格式选择]
      */
     @JsonProperty("format_type")
     String formatType
@@ -313,7 +313,7 @@ class ArticlePageDTO extends GroovyDTO<ArticlePageDTO> {
 
     /**
      * 设置「正文格式」值
-     * 字典[报表输出格式]
+     * 字典[内容格式选择]
      * @param val
      */
     ArticlePageDTO setFormatType(String formatType) {

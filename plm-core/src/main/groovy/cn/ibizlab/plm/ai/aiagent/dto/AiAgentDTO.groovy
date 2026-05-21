@@ -54,6 +54,76 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
     @JsonProperty("generation_mode")
     String generationMode
     /**
+     * 「召回相似度阈值」
+     */
+    @JsonProperty("similarity_threshold")
+    BigDecimal similarityThreshold
+    /**
+     * 「向量相似度权重」
+     */
+    @JsonProperty("vector_similarity_weight")
+    BigDecimal vectorSimilarityWeight
+    /**
+     * 「最大召回数量」
+     */
+    @JsonProperty("top_k")
+    Integer topK
+    /**
+     * 「召回重排」
+     * 字典[是否]
+     */
+    @JsonProperty("rerank")
+    Integer rerank
+    /**
+     * 「使用知识图谱」
+     * 字典[是否]
+     */
+    @JsonProperty("use_kg")
+    Integer useKg
+    /**
+     * 「召回重排模型」
+     */
+    @JsonProperty("rerank_model")
+    String rerankModel
+    /**
+     * 「知识库模式」
+     * 字典[智能体知识库模式]
+     */
+    @JsonProperty("kb_mode")
+    String kbMode
+    /**
+     * 「视觉识别提示词」
+     */
+    @JsonProperty("vlm_prompt")
+    String vlmPrompt
+    /**
+     * 「发布技能」
+     * 字典[是否]
+     */
+    @JsonProperty("publish_skill")
+    Integer publishSkill
+    /**
+     * 「技能提示词」
+     */
+    @JsonProperty("skill_prompt")
+    String skillPrompt
+    /**
+     * 「支持联网搜索」
+     * 字典[是否]
+     */
+    @JsonProperty("enable_searching")
+    Integer enableSearching
+    /**
+     * 「记忆存储知识库标记」
+     */
+    @JsonProperty("memory_kb_tag")
+    String memoryKbTag
+    /**
+     * 「记忆存储文档标记」
+     */
+    @JsonProperty("memory_doc_tag")
+    String memoryDocTag
+    /**
      * 「有效」
      * 字典[是否]
      */
@@ -86,16 +156,19 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
     String defaultSystemPrompt
     /**
      * 「启用问题建议」
+     * 字典[是否]
      */
     @JsonProperty("enable_suggested_questions")
     Integer enableSuggestedQuestions
     /**
      * 「启用思考链」
+     * 字典[是否]
      */
     @JsonProperty("enable_thinking")
     Integer enableThinking
     /**
      * 「调用工具」
+     * 字典[是否]
      */
     @JsonProperty("enable_tools")
     Integer enableTools
@@ -122,12 +195,18 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
     @JsonProperty("memory_mode")
     String memoryMode
     /**
+     * 「模型标识」
+     */
+    @JsonProperty("rerank_model_id")
+    String rerankModelId
+    /**
      * 「排序」
      */
     @JsonProperty("sequence")
     Integer sequence
     /**
      * 「流式输出」
+     * 字典[是否]
      */
     @JsonProperty("stream")
     Integer stream
@@ -252,6 +331,141 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
 
 
     /**
+     * 设置「召回相似度阈值」值
+     * @param val
+     */
+    AiAgentDTO setSimilarityThreshold(BigDecimal similarityThreshold) {
+        this.similarityThreshold = similarityThreshold
+        return this
+    }
+
+
+    /**
+     * 设置「向量相似度权重」值
+     * @param val
+     */
+    AiAgentDTO setVectorSimilarityWeight(BigDecimal vectorSimilarityWeight) {
+        this.vectorSimilarityWeight = vectorSimilarityWeight
+        return this
+    }
+
+
+    /**
+     * 设置「最大召回数量」值
+     * @param val
+     */
+    AiAgentDTO setTopK(Integer topK) {
+        this.topK = topK
+        return this
+    }
+
+
+    /**
+     * 设置「召回重排」值
+     * 字典[是否]
+     * @param val
+     */
+    AiAgentDTO setRerank(Integer rerank) {
+        this.rerank = rerank
+        return this
+    }
+
+
+    /**
+     * 设置「使用知识图谱」值
+     * 字典[是否]
+     * @param val
+     */
+    AiAgentDTO setUseKg(Integer useKg) {
+        this.useKg = useKg
+        return this
+    }
+
+
+    /**
+     * 设置「召回重排模型」值
+     * @param val
+     */
+    AiAgentDTO setRerankModel(String rerankModel) {
+        this.rerankModel = rerankModel
+        return this
+    }
+
+
+    /**
+     * 设置「知识库模式」值
+     * 字典[智能体知识库模式]
+     * @param val
+     */
+    AiAgentDTO setKbMode(String kbMode) {
+        this.kbMode = kbMode
+        return this
+    }
+
+
+    /**
+     * 设置「视觉识别提示词」值
+     * @param val
+     */
+    AiAgentDTO setVlmPrompt(String vlmPrompt) {
+        this.vlmPrompt = vlmPrompt
+        return this
+    }
+
+
+    /**
+     * 设置「发布技能」值
+     * 字典[是否]
+     * @param val
+     */
+    AiAgentDTO setPublishSkill(Integer publishSkill) {
+        this.publishSkill = publishSkill
+        return this
+    }
+
+
+    /**
+     * 设置「技能提示词」值
+     * @param val
+     */
+    AiAgentDTO setSkillPrompt(String skillPrompt) {
+        this.skillPrompt = skillPrompt
+        return this
+    }
+
+
+    /**
+     * 设置「支持联网搜索」值
+     * 字典[是否]
+     * @param val
+     */
+    AiAgentDTO setEnableSearching(Integer enableSearching) {
+        this.enableSearching = enableSearching
+        return this
+    }
+
+
+    /**
+     * 设置「记忆存储知识库标记」值
+     * @param val
+     */
+    AiAgentDTO setMemoryKbTag(String memoryKbTag) {
+        this.memoryKbTag = memoryKbTag
+        return this
+    }
+
+
+    /**
+     * 设置「记忆存储文档标记」值
+     * @param val
+     */
+    AiAgentDTO setMemoryDocTag(String memoryDocTag) {
+        this.memoryDocTag = memoryDocTag
+        return this
+    }
+
+
+    /**
      * 设置「有效」值
      * 字典[是否]
      * @param val
@@ -314,6 +528,7 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
 
     /**
      * 设置「启用问题建议」值
+     * 字典[是否]
      * @param val
      */
     AiAgentDTO setEnableSuggestedQuestions(Integer enableSuggestedQuestions) {
@@ -324,6 +539,7 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
 
     /**
      * 设置「启用思考链」值
+     * 字典[是否]
      * @param val
      */
     AiAgentDTO setEnableThinking(Integer enableThinking) {
@@ -334,6 +550,7 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
 
     /**
      * 设置「调用工具」值
+     * 字典[是否]
      * @param val
      */
     AiAgentDTO setEnableTools(Integer enableTools) {
@@ -385,6 +602,16 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
 
 
     /**
+     * 设置「模型标识」值
+     * @param val
+     */
+    AiAgentDTO setRerankModelId(String rerankModelId) {
+        this.rerankModelId = rerankModelId
+        return this
+    }
+
+
+    /**
      * 设置「排序」值
      * @param val
      */
@@ -396,6 +623,7 @@ class AiAgentDTO extends GroovyDTO<AiAgentDTO> {
 
     /**
      * 设置「流式输出」值
+     * 字典[是否]
      * @param val
      */
     AiAgentDTO setStream(Integer stream) {

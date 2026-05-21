@@ -17,9 +17,11 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class AiAgentContext extends cn.ibizlab.plm.user.plugin.groovy.dataentity.AIAgentContextDERuntime {
 
+    public static final String ACTION_AGENT_FLOW_CLONE = "agent_flow_clone"
     public static final String ACTION_FILL_WITH_AGENT = "fill_with_agent"
     public static final String DATASET_DEFAULT = "DEFAULT"
     public static final String DATASET_FILTER = "filter"
+    public static final String DATASET_FLOW_AGENTS = "flow_agents"
     public static final String DATASET_FULL_INFO = "full_info"
     private static AiAgentContext _instance
     void setInstance(AiAgentContext instance) {
@@ -100,6 +102,16 @@ class AiAgentContext extends cn.ibizlab.plm.user.plugin.groovy.dataentity.AIAgen
     }
 
     /**
+     * 行为：flow智能体克隆 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    //@DEAction(ACTION_AGENT_FLOW_CLONE)
+    def agentFlowClone(AiAgentContextDTO dto) throws Throwable {
+        this.execute(ACTION_AGENT_FLOW_CLONE, dto, AiAgentContextDTO.class)
+    }
+
+    /**
      * 行为：填充智能体参数 实际功能
      * @param key
      * @throws Throwable
@@ -127,6 +139,16 @@ class AiAgentContext extends cn.ibizlab.plm.user.plugin.groovy.dataentity.AIAgen
     //@DEDataSet(DATASET_FILTER)
     Page<AiAgentContextDTO> fetchFilter(AiAgentContextFilterDTO context) throws Throwable {
         return this.fetch(DATASET_FILTER, context, AiAgentContextDTO.class)
+    }
+
+    /**
+     * 数据集：flow智能体 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    //@DEDataSet(DATASET_FLOW_AGENTS)
+    Page<AiAgentContextDTO> fetchFlowAgents(AiAgentContextFilterDTO context) throws Throwable {
+        return this.fetch(DATASET_FLOW_AGENTS, context, AiAgentContextDTO.class)
     }
 
     /**

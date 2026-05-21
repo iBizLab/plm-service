@@ -47,6 +47,28 @@ class AiKbDocumentDTO extends GroovyDTO<AiKbDocumentDTO> {
     @JsonProperty("update_time")
     Timestamp updateTime
     /**
+     * 「是否启用」
+     * 字典[是否]
+     */
+    @JsonProperty("active")
+    Integer active
+    /**
+     * 「知识库标识」
+     */
+    @JsonProperty("kb_id")
+    String kbId
+    /**
+     * 「文档同步标识」
+     */
+    @JsonProperty("sync_id")
+    String syncId
+    /**
+     * 「切片方法」
+     * 字典[切片策略]
+     */
+    @JsonProperty("chunk_method")
+    String chunkMethod
+    /**
      * 「同步频率」
      * 字典[知识库同步频率]
      */
@@ -108,37 +130,41 @@ class AiKbDocumentDTO extends GroovyDTO<AiKbDocumentDTO> {
     @JsonProperty("custom_chunk")
     Integer customChunk
     /**
-     * 「是否启用」
-     * 字典[是否]
-     */
-    @JsonProperty("active")
-    Integer active
-    /**
-     * 「切片方法」
-     * 字典[切片策略]
-     */
-    @JsonProperty("chunk_method")
-    String chunkMethod
-    /**
-     * 「知识库标识」
-     */
-    @JsonProperty("kb_id")
-    String kbId
-    /**
-     * 「知识库名称」
-     */
-    @JsonProperty("kb_name")
-    String kbName
-    /**
      * 「解析配置」
      */
     @JsonProperty("parser_config")
     AiKbChunkingStrategyDTO parserConfig
     /**
-     * 「文档同步标识」
+     * 「解析内容」
      */
-    @JsonProperty("sync_id")
-    String syncId
+    @JsonProperty("parsed_content")
+    String parsedContent
+    /**
+     * 「错误信息」
+     */
+    @JsonProperty("parse_error")
+    String parseError
+    /**
+     * 「标签集」
+     * 字典[知识库标签集]
+     */
+    @JsonProperty("tag_sets")
+    String tagSets
+    /**
+     * 「参考引用」
+     */
+    @JsonProperty("references")
+    List<IEntity> references
+    /**
+     * 「用户标记」
+     */
+    @JsonProperty("user_tag")
+    String userTag
+    /**
+     * 「用户标记2」
+     */
+    @JsonProperty("user_tag2")
+    String userTag2
 
     /**
      * 设置「知识库文档标识」值
@@ -198,6 +224,48 @@ class AiKbDocumentDTO extends GroovyDTO<AiKbDocumentDTO> {
      */
     AiKbDocumentDTO setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime
+        return this
+    }
+
+
+    /**
+     * 设置「是否启用」值
+     * 字典[是否]
+     * @param val
+     */
+    AiKbDocumentDTO setActive(Integer active) {
+        this.active = active
+        return this
+    }
+
+
+    /**
+     * 设置「知识库标识」值
+     * @param val
+     */
+    AiKbDocumentDTO setKbId(String kbId) {
+        this.kbId = kbId
+        return this
+    }
+
+
+    /**
+     * 设置「文档同步标识」值
+     * @param val
+     */
+    AiKbDocumentDTO setSyncId(String syncId) {
+        this.syncId = syncId
+        return this
+    }
+
+
+    /**
+     * 设置「切片方法」值
+     * 字典[切片策略]
+     * @param val
+     */
+    AiKbDocumentDTO setChunkMethod(String chunkMethod) {
+        this.chunkMethod = chunkMethod
         return this
     }
 
@@ -319,48 +387,6 @@ class AiKbDocumentDTO extends GroovyDTO<AiKbDocumentDTO> {
 
 
     /**
-     * 设置「是否启用」值
-     * 字典[是否]
-     * @param val
-     */
-    AiKbDocumentDTO setActive(Integer active) {
-        this.active = active
-        return this
-    }
-
-
-    /**
-     * 设置「切片方法」值
-     * 字典[切片策略]
-     * @param val
-     */
-    AiKbDocumentDTO setChunkMethod(String chunkMethod) {
-        this.chunkMethod = chunkMethod
-        return this
-    }
-
-
-    /**
-     * 设置「知识库标识」值
-     * @param val
-     */
-    AiKbDocumentDTO setKbId(String kbId) {
-        this.kbId = kbId
-        return this
-    }
-
-
-    /**
-     * 设置「知识库名称」值
-     * @param val
-     */
-    AiKbDocumentDTO setKbName(String kbName) {
-        this.kbName = kbName
-        return this
-    }
-
-
-    /**
      * 设置「解析配置」值
      * @param val
      */
@@ -371,11 +397,62 @@ class AiKbDocumentDTO extends GroovyDTO<AiKbDocumentDTO> {
 
 
     /**
-     * 设置「文档同步标识」值
+     * 设置「解析内容」值
      * @param val
      */
-    AiKbDocumentDTO setSyncId(String syncId) {
-        this.syncId = syncId
+    AiKbDocumentDTO setParsedContent(String parsedContent) {
+        this.parsedContent = parsedContent
+        return this
+    }
+
+
+    /**
+     * 设置「错误信息」值
+     * @param val
+     */
+    AiKbDocumentDTO setParseError(String parseError) {
+        this.parseError = parseError
+        return this
+    }
+
+
+    /**
+     * 设置「标签集」值
+     * 字典[知识库标签集]
+     * @param val
+     */
+    AiKbDocumentDTO setTagSets(String tagSets) {
+        this.tagSets = tagSets
+        return this
+    }
+
+
+    /**
+     * 设置「参考引用」值
+     * @param val
+     */
+    AiKbDocumentDTO setReferences(List<IEntity> references) {
+        this.references = references
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记」值
+     * @param val
+     */
+    AiKbDocumentDTO setUserTag(String userTag) {
+        this.userTag = userTag
+        return this
+    }
+
+
+    /**
+     * 设置「用户标记2」值
+     * @param val
+     */
+    AiKbDocumentDTO setUserTag2(String userTag2) {
+        this.userTag2 = userTag2
         return this
     }
 

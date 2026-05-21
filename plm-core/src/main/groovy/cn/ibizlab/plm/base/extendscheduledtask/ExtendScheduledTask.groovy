@@ -16,6 +16,7 @@ import cn.ibizlab.central.plugin.groovy.dataentity.*
  */
 class ExtendScheduledTask extends GroovyDynaDataEntityRuntime<ExtendScheduledTask,ExtendScheduledTaskDTO,ExtendScheduledTaskFilterDTO> {
 
+    public static final String ACTION_DOC_PARSING_RECORD = "doc_parsing_record"
     public static final String DATASET_DEFAULT = "DEFAULT"
     private static ExtendScheduledTask _instance
     void setInstance(ExtendScheduledTask instance) {
@@ -93,6 +94,16 @@ class ExtendScheduledTask extends GroovyDynaDataEntityRuntime<ExtendScheduledTas
     @DEAction(ACTION_SAVE)
     ExtendScheduledTaskDTO save(ExtendScheduledTaskDTO dto) throws Throwable {
         return this.execute(ACTION_SAVE, dto, ExtendScheduledTaskDTO.class)
+    }
+
+    /**
+     * 行为：文档解析记录 实际功能
+     * @param dto
+     * @throws Throwable
+     */
+    @DEAction(ACTION_DOC_PARSING_RECORD)
+    def docParsingRecord(ExtendScheduledTaskDTO dto) throws Throwable {
+        this.execute(ACTION_DOC_PARSING_RECORD, dto, ExtendScheduledTaskDTO.class)
     }
 
     /**

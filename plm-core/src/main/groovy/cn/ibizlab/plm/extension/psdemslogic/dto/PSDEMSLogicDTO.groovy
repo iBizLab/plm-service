@@ -8,8 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import net.ibizsys.central.util.*
 import cn.ibizlab.central.plugin.groovy.annotation.DEDataModel
 import cn.ibizlab.central.plugin.groovy.dataentity.dto.*
-import cn.ibizlab.plm.extension.psdelogicnode.dto.PSDELogicNodeDTO
-import cn.ibizlab.plm.extension.psdelogiclink.dto.PSDELogicLinkDTO
 
 @DEDataModel
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -25,12 +23,12 @@ class PSDEMSLogicDTO extends GroovyDTO<PSDEMSLogicDTO> {
      * 「逻辑节点」
      */
     @JsonProperty("psdelogicnodes")
-    List<PSDELogicNodeDTO> pSDELogicNodes
+    List<IEntity> pSDELogicNodes
     /**
      * 「逻辑连接」
      */
     @JsonProperty("psdelogiclinks")
-    List<PSDELogicLinkDTO> pSDELogicLinks
+    List<IEntity> pSDELogicLinks
     /**
      * 「代码标识」
      */
@@ -47,6 +45,16 @@ class PSDEMSLogicDTO extends GroovyDTO<PSDEMSLogicDTO> {
      */
     @JsonProperty("createman")
     String createMan
+    /**
+     * 「逻辑标记」
+     */
+    @JsonProperty("logictag")
+    String logicTag
+    /**
+     * 「逻辑标记2」
+     */
+    @JsonProperty("logictag2")
+    String logicTag2
     /**
      * 「逻辑类型」
      */
@@ -119,7 +127,7 @@ class PSDEMSLogicDTO extends GroovyDTO<PSDEMSLogicDTO> {
      * 设置「逻辑节点」值
      * @param val
      */
-    PSDEMSLogicDTO setPSDELogicNodes(List<PSDELogicNodeDTO> pSDELogicNodes) {
+    PSDEMSLogicDTO setPSDELogicNodes(List<IEntity> pSDELogicNodes) {
         this.pSDELogicNodes = pSDELogicNodes
         return this
     }
@@ -129,7 +137,7 @@ class PSDEMSLogicDTO extends GroovyDTO<PSDEMSLogicDTO> {
      * 设置「逻辑连接」值
      * @param val
      */
-    PSDEMSLogicDTO setPSDELogicLinks(List<PSDELogicLinkDTO> pSDELogicLinks) {
+    PSDEMSLogicDTO setPSDELogicLinks(List<IEntity> pSDELogicLinks) {
         this.pSDELogicLinks = pSDELogicLinks
         return this
     }
@@ -162,6 +170,26 @@ class PSDEMSLogicDTO extends GroovyDTO<PSDEMSLogicDTO> {
      */
     PSDEMSLogicDTO setCreateMan(String createMan) {
         this.createMan = createMan
+        return this
+    }
+
+
+    /**
+     * 设置「逻辑标记」值
+     * @param val
+     */
+    PSDEMSLogicDTO setLogicTag(String logicTag) {
+        this.logicTag = logicTag
+        return this
+    }
+
+
+    /**
+     * 设置「逻辑标记2」值
+     * @param val
+     */
+    PSDEMSLogicDTO setLogicTag2(String logicTag2) {
+        this.logicTag2 = logicTag2
         return this
     }
 

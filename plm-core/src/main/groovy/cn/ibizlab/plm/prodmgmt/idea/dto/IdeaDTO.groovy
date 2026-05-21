@@ -39,7 +39,7 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
     String priority
     /**
      * 「内容格式」
-     * 字典[报表输出格式]
+     * 字典[内容格式选择]
      */
     @JsonProperty("format_type")
     String formatType
@@ -384,7 +384,7 @@ class IdeaDTO extends GroovyDTO<IdeaDTO> {
 
     /**
      * 设置「内容格式」值
-     * 字典[报表输出格式]
+     * 字典[内容格式选择]
      * @param val
      */
     IdeaDTO setFormatType(String formatType) {

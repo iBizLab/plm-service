@@ -55,11 +55,6 @@ class UserDTO extends GroovyDTO<UserDTO> {
     @JsonProperty("report_flag")
     Integer reportFlag
     /**
-     * 「用户ID」
-     */
-    @JsonProperty("user_id")
-    String userId
-    /**
      * 「职位」
      * 字典[职位（动态）]
      */
@@ -210,16 +205,6 @@ class UserDTO extends GroovyDTO<UserDTO> {
      */
     UserDTO setReportFlag(Integer reportFlag) {
         this.reportFlag = reportFlag
-        return this
-    }
-
-
-    /**
-     * 设置「用户ID」值
-     * @param val
-     */
-    UserDTO setUserId(String userId) {
-        this.userId = userId
         return this
     }
 
